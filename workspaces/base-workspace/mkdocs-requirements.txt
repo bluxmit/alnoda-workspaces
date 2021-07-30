@@ -1,0 +1,6 @@
+mkdocs==1.2.1
+# https://squidfunk.github.io/mkdocs-material/getting-started/#installation
+mkdocs-material==7.1.8
+# https://github.com/fralau/mkdocs_macros_plugin
+mkdocs-macros-plugin==0.5.12
+

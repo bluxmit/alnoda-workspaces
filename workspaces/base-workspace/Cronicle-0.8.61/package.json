@@ -1,0 +1,63 @@
+{
+	"name": "Cronicle",
+	"version": "0.8.61",
+	"description": "A simple, distributed task scheduler and runner with a web based UI.",
+	"author": "Joseph Huckaby <jhuckaby@gmail.com>",
+	"homepage": "https://github.com/jhuckaby/Cronicle",
+	"license": "MIT",
+	"main": "lib/main.js",
+	"scripts": {
+		"test": "pixl-unit lib/test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jhuckaby/Cronicle"
+	},
+	"bugs": {
+		"url": "https://github.com/jhuckaby/Cronicle/issues"
+	},
+	"keywords": [
+		"cron",
+		"crontab",
+		"scheduler"
+	],
+	"dependencies": {
+		"async": "2.6.0",
+		"socket.io": "1.7.3",
+		"socket.io-client": "1.7.3",
+		"mkdirp": "0.5.1",
+		"glob": "5.0.15",
+		"uglify-js": "2.8.22",
+		"zxcvbn": "3.5.0",
+		"jquery": "3.5.0",
+		"font-awesome": "4.7.0",
+		"mdi": "1.9.33",
+		"chart.js": "2.9.4",
+		"moment": "2.22.1",
+		"moment-timezone": "0.5.32",
+		"jstimezonedetect": "1.0.6",
+		"netmask": "2.0.1",
+		"shell-quote": "1.6.1",
+		"bcrypt-node": "0.1.0",
+		"uncatch": "1.0.0",
+		"pixl-args": "1.0.3",
+		"pixl-cli": "1.0.8",
+		"pixl-config": "1.0.5",
+		"pixl-webapp": "1.0.17",
+		"pixl-class": "1.0.2",
+		"pixl-tools": "1.0.23",
+		"pixl-logger": "1.0.14",
+		"pixl-json-stream": "1.0.6",
+		"pixl-request": "1.0.36",
+		"pixl-mail": "1.0.11",
+		"pixl-perf": "1.0.5",
+		"pixl-server": "1.0.26",
+		"pixl-server-storage": "2.0.10",
+		"pixl-server-web": "1.1.7",
+		"pixl-server-api": "1.0.2",
+		"pixl-server-user": "1.0.9"
+	},
+	"devDependencies": {
+		"pixl-unit": "1.0.10"
+	}
+}

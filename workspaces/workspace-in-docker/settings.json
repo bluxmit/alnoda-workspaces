@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "workbench.colorTheme": "Ayu Mirage Bordered",
+    "git-graph.maxDepthOfRepoSearch": 3
+}

@@ -1,0 +1,91 @@
+mkdocs==1.2.1
+
+# https://squidfunk.github.io/mkdocs-material/getting-started/#installation
+mkdocs-material==7.1.9
+mkdocs-material-extensions==1.0.1
+
+# https://pygments.org/
+Pygments==2.9.0
+
+# https://facelessuser.github.io/pymdown-extensions/
+pymdown-extensions==8.2
+
+# https://github.com/mkdocstrings/mkdocstrings
+mkdocstrings==0.15.2
+
+# https://ai2business.github.io/mkdocstrings-sourcelink/
+mkdocstrings-sourcelink==0.3.2
+
+# https://github.com/fralau/mkdocs-mermaid2-plugin
+mkdocs-mermaid2-plugin==0.5.1
+
+# https://github.com/backstage/mkdocs-monorepo-plugin
+mkdocs-monorepo-plugin==0.4.15
+
+# https://github.com/fralau/mkdocs_macros_plugin
+mkdocs-macros-plugin==0.5.12
+
+# https://github.com/apenwarr/mkdocs-exclude
+mkdocs-exclude==1.0.2
+
+# https://github.com/chrieke/mkdocs-exclude-search
+mkdocs-exclude-search==0.5.2
+
+# https://github.com/datarobot/mkdocs-redirects
+mkdocs-redirects==1.0.3
+
+# https://github.com/midnightprioriem/mkdocs-autolinks-plugin
+mkdocs-autolinks-plugin==0.4.0
+
+# https://github.com/fralau/mkdocs-mermaid2-plugin
+mkdocs-mermaid2-plugin==0.5.1
+
+# https://mkdocstrings.github.io/
+mkdocstrings==0.15.2
+
+# https://github.com/fiinnnn/mkdocs-mktemplate-plugin
+mkdocs-mktemplate-plugin==1.0.0 
+
+# https://github.com/rosscdh/mkdocs-markdownextradata-plugin
+mkdocs-markdownextradata-plugin==0.2.4
+
+# https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
+mkdocs-awesome-pages-plugin==2.5.0
+
+# https://github.com/christo-ph/mkdocs_build_plantuml
+mkdocs-build-plantuml-plugin==1.5.0
+
+# https://github.com/mikitex70/plantuml-markdown
+plantuml-markdown==3.4.2
+
+
+
+# https://github.com/mondeja/mkdocs-include-markdown-plugin
+mkdocs-include-markdown-plugin==3.2.1
+
+# https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
+mkdocs-pdf-export-plugin==0.5.8
+
+# https://github.com/orzih/mkdocs-with-pdf
+mkdocs-with-pdf==0.9.2
+
+# https://github.com/derJD/python-mkblog
+mkblog==1.2.0
+
+# https://github.com/timvink/mkdocs-table-reader-plugin
+mkdocs-table-reader-plugin==0.6
+
+# https://github.com/danielfrg/mkdocs-jupyter
+# mkdocs-jupyter==0.17.3
+
+# https://github.com/greenape/mknotebooks
+# mknotebooks==0.7.0
+
+# https://github.com/lyz-code/mkdocs-newsletter
+# mkdocs-newsletter==0.3.1
+
+# https://github.com/ultrabug/mkdocs-static-i18n
+# mkdocs-static-i18n==0.17 
+
+# https://github.com/mondeja/mkdocs-mdpo-plugin
+# mkdocs-mdpo-plugin==0.0.14 

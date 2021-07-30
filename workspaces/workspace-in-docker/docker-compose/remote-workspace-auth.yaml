@@ -1,0 +1,75 @@
+
+version: "3.3"
+
+services:
+
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    command:
+      - "--api"
+      - "--api.dashboard"
+      - "--api.insecure"
+      - "--providers.docker"
+      - "--entrypoints.docs.address=:8020"
+      - "--entrypoints.filebrowser.address=:8021"
+      - "--entrypoints.staticfs.address=:8022"
+      - "--entrypoints.cronicle.address=:8023"
+      - "--entrypoints.ungit.address=:8024"
+      - "--entrypoints.ide.address=:8025"
+    ports:
+      - 8080:8080
+      - "8020-8030:8020-8030"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  workspace:
+    image: alnoda/workspace-in-docker
+    environment:
+      - WRK_HOST="68.183.218.233"
+    labels:
+      # To create user:password pair, it's possible to use this command:
+      # In any workspace-in-docker execute in terminal:  echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g
+      #   (csubstitute <userName> with the user name of your choice)
+      #   and enter password (twice) 
+      #   by default the user:pass is admin:admin
+      # You can have multiple <user:pass> separated with "," 
+      - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
+      - "traefik.enable=true"
+      # docs
+      - "traefik.http.services.docs.loadbalancer.server.port=8020"
+      - "traefik.http.routers.docs.service=docs"
+      - "traefik.http.routers.docs.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.docs.entrypoints=docs"
+      - "traefik.http.routers.docs.middlewares=basic-auth"
+      # filebrowser 
+      - "traefik.http.services.filebrowser.loadbalancer.server.port=8021"
+      - "traefik.http.routers.filebrowser.service=filebrowser"
+      - "traefik.http.routers.filebrowser.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.filebrowser.entrypoints=filebrowser"
+      - "traefik.http.routers.filebrowser.middlewares=basic-auth"
+      # static file server 
+      - "traefik.http.services.staticfs.loadbalancer.server.port=8022"
+      - "traefik.http.routers.staticfs.service=staticfs"
+      - "traefik.http.routers.staticfs.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.staticfs.entrypoints=staticfs"
+      - "traefik.http.routers.staticfs.middlewares=basic-auth"
+      # cronicle
+      - "traefik.http.services.cronicle.loadbalancer.server.port=8023"
+      - "traefik.http.routers.cronicle.service=cronicle"
+      - "traefik.http.routers.cronicle.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.cronicle.entrypoints=cronicle"
+      - "traefik.http.routers.cronicle.middlewares=basic-auth"
+      # ungit
+      - "traefik.http.services.ungit.loadbalancer.server.port=8024"
+      - "traefik.http.routers.ungit.service=ungit"
+      - "traefik.http.routers.ungit.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.ungit.entrypoints=ungit"
+      - "traefik.http.routers.ungit.middlewares=basic-auth"
+      # ide
+      - "traefik.http.services.ide.loadbalancer.server.port=8025"
+      - "traefik.http.routers.ide.service=ide"
+      - "traefik.http.routers.ide.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.ide.entrypoints=ide"
+      - "traefik.http.routers.ide.middlewares=basic-auth"
+      
