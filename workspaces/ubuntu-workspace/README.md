@@ -15,6 +15,7 @@ work directly insde a running docker container.
     * [Ports](#ports)
     * [Run as root](#run-as-root)
     * [Docker in docker](#docker-in-docker)
+    * [Run in cloud](#run-in-cloud)
 * [Features](#features)
     * [Install new packages](#install-new-packages)
     * [Schedule jobs with cron](#schedule-jobs-with-cron)
