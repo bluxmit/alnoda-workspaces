@@ -25,7 +25,6 @@ COPY mkdocs-requirements.txt /home/abc/installed-python-packages/mkdocs-requirem
 
 RUN echo "------------------------------------------------------ filebrowser, ungit, static server" \
 	&& apt-get -y update \
-	&& apt-get install -y apache2-utils \
 	&& mkdir -p -m 777 /opt/filebrowser \
 	&& curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash \
 	&& apt-get install -y ssh net-tools --no-install-recommends \

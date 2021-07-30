@@ -12,6 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py -O /usr/local/bin/systemctl  \
     && chmod 0777 /usr/local/bin/systemctl \ 
     && apt-get install -y software-properties-common \
+    && apt-get install -y apache2-utils \
     && echo "------------------------------------------------------ User" \
     && useradd -u 8877 abc \
     && chmod -R 777 /home \

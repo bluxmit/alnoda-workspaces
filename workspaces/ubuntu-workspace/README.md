@@ -109,6 +109,89 @@ NOTE: in order to use docker in docker you need to or enter into the workspace c
 docker exec -it --user=root space-1 /bin/zsh
 ```
 
+### Run in cloud
+
+Running workspaces on the remote server is great for collaboration, heavy workloads or periodic tasks. 
+Workspace has WEB-based terminal, and you will be able to use workspace from browser on any device.  
+
+It is very easy to run your workspace in cloud on any server. You are completely independent on the 
+cloud provider, can easily start, stop and move workspaces between servers.    
+
+It is recommended to start workspace with authenticationn, otherwise anyone will be 
+able to use your workspace. Use this simple docker-compose file to start workspace in 
+cloud with basic authentication
+
+```
+version: "3.3"
+services:
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    command:
+      - "--providers.docker"
+      - "--entrypoints.terminal.address=:8026"
+    ports:
+      - 8026:8026
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  workspace:
+    image: alnoda/ubuntu-workspace
+    labels:
+      # To create user:password pair, execute in any workspace echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g
+      - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
+      - "traefik.enable=true"
+      # terminal
+      - "traefik.http.services.terminal.loadbalancer.server.port=8026"
+      - "traefik.http.routers.terminal.service=terminal"
+      - "traefik.http.routers.terminal.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.terminal.entrypoints=terminal"
+      - "traefik.http.routers.terminal.middlewares=basic-auth"
+```
+
+This configuration launches workspace with the default authentication user:pass is **admin:admin**. 
+You might want to generate new credentials.  
+
+The password for the traefik basic auth is generated with the **htpasswd**. For connvenience, 
+it is installed in every workspace-in-docker, and the easiest way is to generate the password 
+is to launch workspace locally first, use its terminal to create a password, and then start 
+workspace on remote server. Don't forget to change this line in the docker-compose file with the 
+new user:pass
+
+```
+- "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
+```
+
+Create file ```remote-workspace-auth.yaml``` on the remote server, paste yaml from above (preferrably with new auth) 
+and start workspace 
+
+```
+docker-compose -f remote-workspace-auth.yaml up -d 
+```
+
+Now you can open in browser ```http://<ip-of-remote-server>:8026```  and use WEB-based terminal to work with your remote workspace 
+
+<p align="center">
+  <img src="img/web-based-terminal.png" alt="Htop" width="500">
+</p>
+
+Stop remote workspace
+
+```
+docker-compose -f remote-workspace-auth.yaml stop
+```
+
+Start remore workspace again
+
+```
+docker-compose -f remote-workspace-auth.yaml start
+```
+
+Delete remote workspace
+
+```
+docker-compose -f remote-workspace-auth.yaml down
+```
+
 ## Features
 
 In order to make working in the ubuntu-workspace more convenient, some terminal-based tools are installed. They 
@@ -352,11 +435,30 @@ You will be able to pull image on any device, local or cloud.
 
 ### Move workspace to the cloud
 
-Giving ways to save image described in section [Save and load images](#save-and-load-images) it is obviously easy to 
-move your complete local workspace to the cloud. 
+Ease of running workspace in cloud, and ability to move workspaces between local machine and remote server  - 
+is one of the main features of the workspace, and the reasonn why the workspace is entirely in docker.  
 
-You will typically do this when you need extra power of a cloud server, or you cwant to schedule your jobs to run when  
-your laptop is shut down.
+It is often a case that experiment, which started on personal notebook require more computational 
+resources, must be running for a long period of time, or executed periodically. All of these cases are 
+the reasons to move a workspace to the cloud server. Usually it is a hassle, but this workspace can be moved 
+to the remote server easily.    
+
+The easiest way to move workspace to the cloud is to get your private docker registry. Then to run workspace on remote server it is only 3 commands:
+
+1. [Commit workspace to the a image](#save-and-load-images)
+2. [Push workspace to your docker registry](https://docs.docker.com/engine/reference/commandline/push/)
+3. ssh to remote server, and run workspace from your registry   
+
+If you don't want to use container registry, then there are 2 steps more involved:
+
+1. [Commit workspace to the a image](#save-and-load-images)
+2. [Save image to file](save-and-loa-images) 
+3. Copy file to remote server. There are many options:
+    - Launch filexchange workspace on the remote server 
+    - Use [cyberduck](https://cyberduck.io/) 
+    - use [scp](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/)
+4. [Load workspace image from file](#save-and-load-images) on the remote server 
+5. Start workspace (with auth) on the remote server 
 
 ### Collaborate and share workspaces
 
