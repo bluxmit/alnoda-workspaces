@@ -36,15 +36,28 @@ work directly insde a running docker container.
 Primarily intended as an advanced Ubuntu terminal that runs anywhere, this workspace works best 
 when you need interactive linux, python or node shell for ad-hock tasks.  
 
-Ubuntu workspace is also a basis for building more sophisticated workspaces with UI interfaces.
+Ubuntu workspace is also a basis for building more sophisticated workspaces with UI interfaces.   
+
+Ubuntu-workspace even can be used as a development environment for those 
+who prefer developing directly in the terminal. For those who like more convenient 
+IDE there are more suitable workspaces.  
 
 ## Getting started
 
+In order to avoid confusion, the following convention is adopted: 
+
 ```sh
-docker run --name space-1 -d -p 19011:19011 alnoda/ubuntu-workspace
+command to execute outside of the workspace
 ```
 
-Ssh into the running container
+> `command to execute inside the workspace (after entering running docker container)`
+
+```sh
+docker run --name space-1 -d -p 8026:8026 alnoda/ubuntu-workspace
+```
+and open your browser on [http://localhost:8026](http://localhost:8026)  
+
+You can also ssh into the running workspace container from your console
 ```sh
 docker exec -it space-1 /bin/zsh
 ```
@@ -57,18 +70,19 @@ docker exec -it space-1 /bin/bash
 ***You can work in Ubuntu via terminal now.***
 
 ### Ports
-We started workspace container with a port mapping "-p 19011:19011" because in example below will use this port to launch 
-a web application.  
-If you know for sure you won't run any applications, remove "-p 19011:19011" and start workspace container as  
+In the example above, the workspace container was started with a port mapping "-p 8026:8026" in order to expose WEB-based terminal. 
+This might be useful if you are planning to move your workspace to cloud server or prefer web-based terminal. 
+If you are planning to work only locally and prefer your console, you might not need it, and you can start workspace without any port mappings
 
 ```sh
-docker run --name space-1 -d alnoda/ubuntu-workspace
+docker run --name space-1  -d alnoda/ubuntu-workspace
 ```
 
-If you don't know whether you will or will not need ports, expose some range just in case, for example
+It might be the case that some applications will be installed and launched inside the workspace. In order to use those applications outside the workspace, 
+it is necessary to add more port mappings. For example, assume we are planning to install application inside the workspace with web-ui on port 19011
 
 ```sh
-docker run --name space-1 -d -p 19011-19020:19011-19020 alnoda/ubuntu-workspace
+docker run --name space-1 -d -p 8026:8026 -p 19011:19011 alnoda/ubuntu-workspace
 ```
 
 > It is not a problem if you don't expose any ports, but later on realise you need them -
@@ -87,7 +101,7 @@ You can of course open several terminals to the same running containner as both 
 It is possible to work with docker directly from the workspace. 
 
 ```
-docker run --name space-1 -d -p 19011:19011 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ubuntu-workspace
+docker run --name space-1 -d -p 8026:8026 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ubuntu-workspace
 ```
 
 NOTE: in order to use docker in docker you need to or enter into the workspace container as root
@@ -97,17 +111,18 @@ docker exec -it --user=root space-1 /bin/zsh
 
 ## Features
 
-Ubuntu-workspace makes best out of terminal, to the level when it can be used even as a development or runtime environment.
+In order to make working in the ubuntu-workspace more convenient, some terminal-based tools are installed. They 
+make it easier to browse files, check running processes and resource utilisation and edit text files.  
 
-If you want to browse files, execute 
-```
-mc
-```
+Explore file system with Midnight Commander
+
+> ```mc```
+
 <p align="center">
   <img src="img/mc.png" alt="Moonlignt commander" width="500">
 </p>
 
-Launch system-monitor, process-viewer and process-manager with 
+Launch system-monitor, process-viewer and process-manager  
 ```
 htop
 ```
@@ -226,7 +241,7 @@ Essentially, there are two concepts: **images** and **containers**. Images are w
 image. When you execute this command 
 
 ```sh
-docker run --name space-1 -d alnoda/ubuntu-workspace
+docker run --name space-1 -p 8026:8026 -d alnoda/ubuntu-workspace
 ```
 you create container called **space-1** from the image **alnoda/ubuntu-workspace**. You can create any number of containers.  
 Container - is your workspace. You can start, stop annd delete them.  
@@ -371,7 +386,7 @@ docker commit --change "ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" space-
 
 If you want application to keep running after terminal is closed start it with **"&!"** at the end. For example, the application we started in the previous section (NodeJs) should be started like this 
 
-```npm-gui 0.0.0.0:19011 &!```
+> ```npm-gui 0.0.0.0:19011 &!```
 
 Now, if you disconnect from the workspace and close terminal, the application will still continue running in the workspace, untill the workspace is fully stopped (look in the section "Stop workspace").  
 

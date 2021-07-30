@@ -9,16 +9,16 @@
 * [Workspaces-in-docker vs. cloud IDE](#workspaces-in-docker-vs.-cloud-ide)
 * [Workspaces-in-docker vs. other docker workspaces](#workspaces-in-docker-vs.-other-docker-workspaces)
 * [Workspaces-in-docker principles](#workspaces-in-docker-principles)
-* [Contribution](#contribution)
+* [Feedback and contribution](#feedback-an-contribution)
 
 
 ## About
 
 Workspaces make development, experiments and workloads isolated in their own dockerized environments, 
-enabling working directly inside the running docker containers, and managing numerous projects easily.    
+enable working directly inside the running docker containers, and help managing multiple projects easily.    
 
 Workspaces include tools and software that make working inside docker nearly as convenient as working 
-directly with local environment.  
+directly in local environment.  
 
 ![Workspaces are amazing!](./workspaces/workspace-in-docker/img/workspace-demo.gif)
 
@@ -151,10 +151,13 @@ When developing our dockerized workspaces, we try to set and follow some rules:
 databases, server resource monitors should not be the part of the workspace. Instead they should be integrated with 
 workspace in docker compose.
 
-## Contribution
+## Feedback and contribution
 
-Contributions, pull requests and any form of feedback or collaboration is super welcome! 
+Workspaces in docker helped me to manage multiple projects in different clouds and k8s clusters. They made my work so much easier, 
+and I hope they can be useful for other people too.  
 
+I will highly appreciate any suggestions, ideas for improvements, contribution or any other form of collaboration. 
+Send me an email bluxmit@gmail.com
 
 
 
