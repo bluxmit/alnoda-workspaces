@@ -9,7 +9,11 @@ port_increments = {
     "FILEBROWSER_URL": 1,
     "STATICFS_URL": 2,
     "CRONICLE_URL": 3,
-    "UNGIT_URL": 4}
+    "UNGIT_URL": 4,
+    "TERMINAL_URL": 6,
+    "MC_URL": 7,
+    "HTOP_URL": 8
+    }
 
 
 

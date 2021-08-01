@@ -12,7 +12,7 @@ nav:
 # CONFIGURATION
 # ===========================================================
 
-site_name: Base Workspace
+site_name: My Workspace
 repo_url: https://github.com/Alnoda/workspaces-in-docker/tree/main/workspaces/base-workspace
 site_url: https://alnoda.org
 edit_uri: ""

@@ -24,6 +24,10 @@
   .tool-img{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 5px;
     border-radius: 5px;
+    min-width: 300px;
+    max-width: 300px;
+    max-height: 170px;
+    min-height: 170px;
   }
   .tool-caption{
     font-family:  Roboto, Helvetica, sans-serif;
@@ -53,25 +57,31 @@
         {
             "env": "IDE_URL",
             "name": "IDE",
-            "image": "Theia.png",
-            "description": "Powerful WEB-based IDE. Open source version of Visual Studio Code. Develop code in any language, install thousands of extensions or work in terminal directly from IDE"
+            "image": "IDE.jpg",
+            "description": "Browser-based version of Visual Studio Code. Develop in any language, install hundreeds of extensions"
+        },
+        {
+            "env": "TERMINAL_URL",
+            "name": "Terminal",
+            "image": "Terminal.png",
+            "description": "Full-fledged browser-based terminal with Z-shell"
         },
         {
             "env": "FILEBROWSER_URL",
             "name": "File Browser",
             "image": "Filebrowser.png",
-            "description": "Browse files inside running docker container. Upload and download files and folders to and from your Workspace, no matter where your Workspace is running: on local or in cloud"
+            "description": "Browse, upload and download files and folders to and from the Workspace"
         },
         {
             "env": "CRONICLE_URL",
             "name": "Cronicle",
-            "image": "Cronicle.png",
-            "description": "Schedule jobs, tasks and bacground scripts. Powerful tool to manage schedules, observe and monitor executions."
+            "image": "Cronicle.jpg",
+            "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
         },
         {
             "env": "UNGIT_URL",
             "name": "Ungit",
-            "image": "Ungit.png",
+            "image": "Ungit.jpg",
             "description": "Manage Git repositories and work flow using beautiful UI"
         },
         {
@@ -79,6 +89,18 @@
             "name": "Static File Server",
             "image": "Static-server.png",
             "description": "Serve any static websites like a breeze"
+        },
+        {
+            "env": "MC_URL",
+            "name": "M.Commander",
+            "image": "MC.jpg",
+            "description": "Feature rich visual file manager with internal text viewer and editor" 
+        },
+        {
+            "env": "HTOP_URL",
+            "name": "Process monitor",
+            "image": "Htop.jpg",
+            "description": "Monitor running process and resource utilization"
         }
         ] 
 %}

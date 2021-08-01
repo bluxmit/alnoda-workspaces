@@ -2,8 +2,25 @@
 
 # Base-workspace
 
-Base-Workspace is an enhanced docker image with Ubuntu and additional tools set up in order to develop applications directly inside docker container, 
-and have your dependencies, configuration and credential files, ssh keys and data isolated from other environments.   
+Base-Workspace - is an attemp to use docker as a light-weight Virtual Machine with batteries included, which is intended to be used 
+entirely through WEB-based interfaces - its own WEB-UI, WEB-based terminal, filebrowser, visual scheduler and other.  
+
+> TL;DR  
+> You can provide your users with many virtual environments, manage just one server, and have no hassle with server configuration.
+
+Because Ddocker is not completely suitable to serve this purpose, Base-Workspace tries to cover some of the shortcomings: it has cron set up, supervisord, allows to start multiple processes 
+inside the same container, has docker-in-docker, and some other applications installed, such as Git, Gitflow, wget, nano, vim etc.  
+
+In addition Base-Workspace has some applications with WEB-UI, which make it easier to scheddule and monitor job executions, browse and 
+exchange files, work with terminal, monitor resources and processes running inside the docker container.   
+
+For convenience, Base-workspace has its own WEB UI, which you can use to quickly open in browser the UIs of the applications 
+running inside the workspace. 
+
+![base-workspace-presentation](./img/base-workspace.gif)  
+
+Base-Workspace can be used as isolated environment on local machine, or as alternative to VM on the cloud server. It can run as root, 
+or as default **abc** user that is allowed to use *apt-get*.
 
 ## Contents
 
@@ -31,24 +48,36 @@ and have your dependencies, configuration and credential files, ssh keys and dat
 
 ## Use-cases
 
-Base-Workspace was created as an intermediary step between `ubuntu-workspace` that has only terminal-based tools 
-and `workspace-in-docker` that includes a set of WEB-UI tools which trannsform docker into the full-power development 
-environment.   
+VMs are great, but they are too heavy and require way too much resources, even more than enhanced docker containers like this one. There exist  
+cases when we need isolation as in VMs, but not all the features and security of VMs. Hence there is no need to pay extra price. 
 
-Base-workspace does not include IDE, and serves as a building base for other workspaces with different IDEs.
+A typical example of such use cases are virtual environments to run background jobs, check liveness of services or websites, do all kind of checks, 
+schedule maintenance tasks, have cli to a database, run internal non-critical services, launch WEB-scrapping applications, generate reports, 
+run ETL scripts and many others.  
+
+Since these jobs are owned by multiple users we need some kind of isolation. Running separate servers for every user would be too cost-inefficient. 
+Most periodic tasks utilize compute resources from time to time, and running the server all the time would be such a waste. It makes more sense 
+to have one server where all these virtual environments are running. Aslo it easier for sysops to monitor and maintain a single server.  
+
+Base-workspace is a way to provide isolated environments on a shared server, which is used by multiple users. It is more resource-efficient than VM, 
+it is secure (if running under defualit user), and it is convenient to use, becuause Base-workspace is bootstrapped with many commonly used applications, 
+it has WEB-UI, and users work with it entirely through browser. 
 
 ## Features
 
-Being an extension of [ubuntu-workspace-in-docker](https://github.com/Alnoda/ubuntu-workspace-in-docker) this image has all the features that 
+Being an extension of [ubuntu-workspace-in-docker](https://github.com/Alnoda/ubuntu-workspace-in-docker), this image has all the features that 
 ubuntu-workspace has.   
 
-Workspace includes several open-source tools with Web GUI:
+Workspace includes several open-source tools with browser-based GUI:
 
 - [**FileBrowser**](./features.md#filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
+- **Terminal**  - Full-fledged browser-based terminal with Z-shell. 
 - [**Cronicle**](./features.md#cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
 - [**Static File Server**](./features.md#static-file-server) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
 - [**Ungit**](./features.md#ungit) - rings user friendliness to git without sacrificing the versatility of it.
 - [**MkDocs**](./docs.md)  - create documentation for your workspace or project with only markdown. 
+- **Midnight Commander**  - Feature rich visual file manager with internal text viewer and editor. 
+- **Process Monitor**  - Monitor for running process and resource utilization. 
 
 Despite having WEB UI tools, Base-Workspace does not include IDE. This workspace serves eitehr of 2 use-cases:
 

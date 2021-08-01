@@ -10,10 +10,11 @@ port_increments = {
     "STATICFS_URL": 2,
     "CRONICLE_URL": 3,
     "UNGIT_URL": 4,
-    "IDE_URL": 5
+    "TERMINAL_URL": 6,
+    "IDE_URL": 5,
+    "MC_URL": 7,
+    "HTOP_URL": 8
     }
-
-
 
 # this function name should not be changed
 def define_env(env):
