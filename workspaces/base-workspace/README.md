@@ -56,7 +56,7 @@ run ETL scripts and many others.
 
 Since these jobs are owned by multiple users we need some kind of isolation. Running separate servers for every user would be too cost-inefficient. 
 Most periodic tasks utilize compute resources from time to time, and running the server all the time would be such a waste. It makes more sense 
-to have one server where all these virtual environments are running. Aslo it easier for sysops to monitor and maintain a single server.  
+to have one server where all these virtual environments are running. Also it easier for sysops to monitor and maintain a single server.  
 
 Base-workspace is a way to provide isolated environments on a shared server, which is used by multiple users. It is more resource-efficient than VM, 
 it is secure (if running under defualit user), and it is convenient to use, becuause Base-workspace is bootstrapped with many commonly used applications, 

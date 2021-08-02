@@ -1,7 +1,8 @@
 # Workspace-in-docker
 
-Workspace-in-docker has all the featuures of the *Base-Workspace*, and in addition it includes 
-a powerful browser-based version of Visual Studio Code. 
+Workspace-in-docker has all the features of the *Base-Workspace*, and in addition it includes 
+a powerful browser-based version of Visual Studio Code. It is a lightweight VM alternative, which provides full isolation, 
+consumes little resources and contains full-fledged IDE.
 
 ![Workspaces are amazing!](./img/workspace-demo.gif)
 
@@ -11,7 +12,7 @@ Workspace can be used as local development environment, as well as remote, when 
 Workspace-in-docker allows to completely isolate and switch easily between projects that involve multiple programming languages, cloud CLIs, 
 k8s clusters, configurations and have system dependencies. Withou this workspace swithing between such complex environments would require multiple actions and can be tedious work.  
 
-Workspace-in-docker is great for collaborative work - itcan be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customised.  
+Workspace-in-docker is great for collaborative work - itcan be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customized.  
 Can be used as build, test or even runtime environment. 
 
 Workspace-in-docker is a good choice if you want control and versatility. It is lightweight, 

@@ -21,17 +21,25 @@ The places you need to change are marked on this picture:
 ![Change configs here](../img/auth-yaml.png)
 
 - environmental variable `WRK_HOST` - set it to be the public IP of the server you've got
-- update authentication. The default user/pass is admin/admin, you might want to change it to your own user/pass. Traefik requires passwords 
-    to be generated with [**htpasswd**](https://httpd.apache.org/docs/2.4/programs/htpasswd.html) 
+- update authentication. The default user/pass is admin/admin, you might want to change it to your own user/pass. 
 
-To save your time, ***htpasswd is already installed in the workspace-in-docker***. Simply launch workspace-in-docker locally, open IDE or terminal, and 
-execute 
+The password for the traefik basic auth must be encrypted with the **htpasswd**. For connvenience, 
+it is installed in every workspace-in-docker, and the easiest way is to generate the password 
+is to launch workspace locally first, use its terminal to create a password, and then start 
+workspace on remote server.  
+
+To encrypt password open terminal of the local workspace and execute 
+
+> ```echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g```  
+
+substitute `<userName>` with the new user name, and prowide password on prompt. After this htpasswd will output encrypted password.
+
+Don't forget to change this line in the docker-compose file with the new user:encpypted_pass
 
 ```
-echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g
+- "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
 ```
 
-Of course, change `<userName>` to the user name of your choice. Prompt will ask for password (twice)
 
 ssh to the remote server and create file `remote-workspace-auth.yaml`. For example `nano remote-workspace-auth.yaml`, paste the content of the 
 modified file and save changes. 

@@ -9,6 +9,7 @@
 * [Workspaces-in-docker vs. cloud IDE](#workspaces-in-docker-vs.-cloud-ide)
 * [Workspaces-in-docker vs. other docker workspaces](#workspaces-in-docker-vs.-other-docker-workspaces)
 * [Workspaces-in-docker principles](#workspaces-in-docker-principles)
+* [Publications](#publications)
 * [Feedback and contribution](#feedback-an-contribution)
 
 
@@ -80,13 +81,13 @@ designed to be used entirely through browser-based interfaces. Base-Workspace ha
 convenient work, such as File Browser to easily exchange files and folders with workspace, Cronicle - advanced job scheduler with great UI, 
 MkDocs for documentation of the workspace and projects. This workspace includes all the features of the *Ubuntu-workspace*.
 
-3. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) - has all the featuures of the *Base-Workspace*, and in addition - 
+3. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) - has all the features of the *Base-Workspace*, and in addition - 
 a powerful browser-based version of Visual Studio Code. This workspace allows complete isolation of many IT-related projects, such as 
 software development, devops, QA, data analysis, data engineering, data science and other. Workspace can be used as local development environment, 
 as well as remote, when started on the cloud server, and can be secured with password. Workspace-in-docker allows to completely isolate and switch easily 
 between projects that involve multiple programming languages, different clouds, k8s clusters and have system dependencies. Withou this workspace 
 swithing between such complex environments would require multiple actions and can be tedious work. Workspace-in-docker is great for collaborative work, 
-can be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customised. Can be used as build, test or even 
+can be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customized. Can be used as build, test or even 
 runtime environment. 
  
 ## Why dev environmet in docker
@@ -159,6 +160,11 @@ When developing our dockerized workspaces, we try to set and follow some rules:
 - include in the workspace only tools that share processes and data. Reverse proxy, load balanncers, 
 databases, server resource monitors should not be the part of the workspace. Instead they should be integrated with 
 workspace in docker compose.
+
+## Publications
+
+- [The way I use Docker as interactive environment for tries and experiments](https://medium.com/@bluxmit/the-way-i-use-docker-as-interactive-environment-for-tries-and-experiments-52ac06c0ec69)
+- [Docker as a lightweight VM - docker image that you can use as VM substitute](https://medium.com/@bluxmit/docker-as-a-lightweight-vm-docker-image-that-you-can-use-as-vm-substitute-164032e4ed0b)
 
 ## Feedback and contribution
 

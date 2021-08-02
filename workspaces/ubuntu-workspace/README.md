@@ -122,7 +122,7 @@ Workspace has WEB-based terminal, and you will be able to use workspace from bro
 It is very easy to run your workspace in cloud on any server. You are completely independent on the 
 cloud provider, can easily start, stop and move workspaces between servers.    
 
-It is recommended to start workspace with authenticationn, otherwise anyone will be 
+It is recommended to start workspace with authentication, otherwise anyone will be 
 able to use your workspace. Use this simple docker-compose file to start workspace in 
 cloud with basic authentication
 
@@ -156,11 +156,18 @@ services:
 This configuration launches workspace with the default authentication user:pass is **admin:admin**. 
 You might want to generate new credentials.  
 
-The password for the traefik basic auth is generated with the **htpasswd**. For connvenience, 
+The password for the traefik basic auth must be encrypted with the **htpasswd**. For connvenience, 
 it is installed in every workspace-in-docker, and the easiest way is to generate the password 
 is to launch workspace locally first, use its terminal to create a password, and then start 
-workspace on remote server. Don't forget to change this line in the docker-compose file with the 
-new user:pass
+workspace on remote server.  
+
+To encrypt password open terminal of the local workspace and execute 
+
+> ```echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g```  
+
+substitute `<userName>` with the new user name, and prowide password on prompt. After this htpasswd will output encrypted password.
+
+Don't forget to change this line in the docker-compose file with the new user:encpypted_pass
 
 ```
 - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
