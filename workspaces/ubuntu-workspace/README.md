@@ -1,8 +1,12 @@
 # Ubuntu-workspace
 
-```ubuntu-workspace``` is an enhanced Ubuntu image for convenient interactive work with Ubuntu running inside a docker container, 
-creating a feeling of a virtual machine. It has docker-in-docker, python, node, cron, supervisord, z-shell and other packages set up for convenient 
-work directly insde a running docker container.
+```Ubuntu-workspace``` - is an attempt to use docker as a light-weight Virtual Machine. It 
+provides isolation of environments, but uses less resources than VMs.  
+
+Ubuntu-workspace allows to start multiple processes inside the 
+same docker container, has docker-in-docker, Python and Node.js, and a collection of common applications such as text editors, 
+git, supervisord, z-shell etc. Ubuntu-workspace exposes browser-based terminal, and can be used on both local and remote server providing the same experience. 
+When it runs on the remote server, access can be restricted with a password.
 
 <p align="center">
   <img src="img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="750">

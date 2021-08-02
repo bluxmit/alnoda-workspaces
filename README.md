@@ -69,17 +69,26 @@ docker exec -it space-1 /bin/zsh
 
 ## Available workspaces
 
-1. [`ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md). Primarily intended as an advanced Ubuntu terminal that runs anywhere, this workspace works best 
-when you need interactive linux, python or node shell for ad-hock tasks.  
+1. [`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md) - is an attempt to use docker as a light-weight Virtual Machine. It 
+provides isolation of environments, but uses less resources than VMs. Ubuntu-workspace allows to start multiple processes inside the 
+same docker container, has docker-in-docker, Python and Node.js, and a collection of common applications such as text editors, 
+git, supervisord, z-shell etc. Ubuntu-workspace exposes browser-based terminal, and can be used on both local and remote server providing the same experience. 
+When it runs on the remote server, access can be restricted with a password.  
 
-2. [`base-workspace`](./workspaces/base-workspace/README.md). Does not include IDE, and serves as a building base for other workspaces with different IDEs.  
+2. [`Base-Workspace`](./workspaces/base-workspace/README.md) - docker as a light-weight Virtual Machine with batteries included, 
+designed to be used entirely through browser-based interfaces. Base-Workspace has its own UI, and a collection of applications for more 
+convenient work, such as File Browser to easily exchange files and folders with workspace, Cronicle - advanced job scheduler with great UI, 
+MkDocs for documentation of the workspace and projects. This workspace includes all the features of the *Ubuntu-workspace*.
 
-3. [`workspace-in-docker`](./workspaces/workspace-in-docker/README.md). Workspace-in-docker is a good choice if you want control and versatility. It is lightweight, 
-includes open-source web-based version of Visual Studio Code, and a reasonable collection of tools that 
-make working inside docker container nearly as convenient as working on local environment. 
-Very customizable. 
-
-
+3. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) - has all the featuures of the *Base-Workspace*, and in addition - 
+a powerful browser-based version of Visual Studio Code. This workspace allows complete isolation of many IT-related projects, such as 
+software development, devops, QA, data analysis, data engineering, data science and other. Workspace can be used as local development environment, 
+as well as remote, when started on the cloud server, and can be secured with password. Workspace-in-docker allows to completely isolate and switch easily 
+between projects that involve multiple programming languages, different clouds, k8s clusters and have system dependencies. Withou this workspace 
+swithing between such complex environments would require multiple actions and can be tedious work. Workspace-in-docker is great for collaborative work, 
+can be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customised. Can be used as build, test or even 
+runtime environment. 
+ 
 ## Why dev environmet in docker
 
 Have your ever participated in several software (sysops, analytics, BI, data science, ML) projects at the same time? 
