@@ -1,7 +1,7 @@
 
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-0.6
+ARG image_tag=18.04-0.8
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -17,6 +17,7 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y apt-utils \
     && apt-get install -y git \
+    && apt-get install -y libsecret-1-dev \
     && mkdir /opt/theia
 
 ARG version=latest
@@ -61,7 +62,7 @@ ENV SHELL=/bin/bash \
     PATH="/home/abc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
     NVM_DIR=/home/abc/.nvm
 
-RUN && echo "------------------------------------------------------ utils" \
+RUN echo "------------------------------------------------------ utils" \
     && rm -rf /home/abc/utils || true \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
     && mv /tmp/alnoda-workspaces/utils /home/abc/ \

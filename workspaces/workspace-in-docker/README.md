@@ -156,7 +156,7 @@ If you are planning to run more than one workspace at the same time, you can run
 the different port range, for example
 
 ```sh
-docker run --name space-2 -d -p 8040-8050:8020-8030 -e ENTRY_PORT=8040 alnoda/workspace-in-docker
+docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/workspace-in-docker
 ```
 
 Notice that in addition we need to set environmental variable ENTRY_PORT, which should be equal to the first port in the new range. 

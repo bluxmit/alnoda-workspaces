@@ -2,8 +2,10 @@
 
 # Base-workspace
 
-Base-Workspace - is an attemp to use docker as a light-weight Virtual Machine with batteries included, which is intended to be used 
-entirely through WEB-based interfaces - its own WEB-UI, WEB-based terminal, filebrowser, visual scheduler and other applications.  
+Base-Workspace - is an attempt to use docker as a lightweight Virtual Machine "with batteries included". 
+It can be used on laptop, PC or on a server in cloud via WEB-based interfaces. 
+It has its own UI, browser-based based terminal, file browser, visual job scheduler, and other applications. 
+It can be launched on a remote server over HTTPS with authentication. 
 
 #### Try it out
  

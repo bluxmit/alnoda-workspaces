@@ -1,7 +1,14 @@
 ## Workspace in cloud with auth
 
+This is a demonstration how Traefik reverse proxy, and its middlewares are used in order to deploy workspace to the cloud server with 
+basic authentication.  
+
+***This doc is just for training. The method described here does not provide enought security when running workspace on the remote server, 
+because it is based on HTTP, and not on encrypted HTTPS. This method should not be used, unless running workspaces in the internal network. 
+Check out instructions on the workspace doc to know how to run workspaces securely on the cloud servers***  
+
 When running workspace-in-docker on the remote server, it is useful to add authentication mechanism, otherwise anyone in the world 
-who gets to know the IP of the remote server will be able to use your workspace.  
+who gets to know the IP of the remote server will be able to use your workspace.   
 
 Workspace includes several tools, some of them have their own auth features. We turn them off because wit is tedious to configure 
 auth for every separate tool. You probably would want one auth mechanism applied to all tools in the workspace. To make this possible 
