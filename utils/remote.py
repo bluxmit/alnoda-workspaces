@@ -30,11 +30,15 @@ workspace_meta = {
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
     },
     "workspace-in-docker": {
-        "port-range": 10,
+        "port-range": 15,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
     },
     "codeserver-workspace": {
-        "port-range": 10,
+        "port-range": 15,
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+    },
+    "mkdocs-magicspace": {
+        "port-range": 15,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
     }
 }
