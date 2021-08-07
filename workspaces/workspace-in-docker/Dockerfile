@@ -52,7 +52,7 @@ COPY settings.json /home/abc/.theia/settings.json
 COPY supervisord-theia.conf /etc/supervisord/
 
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/get-started.md
+COPY README.md /home/docs/docs/docs.md
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
@@ -61,10 +61,18 @@ ENV SHELL=/bin/bash \
     PATH="/home/abc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
     NVM_DIR=/home/abc/.nvm
 
-RUN chown -R abc /opt/theia \
+RUN && echo "------------------------------------------------------ utils" \
+    && rm -rf /home/abc/utils || true \
+    && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
+    && mv /tmp/alnoda-workspaces/utils /home/abc/ \
+    && rm -rf /tmp/alnoda-workspaces \
+    && echo "------------------------------------------------------ user" \
+    && chown -R abc /opt/theia \
     && mkdir -p /var/log/theia && chown -R abc /var/log/theia \
     && chown -R abc /home/docs \
+    && chown -R abc /home/abc/utils \
+    && chown -R abc /home/abc/installed-python-packages \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
-
+    
 USER abc

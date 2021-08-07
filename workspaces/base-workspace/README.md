@@ -7,7 +7,9 @@ entirely through WEB-based interfaces - its own WEB-UI, WEB-based terminal, file
 
 #### Try it out
  
-``` docker run --name space-1 --user=root -d -p 8020-8030:8020-8030 alnoda/base-workspace```   
+```
+docker run --name space-1 --user=root -d -p 8020-8030:8020-8030 alnoda/base-workspace
+```   
 
 ## Contents
 
@@ -39,7 +41,7 @@ entirely through WEB-based interfaces - its own WEB-UI, WEB-based terminal, file
 > TL;DR  
 > You can provide your users with many virtual environments, manage just one server, and have less work with server configuration management.
 
-Because Ddocker is not completely suitable to serve this purpose, Base-Workspace tries to cover some of the shortcomings: it has cron set up, supervisord, allows to start multiple processes 
+Because Docker is not completely suitable to serve this purpose, Base-Workspace tries to cover some of the shortcomings: it has cron set up, supervisord, allows to start multiple processes 
 inside the same container, has docker-in-docker, and some other applications installed, such as Git, Gitflow, wget, nano, vim etc.  
 
 In addition Base-Workspace has some applications with WEB-UI, which make it easier to scheddule and monitor job executions, browse and 

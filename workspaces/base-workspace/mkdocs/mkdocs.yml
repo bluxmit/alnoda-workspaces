@@ -5,7 +5,7 @@
 nav:
   - Home: pages/home/home.md
   - About: README.md
-  - Get started: get-started.md
+  - Docs: docs.md
 
 
 # ===========================================================

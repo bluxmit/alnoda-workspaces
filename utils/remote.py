@@ -21,12 +21,15 @@ port_increments = {
     "IDE_URL": 5,
     "TERMINAL_URL": 6,
     "MC_URL": 7,
-    "HTOP_URL": 8,
-    "FREE": 9
+    "HTOP_URL": 8
     }
 
 workspace_meta = {
     "base-workspace": {
+        "port-range": 10,
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+    },
+    "workspace-in-docker": {
         "port-range": 10,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
     }
@@ -106,10 +109,6 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
     ep = {entrypoint:port+start_port for entrypoint,port in port_increments.items() if entrypoint in workspace_entrypoints}
     traefik_command = [f"--entrypoints.{entrypoint}.address=:{port}" for entrypoint,port in ep.items()]
     traefik_command += [
-        "--api",
-        "--api.dashboard",
-        "--api.insecure",
-
         "--providers.docker",
         "--providers.file.directory=/etc/traefik/dynamic_conf"
         ]
