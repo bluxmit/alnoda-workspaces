@@ -14,8 +14,8 @@ nav:
 # ===========================================================
 
 site_name: MkDocs MagicSpace
-repo_url: https://github.com/Alnoda/workspaces-in-docker/tree/main/workspaces/base-workspace
-site_url: https://alnoda.org
+repo_url: https://github.com/bluxmit/alnoda-workspaces
+site_url: https://mkdocs-magicspace.alnoda.org
 edit_uri: ""
 
 # ===========================================================

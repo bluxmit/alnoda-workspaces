@@ -88,7 +88,15 @@ as well as remote, when started on the cloud server, and can be secured with pas
 between projects that involve multiple programming languages, different clouds, k8s clusters and have system dependencies. Withou this workspace 
 swithing between such complex environments would require multiple actions and can be tedious work. Workspace-in-docker is great for collaborative work, 
 can be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customized. Can be used as build, test or even 
-runtime environment. 
+runtime environment.  
+
+4. [`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - alternative workspace to the `workspace-in-docker`. It has all the features ot the latter, except for the 
+different implementation of the Visual Studio Code. While `workspace-in-docker` has [**Eclipse Theia IDE**](https://theia-ide.org/), Codeserver-Workspace 
+includes [**Codeserver**](https://github.com/cdr/code-server) instead.   
+
+5. [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) - an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
+of documentation, tutorials, and training.  
+
  
 ## Why dev environmet in docker
 
