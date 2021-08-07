@@ -130,7 +130,7 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
     # Add Workspace values to the dict
     y["services"]["workspace"] = {}
     y["services"]["workspace"]["image"] = f"alnoda/{workspace_name}"
-    y["services"]["workspace"]["environment"] = {"WRK_HOST": host_ip, "WRK_PROTO": https}
+    y["services"]["workspace"]["environment"] = {"WRK_HOST": host_ip, "WRK_PROTO": "https"}
     y["services"]["workspace"]["labels"] = get_workspace_labels(ep)
     # Add auth
     authlabels = make_authlabels(user, password)

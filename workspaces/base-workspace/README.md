@@ -234,7 +234,7 @@ Base-Workspace contains utility that will generate everything needed to launch t
 If you want to run workspace on the remote server securely, start Base-Workspace on your local laptop first, open its terminal and 
 use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
 
-> `python /home/abc/utils/remote.py --workspace="base-workspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1`  
+> `python /home/abc/utils/remote.py --workspace="base-workspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
 
 **NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
 
