@@ -32,7 +32,7 @@ When it runs on the remote server, access can be restricted with a password.
     * [Save and load images](#save-and-load-images)
     * [Move workspace to the cloud](#move-workspace-to-the-cloud)
     * [Collaborate and share workspaces](#collaborate-and-share-workspaces)
-* [Extra features](#extra-features)
+* [Extend](#extend)
     * [Java](#java)
     * [Run applications permanently](#run-applications-permanently)
 
@@ -455,11 +455,12 @@ resources, must be running for a long period of time, or executed periodically. 
 the reasons to move a workspace to the cloud server. Usually it is a hassle, but this workspace can be moved 
 to the remote server easily.    
 
-The easiest way to move workspace to the cloud is to get your private docker registry. Then to run workspace on remote server it is only 3 commands:
+The easiest way to move workspace to the cloud is to get your private docker registry. Then moving a workspace from a laptop to 
+a remote server is only 3 commands:
 
 1. [Commit workspace to the a image](#save-and-load-images)
 2. [Push workspace to your docker registry](https://docs.docker.com/engine/reference/commandline/push/)
-3. ssh to remote server, and run workspace from your registry   
+3. ssh to remote server, and [run workspace there](#run-in-cloud)   
 
 If you don't want to use container registry, then there are 2 steps more involved:
 
@@ -479,7 +480,7 @@ Same as with moving worspaces to the cloud - it is trivial to share workspaces w
 - share common docker registry 
 - start workspace in cloud and collaborate in real time
 
-## Extra features
+## Extend
 
 ### Java
 

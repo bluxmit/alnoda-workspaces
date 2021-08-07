@@ -5,6 +5,37 @@
 Base-Workspace - is an attemp to use docker as a light-weight Virtual Machine with batteries included, which is intended to be used 
 entirely through WEB-based interfaces - its own WEB-UI, WEB-based terminal, filebrowser, visual scheduler and other applications.  
 
+#### Try it out
+ 
+``` docker run --name space-1 --user=root -d -p 8020-8030:8020-8030 alnoda/base-workspace```   
+
+## Contents
+
+ * [Why this image](#why-this-image)
+ * [Use-cases](#use-cases)
+ * [Features](#features)
+ * [Launch Workspace](#launch-workspace)
+    * [Workspace terminal](#workspace-terminal)
+    * [Multiple workspaces](#multiple-workspaces)
+    * [Open more ports](#open-more-ports)
+    * [Docker in docker](#docker-in-docker)
+    * [Run on remote server](#run-on-remote-server)
+ * [Use Workspace](#use-workspace)
+ 	* [Install applications](#install-applications)
+ 	* [Schedule jobs with Cron](#schedule-jobs-with-cron)
+ 	* [Python](#python)
+ 	* [Node.js](#node.js)
+ 	* [Run applications and services inside the workspace](#run-applications-and-services-inside-the-workspace)
+* [Manage workspaces](#manage-workspaces)
+    * [Start and stop workspaces](#start-and-stop-workspaces)
+    * [Create new workspace image](#create-new-workspace-image)
+    * [Manage workspace images](#manage-workspace-images)
+    * [Save and load workspace images](#save-and-load-workspace-images)
+    * [Move workspace to the cloud](#move-workspace-to-the-cloud)
+
+
+## Why this image 
+
 > TL;DR  
 > You can provide your users with many virtual environments, manage just one server, and have less work with server configuration management.
 
@@ -22,27 +53,6 @@ running inside the workspace.
 Base-Workspace can be used as isolated environment on local machine, or as alternative to VM on the cloud server. It can run as root, 
 or as default **abc** user that is allowed to use *apt-get*.
 
-## Contents
-
- * [Use-cases](#use-cases)
- * [Features](#features)
- * [Launch Workspace](#launch-workspace)
-    * [Workspace terminal](#workspace-terminal)
-    * [Multiple workspaces](#multipl-workspaces)
-    * [Open more ports](#open-more-ports)
-    * [Docker in docker](#docker-in-docker)
-    * [Run on remote server](#run-on-remote-server)
- * [Use Workspace](#use-workspace)
- 	* [Install applications](#install-applications)
- 	* [Schedule jobs with Cron](#schedule-jobs-with-cron)
- 	* [Python](#python)
- 	* [Node.js](#node.js)
- 	* [Run applications and services inside the workspace](#run-applications-and-service-inside-the-workspace)
-* [Manage workspaces](#manage-workspaces)
-    * [Start and stop containers](#start-and-stop-containers)
-    * [Create new workspace image](#create-new-workspace-image)
-    * [Manage workspace images](#manage-workspace-images)
-    * [Save and load workspace images](#save-and-load-workspace-images)
 
 
 ## Use-cases
@@ -189,12 +199,12 @@ docker exec -it --user=root space-1 /bin/zsh
 
 ### Run on remote server
 
-Because workspace is just a docker image, running it in cloud is as easy as running it on local laptop.  
+Because workspace is just a docker image, running it in any other server is as easy as running it on local laptop.  
 
-Running on remote server allows you to collaborate easily by providing access to the workspace for other users. 
+Running on remote server makes it much simpler to collaborate, because you can just share credentials to the workspace with your peers, and they will be able to use it. 
 You can also run applications that should run permanently, and run jobs on schedule.  
 
-There are only 3 steps needed to run workspace in cloud:
+The simplest deployment of the workkspace requires only 3 steps:
 
 - get virtual server on your favourite cloud (Digital Ocean, Linode, AWS, GC, Azure ...) 
 - [install docker](https://docs.docker.com/engine/install/) on this server
@@ -215,6 +225,25 @@ If docker-in-docker is required, then
 docker run --name space-1 -d -p 8020-8030:8020-8030 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/base-workspace
 ```
 
+This way launches workspace in cloud, but such workspace is not secure, everyone who knows IP of your server will be able to use it.  
+
+***You might want to restrict access to the workspace, and secure encrypted communication with the workspace***  
+
+Base-Workspace contains utility that will generate everything needed to launch the workspace in cloud.  
+
+If you want to run workspace on the remote server securely, start Base-Workspace on your local laptop first, open its terminal and 
+use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
+
+> `python /home/abc/utils/remote.py --workspace="base-workspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1`  
+
+**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
+
+You see folder `/home/abc/utils/remote` is created. Copy this folder to the remote server (any location). Ssh to the server, cd into 
+the directory you copied and execute `docker-compose up -d`.  
+
+That's it, you workspace is running securely on the remote server, using 
+self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, 
+and authentication is added. 
 
 ## Use Workspace
 
@@ -435,7 +464,33 @@ Pushing image to registry is merely 2 extra commands: 1) tag image; 2) push imag
 
 You will be able to pull image on any device, local or cloud.
 
+### Move workspace to the cloud
 
+Ease of running workspace in cloud, and ability to move workspaces between local machine and remote server  - 
+is one of the main features of the workspace, and the reasonn why the workspace is entirely in docker.  
+
+It is often a case that experiment, which started on personal notebook require more computational 
+resources, must be running for a long period of time, or executed periodically. All of these cases are 
+the reasons to move a workspace to the cloud server. Usually it is a hassle, but this workspace can be moved 
+to the remote server easily.    
+
+The easiest way to move workspace to the cloud is to get your private docker registry. Then moving a workspace from a laptop to 
+a remote server is only 3 commands:
+
+1. [Commit workspace to the a image](#create-new-workspace-image)
+2. [Push workspace to your docker registry](https://docs.docker.com/engine/reference/commandline/push/)
+3. ssh to remote server, and [run workspace there](#run-on-remote-server)   
+
+If you don't want to use container registry, then there are 2 steps more involved:
+
+1. [Commit workspace to the a image](#create-new-workspace-image)
+2. [Save image to file](save-and-loa-images) 
+3. Copy file to remote server. There are many options:
+    - Launch filexchange workspace on the remote server 
+    - Use [cyberduck](https://cyberduck.io/) 
+    - use [scp](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/)
+4. [Load workspace image from file](#save-and-load-workspace-images) on the remote server 
+5. [Start workspace on the remote server](#run-on-remote-server) 
 
 
 

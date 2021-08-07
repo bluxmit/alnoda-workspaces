@@ -37,6 +37,11 @@ def define_env(env):
                 host = os.environ["WRK_HOST"]
             except:
                 pass
+            proto = "http"
+            try:
+                proto = os.environ["WRK_PROTO"]
+            except:
+                pass
             # Entry port - port relative to which other ports will be calculated 
             entry_port = 8020
             try:
@@ -48,6 +53,6 @@ def define_env(env):
                 port = port_increments[env] + entry_port
             except:
                 port = 80
-            return f"http://{host}:{port}"
+            return f"{proto}://{host}:{port}"
 
             

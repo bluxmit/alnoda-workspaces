@@ -36,6 +36,10 @@ RUN echo "------------------------------------------------------ filebrowser, un
 	&& cd /opt/serve && . env/bin/activate &&  npm install -g serve \
     && echo "------------------------------------------------------ mkdocs" \
 	&& pip install -r /home/abc/installed-python-packages/mkdocs-requirements.txt \
+    && echo "------------------------------------------------------ utils" \
+    && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
+    && mv /tmp/alnoda-workspaces/utils /home/abc/ \
+    && rm -rf /tmp/alnoda-workspaces \
 	&& echo "------------------------------------------------------ user" \
 	&& mkdir -p /home/static-server \
 	&& chown -R abc /opt/cronicle \
@@ -48,6 +52,8 @@ RUN echo "------------------------------------------------------ filebrowser, un
 	&& mkdir -p /var/log/filebrowser && chown -R abc /var/log/filebrowser \
 	&& mkdir -p /var/log/ungit && chown -R abc /var/log/ungit \
 	&& mkdir -p /var/log/static-file-server && chown -R abc /var/log/static-file-server \
-	&& mkdir -p /var/log/mkdocs && chown -R abc /var/log/mkdocs
-
+	&& mkdir -p /var/log/mkdocs && chown -R abc /var/log/mkdocs \
+    && chown -R abc /home/abc/utils \
+    && chown -R abc /home/abc/installed-python-packages
+    
 USER abc

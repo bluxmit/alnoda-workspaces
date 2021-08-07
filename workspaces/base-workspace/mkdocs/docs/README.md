@@ -1,7 +1,7 @@
 **This is a starting point to create docs for this workspace!**
 
 > Don't neglect documenting your workspace! Soon you will forgot what you were doing with it. 
-> This page is designed for you to modify it and write down everything you need to know next time you come here.
+> This page is created for you to modify it and write down everything you need to know next time you come here.
 
 In order to change this page, simply modify the file `/home/docs/docs/README.md`. Changes will be applied automatically - the 
 server that serves this page has live reload.
