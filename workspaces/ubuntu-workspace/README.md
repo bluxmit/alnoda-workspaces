@@ -1,11 +1,10 @@
 # Ubuntu-workspace
 
-```Ubuntu-workspace``` - is an attempt to use docker as a light-weight Virtual Machine. It 
-provides isolation of environments, but uses less resources than VMs.  
+```Ubuntu-workspace``` - is an attempt to use docker as a lightweight Virtual Machine. It 
+provides isolation of environments, but uses fewer resources than VMs.  
 
-Ubuntu-workspace allows to start multiple processes inside the 
-same docker container, has docker-in-docker, Python and Node.js, and a collection of common applications such as text editors, 
-git, supervisord, z-shell etc. Ubuntu-workspace exposes browser-based terminal, and can be used on both local and remote server providing the same experience. 
+Ubuntu-workspace allows to start multiple processes inside the same docker container, has docker-in-docker, Python, and Node.js, and a collection of common applications such as text editors, 
+git, supervisord, z-shell, etc. Ubuntu-workspace exposes browser-based terminal and can be used on both local and remote servers providing the same experience. 
 When it runs on the remote server, access can be restricted with a password.
 
 <p align="center">
@@ -39,13 +38,12 @@ When it runs on the remote server, access can be restricted with a password.
 ## Use-cases
 
 Primarily intended as an advanced Ubuntu terminal that runs anywhere, this workspace works best 
-when you need interactive linux, python or node shell for ad-hock tasks.  
+when you need interactive Linux, python, or node shell for ad-hock tasks.  
 
 Ubuntu workspace is also a basis for building more sophisticated workspaces with UI interfaces.   
 
-Ubuntu-workspace even can be used as a development environment for those 
-who prefer developing directly in the terminal. For those who like more convenient 
-IDE there are more suitable workspaces.  
+Ubuntu-workspace even can be used as a development environment for those who prefer developing directly in the terminal. 
+For those who like more convenient IDE there are more suitable workspaces (for example, workspace-in-docker or codeserver-workspace).  
 
 ## Getting started
 

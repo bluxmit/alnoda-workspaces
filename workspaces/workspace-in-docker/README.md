@@ -1,9 +1,8 @@
 # Workspace-in-docker
 
-Workspace-in-docker - is a completely self-contained and fully isolated development environment, that runs inside docker container. 
-This image includes everything necessary to start coding right away. In order to use Workspace-in-docker, you don't need to 
-install or use any other tools, apart of docker itself. Workspace can be used on laptop, PC or launched on remote server with https 
-and authentication. Can be shared, backed up, and it has versions. 
+Workspace-in-docker - is a completely self-contained and fully isolated development environment, that runs inside a docker container. 
+This image includes everything necessary to start coding right away. To use Workspace-in-docker, you don't need to install or use any other tools, apart from docker itself. Workspace can be used on a laptop, PC or launched on the remote server with HTTPS 
+and authentication. Can be shared, backed up, and has versions. 
 
 #### Try it out
  
@@ -37,21 +36,19 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
 
 ## Why this image 
 
-This workspace allows complete isolation of many IT-related projects, such as software development, devops, QA, data analysis, data engineering, data science and other. 
-Workspace can be used as local development environment, as well as remote dev environment, when started on the cloud server, and can be secured with password. 
+This workspace allows complete isolation of many IT-related projects, such as software development, DevOps, QA, data analysis, data engineering, data science, and others. 
+Workspace can be used as a local development environment, as well as a remote dev environment, when started on the cloud server, and can be secured with a password. 
 
 Workspace-in-docker allows to completely isolate and switch easily between projects that involve multiple programming languages, cloud CLIs, 
-k8s clusters, configurations and have system dependencies. Withou this workspace, swithing between such complex environments would require multiple actions and can be tedious work.  
+k8s clusters, configurations, and have system dependencies. Without this workspace, switching between such complex environments would require multiple actions and can be tedious work.  
 
-Workspace-in-docker is great for collaborative work - it can be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customized.  
-Can be used as build, test or even runtime environment.  
+Workspace-in-docker is great for collaborative work - it can be easily shared, moved to any cloud server, backed up, has versions, and can be easily extended and customized.  Can be used as a build, test, or even runtime environment.  
 
-Workspace makes it extremely easy to launch small products, created by hobby developers. The fact that the development, build and runtime environment is the very same 
-workspace, deployment of a web application becomes as easy, as commiting workspace to a docker image and run it on any server. No need to write dockerfile, and waste time trying to replicate 
+Workspace makes it extremely easy to launch small products, created by hobby developers. The fact that the development, build, and runtime environment is the very same workspace, deployment of a web application becomes as easy, as committing workspace to a docker image and run it on any server. No need to write dockerfile, and waste time trying to replicate 
 your development environment in a production docker image.  
   
-Workspace-in-docker is a good choice if you want control and versatility. It is lightweight, 
-includes open-source tools and nearly as convenient as working directly with a local environment.   
+Workspace-in-docker is a good choice if you want to control and versatility. It is lightweight, 
+includes open-source tools and is nearly as convenient as working directly with a local environment.
 
 ## Use-cases
 
