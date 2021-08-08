@@ -54,6 +54,7 @@ extra:
 
 plugins:
   - search
+  - include-markdown
   # Enable Macros and jinja2 templates
   - macros:
       module_name: macros/helpers

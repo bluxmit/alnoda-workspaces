@@ -37,24 +37,24 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
 
 ## Use-cases
 
-MkDocs-MagicSpace is great to develop, build andd serve the following kinds of websites:
+With the help of MkDocs-MagicSpace you can develop, build and serve the following kinds of websites:
 
-1. Awesome looking docs for your open-source project. Use HTML & CSS to create front page and markdown for doc pages. 
+1. Awesome looking docs for your open-source project. Use HTML & CSS to create front page and markdown for doc pages.
 
-2. User manuals and API docs. Whils enterprise docs are for internal use, create great looking API websites for your users, and manuals for your customers.
+2. User manuals and API docs. While enterprise docs are for internal use, create great-looking API websites for your users, and manuals for your customers.
 
 1. Enterprise documentation websites that unite numerous git repositories into one documentation project.
 
-4. Tutorials and training websites. You have a lot of experience in something? Share it with the world. MkDocs-MagicSpace helps you 
-to highlight the code in many programming languages, properly render jupyter notebooks, complex mathematical formulas, 
-[Mermaid diagrams](https://mermaid-js.github.io/mermaid/#/) and so much more! 
+4. Tutorials and training websites. Do you have a lot of experience in something? Share it with the world. 
+MkDocs-MagicSpace helps you to highlight the code in many programming languages, write complex mathematical formulas, 
+[draw diagrams]((https://mermaid-js.github.io/mermaid/#/)) and so much more!
 
-With MkDocs-MagicSpace you can also create books, booklets and brochures as .pdf files.  
+5. With MkDocs-MagicSpace you can also create books, booklets, and brochures as .pdf files.  
 
 One of the most convenient features of the MkDocs-MagicSpace - is that it is a workspace in docker. 
 You use it on your local machine, you can run it on the remote server and collaborate with your colleagues, 
-you can give it to your peer as a whole. And you can use it to serve your docs from any server, 
-no matter if it is public or inside the company's VPN. 
+you can give it to your peer as a whole. And you can use it to serve your docs from any server, no matter 
+if it is public or inside the company's VPN.
 
 ## Why documentation websites
 
