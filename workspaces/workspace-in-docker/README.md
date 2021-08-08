@@ -53,17 +53,22 @@ your development environment in a production docker image.
 Workspace-in-docker is a good choice if you want to control and versatility. It is lightweight, 
 includes open-source tools and is nearly as convenient as working directly with a local environment.
 
+> Docker is a great tool to bundle together all the things that are related to a single project. It is light-weight and you can start multiple workspaces.
+
 ## Use-cases
 
-- Avoid tedious process of setting dev environment on your laptop
-- Move dev environments between powerful PC and laptop in a minute
-- Work conveniently with multtiple IT projects on your laptop
-- Run dev environment in cloud and whork from any device, being independent on any cloudd service or cloud provider
-- Back-up and version control entire dev environments
-- Collaborate with peers by sharing entire workspace or run it in cloud
-- Move from dev to production in a minute
-- Create custom dev environment for your team, and help new-comers to save time on setting up their environments
+- Avoid the tedious process of setting dev environment on your laptop
+- Work conveniently with multiple IT projects on the same laptop
+- Move all your work to another machine instantly
 - Simple way to start coding for newbies 
+- Run dev environment in cloud and work from any device, being independent on any cloud service or cloud provider
+- Back-up entire workspaces with important work, save versions of the workspaces before changes
+- Collaborate with peers by sharing the entire workspace or run it in the cloud
+- Move from dev to production in a minute
+- Make experiments (try new packages, versions, frameworks) without risking affecting existing environment
+- With a single command start, stop and resume job schedules, related to the same project 
+- Create a custom dev environment for your team, and help new-comers to save time on setting up their environments
+- Move dev environment back and forth between powerful Windows PC and macOS laptop in a minute
 
 ## Features
 
