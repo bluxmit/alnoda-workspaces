@@ -91,8 +91,8 @@ can be easily shared, moved to any cloud server, backed up, has versions and can
 runtime environment.  
 
 4. [`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - alternative workspace to the `workspace-in-docker`. It has all the features ot the latter, except for the 
-different implementation of the Visual Studio Code. While `workspace-in-docker` has [**Eclipse Theia IDE**](https://theia-ide.org/), Codeserver-Workspace 
-includes [**Codeserver**](https://github.com/cdr/code-server) instead.   
+different implementation of the Visual Studio Code. While `workspace-in-docker` has [Eclipse Theia IDE](https://theia-ide.org/), Codeserver-Workspace 
+includes [Codeserver](https://github.com/cdr/code-server) instead.   
 
 5. [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) - an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
 of documentation, tutorials, and training.  

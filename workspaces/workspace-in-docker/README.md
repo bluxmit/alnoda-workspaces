@@ -36,6 +36,9 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
 
 ## Why this image 
 
+> Have your ever participated in several software development projects at the same time? And each of them having different environments (dev, stage, prod). 
+> Managing such multiple environments is much easier is everything is packaged inside a docker container.
+
 This workspace allows complete isolation of many IT-related projects, such as software development, DevOps, QA, data analysis, data engineering, data science, and others. 
 Workspace can be used as a local development environment, as well as a remote dev environment, when started on the cloud server, and can be secured with a password. 
 
