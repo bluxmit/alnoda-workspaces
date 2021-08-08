@@ -79,7 +79,8 @@ def calc_entypoints(workspace_name, start_port):
     free_range = list(range(free_ports_start, 8020 + workspace_port_range + 1))
     free_ep = {"PORT_"+str(port):port for port in free_range}
     ep.update(free_ep)
-    return ep
+    port_mapping = f"{start_port}-{end_port}:{8020}-{internal_end_port}"
+    return ep, port_mapping
 
 
 
@@ -127,7 +128,7 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
     to be transformed into docker-compose.yaml
     """
     # Dict of entrypoints of entrypoint name and port
-    ep = calc_entypoints(workspace_name, start_port)
+    ep, port_mapping = calc_entypoints(workspace_name, start_port)
     traefik_command = [f"--entrypoints.{entrypoint}.address=:{port}" for entrypoint,port in ep.items()]
     traefik_command += [
         "--providers.docker",
@@ -141,7 +142,7 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
     y["services"]["traefik"]["image"] = "traefik:v2.4" 
     y["services"]["traefik"]["container_name"] = "container_name"
     y["services"]["traefik"]["command"] = traefik_command
-    y["services"]["traefik"]["ports"] = [f"{start_port}-{end_port}:{8020}-{internal_end_port}", "8080:8080"]
+    y["services"]["traefik"]["ports"] = [port_mapping]
     y["services"]["traefik"]["volumes"] = [
         "/var/run/docker.sock:/var/run/docker.sock:ro", 
         "./certs:/tools/certs",
