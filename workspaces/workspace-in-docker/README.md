@@ -10,6 +10,8 @@ and authentication. Can be shared, backed up, and has versions.
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
 ```   
 
+![Workspaces are amazing!](./img/workspace-demo.gif)
+
 ## Contents
 
  * [Why this image](#why-this-image)
@@ -75,8 +77,6 @@ includes open-source tools and is nearly as convenient as working directly with 
 Workspace-in-docker has all the features of the [*Base-Workspace*](https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/README.md), 
 in addition it includes a powerful browser-based version of Visual Studio Code. It is a lightweight VM alternative, which provides full isolation, 
 consumes little resources and contains full-fledged IDE.
-
-![Workspaces are amazing!](./img/workspace-demo.gif)
 
 - **Workspace UI** - launch all workspace tools from one place.
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
