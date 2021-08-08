@@ -65,6 +65,24 @@ def traefik_config():
     return
     
 
+def calc_entypoints(workspace_name, start_port):
+    """ identify which of the port ranges are taken by the internal 
+    applications, and which are free. Return list of all entrypoints
+    """
+    workspace_entrypoints = workspace_meta[workspace_name]["entrypoints"]
+    workspace_port_range = workspace_meta[workspace_name]["port-range"]
+    end_port = start_port + workspace_port_range
+    internal_end_port = 8020 + workspace_port_range
+    # Dict of entrypoints of entrypoint name and port
+    ep = {entrypoint:port+start_port for entrypoint,port in port_increments.items() if entrypoint in workspace_entrypoints}
+    free_ports_start = 8020 + len(ep) + 1
+    free_range = list(range(free_ports_start, 8020 + workspace_port_range + 1))
+    free_ep = {"PORT_"+str(port):port for port in free_range}
+    ep.update(free_ep)
+    return ep
+
+
+
 def get_workspace_labels(ep, auth_mid_name="basic-auth"):
     """ Create list of Traefik labels for the Workspace service
     """
@@ -108,13 +126,8 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
     """ Create dict of values for docker-compose. This dict is 
     to be transformed into docker-compose.yaml
     """
-    # Get workspace values
-    workspace_entrypoints = workspace_meta[workspace_name]["entrypoints"]
-    workspace_port_range = workspace_meta[workspace_name]["port-range"]
-    end_port = start_port + workspace_port_range
-    internal_end_port = 8020 + workspace_port_range
     # Dict of entrypoints of entrypoint name and port
-    ep = {entrypoint:port+start_port for entrypoint,port in port_increments.items() if entrypoint in workspace_entrypoints}
+    ep = calc_entypoints(workspace_name, start_port)
     traefik_command = [f"--entrypoints.{entrypoint}.address=:{port}" for entrypoint,port in ep.items()]
     traefik_command += [
         "--providers.docker",
