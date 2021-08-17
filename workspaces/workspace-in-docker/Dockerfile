@@ -10,8 +10,12 @@ ARG DEPLOY_IMAGE=${docker_registry}/base-workspace:${image_tag}
 
 ################################################################################ BUILD 
 
-ARG version=latest
+ARG THEIA_VERSION=1.15.0
+#ARG THEIA_VERSION=latest
+#ARG THEIA_VERSION=next
 FROM ${BUILD_IMAGE} 
+
+ARG THEIA_VERSION
 
 RUN apt-get update \
     && apt-get upgrade -y \
@@ -20,9 +24,8 @@ RUN apt-get update \
     && apt-get install -y libsecret-1-dev \
     && mkdir /opt/theia
 
-ARG version=latest
 WORKDIR /opt/theia
-ADD $version.package.json ./package.json
+ADD ${THEIA_VERSION}.package.json ./package.json
 ARG GITHUB_TOKEN
 RUN yarn --pure-lockfile && \
     NODE_OPTIONS="--max_old_space_size=4096" yarn theia build && \

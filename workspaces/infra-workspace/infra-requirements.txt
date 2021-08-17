@@ -1,0 +1,14 @@
+## Ansible tools
+ansible==4.4.0
+# https://github.com/fboender/ansible-cmdb
+ansible-cmdb==1.31
+# https://github.com/ansible-community/ara
+ara==1.5.7
+
+## Terraform tools
+# https://github.com/28mm/blast-radius
+blastradius==0.1.23
+# https://github.com/bridgecrewio/checkov
+checkov==2.0.359
+# https://github.com/antonbabenko/pre-commit-terraform
+pre-commit==2.14.0
