@@ -81,8 +81,24 @@ RUN echo "------------------------------------------------------ ara" \
     && cd /tmp && curl -Lo ./terrascan.tar.gz https://github.com/accurics/terrascan/releases/download/v1.9.0/terrascan_1.9.0_Linux_x86_64.tar.gz \
     && tar -xf terrascan.tar.gz terrascan && rm terrascan.tar.gz \
     && install terrascan /usr/local/bin && rm terrascan \
+    && echo "------------------------------------------------------ terraform-visual" \
+    && cd /tmp && curl -sL https://deb.nodesource.com/setup_12.x | -E bash - \
+    && apt-get update \
+    && apt-get install -y nodejs \
+    && apt-get install -y yarn \
+    && npm install -g @terraform-visual/cli \
+    && echo "------------------------------------------------------ terraform inframap" \
+    && cd /tmp && curl -Lo ./terraform-inframap.tar.gz https://github.com/cycloidio/inframap/releases/download/v0.6.7/inframap-linux-amd64.tar.gz \
+    && tar -xzf terraform-inframap.tar.gz && rm terraform-inframap.tar.gz \
+    && chmod +x inframap-linux-amd64 \
+    && mv inframap-linux-amd64 /usr/bin/inframap \
+    && echo "------------------------------------------------------ terraform rover" \
+    && cd /tmp && curl -Lo ./terraform-rover.zip https://github.com/im2nguyen/rover/releases/download/v0.1.6/rover_0.1.6_linux_amd64.zip \
+    && unzip /tmp/terraform-rover.zip -d /tmp/rover && rm terraform-rover.zip  \
+    && chmod +x /tmp/rover/rover_v0.1.6 \
+    && mv /tmp/rover/rover_v0.1.6 /usr/bin/rover \
+    && rm -rf /tmp/rover \
     && echo "------------------------------------------------------ mkdocs" \
-    
     && echo "------------------------------------------------------ user" \
     && chown -R abc /home/abc/.ara/server \
     && chown -R abc /opt/theia \
