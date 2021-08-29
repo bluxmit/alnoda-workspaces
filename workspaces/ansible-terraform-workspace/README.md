@@ -1,21 +1,19 @@
 # Ansible-Terraform Workspace
 
 This workspace - is a "dockerized" development environment with [Ansible](https://docs.ansible.com/) 
-and [Terraform](https://www.terraform.io/) installed, so that you don't need to do it yourself.  
+and [Terraform](https://www.terraform.io/) and lots of other stuff installed, 
+so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible.
 
 ```
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
 ```
 
-and open [http://localhost:8020] in browser  
+and open [localhost:8020](http://localhost:8020) in browser  
 
 ## Contents
 
 * [About](#about)
 * [Use-cases](#use-cases)
-* [Why documentation websites](#why-documentation-websites)
-* [Features](#features)
-* [The technology behind](#the-technology-behind)
 * [Launch Workspace](#launch-workspace)
     * [Workspace terminal](#workspace-terminal)
     * [Multiple workspaces](#multiple-workspaces)
@@ -38,99 +36,69 @@ and open [http://localhost:8020] in browser
 
 ## About
 
-Workspace containns browser-based Visual Studio Code, and other browser-based tools that make it comfortable working with dockerized 
-environnments.  
+The workspace contains browser-based Visual Studio Code, and other browser-based tools that make it comfortable working with dockerized 
+environments.  
 
 [GIF]
 
+Workspace has the following Ansible tools installed:
 
+- [**Ansible Ara**](https://github.com/ansible-community/ara). Configured to track execution of all ansible playbooks, has UI.
+- [**Ansible-pre-commit**](https://github.com/adarnimrod/ansible-pre-commit)
+- [**Ansible-cmdb**](https://github.com/fboender/ansible-cmdb)
+- [**Ansible inventory grapher**](https://github.com/willthames/ansible-inventory-grapher)
+- [**Ansible Playbook Grapher**](https://github.com/haidaraM/ansible-playbook-grapher)
+- [**Ansible Lint**](https://ansible-lint.readthedocs.io/en/latest/installing.html)
+- [**Ansible Mitogen**](https://mitogen.networkgenomics.com/ansible_detailed.html)
+- [**Ansible Doctor**](https://ansible-doctor.geekdocs.de/)
 
+Workspace has the following Terraform tools installed:
 
-## Use-cases
+- [**Pre-commit-terraform**](https://github.com/antonbabenko/pre-commit-terraform)
+- [**Blast-Radius**](https://github.com/28mm/blast-radius). Has UI, visualizes any terraform project in folder /home/terraform/.
+- [**Terraform Visual**](https://github.com/hieven/terraform-visual)
+- [**Terraform Graph**](https://www.terraform.io/docs/cli/commands/graph.html)
+- [**Inframap**](https://github.com/cycloidio/inframap)
 
-With the help of MkDocs-MagicSpace you can develop, build and serve the following kinds of websites:
+Workspace has the following common tools installed:
 
-1. Awesome looking docs for your open-source project. Use HTML & CSS to create front page and markdown for doc pages.
-
-2. User manuals and API docs. While enterprise docs are for internal use, create great-looking API websites for your users, and manuals for your customers.
-
-1. Enterprise documentation websites that unite numerous git repositories into one documentation project.
-
-4. Tutorials and training websites. Do you have a lot of experience in something? Share it with the world. 
-MkDocs-MagicSpace helps you to highlight the code in many programming languages, write complex mathematical formulas, 
-[draw diagrams]((https://mermaid-js.github.io/mermaid/#/)) and so much more!
-
-5. With MkDocs-MagicSpace you can also create books, booklets, and brochures as .pdf files.  
-
-One of the most convenient features of the MkDocs-MagicSpace - is that it is a workspace in docker. 
-You use it on your local machine, you can run it on the remote server and collaborate with your colleagues, 
-you can give it to your peer as a whole. And you can use it to serve your docs from any server, no matter 
-if it is public or inside the company's VPN.
-
-## Why documentation websites
-
-*Why create separate documentation websites? Why not just write Git readme files?*
-
-- MkDocs website with beautiful themes looks much better than any readme file. The resulting documentation website looks professional and awesome.
-- MkDocs adds text search to your documentation website.
-- In the case of closed-source software, sharing readme files from the git repository with external users is not an option.
-- Github does not render beautiful extended markdown features like admonitions, tabs, etc. Neither renders diagrams, formulas, swagger docs, or notebooks.
-- Using MkDocs-MagicSpace you create documentation from the same markdown readme files you have in your repo together with the code. And you 
-can create a unified documentation website from multiple repositories in Github, GitLab, Bitbucket.
-- You can add such features as Google Analytics, multi-language localization.
-
-*And what about Confluent?*   
-
-The approach of having docs in different places (Git repositories, Confluent, Wiki, etc.) has serious drawbacks. It creates chaos, and documentation inevitably diverges with time.
-And you never know where to look for the information you need.
-
-The best docs live together with the code. With MkDocs-MagicSpace you can follow this practice with ease, build a documentation website 
-from one or many git repositories, include readme files that live close to the code. You can have a build process that even creates 
-auto-documentation directly from the code. 
-
-## Features
-
-MkDocs-MagicSpace has [**MkDocs**](https://squidfunk.github.io/mkdocs-material/) installed with a collection of extensions and plugins 
-that bring MkDocs to the next level. 
-
-MkDocs-MagicSpace is an extension of the [workspace-in-docker](https://github.com/Alnoda/workspaces-in-docker/blob/main/workspaces/workspace-in-docker/README.md) 
-and has all its features:
-
-- **Workspace UI** - launch all workspace tools from one place.
+- **Workspace UI** - Browser-based UI for Ansible-Terraform Workspace. Launch all workspace tools from one place. Customize to your yown needs.
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
 VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud.
 - [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
 - [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
 - [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
 - [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
+- [**MkDocs**](https://squidfunk.github.io/mkdocs-material/)  - maintain documentation for your workspace or project with only markdown. 
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
 
-Built on top of Base-workspace and Ubuntu-workspace, this workspace gets all the features those workspaces have. 
-In particular, workspace-in-docker provides excellent experience when working directly in the terminal, and has docker-in-docker.
 
-#### The technology behind
+## Use-cases
 
-MkDocs-MagicSpace in its essense is all about [**MkDocs**](https://www.mkdocs.org/) -  a fast, simple and downright gorgeous static site generator that's geared towards 
-building project documentation. 
+There are several reasons to use this workspace. 
 
-MkDocs has many themes, MkDocs-MagicSpace has [**Material for MkDocs**](https://squidfunk.github.io/mkdocs-material/) set up and configured by default. 
-It is one of the best themes for MkDocs, which makes your website look very professional. This theme is extremely customizable, 
-searchable, mobile-friendly, has 40+ languages, has built-in search. It also adds lots of markdown features such as tabbed content containers, mathematical formulas, critic markup, 
-task lists, and more than 10k icons and emojis.
+1) Convenience. The first and obvious reason to use this workspace - is to get started fast, without wasting time on setting all those tools yourself. 
+Getting Ansible and Terraform ready to be used, is as simple as starting a docker container. In addition, you get the ability to start and stop multiple workspaces, this makes managing separate independent cloud infrastructures much easier and safe, 
+for example, you don't need to switch AWS profiles all the time. Also, you can export the entire workspace to file, push to a (private) Docker registry, and have different versions of the workspace.
 
-MkDocs-MagicSpace has lots of packages and extensions already installed: 
+2) Deploy the workspace on a cloud server. Schedule ansible playbooks with Cronicle and observe ansible executions with Ara dashboard. 
+Deployment of this workspace on a cloud server is very handy when you need security, and most of your infra is running in a private network. 
+The latter makes it impossible to use a local machine as an executor for Ansible playbooks unless you set up a complex VPN. This workspace can 
+be launched on a bridge server that is in both private and public networks, and you can use browser-based tools to develop and execute 
+Ansible or Terraform code. Here it is explained how to launch Ansible-Terraform Workspace on a cloud server with HTTPS and authentication. 
 
-- [PyMdown Extensions](https://facelessuser.github.io/pymdown-extensions/) - add even more cool features of the extended markdown: sub- and superscripts, keys, magic links, sane headers etc.
-- [Mkdocs-macro plugin](https://mkdocs-macros-plugin.readthedocs.io/en/latest/) - add variables and macros written in Python!
-- [Mkdocs-monorepo plugin](https://backstage.github.io/mkdocs-monorepo-plugin/) - build multiple documentation folders in a single Mkdocs. Designed for large codebases. 
-- [MkDocs Newsletter](https://lyz-code.github.io/mkdocs-newsletter/) - show the changes of documentation repositories in a user friendly format, at the same time that it's easy for the authors to maintain.
-- [Mkdocs-mermaid2-plugin](https://github.com/fralau/mkdocs-mermaid2-plugin) - renders textual graph descriptions into Mermaid graphs (flow charts, sequence diagrams, pie charts, etc.).
-- [Pygments](https://pygments.org/) - a generic syntax highlighter suitable for use in code hosting, forums, wikis or other applications that need to prettify source code, with over 500 languages and other text formats.
-- [Mkdocs-include-markdown-plugin](https://github.com/mondeja/mkdocs-include-markdown-plugin) - include Markdown files completely or partially, and include files of any type.
-- [Mkdocs-table-reader-plugin]() - directly insert CSV files as tables in your website.
+<p align="center">
+  <img src="./img/network.png" alt="Htop" width="750">
+</p>
 
-**(The complete list of installed packages - /home/abc/installed-python-packages/mkdocs-requirements.txt)**
+3) Workspace makes collaboration easier. Both Ansible and Terraform can be used from a developer's local machine. It is convenient 
+for personal use, but when it comes to collaborations, things become complicated: everyone needs to have the same versions of tools 
+and dependencies. Workspace can be used and shared "as a whole", removing this difficulty.
+
+4) Reduce the risk of conflicting executions. Despite there are ways to prevent conflicting executions of Ansible playbooks or 
+applying Terraform code (i.e. remote Terraform state), this Workspace makes it even easier, when it is deployed on the remote 
+cloud server, and used by multiple users.  
 
 ## Launch Workspace
 
@@ -148,7 +116,7 @@ command to execute outside of the workspace
 To start a workspace simply execute in terminal
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
 ```
 
 *(It is recommended to run workspace in the daemon mode)*
@@ -161,7 +129,7 @@ to document the project, workspace use and setup.
 
 ### Workspace terminal
 
-There are several ways how to work with terminal of the the mkdocs-magicspace: 
+There are several ways how to work with terminal of the the ansible-terraform workspace: 
 
 - built-it in-browser terminal
 - use terminal provided by in-browser IDE [http://localhost:8025](http://localhost:8025) ([unless other ports are mapped](#multiple-workspaces))
@@ -197,7 +165,7 @@ You can work in Ubuntu terminal now. Execute the followinng command to know your
 
 Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8035 are taken.   
 
-mkdocs-magicspace itself uses 9 ports (8020-8028), but it is recommended to map several extra ports just in case. Having extra ports, 
+Ansible-terraform workspace itself uses 11 ports (8020-8030), but it is recommended to map several extra ports just in case. Having extra ports, 
 you can always launch new applications on these ports, and they will be immediately exposed outside of the workspace.  
 
 In order to start another workspace, you either need to stop currently runnning workspace, or to run another workspace 
@@ -207,7 +175,7 @@ If you are planning to run more than one workspace at the same time, you can run
 the different port range, for example
 
 ```sh
-docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/mkdocs-magicspace
+docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/ansible-terraform workspace
 ```
 
 Notice that in addition we need to set environmental variable ENTRY_PORT, which should be equal to the first port in the new range. 
@@ -218,11 +186,11 @@ We started workspace container with a port range mapped "-p 8020-8035". If you a
 from inside of a container, add additional port mapping, for example
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 alnoda/ansible-terraform-workspace
 ```
 You can add multiple port mappings:
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 -p 443:443 alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 -p 443:443 alnoda/ansible-terraform-workspace
 ```
 
 **NOTE:** It is not a problem if you don't expose any ports, but later on realise you need them - 
@@ -233,7 +201,7 @@ you will just create new image, and run it exposing the required port (look in t
 It is possible to work with docker directly from the workspace (using workspace terminal). 
 
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -v /var/run/docker.sock:/var/run/docker.sock alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
 ```
 
 NOTE: in order to use docker in docker you need to or enter into the workspace container as root
@@ -257,7 +225,7 @@ The simplest deployment of the workkspace requires only 3 steps:
 - ssh to the remote server and start workspace 
 
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/ansible-terraform-workspace
 ```
 
 **NOTE:** When running workspace on the remote server, add envronmental variable `-e WRK_HOST="<ip-of-your-remote-server>"`. 
@@ -268,7 +236,7 @@ Open in your browser `<ip-of-your-remote-server>:8020`
 If docker-in-docker is required, then 
 
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
 ```
 
 This way launches workspace in cloud, but such workspace is not secure, everyone who knows IP of your server will be able to use it.  
@@ -277,12 +245,12 @@ This way launches workspace in cloud, but such workspace is not secure, everyone
 
 *You might want to restrict access to the workspace, and secure encrypted communication with the workspace*  
 
-Kkdocs-MagicSpace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
+Ansible-terraform-workspace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
 
-If you want to run workspace on the remote server securely, start mkdocs-magicspace on your local laptop first, open its terminal and 
+If you want to run workspace on the remote server securely, start ansible-terraform workspace on your local laptop first, open its terminal and 
 use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
 
-> `python /home/abc/utils/remote.py --workspace="mkdocs-magicspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
+> `python /home/abc/utils/remote.py --workspace="ansible-terraform-workspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
 
 **NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
 
@@ -395,13 +363,13 @@ Now, if you disconnect from the workspace and close terminal, the application wi
 
 Workspace is just a docker container. You can start, stop, delete and do anything you can do with docker images and containers.    
 
-There are two concepts to keep in mind: **images** and **containers**. Images are workspace blueprints. For example, **alnoda/mkdocs-magicspace** - 
+There are two concepts to keep in mind: **images** and **containers**. Images are workspace blueprints. For example, **alnoda/ansible-terraform-workspace** - 
 is an image. When you execute this command 
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
 ```
-you create container called **space-1** from the image **alnoda/mkdocs-magicspace**. You can create any number of containers, but you need to 
+you create container called **space-1** from the image **alnoda/ansible-terraform-workspace**. You can create any number of containers, but you need to 
 [map different ports to each of them](#multiple-workspaces).  
 
 Container - is your workspace. You can start, stop and delete them. You can run multiple workspace containers at the same time, or work with 
@@ -474,7 +442,7 @@ docker images
 Delete workspace image entirely
 
 ```
-docker rmi -f alnoda/mkdocs-magicspace
+docker rmi -f alnoda/ansible-terraform-workspace
 ```
 
 **NOTE:** you cannot delete image if there is a running container created from it. Stop container first.
