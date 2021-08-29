@@ -36,12 +36,9 @@ and open [localhost:8020](http://localhost:8020) in browser
 
 ## About
 
-The workspace contains browser-based Visual Studio Code, and other browser-based tools that make it comfortable working with dockerized 
-environments.  
+The workspace contains browser-based Visual Studio Code and multiple tools which make working with Ansible and Terraform more convenient.  
 
-[GIF]
-
-Workspace has the following Ansible tools installed:
+**Ansible tools:**
 
 - [**Ansible Ara**](https://github.com/ansible-community/ara). Configured to track execution of all ansible playbooks, has UI.
 - [**Ansible-pre-commit**](https://github.com/adarnimrod/ansible-pre-commit)
@@ -52,7 +49,7 @@ Workspace has the following Ansible tools installed:
 - [**Ansible Mitogen**](https://mitogen.networkgenomics.com/ansible_detailed.html)
 - [**Ansible Doctor**](https://ansible-doctor.geekdocs.de/)
 
-Workspace has the following Terraform tools installed:
+**Terraform tools:**
 
 - [**Pre-commit-terraform**](https://github.com/antonbabenko/pre-commit-terraform)
 - [**Blast-Radius**](https://github.com/28mm/blast-radius). Has UI, visualizes any terraform project in folder /home/terraform/.
@@ -60,11 +57,11 @@ Workspace has the following Terraform tools installed:
 - [**Terraform Graph**](https://www.terraform.io/docs/cli/commands/graph.html)
 - [**Inframap**](https://github.com/cycloidio/inframap)
 
-Workspace has the following common tools installed:
+**Common tools:**
 
 - **Workspace UI** - Browser-based UI for Ansible-Terraform Workspace. Launch all workspace tools from one place. Customize to your yown needs.
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud.
+VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. For the Ansible-Terraform workspace beautiful [SynthWave '84](https://open-vsx.org/extension/RobbOwen/synthwave-vscode) theme is set by default.
 - [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
 - [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
 - [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
@@ -99,6 +96,60 @@ and dependencies. Workspace can be used and shared "as a whole", removing this d
 4) Reduce the risk of conflicting executions. Despite there are ways to prevent conflicting executions of Ansible playbooks or 
 applying Terraform code (i.e. remote Terraform state), this Workspace makes it even easier, when it is deployed on the remote 
 cloud server, and used by multiple users.  
+
+
+## Ansible Features
+
+
+## Terraform Features
+
+### Terraform report
+
+A small tool that produces several outputs from a terraform project, and visualizes terraform plan as an interactive HTML page.  
+
+If you want to try it out yourself, create key/secret for your AWS account, open workspace and create [file with AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+
+> `mkdir -p ~/.aws`   
+> `nano ~/.aws/credentials`  
+
+The file `~/.aws/credentials` would look like this
+
+```
+[terraform]
+aws_access_key_id = <YOUR_AWS_KEY>
+aws_secret_access_key = <YOUR_AWS_SECRET>
+```
+
+Clone this terraform example repo into your workspace
+
+> `git clone https://github.com/pvarentsov/terraform-aws-free-tier /home/project/aws-example` 
+
+Open file `/home/project/aws-example/src/free-tier/main.tf` and comment out the part that configures S3 backend
+
+```
+terraform {
+  backend "s3" {}
+}
+```
+
+Initialize a working Terraform directory 
+
+> `cd /home/project/aws-example/src/free-tier && terraform init`  
+
+Paste public ssh key (for the sake of example you can type anything)  
+
+> `nano ./provision/access/free-tier-ec2-key.pub`
+
+Now you can gen erate terraform report 
+
+> `terraform-report`  
+
+Open Static file server and look on the generated files
+
+<p align="center">
+  <img src="./img/terraform-report.gif" alt="Htop" width="750">
+</p>
+
 
 ## Launch Workspace
 
@@ -136,7 +187,7 @@ There are several ways how to work with terminal of the the ansible-terraform wo
 - ssh into the running the docker container (of the workspace) from your terminal
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/base-workspace/img/base-workspace-terminal.gif" alt="Base-Workspace terminal" width="500">
+  <img src="./img/terminal.gif" alt="Base-Workspace terminal" width="500">
 </p> 
 
 *(Browser-based terminals always work under the user you started the workspace with, the default is non root user "abc")*
@@ -165,7 +216,7 @@ You can work in Ubuntu terminal now. Execute the followinng command to know your
 
 Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8035 are taken.   
 
-Ansible-terraform workspace itself uses 11 ports (8020-8030), but it is recommended to map several extra ports just in case. Having extra ports, 
+Ansible-terraform workspace itself uses 10 ports (8020-8029), but it is recommended to map several extra ports just in case. Having extra ports, 
 you can always launch new applications on these ports, and they will be immediately exposed outside of the workspace.  
 
 In order to start another workspace, you either need to stop currently runnning workspace, or to run another workspace 

@@ -107,12 +107,6 @@
             "name": "Ansible Ara",
             "image": "Ara.png",
             "description": "Monitor for all Ansible plays"
-        },
-        {
-            "env": "TERRAFORM_BLAST_RADIUS",
-            "name": "Terraform Blast Radius",
-            "image": "Blast-radius.png",
-            "description": "Visualise terraform dependency graphf for a project in folder /home/terraform"
         }
         ] 
 %}

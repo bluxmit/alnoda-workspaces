@@ -22,8 +22,7 @@ port_increments = {
     "TERMINAL_URL": 6,
     "MC_URL": 7,
     "HTOP_URL": 8,
-    "ANSIBLE_ARA": 9,
-    "TERRAFORM_BLAST_RADIUS": 10
+    "ANSIBLE_ARA": 9
     }
 
 workspace_meta = {
@@ -45,7 +44,7 @@ workspace_meta = {
     },
     "ansible-terraform-workspace": {
         "port-range": 15,
-        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA", "TERRAFORM_BLAST_RADIUS"]
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA"]
     }
 }
 

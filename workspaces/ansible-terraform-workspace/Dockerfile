@@ -126,5 +126,6 @@ RUN echo "------------------------------------------------------ ansible ara" \
     && find /home -type f | xargs -I{} chown abc {} 
 
 USER abc
-COPY README.md /home/docs/docs/get-started.md
+
+COPY README.md /home/docs/docs/docs.md
 COPY ./examples/terraform-scaleway /home/terraform

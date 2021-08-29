@@ -14,8 +14,7 @@ port_increments = {
     "TERMINAL_URL": 6,
     "MC_URL": 7,
     "HTOP_URL": 8,
-    "ANSIBLE_ARA": 9,
-    "TERRAFORM_BLAST_RADIUS": 10
+    "ANSIBLE_ARA": 9
     }
 
 # this function name should not be changed
