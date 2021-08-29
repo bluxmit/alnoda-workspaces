@@ -128,4 +128,4 @@ RUN echo "------------------------------------------------------ ansible ara" \
 USER abc
 
 COPY README.md /home/docs/docs/docs.md
-COPY ./examples/terraform-scaleway /home/terraform
+COPY ./examples/terraform-scaleway /home/examples/

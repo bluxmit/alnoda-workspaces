@@ -9,7 +9,7 @@ Serves folder `/home/terraform`
 
 In order to serve another terraform folder, for example `/home/project/my-terraform` 
 ```
-blast-radius --serve --port 8033 /home/project/my-terraform
+blast-radius --serve --port 8030 /home/project/my-terraform
 ```
 
 ### [Terraform Visual](https://github.com/hieven/terraform-visual)
