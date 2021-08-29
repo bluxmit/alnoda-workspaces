@@ -1,16 +1,17 @@
-# MkDocs-MagicSpace
+# Ansible-Terraform Workspace
 
-MkDocs-MagicSpace is an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
-of documentation, tutorials, and training.  
+This workspace - is a "dockerized" development environment with [Ansible](https://docs.ansible.com/) 
+and [Terraform](https://www.terraform.io/) installed, so that you don't need to do it yourself.  
 
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
 ```
 
 and open [http://localhost:8020] in browser  
 
 ## Contents
 
+* [About](#about)
 * [Use-cases](#use-cases)
 * [Why documentation websites](#why-documentation-websites)
 * [Features](#features)
@@ -33,6 +34,16 @@ and open [http://localhost:8020] in browser
     * [Manage workspace images](#manage-workspace-images)
     * [Save and load workspace images](#save-and-load-workspace-images)
     * [Move workspace to the cloud](#move-workspace-to-the-cloud)
+
+
+## About
+
+Workspace containns browser-based Visual Studio Code, and other browser-based tools that make it comfortable working with dockerized 
+environnments.  
+
+[GIF]
+
+
 
 
 ## Use-cases

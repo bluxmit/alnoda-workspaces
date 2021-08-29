@@ -21,7 +21,9 @@ port_increments = {
     "IDE_URL": 5,
     "TERMINAL_URL": 6,
     "MC_URL": 7,
-    "HTOP_URL": 8
+    "HTOP_URL": 8,
+    "ANSIBLE_ARA": 9,
+    "TERRAFORM_BLAST_RADIUS": 10
     }
 
 workspace_meta = {
@@ -40,6 +42,10 @@ workspace_meta = {
     "mkdocs-magicspace": {
         "port-range": 15,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+    },
+    "ansible-terraform-workspace": {
+        "port-range": 15,
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA", "TERRAFORM_BLAST_RADIUS"]
     }
 }
 
@@ -151,7 +157,12 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
     # Add Workspace values to the dict
     y["services"]["workspace"] = {}
     y["services"]["workspace"]["image"] = f"alnoda/{workspace_name}"
-    y["services"]["workspace"]["environment"] = {"WRK_HOST": host_ip, "WRK_PROTO": "https"}
+    y["services"]["workspace"]["environment"] = {
+        "WRK_HOST": host_ip, 
+        "WRK_PROTO": "https",
+        "ARA_API_SERVER": f"http://{host_ip}:{start_port + port_increments["ANSIBLE_ARA"]}",
+        "ARA_API_CLIENT": "https"
+        }
     y["services"]["workspace"]["labels"] = get_workspace_labels(ep)
     # Add auth
     authlabels = make_authlabels(user, password)
@@ -186,7 +197,7 @@ def main(cmd_args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--workspace", default="base-workspace")
+    parser.add_argument("--workspace", default="workspace-in-docker")
     parser.add_argument("--port", default=8020)
     parser.add_argument("--host")
     parser.add_argument("--user")

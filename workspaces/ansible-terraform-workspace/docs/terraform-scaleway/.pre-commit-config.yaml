@@ -1,0 +1,13 @@
+repos:
+- repo: git://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.50.0  # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+  hooks:
+    - id: terraform_fmt
+    - id: terraform_docs
+    - id: terraform_validate
+    - id: terraform_docs_without_aggregate_type_defaults
+    - id: terraform_docs_replace
+    - id: terraform_tflint
+    - id: terraform_tfsec
+    - id: checkov
+    - id: terrascan

@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && chmod 0777 /usr/local/bin/systemctl \ 
     && apt-get install -y software-properties-common \
     && apt-get install -y apache2-utils \
+    && apt-get install -y zip gzip tar \
     && echo "------------------------------------------------------ User" \
     && useradd -u 8877 abc \
     && chmod -R 777 /home \

@@ -1,8 +1,4 @@
-## Ansible tools
-
-
-
-## Terraform tools
+# Terraform tools
 
 
 ### Pre-commit hook
@@ -50,7 +46,30 @@ inframap generate terraform.tfstate | dot -Tpng > graph.png
 ```
 rover --workingDir /home/terraform
 ```
-NOTE: Rover serves only on port 9000
+NOTE: Rover serves only on port 9000  
+
+UPDATE: made fork and configured to serve on any port   
+
+ISSUES: does not work, no resources displayed
+
+In order to add Rover to the Workspace:
+
+- Include in Dockerfile
+```
+cd /tmp && curl -Lo ./terraform-rover.zip https://github.com/bluxmit/rover/releases/download/v1.6-cust/w1.7.zip \
+&& unzip /tmp/terraform-rover.zip -d /tmp/rover && rm terraform-rover.zip  \
+&& chmod +x /tmp/rover/rover \
+&& mv /tmp/rover/rover /usr/bin/rover \
+&& rm -rf /tmp/rover \
+```
+
+- Include in supervisord-infra.conf
+```
+[program:rover]
+directory=/home/terraform
+command=/bin/sh -c " rover --workingDir /home/terraform "
+```
+
 
 ## Tutorials
 
