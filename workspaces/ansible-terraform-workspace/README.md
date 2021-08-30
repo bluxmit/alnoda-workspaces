@@ -8,7 +8,7 @@ so that you don't need to do it yourself. Create infrastructures with Terraform,
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
 ```
 
-and open [localhost:8020](http://localhost:8020) in browser  
+and open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Contents
 
@@ -40,28 +40,28 @@ The workspace contains browser-based Visual Studio Code and multiple tools which
 
 **Ansible tools:**
 
-- [**Ansible Ara**](https://github.com/ansible-community/ara). Configured to track execution of all ansible playbooks, has UI.
-- [**Ansible-pre-commit**](https://github.com/adarnimrod/ansible-pre-commit)
+- [**Ansible Ara**](https://github.com/ansible-community/ara)
 - [**Ansible-cmdb**](https://github.com/fboender/ansible-cmdb)
 - [**Ansible inventory grapher**](https://github.com/willthames/ansible-inventory-grapher)
 - [**Ansible Playbook Grapher**](https://github.com/haidaraM/ansible-playbook-grapher)
 - [**Ansible Lint**](https://ansible-lint.readthedocs.io/en/latest/installing.html)
-- [**Ansible Mitogen**](https://mitogen.networkgenomics.com/ansible_detailed.html)
 - [**Ansible Doctor**](https://ansible-doctor.geekdocs.de/)
 
 **Terraform tools:**
 
 - [**Pre-commit-terraform**](https://github.com/antonbabenko/pre-commit-terraform)
-- [**Blast-Radius**](https://github.com/28mm/blast-radius). Has UI, visualizes any terraform project in folder /home/terraform/.
+- [**Rover**](https://github.com/im2nguyen/rover)
+- [**Blast-Radius**](https://github.com/28mm/blast-radius)
 - [**Terraform Visual**](https://github.com/hieven/terraform-visual)
 - [**Terraform Graph**](https://www.terraform.io/docs/cli/commands/graph.html)
 - [**Inframap**](https://github.com/cycloidio/inframap)
 
-**Common tools:**
+**Workspace tools with UI:**
 
 - **Workspace UI** - Browser-based UI for Ansible-Terraform Workspace. Launch all workspace tools from one place. Customize to your yown needs.
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
 VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. For the Ansible-Terraform workspace beautiful [SynthWave '84](https://open-vsx.org/extension/RobbOwen/synthwave-vscode) theme is set by default.
+- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
 - [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
 - [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
 - [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
@@ -70,6 +70,19 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
 
+**Other:**
+- Docker in docker
+- [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+- Python 3, Pip 
+- Node/nodeenv
+- git, git-flow 
+- curl, wget, telnet, jq, 
+- nano, vim, mc, ncdu, htop
+- supervisord
+- cron
+
+By default workspace runs under user **abc** - a secure non-root user, abile to install new packages with apt-get, pip, npm. Workspace 
+can be launched as root user too, but it is less secure, and not recommended if provided as a service for other users.  
 
 ## Use-cases
 
@@ -97,13 +110,244 @@ and dependencies. Workspace can be used and shared "as a whole", removing this d
 applying Terraform code (i.e. remote Terraform state), this Workspace makes it even easier, when it is deployed on the remote 
 cloud server, and used by multiple users.  
 
+<p align="center">
+  <img src="./img/collaborate.png" alt="Htop" width="750">
+</p>
 
-## Ansible Features
+***NOTE:*** you need to implement lock file in Ansible yourself, it is not a standard feature of Ansible.   
+
+## Launch Workspace
+
+Workspaces - are merely docker containers, that's why managing workspaces is easy and intuitive - it is enough to know only docker commands, 
+no need to learn any new tools.
+
+In order to avoid confusion, the following convention is adopted: 
+
+```sh
+command to execute outside of the workspace
+```
+
+> `command to execute inside the workspace (after entering running docker container)`
+
+To start a workspace simply execute in terminal
+
+```sh
+docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 alnoda/ansible-terraform-workspace
+```
+
+*(It is recommended to run workspace in the daemon mode)*
+
+***Open [http://localhost:8020](http://localhost:8020)***   
+
+Workspace has its own UI, which includes quiklaunch (home) page and documentation pages. 
+From the quiklaunch you can open any workspace tool. Documentation pages you modify in order 
+to document the project, workspace use and setup.  
+
+### Understanding ports
+In a previous section workspace was started with a port range mapping ***-p 8020-8034*** 
+and additional separate port mapping ***9000:8035***. This is because workspace contains a set of applications 
+with browser-based UI 
+
+| Port      | Application               |
+| --------- | ------------------------- |
+| 8020      | Workspace UI              |
+| 8021      | Filebrowser               |
+| 8022      | Static file server        |
+| 8023      | Cronicle                  |
+| 8024      | Ungit                     |
+| 8025      | VS-Code (Theia)           |
+| 8026      | Terminal                  |
+| 8027      | Midnight Commander        |
+| 8028      | Htop                      |
+| 8029      | Ansible Ara               |
+
+You don't need to memorize these ports. Ansible-Terraform workspace has UI from where you can open any of these applications. 
+Open [localhost:8020](http://localhost:8020), and from there open other applications inncluded in the workspace.  
+
+<p align="center">
+  <img src="./img/Workspace UI.png" alt="Htop" width="750">
+</p>
+
+The rest of the ports from the port range can be used in order to expose optional applications, or applications you might 
+install in future. So we map several extra ports just inn case.   
+
+Ansible-Terraform workspace has the following applications installed, but not started by default  
+
+1) **Terraform Rover** provides great visualisation for your terraform infrastructure. To visualize any (innitialized) teffarorm project 
+execute 
+
+> `rover --workingDir <TERRAFORM_PROJECT_FOLDER>`   
+
+For example, `rover --workingDir /home/examples/terraform-scaleway/`
+
+**NOTE:** Terraform Rover only runs on the internal port 9000, that's why when running Ansible-Terraform workspace 
+it is necessary to map this port explicitly.  
+
+2) **Terraform Blast-Radius** - a tool for reasoning about Terraform dependency graphs with interactive visualizations.   
+
+Start Blast-Radius on any of the free port in the mapped range:   
+
+> `cd /home/examples/terraform-scaleway && terraform init && blast-radius --serve --port 8030`  
+
+If you are planning to expose more applications 
+from inside of a container, add additional port mapping, for example
 
 
-## Terraform Features
+Of course, you can add even more port mappings to your workspace, for example:
+```sh
+docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -p 8080:8080 -p 443:443 alnoda/ansible-terraform-workspace
+```
 
-### Terraform report
+**NOTE:** It is not a problem if you don't expose any ports from the first run. You can expose the required ports by [creating new image](#create-new-image). 
+
+### Multiple workspaces
+
+Typically you would run one workspace at a time, but there might be cases whenn launching more than one workspace might be needed. 
+Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8035 are taken.   
+
+Ansible-terraform workspace itself uses 10 ports (8020-8029), but it is recommended to map several extra ports just in case. Having extra ports, 
+you can always launch new applications on these ports, and they will be immediately exposed outside of the workspace.  
+
+In order to start another workspace we need to provide a different port range, for example
+
+```sh
+docker run --name space-2 -d -p 8040-8054:8020-8034 -p 8055:9000 -e ENTRY_PORT=8040 alnoda/ansible-terraform workspace
+```
+
+Notice that in addition we set environmental variable ***ENTRY_PORT***, which should be equal to the first port in the new range. 
+Environmental variable ENTRY_PORT tells workspace that non-default port range is used, for Workspace UI to open applications 
+on proper ports in browser.
+
+### Workspace terminal
+
+Terminnal - is one of the main developer tools. There are several ways how to work with terminal of the the ansible-terraform workspace: 
+
+- built-it in-browser terminal
+- use terminal provided by in-browser IDE [http://localhost:8025](http://localhost:8025) ([unless other ports are mapped](#multiple-workspaces))
+- ssh into the running the docker container (of the workspace) from your terminal
+
+<p align="center">
+  <img src="./img/terminal.gif" alt="Base-Workspace terminal" width="500">
+</p> 
+
+*(Browser-based terminals always work under the user you started the workspace with, the default is non root user "abc")*
+
+If you want to enter running workspace container from your terminal execute:
+```sh
+docker exec -it space-1 /bin/zsh
+```
+
+If you don't want to use z-shell
+```
+docker exec -it space-1 /bin/bash
+```
+
+This way allows to ssh into the workspace as a root user at any time, even if the workspace itself was not starter as root user (the default user is abc)
+
+```sh
+docker exec -it --user=root space-1 /bin/zsh
+```
+
+You can work in Ubuntu terminal now. Execute the followinng command to know your workspace user 
+
+> `whoami`
+
+### Docker in docker
+
+It is possible to work with docker directly from the workspace (using workspace terminal). 
+
+```
+docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
+```
+
+NOTE: in order to use docker in docker you need to or enter into the workspace container as root
+```sh
+docker exec -it --user=root space-1 /bin/zsh
+```
+
+### Run on remote server
+
+Because workspace is just a docker image, running it in any other server is as easy as running it on local laptop.  
+
+Running on remote server makes it much simpler to collaborate, because you can just share credentials to the workspace with your peers, and they will be able to use it. 
+You can also run applications that should run permanently, and run jobs on schedule.  
+
+#### Unsecure remote workspace
+
+The simplest deployment of the workspace requires only 3 steps:
+
+- get virtual server on your favourite cloud (Digital Ocean, Linode, AWS, GC, Azure ...) 
+- [install docker](https://docs.docker.com/engine/install/) on this server
+- ssh to the remote server and start workspace 
+
+```
+docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/ansible-terraform-workspace
+```
+
+**NOTE:** When running workspace on the remote server, add envronmental variable `-e WRK_HOST="<ip-of-your-remote-server>"`. 
+Workspace UI needs this variable to know how redirect properly to the workspace applications' UIs.
+
+Open in your browser `<ip-of-your-remote-server>:8020`  
+
+If docker-in-docker is required, then 
+
+```
+docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
+```
+
+This way launches workspace in cloud, but such workspace would not be secure, everyone who knows IP of your server will be able to use it. You should 
+use this method only if you launch workspace in the secure internal network or inside a VPN.  
+
+#### Secure remote workspace
+
+*You might want to restrict access to the cloud workspace, and secure encrypted communication with it*  
+
+There are many situations when running Ansible-Terraform workspace in the public network over Internet is required. This can be done 
+by running the Workspace behind the reverse proxy over secure encrypted HTTPS protocol with authentication. For some it might be an easy 
+task to do, but for many engineers, who do not have experience in this area this would be an extra complication that can easily 
+eat several days of your life. That's why Ansible-Terraform workspace comes with a nice little tool, that generates a docker-compose project 
+(including certificates and passwords) to easily, securely and without hassle launch workspace on any cloud server  
+
+> Ansible-terraform-workspace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
+
+If you want to run workspace on the remote server securely, launch ansible-terraform workspace on your local laptop first, open its terminal and 
+use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
+
+> `python /home/abc/utils/remote.py --workspace="ansible-terraform-workspace" --port="<ENTRY_PORT>" --host="<IP_OF_CLOUD_SERVER_WITH_PUBLIC_ACCESS>" --user="<ANY_USER_NAME>" --password="<ANY_USER_PASSWORD>"`   
+
+for example:
+
+> `python /home/abc/utils/remote.py --workspace="ansible-terraform-workspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
+
+**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
+
+After the command is executed, you will see folder `/home/abc/utils/remote` is created. Get it out from the workspace using Filebrowser:
+
+
+
+. Copy this folder to the remote server (any location). Ssh to the server, cd into 
+the directory you copied and execute `docker-compose up -d`.  
+
+That's it, you workspace is running securely on the remote server, using 
+self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, 
+and authentication is added. 
+
+
+
+
+## Use Workspace
+
+### Ansible 
+
+#### Ansible report
+
+#### Schedule playbooks
+
+
+
+### Terraform 
+
+#### Terraform report
 
 A small tool that produces several outputs from a terraform project, and visualizes terraform plan as an interactive HTML page.  
 
@@ -140,181 +384,45 @@ Paste public ssh key (for the sake of example you can type anything)
 
 > `nano ./provision/access/free-tier-ec2-key.pub`
 
-Now you can gen erate terraform report 
+Now you can generate terraform report 
 
 > `terraform-report`  
 
-Open Static file server and look on the generated files
+Use Static File Server to review the report 
 
 <p align="center">
-  <img src="./img/terraform-report.gif" alt="Htop" width="750">
+  <img src="./img/terraform-report.gif" alt="Htop" width="900">
 </p>
 
+#### Rover
 
-## Launch Workspace
+[Rover](https://github.com/im2nguyen/rover) - is an awesome Terraform vizualizer with browser-based UI. Rover helps to better understand 
+Terraform state and planned changes. Assuming, you have followed hands-on the tutorial from the previous section (Terraform report), you 
+can use the same Terraform repo to vizualize with Rover. Simply execute  
 
-Workspaces - are merely docker containers, that's why managing workspaces is easy and intuitive - it is enough to know only docker commands, 
-no need to learn any new tools.
+> `rover --workingDir /home/project/aws-example/src/free-tier`
 
-In order to avoid confusion, the following convention is adopted: 
+#### Blast Radius
 
-```sh
-command to execute outside of the workspace
-```
+[Blast Radius](https://github.com/28mm/blast-radius) is a tool for reasoning about Terraform dependency graphs with interactive visualizations. 
+You can try Blast Radius - launch workspace and visualize an example Terraform project.  
 
-> `command to execute inside the workspace (after entering running docker container)`
+> `cd /home/examples/terraform-scaleway && terraform init`  
+> `blast-radius --serve --port 8030`
 
-To start a workspace simply execute in terminal
-
-```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
-```
-
-*(It is recommended to run workspace in the daemon mode)*
-
-***Open [http://localhost:8020](http://localhost:8020)***   
-
-Workspace has its own UI, which includes quiklaunch (home) page and documentation pages. 
-From the quiklaunch you can open any workspace tool. Documentation pages you modify in order 
-to document the project, workspace use and setup.  
-
-### Workspace terminal
-
-There are several ways how to work with terminal of the the ansible-terraform workspace: 
-
-- built-it in-browser terminal
-- use terminal provided by in-browser IDE [http://localhost:8025](http://localhost:8025) ([unless other ports are mapped](#multiple-workspaces))
-- ssh into the running the docker container (of the workspace) from your terminal
+open [localhost:8030](http://localhost:8030) in browser  
 
 <p align="center">
-  <img src="./img/terminal.gif" alt="Base-Workspace terminal" width="500">
-</p> 
+  <img src="./img/blast-radius.gif" alt="Htop" width="900">
+</p>
 
-*(Browser-based terminals always work under the user you started the workspace with, the default is non root user "abc")*
+***NOTE:** Blast Radius is a great project, but there is lack of updates to the project recently, and it might not work 
+with all Terraform providers.*
 
-If you want to enter running workspace container from your terminal execute:
-```sh
-docker exec -it space-1 /bin/zsh
-```
 
-If you don't want to use z-shell
-```
-docker exec -it space-1 /bin/bash
-```
+### Workspace 
 
-This way allows to ssh into the workspace as a root user at any time, even if the workspace itself was not starter as root user (the default user is abc)
-
-```sh
-docker exec -it --user=root space-1 /bin/zsh
-```
-
-You can work in Ubuntu terminal now. Execute the followinng command to know your workspace user 
-
-> `whoami`
-
-### Multiple workspaces
-
-Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8035 are taken.   
-
-Ansible-terraform workspace itself uses 10 ports (8020-8029), but it is recommended to map several extra ports just in case. Having extra ports, 
-you can always launch new applications on these ports, and they will be immediately exposed outside of the workspace.  
-
-In order to start another workspace, you either need to stop currently runnning workspace, or to run another workspace 
-on the different port range.  
-
-If you are planning to run more than one workspace at the same time, you can run another workspace with 
-the different port range, for example
-
-```sh
-docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/ansible-terraform workspace
-```
-
-Notice that in addition we need to set environmental variable ENTRY_PORT, which should be equal to the first port in the new range. 
-Workspace UI usues this variable to know the new port range, and redirects to the proper addresses of the workspace applications' UIs.
-
-### Open more ports
-We started workspace container with a port range mapped "-p 8020-8035". If you are planning to expose more applications 
-from inside of a container, add additional port mapping, for example
-
-```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 alnoda/ansible-terraform-workspace
-```
-You can add multiple port mappings:
-```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 -p 443:443 alnoda/ansible-terraform-workspace
-```
-
-**NOTE:** It is not a problem if you don't expose any ports, but later on realise you need them - 
-you will just create new image, and run it exposing the required port (look in the section [Create new image](#create-new-image)) 
-
-### Docker in docker
-
-It is possible to work with docker directly from the workspace (using workspace terminal). 
-
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
-```
-
-NOTE: in order to use docker in docker you need to or enter into the workspace container as root
-```sh
-docker exec -it --user=root space-1 /bin/zsh
-```
-
-### Run on remote server
-
-Because workspace is just a docker image, running it in any other server is as easy as running it on local laptop.  
-
-Running on remote server makes it much simpler to collaborate, because you can just share credentials to the workspace with your peers, and they will be able to use it. 
-You can also run applications that should run permanently, and run jobs on schedule.  
-
-#### Unsecure remote workspace
-
-The simplest deployment of the workkspace requires only 3 steps:
-
-- get virtual server on your favourite cloud (Digital Ocean, Linode, AWS, GC, Azure ...) 
-- [install docker](https://docs.docker.com/engine/install/) on this server
-- ssh to the remote server and start workspace 
-
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/ansible-terraform-workspace
-```
-
-**NOTE:** When running workspace on the remote server, add envronmental variable `-e WRK_HOST="<ip-of-your-remote-server>"`. 
-Workspace UI needss this variable to know how redirect properly to the workspace applications' UIs.
-
-Open in your browser `<ip-of-your-remote-server>:8020`  
-
-If docker-in-docker is required, then 
-
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
-```
-
-This way launches workspace in cloud, but such workspace is not secure, everyone who knows IP of your server will be able to use it.  
-
-#### Secure remote workspace
-
-*You might want to restrict access to the workspace, and secure encrypted communication with the workspace*  
-
-Ansible-terraform-workspace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
-
-If you want to run workspace on the remote server securely, start ansible-terraform workspace on your local laptop first, open its terminal and 
-use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
-
-> `python /home/abc/utils/remote.py --workspace="ansible-terraform-workspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
-
-**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
-
-You see folder `/home/abc/utils/remote` is created. Copy this folder to the remote server (any location). Ssh to the server, cd into 
-the directory you copied and execute `docker-compose up -d`.  
-
-That's it, you workspace is running securely on the remote server, using 
-self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, 
-and authentication is added. 
-
-## Use Workspace
-
-Among the common actions you'd do in the workspace are
+Common actions you'd do in the workspace 
 
 - installation of new applications and runtimes 
 - edit files, write code, scripts
@@ -323,7 +431,7 @@ Among the common actions you'd do in the workspace are
 - schedule tasks and scripts
 - process data
 
-### Install applications
+#### Install applications
 
 Use workspace workspace terminal to install new applications. 
 Install with ```sudo apt install```. The default *abc* user is allowed to install packages.  
@@ -333,7 +441,7 @@ For example, in order to install [Emacs text editor](https://www.gnu.org/softwar
 > `sudo apt install emacs`
 
 
-### Schedule jobs with Cron 
+#### Schedule jobs with Cron 
 
 Schedule execution of any task with cron - a time-based job scheduler in Unix-like computer operating systems.   
 
@@ -365,7 +473,7 @@ Hint: example of cron job definition:
 > that will provide you with the dashboard, list of executions and statistics, even let you ser limis 
 > on resources for each jobs, and create depenndencies between jobs.
 
-### Python
+#### Python
 Python and Pip are installed. To use python console, open workspace terminal and execute 
 
 > `python`
@@ -380,7 +488,7 @@ you make the most of using Python interactively. Install and start ipython
 > ```pip install ipython```  
 > `ipython`
 
-### Node.js
+#### Node.js
 We recommend to use nodeenv to create different node environments.  
 
 For example, open workspace terminal, create folder npmgui, and activate environment with node v. 12.18.3 and npm v.6.0.0
@@ -399,7 +507,7 @@ Open your browser on http://localhost:8030/
 **NOTE:** If you close terminal, the application will stop. See how to [start applications that reamin live after closing a workspace terminal](#run-applications-and-services-inside-the-workspace)
 
 
-### Run applications and services inside the workspace
+#### Run applications and services inside the workspace
 
 If you want application to keep running after workspace terminal is closed start it with **"&!"** at the end. 
 
@@ -409,6 +517,8 @@ this application witll stop running. To keep it running after terminal is closed
 > `npm-gui 0.0.0.0:8030 &!`   
 
 Now, if you disconnect from the workspace and close terminal, the application will continue running in the workspace, untill [workspace is stopped](#start-and-stop-workspaces).   
+
+
 
 ## Manage workspaces
 

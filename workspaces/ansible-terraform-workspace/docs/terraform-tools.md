@@ -67,7 +67,7 @@ cd /tmp && curl -Lo ./terraform-rover.zip https://github.com/bluxmit/rover/relea
 ```
 [program:rover]
 directory=/home/terraform
-command=/bin/sh -c " rover --workingDir /home/terraform "
+command=/bin/sh -c " rover --workingDir /home/terraform --port 8031 "
 ```
 
 

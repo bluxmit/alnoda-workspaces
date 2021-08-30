@@ -41,6 +41,7 @@ FROM ${DEPLOY_IMAGE}
 USER root
 
 COPY infra-requirements.txt /home/abc/installed-python-packages
+COPY ./examples/ /home/examples/
 
 # Delete previous Theia & set up new 
 RUN rm -rf /opt/theia \
@@ -63,6 +64,7 @@ COPY ./mkdocs/home.md /home/docs/docs/pages/home
 COPY ./mkdocs/Ara.png /home/docs/docs/pages/home/home/
 COPY ./mkdocs/Blast-radius.png /home/docs/docs/pages/home/home/
 COPY ./mkdocs/helpers.py /home/docs/macros 
+COPY README.md /home/docs/docs/docs.md
 
 RUN echo "------------------------------------------------------ ansible ara" \
     && echo "UTC" > /etc/timezone \
@@ -105,6 +107,13 @@ RUN echo "------------------------------------------------------ ansible ara" \
     && tar -xzf terraform-inframap.tar.gz && rm terraform-inframap.tar.gz \
     && chmod +x inframap-linux-amd64 \
     && mv inframap-linux-amd64 /usr/bin/inframap \
+    && echo "------------------------------------------------------ terraform rover" \
+    && cd /tmp && curl -Lo ./terraform-rover.zip https://github.com/im2nguyen/rover/releases/download/v0.1.6/rover_0.1.6_linux_amd64.zip \
+    && unzip /tmp/terraform-rover.zip -d /tmp/rover && rm terraform-rover.zip  \
+    && mv /tmp/rover/rover_v0.1.6 /tmp/rover/rover \
+    && chmod +x /tmp/rover/rover \
+    && mv /tmp/rover/rover /usr/bin/rover \
+    && rm -rf /tmp/rover \
     && echo "------------------------------------------------------ utils" \
     && rm -rf /home/abc/utils || true \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
@@ -127,5 +136,4 @@ RUN echo "------------------------------------------------------ ansible ara" \
 
 USER abc
 
-COPY README.md /home/docs/docs/docs.md
-COPY ./examples/terraform-scaleway /home/examples/
+
