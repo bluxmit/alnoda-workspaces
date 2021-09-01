@@ -5,7 +5,7 @@ and [Terraform](https://www.terraform.io/) and lots of other stuff installed,
 so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible.
 
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 alnoda/ansible-terraform-workspace
 ```
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -88,31 +88,37 @@ can be launched as root user too, but it is less secure, and not recommended if 
 
 There are several reasons to use this workspace. 
 
-1) Convenience. The first and obvious reason to use this workspace - is to get started fast, without wasting time on setting all those tools yourself. 
-Getting Ansible and Terraform ready to be used, is as simple as starting a docker container. In addition, you get the ability to start and stop multiple workspaces, this makes managing separate independent cloud infrastructures much easier and safe, 
-for example, you don't need to switch AWS profiles all the time. Also, you can export the entire workspace to file, push to a (private) Docker registry, and have different versions of the workspace.
-
-2) Deploy the workspace on a cloud server. Schedule ansible playbooks with Cronicle and observe ansible executions with Ara dashboard. 
+1) Deploy the workspace on a cloud server. Schedule ansible playbooks with Cronicle and observe ansible executions with Ara dashboard. 
 Deployment of this workspace on a cloud server is very handy when you need security, and most of your infra is running in a private network. 
 The latter makes it impossible to use a local machine as an executor for Ansible playbooks unless you set up a complex VPN. This workspace can 
 be launched on a bridge server that is in both private and public networks, and you can use browser-based tools to develop and execute 
 Ansible or Terraform code. Here it is explained how to launch Ansible-Terraform Workspace on a cloud server with HTTPS and authentication. 
 
 <p align="center">
-  <img src="./img/network.png" alt="Htop" width="750">
+  <img src="./img/infra-wrk-network.png" alt="Htop" width="750">
 </p>
 
-3) Workspace makes collaboration easier. Both Ansible and Terraform can be used from a developer's local machine. It is convenient 
-for personal use, but when it comes to collaborations, things become complicated: everyone needs to have the same versions of tools 
-and dependencies. Workspace can be used and shared "as a whole", removing this difficulty.
 
-4) Reduce the risk of conflicting executions. Despite there are ways to prevent conflicting executions of Ansible playbooks or 
+2) Reduce the risk of conflicting executions. Despite there are ways to prevent conflicting executions of Ansible playbooks or 
 applying Terraform code (i.e. remote Terraform state), this Workspace makes it even easier, when it is deployed on the remote 
 cloud server, and used by multiple users.  
 
 <p align="center">
   <img src="./img/collaborate.png" alt="Htop" width="750">
 </p>
+
+
+In addition to what's already mentioned, Ansible-Terraform Workspace has the benefits of any other dockerized workspace:
+
+1) Convenience. Get started fast, without wasting time on setting all those tools yourself. 
+Getting Ansible and Terraform ready to be used, is as simple as starting a docker container. In addition, you get the ability to start and stop multiple workspaces, this makes managing separate independent cloud infrastructures much easier and safe, 
+for example, you don't need to switch AWS profiles all the time. Also, you can export the entire workspace to file, push to a (private) Docker registry, and keep different versions of the workspace.
+
+2) Shareability. You can share your workspace as a whole, with all the dependencies and installed applications. Prepare workspace for the team, 
+or deliver as a result to your client. You can even push it to docker hub and make a public contribution. 
+
+3) Environment in cloud. Start workspace inn cloud rather than on your local machine, and use it from any device.
+
 
 ***NOTE:*** you need to implement lock file in Ansible yourself, it is not a standard feature of Ansible.   
 
@@ -308,7 +314,7 @@ task to do, but for many engineers, who do not have experience in this area this
 eat several days of your life. That's why Ansible-Terraform workspace comes with a nice little tool, that generates a docker-compose project 
 (including certificates and passwords) to easily, securely and without hassle launch workspace on any cloud server  
 
-> Ansible-terraform-workspace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
+***Ansible-terraform-workspace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.***  
 
 If you want to run workspace on the remote server securely, launch ansible-terraform workspace on your local laptop first, open its terminal and 
 use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
@@ -325,8 +331,15 @@ After the command is executed, you will see folder `/home/abc/utils/remote` is c
 
 
 
+
+
+
 . Copy this folder to the remote server (any location). Ssh to the server, cd into 
-the directory you copied and execute `docker-compose up -d`.  
+the directory you copied and execute 
+
+```sh
+docker-compose up -d
+```  
 
 That's it, you workspace is running securely on the remote server, using 
 self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, 
@@ -417,7 +430,7 @@ open [localhost:8030](http://localhost:8030) in browser
 </p>
 
 ***NOTE:** Blast Radius is a great project, but there is lack of updates to the project recently, and it might not work 
-with all Terraform providers.*
+with some Terraform providers.*
 
 
 ### Workspace 
