@@ -5,7 +5,7 @@ and [Terraform](https://www.terraform.io/) and lots of other stuff installed,
 so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible.
 
 ```
-docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 alnoda/ansible-terraform-workspace
 ```
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -35,8 +35,11 @@ and open [localhost:8020](http://localhost:8020) in browser.
 
 
 ## About
-
 The workspace contains browser-based Visual Studio Code and multiple tools which make working with Ansible and Terraform more convenient.  
+
+<p align="center">
+  <img src="./img/ansible-terraform-wid.gif" alt="Htop" width="900">
+</p>
 
 **Ansible tools:**
 
@@ -88,7 +91,11 @@ can be launched as root user too, but it is less secure, and not recommended if 
 
 There are several reasons to use this workspace. 
 
-1) Deploy the workspace on a cloud server. Schedule ansible playbooks with Cronicle and observe ansible executions with Ara dashboard. 
+1) Convenience. Get started fast, without wasting time on setting all those tools yourself. 
+Getting Ansible and Terraform ready to be used, is as simple as starting a docker container. In addition, you get the ability to start and stop multiple workspaces, this makes managing separate independent cloud infrastructures much easier and safe, 
+for example, you don't need to switch AWS profiles all the time. Also, you can export the entire workspace to file, push to a (private) Docker registry, and keep different versions of the workspace.
+
+2) Deploy the workspace on a cloud server. Schedule ansible playbooks with Cronicle and observe ansible executions with Ara dashboard. 
 Deployment of this workspace on a cloud server is very handy when you need security, and most of your infra is running in a private network. 
 The latter makes it impossible to use a local machine as an executor for Ansible playbooks unless you set up a complex VPN. This workspace can 
 be launched on a bridge server that is in both private and public networks, and you can use browser-based tools to develop and execute 
@@ -99,7 +106,7 @@ Ansible or Terraform code. Here it is explained how to launch Ansible-Terraform 
 </p>
 
 
-2) Reduce the risk of conflicting executions. Despite there are ways to prevent conflicting executions of Ansible playbooks or 
+3) Reduce the risk of conflicting executions. Despite there are ways to prevent conflicting executions of Ansible playbooks or 
 applying Terraform code (i.e. remote Terraform state), this Workspace makes it even easier, when it is deployed on the remote 
 cloud server, and used by multiple users.  
 
@@ -109,10 +116,6 @@ cloud server, and used by multiple users.
 
 
 In addition to what's already mentioned, Ansible-Terraform Workspace has the benefits of any other dockerized workspace:
-
-1) Convenience. Get started fast, without wasting time on setting all those tools yourself. 
-Getting Ansible and Terraform ready to be used, is as simple as starting a docker container. In addition, you get the ability to start and stop multiple workspaces, this makes managing separate independent cloud infrastructures much easier and safe, 
-for example, you don't need to switch AWS profiles all the time. Also, you can export the entire workspace to file, push to a (private) Docker registry, and keep different versions of the workspace.
 
 2) Shareability. You can share your workspace as a whole, with all the dependencies and installed applications. Prepare workspace for the team, 
 or deliver as a result to your client. You can even push it to docker hub and make a public contribution. 
@@ -138,7 +141,7 @@ command to execute outside of the workspace
 To start a workspace simply execute in terminal
 
 ```sh
-docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 alnoda/ansible-terraform-workspace
 ```
 
 *(It is recommended to run workspace in the daemon mode)*
@@ -150,9 +153,8 @@ From the quiklaunch you can open any workspace tool. Documentation pages you mod
 to document the project, workspace use and setup.  
 
 ### Understanding ports
-In a previous section workspace was started with a port range mapping ***-p 8020-8034*** 
-and additional separate port mapping ***9000:8035***. This is because workspace contains a set of applications 
-with browser-based UI 
+In a previous section workspace was started with a port range mapping ***-p 8020-8035***. 
+This is because workspace contains a set of applications with browser-based UI 
 
 | Port      | Application               |
 | --------- | ------------------------- |
@@ -168,7 +170,7 @@ with browser-based UI
 | 8029      | Ansible Ara               |
 
 You don't need to memorize these ports. Ansible-Terraform workspace has UI from where you can open any of these applications. 
-Open [localhost:8020](http://localhost:8020), and from there open other applications inncluded in the workspace.  
+Open [localhost:8020](http://localhost:8020), and from there open other applications included in the workspace.  
 
 <p align="center">
   <img src="./img/Workspace UI.png" alt="Htop" width="750">
@@ -201,7 +203,7 @@ from inside of a container, add additional port mapping, for example
 
 Of course, you can add even more port mappings to your workspace, for example:
 ```sh
-docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -p 8080:8080 -p 443:443 alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 -p 8080:8080 -p 443:443 alnoda/ansible-terraform-workspace
 ```
 
 **NOTE:** It is not a problem if you don't expose any ports from the first run. You can expose the required ports by [creating new image](#create-new-image). 
@@ -217,7 +219,7 @@ you can always launch new applications on these ports, and they will be immediat
 In order to start another workspace we need to provide a different port range, for example
 
 ```sh
-docker run --name space-2 -d -p 8040-8054:8020-8034 -p 8055:9000 -e ENTRY_PORT=8040 alnoda/ansible-terraform workspace
+docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/ansible-terraform workspace
 ```
 
 Notice that in addition we set environmental variable ***ENTRY_PORT***, which should be equal to the first port in the new range. 
@@ -263,7 +265,7 @@ You can work in Ubuntu terminal now. Execute the followinng command to know your
 It is possible to work with docker directly from the workspace (using workspace terminal). 
 
 ```
-docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
 ```
 
 NOTE: in order to use docker in docker you need to or enter into the workspace container as root
@@ -287,7 +289,7 @@ The simplest deployment of the workspace requires only 3 steps:
 - ssh to the remote server and start workspace 
 
 ```
-docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/ansible-terraform-workspace
 ```
 
 **NOTE:** When running workspace on the remote server, add envronmental variable `-e WRK_HOST="<ip-of-your-remote-server>"`. 
@@ -298,7 +300,7 @@ Open in your browser `<ip-of-your-remote-server>:8020`
 If docker-in-docker is required, then 
 
 ```
-docker run --name space-1 -d -p 8020-8034:8020-8034 -p 9000:8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/ansible-terraform-workspace
 ```
 
 This way launches workspace in cloud, but such workspace would not be secure, everyone who knows IP of your server will be able to use it. You should 
@@ -352,10 +354,28 @@ and authentication is added.
 
 ### Ansible 
 
+Workspace includes example ansible playbook, which you can use to install new packages inside the workspace using apt and Ansible: 
+
+> `cd /home/examples/ansible-local && ansible-playbook install-packages.yml`
+
 #### Ansible report
+
+
 
 #### Schedule playbooks
 
+Ansible-Terraform workspace has 2 tools () that make it simple and convenient to use Ansible for periodic tasks and jobs. For example, 
+maintenance jobs for your cloud infrastructure. This is especially handy if you run this workspace on a remote server.  
+
+- [**Cronicle**] - allows to schedule tasks and jobs, and lets you observe executions using a nice UI 
+- [**Ansible Ara**] - tracks all executions of ansible playbooks (manual or scheduled), and has nice UI that provides informationn about every step 
+ of every playbook execution
+
+You can try scheduling an example ansible playbook with Cronicle
+
+<p align="center">
+  <img src="./img/cronicle-ansible.gif" alt="Htop" width="900">
+</p>
 
 
 ### Terraform 
@@ -363,8 +383,14 @@ and authentication is added.
 #### Terraform report
 
 A small tool that produces several outputs from a terraform project, and visualizes terraform plan as an interactive HTML page.  
+Terraform report can be generated from the small example terraform project, included in the Workspcae
 
-If you want to try it out yourself, create key/secret for your AWS account, open workspace and create [file with AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+> `cd /home/examples/terraform-scaleway/ && terraform init`  
+
+**Example with AWS**
+
+If you want to try Terraform report with your own AWS account, open workspace and configure AWS profile - 
+create [file with AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
 
 > `mkdir -p ~/.aws`   
 > `nano ~/.aws/credentials`  
@@ -377,7 +403,7 @@ aws_access_key_id = <YOUR_AWS_KEY>
 aws_secret_access_key = <YOUR_AWS_SECRET>
 ```
 
-Clone this terraform example repo into your workspace
+Clone your terraform project to the workspace, or if you dont have anny, you can use this terraform example repository:
 
 > `git clone https://github.com/pvarentsov/terraform-aws-free-tier /home/project/aws-example` 
 
@@ -410,10 +436,27 @@ Use Static File Server to review the report
 #### Rover
 
 [Rover](https://github.com/im2nguyen/rover) - is an awesome Terraform vizualizer with browser-based UI. Rover helps to better understand 
-Terraform state and planned changes. Assuming, you have followed hands-on the tutorial from the previous section (Terraform report), you 
-can use the same Terraform repo to vizualize with Rover. Simply execute  
+Terraform state and planned changes. To see how Rover works, you can use a basic tterraform example in folder */home/examples/terraform-scaleway/*. 
+Initialize Terraform project first  
+
+> `cd /home/examples/terraform-scaleway/ && terraform init`  
+
+and start Rover to visualize terraform state 
+
+> `rover --workingDir /home/examples/terraform-scaleway/`  
+
+<p align="center">
+  <img src="./img/rover-scaleway.gif" alt="Htop" width="900">
+</p>
+
+If you have followed hands-on the tutorial from the previous section (terraform report from the terraform-aws-free-tier repo), you 
+can vizualize it with Rover:
 
 > `rover --workingDir /home/project/aws-example/src/free-tier`
+
+<p align="center">
+  <img src="./img/rover-aws.gif" alt="Htop" width="900">
+</p>
 
 #### Blast Radius
 

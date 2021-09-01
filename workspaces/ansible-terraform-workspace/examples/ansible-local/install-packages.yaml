@@ -1,0 +1,12 @@
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+    - name: Update apt cache
+      shell: sudo apt-get update
+    
+    - name: Install packages
+      shell: "sudo apt-get install -y {{item}}"
+      with_items:
+        - nginx
+        - postgresql
