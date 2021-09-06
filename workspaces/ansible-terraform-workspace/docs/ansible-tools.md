@@ -1,7 +1,5 @@
 # Ansible tools
 
-### [Terraform inventory](https://github.com/adammck/terraform-inventory)
-
 
 ### [Ansible-cmdb](https://github.com/fboender/ansible-cmdb)
 
@@ -31,11 +29,6 @@ ansible-playbook-grapher --include-role-tasks example.yml -o /home/static-server
 ansible-lint --nocolor > /home/static-server/ansible-lint.txt
 ```
 
-### Ansible Mitogen
-
-Read [how to configure your Ansible project to work 7x faster!](https://mitogen.networkgenomics.com/ansible_detailed.html#installation)
-
-
 ### [Ansible Doctor](https://ansible-doctor.geekdocs.de/)
 
 ansible-doctor is a simple annotation like documentation generator based on Jinja2 templates. 
@@ -52,4 +45,12 @@ After the successful check, ansible-doctor will try to read some static files in
 ansible-doctor -o /home/static-server/ roles/example_production
 ```
 
+
+
+
 ### [**Ansible-pre-commit**](https://github.com/adarnimrod/ansible-pre-commit)
+
+### Ansible Mitogen
+
+Read [how to configure your Ansible project to work 7x faster!](https://mitogen.networkgenomics.com/ansible_detailed.html#installation)
+

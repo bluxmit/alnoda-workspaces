@@ -159,7 +159,7 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
     y["services"]["workspace"]["environment"] = {
         "WRK_HOST": host_ip, 
         "WRK_PROTO": "https",
-        "ARA_API_SERVER": f"http://{host_ip}:{start_port + port_increments["ANSIBLE_ARA"]}",
+        "ARA_API_SERVER": f"http://{host_ip}:{start_port + port_increments['ANSIBLE_ARA']}",
         "ARA_API_CLIENT": "https"
         }
     y["services"]["workspace"]["labels"] = get_workspace_labels(ep)

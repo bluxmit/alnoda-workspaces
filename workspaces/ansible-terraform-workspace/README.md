@@ -4,6 +4,13 @@ This workspace - is a "dockerized" development environment with [Ansible](https:
 and [Terraform](https://www.terraform.io/) and lots of other stuff installed, 
 so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible.
 
+<p align="center">
+  <img src="./img/ansible-terraform-wid.gif" alt="Htop" width="900">
+</p>
+
+
+Try it out
+
 ```
 docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 alnoda/ansible-terraform-workspace
 ```
@@ -15,31 +22,48 @@ and open [localhost:8020](http://localhost:8020) in browser.
 * [About](#about)
 * [Use-cases](#use-cases)
 * [Launch Workspace](#launch-workspace)
+    * [Start local workspace](#start-local-workspace)
+    * [Understanding ports](#understanding-ports)
     * [Workspace terminal](#workspace-terminal)
     * [Multiple workspaces](#multiple-workspaces)
-    * [Open more ports](#open-more-ports)
     * [Docker in docker](#docker-in-docker)
     * [Run on remote server](#run-on-remote-server)
- * [Use Workspace](#use-workspace)
- 	* [Install applications](#install-applications)
- 	* [Schedule jobs with Cron](#schedule-jobs-with-cron)
- 	* [Python](#python)
- 	* [Node.js](#node.js)
- 	* [Run applications and services inside the workspace](#run-applications-and-services-inside-the-workspace)
+        * [Unsecure remote workspace](#unsecure-remote-workspace)
+        * [Secure remote workspace](#secure-remote-workspace)
+* [Use Workspace](#use-workspace)
+    * [Ansible](#ansible)
+        * [Ansible ARA](#ansible-ara)
+        * [Ansible report](#ansible-report)
+        * [Ansible Lint](#ansible-lint)
+        * [Ansible inventory grapher](#ansible-inventory-grapher)
+        * [Ansible Playbook Grapher](#ansible-playbook-grapher)
+        * [Ansible Doctor](#ansible-doctor)
+        * [Schedule Ansible playbook executions](#schedule-ansible-playbook-executions)
+    * [Terraform](#terraform)
+        * [Terraform report](#terraform-report)
+        * [Terraform Rover](#terraform-rover)
+        * [Blast Radius](#blast-radius)
+        * [Terraform pre-commit hook](#terraform-pre-commit-hook)
+        * [Terraform Graph](#terraform-graph)
+        * [Terraform Inframap](#terraform-inframap)
+    * [Common workspace actions](#common-workspace-actions)
+ 	    * [Install applications](#install-applications)
+ 	    * [Schedule jobs with Cron](#schedule-jobs-with-cron)
+ 	    * [Python](#python)
+ 	    * [Node.js](#node.js)
+ 	    * [Run applications and services inside the workspace](#run-applications-and-services-inside-the-workspace)
 * [Manage workspaces](#manage-workspaces)
     * [Start and stop workspaces](#start-and-stop-workspaces)
     * [Create new workspace image](#create-new-workspace-image)
     * [Manage workspace images](#manage-workspace-images)
     * [Save and load workspace images](#save-and-load-workspace-images)
+        * [Save workspace as a file](#save-workspace-as-a-file)
+        * [Push workspace to a docker registry](#push-workspace-to-a-docker-registry)
     * [Move workspace to the cloud](#move-workspace-to-the-cloud)
 
 
 ## About
 The workspace contains browser-based Visual Studio Code and multiple tools which make working with Ansible and Terraform more convenient.  
-
-<p align="center">
-  <img src="./img/ansible-terraform-wid.gif" alt="Htop" width="900">
-</p>
 
 **Ansible tools:**
 
@@ -126,6 +150,8 @@ or deliver as a result to your client. You can even push it to docker hub and ma
 ***NOTE:*** you need to implement lock file in Ansible yourself, it is not a standard feature of Ansible.   
 
 ## Launch Workspace
+
+### Start local workspace
 
 Workspaces - are merely docker containers, that's why managing workspaces is easy and intuitive - it is enough to know only docker commands, 
 no need to learn any new tools.
@@ -311,14 +337,15 @@ use this method only if you launch workspace in the secure internal network or i
 *You might want to restrict access to the cloud workspace, and secure encrypted communication with it*  
 
 There are many situations when running Ansible-Terraform workspace in the public network over Internet is required. This can be done 
-by running the Workspace behind the reverse proxy over secure encrypted HTTPS protocol with authentication. For some it might be an easy 
-task to do, but for many engineers, who do not have experience in this area this would be an extra complication that can easily 
-eat several days of your life. That's why Ansible-Terraform workspace comes with a nice little tool, that generates a docker-compose project 
+by running the Workspace behind the reverse proxy over secure encrypted HTTPS protocol with authentication. [Here](./docs/example-compose.md) is the example of a 
+docker-compose file that launches Ansible-Terrafom workspace behind the proxy with middlewares that enable HTTPS and auth (TLS certificates are 
+not included in the example). For some engineers it might be an easy task to make such a thing, but for many who do not have experience in this area,
+this would be a daunting task that can easily consume several days of your life. That's why Ansible-Terraform workspace comes with a nice little tool, that generates a docker-compose project 
 (including certificates and passwords) to easily, securely and without hassle launch workspace on any cloud server  
 
 ***Ansible-terraform-workspace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.***  
 
-If you want to run workspace on the remote server securely, launch ansible-terraform workspace on your local laptop first, open its terminal and 
+If you would like to run workspace on the remote server securely, launch ansible-terraform workspace on your local laptop first, open its terminal and 
 use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
 
 > `python /home/abc/utils/remote.py --workspace="ansible-terraform-workspace" --port="<ENTRY_PORT>" --host="<IP_OF_CLOUD_SERVER_WITH_PUBLIC_ACCESS>" --user="<ANY_USER_NAME>" --password="<ANY_USER_PASSWORD>"`   
@@ -329,24 +356,22 @@ for example:
 
 **NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
 
-After the command is executed, you will see folder `/home/abc/utils/remote` is created. Get it out from the workspace using Filebrowser:
+After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
+
+<p align="center">
+  <img src="./img/generate-remote.gif" alt="Htop" width="900">
+</p>
 
 
-
-
-
-
-. Copy this folder to the remote server (any location). Ssh to the server, cd into 
-the directory you copied and execute 
+. Copy this folder to the remote server where you want to launch Ansible-Terraform workspace. 
+You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
 
 ```sh
 docker-compose up -d
 ```  
 
 That's it, you workspace is running securely on the remote server, using 
-self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, 
-and authentication is added. 
-
+self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, and authentication is added. 
 
 
 
@@ -354,15 +379,100 @@ and authentication is added.
 
 ### Ansible 
 
-Workspace includes example ansible playbook, which you can use to install new packages inside the workspace using apt and Ansible: 
+Workspace includes example ansible playbook - a simple play that installs packages in localhosts 
 
 > `cd /home/examples/ansible-local && ansible-playbook install-packages.yml`
 
+#### [Ansible Ara](https://github.com/ansible-community/ara)
+
+ARA Records Ansible and makes it easier to understand and troubleshoot. Ansible Ara is 
+fully configured in the Ansible-Terraform workspace - it captures any execution (manual or scheduled) 
+of any ansible playbook.  
+
+Ara server is up and running in the workspace, and available on the internal port 8029. If you mapped standard ports to your Ansible-Terraform 
+workspcae, then Ansible Ara WEB UI is onn [localhost:8029](http://localhost:8029)
+
+<p align="center">
+  <img src="./img/Ansible-Ara.gif" alt="Htop" width="750">
+</p>
+
+
 #### Ansible report
 
+Ansible-report is a small utility that generates several reports from your ansible project - visualizes inventory, represents 
+all plays in a format of graphs, generates interactive static website with information about hosts etc.   
+
+Ansible-report is a shell script that simply executes several ansible tools in one shot:
+
+- ansible-lint
+- ansible-cmdb 
+- ansible-inventory-grapher
+- ansible-playbook-grapher (for all ansible plays in the folder)
+
+You can also use any of the ansible toos separately. 
+
+<p align="center">
+  <img src="./img/ansible-report.gif" alt="Htop" width="900">
+</p>
 
 
-#### Schedule playbooks
+#### [Ansible Lint](https://ansible-lint.readthedocs.io/en/latest/installing.html)
+Ansible Lint is a command-line tool for linting playbooks, roles and collections aimed towards any Ansible users. Cd to the folder with 
+your Ansible project and execute
+
+```
+ansible-lint --nocolor > /home/static-server/ansible-lint.txt
+```
+
+#### [Ansible-cmdb](https://github.com/fboender/ansible-cmdb)
+
+Ansible-cmdb takes the output of Ansible's fact gathering and converts 
+it into a static HTML overview page (and other things) containing system configuration information. Cd to the folder with 
+your Ansible project and execute
+
+```
+ansible -m setup --tree out/ all
+ansible-cmdb out/ > overview.html
+```
+
+#### [Ansible inventory grapher](https://github.com/willthames/ansible-inventory-grapher)
+
+Ansible-inventory-grapher creates a dot file suitable for use by graphviz. Cd to the folder with 
+your Ansible project and execute
+
+```
+ansible-inventory-grapher all | dot -Tpng > /home/static-server/my.png
+```
+
+#### [Ansible Playbook Grapher](https://github.com/haidaraM/ansible-playbook-grapher)
+
+Command line tool to create a graph representing your Ansible playbook plays, tasks and roles. 
+The aim of this project is to have an overview of your playbook. Cd to the folder with 
+your Ansible project and execute
+
+```
+ansible-playbook-grapher --include-role-tasks example.yml -o /home/static-server/example
+```
+
+#### [Ansible Doctor](https://ansible-doctor.geekdocs.de/)
+
+Ansible-doctor is a simple annotation like documentation generator based on Jinja2 templates. 
+hile ansible-doctor comes with a default template called readme, it is also possible to write your own templates.  
+
+The first step is to identify if the given folder is an Ansible role. This check is very simple, 
+if the folder contains a sub-directory called tasks is MUST be an Ansible role! :)   
+
+After the successful check, ansible-doctor will try to read some static files into a dictionary:
+- defaults/main.yml
+- meta/main.yml
+
+Cd to the folder with your Ansible project and execute
+
+```
+ansible-doctor -o /home/static-server/ roles/example_production
+```
+
+#### Schedule Ansible playbook executions
 
 Ansible-Terraform workspace has 2 tools () that make it simple and convenient to use Ansible for periodic tasks and jobs. For example, 
 maintenance jobs for your cloud infrastructure. This is especially handy if you run this workspace on a remote server.  
@@ -378,14 +488,47 @@ You can try scheduling an example ansible playbook with Cronicle
 </p>
 
 
+
 ### Terraform 
+
+[Terraform](https://www.terraform.io/) is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files.  
+
+Ansible-Terraform workspace contains a small example Terraform project that creates a server on the Scaleway cloud 
+
+> `cd /home/examples/terraform-scaleway/ && terraform init` 
+
+Set Scaleway credentials as environment variable in your workspace. 
+Add the following lines to /home/abc/.zshrc:
+
+```
+export SCW_DEFAULT_PROJECT_ID=<YOUR_PROJECT_ID>
+export SCW_ACCESS_KEY=<YOUR_ACCESS_KEY>
+export SCW_SECRET_KEY=<YOUR_SECRET_KEY>
+```
+
+Restart terminal, and execute 
+
+> `cd /home/examples/terraform-scaleway/ && terraform plan` 
+
+Create infrastructure with 
+
+> `cd /home/examples/terraform-scaleway/ && terraform apply` 
 
 #### Terraform report
 
 A small tool that produces several outputs from a terraform project, and visualizes terraform plan as an interactive HTML page.  
 Terraform report can be generated from the small example terraform project, included in the Workspcae
 
-> `cd /home/examples/terraform-scaleway/ && terraform init`  
+> `cd /home/examples/terraform-scaleway/ && terraform-report`  
+
+Terraform-report outputs artefacts to the folder `/home/static-server/terraform-reports/`. This folder is served by the Static File Server that you 
+can use to view the artifacts, that include interactive HTML pages 
+
+
+<p align="center">
+  <img src="./img/terraform-report-scaleway.gif" alt="Htop" width="500">
+</p>
+
 
 **Example with AWS**
 
@@ -433,7 +576,7 @@ Use Static File Server to review the report
   <img src="./img/terraform-report.gif" alt="Htop" width="900">
 </p>
 
-#### Rover
+#### Terraform Rover
 
 [Rover](https://github.com/im2nguyen/rover) - is an awesome Terraform vizualizer with browser-based UI. Rover helps to better understand 
 Terraform state and planned changes. To see how Rover works, you can use a basic tterraform example in folder */home/examples/terraform-scaleway/*. 
@@ -476,7 +619,19 @@ open [localhost:8030](http://localhost:8030) in browser
 with some Terraform providers.*
 
 
-### Workspace 
+#### [Terraform pre-commit hook](https://github.com/antonbabenko/pre-commit-terraform)
+
+Pre-commit git hooks to take care of Terraform configurations. Workspace has all dependencies innstalled.  
+
+
+#### [Terraform Inframap](https://github.com/cycloidio/inframap)
+
+- Visualize terraform state
+```
+inframap generate terraform.tfstate | dot -Tpng > graph.png
+```
+
+### Common workspace actions 
 
 Common actions you'd do in the workspace 
 
@@ -584,7 +739,7 @@ There are two concepts to keep in mind: **images** and **containers**. Images ar
 is an image. When you execute this command 
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 alnoda/ansible-terraform-workspace
 ```
 you create container called **space-1** from the image **alnoda/ansible-terraform-workspace**. You can create any number of containers, but you need to 
 [map different ports to each of them](#multiple-workspaces).  
@@ -668,7 +823,7 @@ docker rmi -f alnoda/ansible-terraform-workspace
 
 After you commit workspace container, and create new image out of it, you can push it to your docker registry or save it in a file.  
 
-#### Save workspace in a file 
+#### Save workspace as a file 
 
 Assuming you created new image **space-image:0.4** from your workspace, you can save it as a tar file 
 
@@ -688,7 +843,7 @@ And restore it from the tar file
 docker load < space-image-0.4.tar
 ```
 
-#### Push workspace to a registry
+#### Push workspace to a docker registry
 
 A better way to manage images is docker registries. You can use docker registries in multiple clouds. They are cheap annd very convenient.  
 Check out for example, [Registry in DigitalOcean](https://www.digitalocean.com/products/container-registry/) or in [Scaleway container registry](https://www.scaleway.com/en/container-registry/). There are more.   
@@ -717,7 +872,7 @@ a remote server is only 3 commands:
 If you don't want to use container registry, then there are 2 steps more involved:
 
 1. [Commit workspace to the a image](#create-new-workspace-image)
-2. [Save image to file](save-and-loa-images) 
+2. [Save image to file](#save-workspace-as-a-file) 
 3. Copy file to remote server. There are many options:
     - Launch filexchange workspace on the remote server 
     - Use [cyberduck](https://cyberduck.io/) 
