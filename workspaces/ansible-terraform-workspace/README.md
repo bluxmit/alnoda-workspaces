@@ -401,7 +401,9 @@ workspcae, then Ansible Ara WEB UI is onn [localhost:8029](http://localhost:8029
 #### Ansible report
 
 Ansible-report is a small utility that generates several reports from your ansible project - visualizes inventory, represents 
-all plays in a format of graphs, generates interactive static website with information about hosts etc.   
+all plays in a format of graphs, generates interactive static website with information about hosts etc.  
+
+> `cd /home/examples/ansible-local && ansible-report`
 
 Ansible-report is a shell script that simply executes several ansible tools in one shot:
 
