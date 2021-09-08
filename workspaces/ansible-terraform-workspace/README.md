@@ -60,6 +60,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
         * [Save workspace as a file](#save-workspace-as-a-file)
         * [Push workspace to a docker registry](#push-workspace-to-a-docker-registry)
     * [Move workspace to the cloud](#move-workspace-to-the-cloud)
+* [Workspace Documentation](#workspace-documentation)
 
 
 ## About
@@ -879,3 +880,40 @@ If you don't want to use container registry, then there are 2 steps more involve
     - use [scp](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/)
 4. [Load workspace image from file](#save-and-load-workspace-images) on the remote server 
 5. [Start workspace on the remote server](#run-on-remote-server) 
+
+
+## Workspace Documentation
+
+Workspace can easily be customized for your specific needs. You can also use Workspace for a complex project, and might need a 
+tool to write remarks, plans, action plans. As well as architectural artefacts for the components you wish to implement. Often it is 
+also needed to store somewhere snippets of code or shell commands that you often use in your work. It would be uncomfortable to use extra 
+tool or solution outside of the Workspace to store such remarks. 
+
+Because Workspace is a complete self-contained environment, it include tools to make remarks, plans, store pieces of code, write anything, 
+and even build complete static documentation websites that you can host on GitHub Pages for example.  
+
+[MkDocs](https://www.mkdocs.org/) is a part of the workspace, and its dev server is up and running every time you start the Workspace. In fact, 
+the workspace UI (port 8020 by default) - is served by the MkDocs dev server.  
+
+You can easily modify the UI, add more pages or update existing pages. The changes will be updated immediately without the need to do anything. 
+
+MkDocs project is located in the `/home/docs/` folder. It has subfolder called `docs` (so it is `/home/docs/docs/`) where all the Markdown documents 
+are stored. Simply create new `.md` file there. And add reference about this file to the MkDocs config `/home/docs/mkdocs.yml`. You will see that 
+the new page has appeared in your Workspace UI - it has live reload, and you dont need to do annything, just write in the markdown files.
+
+
+<p align="center">
+  <img src="./img/workspace-docs.gif" alt="workspace-docs" width="900">
+</p>
+
+You can easily build beautiful static website from this documentation
+
+> `cd /home/docs/ && mkdocs build -d /home/static-server/my-doc-website` 
+
+The resulting HTML website is in folder `/home/static-server/my-doc-website`, you can view it with Static File Server and download to local 
+with Filebrowser
+
+<p align="center">
+  <img src="./img/workspace-docs-build.gif" alt="workspace-docs-build" width="900">
+</p>
+
