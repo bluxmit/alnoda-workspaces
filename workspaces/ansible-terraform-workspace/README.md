@@ -919,3 +919,5 @@ with Filebrowser
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/workspace-docs-build.gif" alt="workspace-docs-build" width="900">
 </p>
 
+You can make even more stunning documentation websites with advanced Markdown features using [MkDocs-Magicspace](https://mkdocs-magicspace.alnoda.org/).
+
