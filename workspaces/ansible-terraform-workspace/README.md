@@ -5,7 +5,7 @@ and [Terraform](https://www.terraform.io/) and lots of other stuff installed,
 so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible.
 
 <p align="center">
-  <img src="./img/ansible-terraform-wid.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
 </p>
 
 
@@ -127,7 +127,7 @@ be launched on a bridge server that is in both private and public networks, and 
 Ansible or Terraform code. Here it is explained how to launch Ansible-Terraform Workspace on a cloud server with HTTPS and authentication. 
 
 <p align="center">
-  <img src="./img/infra-wrk-network.png" alt="Htop" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/infra-wrk-network.png" alt="Htop" width="750">
 </p>
 
 
@@ -136,7 +136,7 @@ applying Terraform code (i.e. remote Terraform state), this Workspace makes it e
 cloud server, and used by multiple users.  
 
 <p align="center">
-  <img src="./img/collaborate.png" alt="Htop" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/collaborate.png" alt="Htop" width="750">
 </p>
 
 
@@ -200,7 +200,7 @@ You don't need to memorize these ports. Ansible-Terraform workspace has UI from 
 Open [localhost:8020](http://localhost:8020), and from there open other applications included in the workspace.  
 
 <p align="center">
-  <img src="./img/Workspace UI.png" alt="Htop" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/Workspace%20UI.png" alt="Htop" width="750">
 </p>
 
 The rest of the ports from the port range can be used in order to expose optional applications, or applications you might 
@@ -262,7 +262,7 @@ Terminnal - is one of the main developer tools. There are several ways how to wo
 - ssh into the running the docker container (of the workspace) from your terminal
 
 <p align="center">
-  <img src="./img/terminal.gif" alt="Base-Workspace terminal" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/terminal.gif" alt="Base-Workspace terminal" width="500">
 </p> 
 
 *(Browser-based terminals always work under the user you started the workspace with, the default is non root user "abc")*
@@ -360,7 +360,7 @@ for example:
 After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
 
 <p align="center">
-  <img src="./img/generate-remote.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/generate-remote.gif" alt="Htop" width="900">
 </p>
 
 
@@ -394,7 +394,7 @@ Ara server is up and running in the workspace, and available on the internal por
 workspcae, then Ansible Ara WEB UI is onn [localhost:8029](http://localhost:8029)
 
 <p align="center">
-  <img src="./img/Ansible-Ara.gif" alt="Htop" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/Ansible-Ara.gif" alt="Htop" width="750">
 </p>
 
 
@@ -413,7 +413,7 @@ Ansible-report is a shell script that simply executes several ansible tools in o
 You can also use any of the ansible toos separately. 
 
 <p align="center">
-  <img src="./img/ansible-report.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-report.gif" alt="Htop" width="900">
 </p>
 
 
@@ -475,7 +475,7 @@ ansible-doctor -o /home/static-server/ roles/example_production
 
 #### Schedule Ansible playbook executions
 
-Ansible-Terraform workspace has 2 tools () that make it simple and convenient to use Ansible for periodic tasks and jobs. For example, 
+Ansible-Terraform workspace has 2 tools (Cronicle and ARA) that make it simple and convenient to use Ansible for periodic tasks and jobs. For example, 
 maintenance jobs for your cloud infrastructure. This is especially handy if you run this workspace on a remote server.  
 
 - [**Cronicle**] - allows to schedule tasks and jobs, and lets you observe executions using a nice UI 
@@ -485,9 +485,11 @@ maintenance jobs for your cloud infrastructure. This is especially handy if you 
 You can try scheduling an example ansible playbook with Cronicle
 
 <p align="center">
-  <img src="./img/cronicle-ansible.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/cronicle-ansible.gif" alt="Htop" width="900">
 </p>
 
+**NOTE:** Scheduling Ansible playbooks is especially useful if you [launch Workspace on a remote server](#run-on-remote-server) rather than 
+on your local laptop.
 
 
 ### Terraform 
@@ -527,7 +529,7 @@ can use to view the artifacts, that include interactive HTML pages
 
 
 <p align="center">
-  <img src="./img/terraform-report-scaleway.gif" alt="Htop" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/terraform-report-scaleway.gif" alt="Htop" width="500">
 </p>
 
 
@@ -574,7 +576,7 @@ Now you can generate terraform report
 Use Static File Server to review the report 
 
 <p align="center">
-  <img src="./img/terraform-report.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/terraform-report.gif" alt="Htop" width="900">
 </p>
 
 #### Terraform Rover
@@ -590,7 +592,7 @@ and start Rover to visualize terraform state
 > `rover --workingDir /home/examples/terraform-scaleway/`  
 
 <p align="center">
-  <img src="./img/rover-scaleway.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/rover-scaleway.gif" alt="rover-scaleway" width="900">
 </p>
 
 If you have followed hands-on the tutorial from the previous section (terraform report from the terraform-aws-free-tier repo), you 
@@ -599,7 +601,7 @@ can vizualize it with Rover:
 > `rover --workingDir /home/project/aws-example/src/free-tier`
 
 <p align="center">
-  <img src="./img/rover-aws.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/rover-aws.gif" alt="rover-aws" width="900">
 </p>
 
 #### Blast Radius
@@ -613,7 +615,7 @@ You can try Blast Radius - launch workspace and visualize an example Terraform p
 open [localhost:8030](http://localhost:8030) in browser  
 
 <p align="center">
-  <img src="./img/blast-radius.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/blast-radius.gif" alt="Htop" width="900">
 </p>
 
 ***NOTE:** Blast Radius is a great project, but there is lack of updates to the project recently, and it might not work 
@@ -903,7 +905,7 @@ the new page has appeared in your Workspace UI - it has live reload, and you don
 
 
 <p align="center">
-  <img src="./img/workspace-docs.gif" alt="workspace-docs" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/workspace-docs.gif" alt="workspace-docs" width="900">
 </p>
 
 You can easily build beautiful static website from this documentation
@@ -914,6 +916,6 @@ The resulting HTML website is in folder `/home/static-server/my-doc-website`, yo
 with Filebrowser
 
 <p align="center">
-  <img src="./img/workspace-docs-build.gif" alt="workspace-docs-build" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/workspace-docs-build.gif" alt="workspace-docs-build" width="900">
 </p>
 
