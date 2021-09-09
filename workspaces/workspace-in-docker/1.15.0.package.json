@@ -100,20 +100,22 @@
         "vscode-builtin-xml": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/xml-1.39.1-prel.vsix",
         "vscode-builtin-yaml": "https://github.com/theia-ide/vscode-builtin-extensions/releases/download/v1.39.1-prel/yaml-1.39.1-prel.vsix",
         "vscode-editorconfig": "https://github.com/theia-ide/editorconfig-vscode/releases/download/v0.14.4/EditorConfig-0.14.4.vsix",
-        "vscode-python": "https://github.com/microsoft/vscode-python/releases/download/2020.1.58038/ms-python-release.vsix",
+        "vscode-python": "https://open-vsx.org/api/ms-python/python/2020.8.105369/file/ms-python.python-2020.8.105369.vsix",
         "nadim-vscode.infinity-dark-theme": "https://open-vsx.org/api/nadim-vscode/infinity-dark-theme/1.0.1/file/nadim-vscode.infinity-dark-theme-1.0.1.vsix",
         "emroussel.atomize-atom-one-dark-theme": "https://open-vsx.org/api/emroussel/atomize-atom-one-dark-theme/1.5.5/file/emroussel.atomize-atom-one-dark-theme-1.5.5.vsix",
         "mhutchie.git-graph": "https://open-vsx.org/api/mhutchie/git-graph/1.30.0/file/mhutchie.git-graph-1.30.0.vsix",
         "teabyii.ayu": "https://open-vsx.org/api/teabyii/ayu/0.20.1/file/teabyii.ayu-0.20.1.vsix",
         "yurihs.sublime-vscode-theme": "https://open-vsx.org/api/yurihs/sublime-vscode-theme/1.4.1/file/yurihs.sublime-vscode-theme-1.4.1.vsix",
         "wesbos.theme-cobalt2": "https://open-vsx.org/api/wesbos/theme-cobalt2/2.1.6/file/wesbos.theme-cobalt2-2.1.6.vsix",
-        "robbowen.synthwave-vscode": "https://open-vsx.org/api/RobbOwen/synthwave-vscode/0.1.8/file/RobbOwen.synthwave-vscode-0.1.8.vsix",
-
         "github.github-vscode-theme": "https://open-vsx.org/api/GitHub/github-vscode-theme/4.1.1/file/GitHub.github-vscode-theme-4.1.1.vsix",
         "armandphilippot.coldark": "https://open-vsx.org/api/armandphilippot/coldark/1.2.9/file/armandphilippot.coldark-1.2.9.vsix",
         "radiolevity.search-lights": "https://open-vsx.org/api/radiolevity/search-lights/1.10.1/file/radiolevity.search-lights-1.10.1.vsix",
         "vladeeg.vscode-theme-vlight": "https://open-vsx.org/api/Vladeeg/vscode-theme-vlight/2.1.0/file/Vladeeg.vscode-theme-vlight-2.1.0.vsix",
         "akamud.vscode-theme-onelight": "https://open-vsx.org/api/akamud/vscode-theme-onelight/2.2.3/file/akamud.vscode-theme-onelight-2.2.3.vsix",
-        "akamud.vscode-theme-onedark": "https://open-vsx.org/api/akamud/vscode-theme-onedark/2.2.3/file/akamud.vscode-theme-onedark-2.2.3.vsix"
+        "akamud.vscode-theme-onedark": "https://open-vsx.org/api/akamud/vscode-theme-onedark/2.2.3/file/akamud.vscode-theme-onedark-2.2.3.vsix",
+        "daylerees.rainglow": "https://open-vsx.org/api/daylerees/rainglow/1.5.2/file/daylerees.rainglow-1.5.2.vsix",
+        "emroussel.atom-icons": "https://open-vsx.org/api/emroussel/atom-icons/1.2.0/file/emroussel.atom-icons-1.2.0.vsix",
+        "laurenttreguier.vscode-simple-icons": "https://open-vsx.org/api/LaurentTreguier/vscode-simple-icons/1.16.0/file/LaurentTreguier.vscode-simple-icons-1.16.0.vsix",
+        "technicolor-creamsicle.deepdark-material": "https://open-vsx.org/api/technicolor-creamsicle/deepdark-material/3.3.0/file/technicolor-creamsicle.deepdark-material-3.3.0.vsix"
     }
 }

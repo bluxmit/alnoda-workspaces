@@ -1,0 +1,19 @@
+# https://pypi.org/project/ipython/
+ipython==7.27.0 
+# https://pypi.org/project/prettyprinter/
+prettyprinter==0.18.0
+# https://github.com/antonbabenko/pre-commit-terraform
+pre-commit==2.14.0
+
+## dev, test, lint
+poetry==1.1.6
+black==21.5b2
+isort==5.8.0
+flake8==3.9.2
+mypy==0.812
+pytest==6.2.4
+pytest-regressions==2.2.0
+pytest-html-reporter==0.2.6
+logzero==1.7.0
+pyinstrument==3.4.2
+pylint==2.10.2

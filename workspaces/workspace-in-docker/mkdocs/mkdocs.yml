@@ -13,7 +13,7 @@ nav:
 # ===========================================================
 
 site_name: My Workspace
-repo_url: https://github.com/Alnoda/workspaces-in-docker/tree/main/workspaces/base-workspace
+repo_url: https://github.com/bluxmit/alnoda-workspaces
 site_url: https://alnoda.org
 edit_uri: ""
 
