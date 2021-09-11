@@ -4,6 +4,18 @@ ipython==7.27.0
 prettyprinter==0.18.0
 # https://github.com/antonbabenko/pre-commit-terraform
 pre-commit==2.14.0
+# https://github.com/pdoc3/pdoc
+pdoc3==0.10.0
+# https://timothycrosley.github.io/portray/
+portray==1.7.0
+# https://github.com/baverman/flameprof/
+flameprof==0.4
+# https://jiffyclub.github.io/snakeviz/
+snakeviz==2.1.0
+# https://github.com/joerick/pyinstrument
+pyinstrument==3.4.2
+# https://github.com/nvdv/vprof
+vprof==0.38
 
 ## dev, test, lint
 poetry==1.1.6
@@ -15,5 +27,5 @@ pytest==6.2.4
 pytest-regressions==2.2.0
 pytest-html-reporter==0.2.6
 logzero==1.7.0
-pyinstrument==3.4.2
 pylint==2.10.2
+
