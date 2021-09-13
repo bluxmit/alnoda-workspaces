@@ -1,87 +1,74 @@
 # Workspaces in docker
 
+*Good engineers make, great engineers share.*  
+
+Making a tool - environment ready for complex engineering, analytical, operations, data science, or other IT project - is not easy. 
+If you've made one, share it! It might be of great use for someone.  
+
+This project was created to share dockerized workspaces, and to set an example of how such workspaces can be developed.
+ 
 ### Contents
 
-* [About](#about)
-* [Quickstart](#quickstart)
+* [What is workspace In Docker](#what-is-workspace-in-docker)
 * [Available workspaces](#available-workspaces)
-* [Why dev environmet in docker](#why-dev-environmet-in-docker)
-* [Workspaces-in-docker vs. cloud IDE](#workspaces-in-docker-vs.-cloud-ide)
-* [Workspaces-in-docker vs. other docker workspaces](#workspaces-in-docker-vs.-other-docker-workspaces)
-* [Workspaces-in-docker principles](#workspaces-in-docker-principles)
+* [Why workspace In Docker](#why-workspace-in-docker)
+* [Use-cases](#use-cases)
+* [How to make your own workspace](#how-to-make-your-own-workspace)
 * [Publications](#publications)
 * [Feedback and contribution](#feedback-an-contribution)
 
+## What is workspace In Docker 
 
-## About
+***TLDR: Workspaces are toolsets designed for a specific project and packaged as docker images. They make it easy to switch between projects; 
+can be moved between laptops, PCs and cloud servers; can run in cloud and be used from any device; have versions and 
+backups; can be used by several users and make collaboration easier.***
 
-Workspaces make development, experiments and workloads isolated in their own dockerized environments, 
-enable working directly inside the running docker containers, and help managing multiple projects easily.    
-
-Workspaces include tools and software that make working inside docker nearly as convenient as working 
-directly in local environment.  
-
-![Workspaces are amazing!](./workspaces/workspace-in-docker/img/workspace-demo.gif)
-
-Workspace is not only a development environment. Some workspaces include lots of tools and packages, that otherwise would 
-take lots of time to set up.
-
-Workspaces are familar docker images and containers. Working with workspaces will not require learning any new tools, 
-only will help to improve docker skills.  
-
-Workspaces allow moving complete environments between machinnes and cloud servers as easy as 2 clicks. With workspaces you can 
-actually have 2 develpment machines, and sync them very easily. You can even work in the vary same workspace on your Mac laptop 
-and Windows PC. And then you move the complete development or runtime environment to a cloud Linux server in under 1 minute.  
-
-Workspaces are great for collaboration. Imagine being able to share with your peer not only the codebase, but also to the whole environment 
-with all the dependencies and config files. 
-
-Workspaces make containerization and deployment as easy as possible, without the need of building docker 
-images again. We love containers for their ability to run on production environment exactly the same way 
-they are running on "your laptop". We already run a lot in containers. Why not build our apps in containers as well? 
-Then we can simply skip the extra step of building images again and again.   
-
-Workspaces can be used as true Linux terminals. Anywhere. On any system. In fact, workspaces include lots of tools that 
-make woking in terminal a pleasure.  
 
 <p align="center">
-  <img src="./workspaces/ubuntu-workspace/img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="750">
-</p> 
+  <img src="./img/wid-advantages.svg" alt="Htop">
+</p>
 
-Workspaces are great to preserve sometnig that works. Imagin you have made an MVP. Something actually working. It is not enough just to 
-commit the code. Save the complete workspace! With all environments, dependencies and configurations. Later it might save you a lot of time.  
+Essentially, workspace - is everything needed for a specific kind of work, packed in a docker image. It is a self-contained environment 
+that is ready to use as soon as you execute `docker run`. Dockerized workspaces do not require other tools to be set up on the host 
+machine, apart from docker itself. You can use such workspace locally or launch it securely on any cloud server.
 
-Workspaces are completely open-source and include only popular wide-spread open-source tools. No proprietary software.  
+Workspace would typically include file browser, code editor, IDE, terminal, job scheduler, resource and process monitor, documentation 
+solution. Designed for specific IT projects, workspaces could also include frameworks, linters, profilers, testing, and auto-documentation tools, 
+tools to visualize and study data, report generators, task orchestrators, infrastructure visualization tools, interactive notebooks, 
+simulation UIs, custom dashboards, and many other.   
 
-## Quickstart
 
-Launching new workspace is as easy as 
+<div align="center" style="font-style: italic;">
+    Demo: Workspace in docker
+</div>
 
-```sh
-docker run --name space-1 -d -p 8020-8030:8020-8030 alnoda/workspace-in-docker
-```
 
-that is it! Open workspace UI ***[http://localhost:8020](http://localhost:8020)***   
+<p align="center">
+  <img src="./workspaces/workspace-in-docker/img/workspace-demo.gif" alt="Htop" width="750">
+</p>
 
-or enter workspace terminal 
-```sh
-docker exec -it space-1 /bin/zsh
-``` 
 
 ## Available workspaces
 
-1. [`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md) - is an attempt to use docker as a light-weight Virtual Machine. It 
+[`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md) - docker as a light-weight Virtual Machine. It 
 provides isolation of environments, but uses less resources than VMs. Ubuntu-workspace allows to start multiple processes inside the 
 same docker container, has docker-in-docker, Python and Node.js, and a collection of common applications such as text editors, 
-git, supervisord, z-shell etc. Ubuntu-workspace exposes browser-based terminal, and can be used on both local and remote server providing the same experience. 
-When it runs on the remote server, access can be restricted with a password.  
+git, supervisord, z-shell etc.  
 
-2. [`Base-Workspace`](./workspaces/base-workspace/README.md) - docker as a light-weight Virtual Machine with batteries included, 
-designed to be used entirely through browser-based interfaces. Base-Workspace has its own UI, and a collection of applications for more 
-convenient work, such as File Browser to easily exchange files and folders with workspace, Cronicle - advanced job scheduler with great UI, 
-MkDocs for documentation of the workspace and projects. This workspace includes all the features of the *Ubuntu-workspace*.
+*Versions:*
 
-3. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) - has all the features of the *Base-Workspace*, and in addition - 
+- *18.04-0.2 - minimalistic, work via terminal (size )*
+- *18.04-0.5 - includes docker-in-docker (size )*
+- *18.04-0.7 - adds browser-based terminal (size )*
+
+Ubuntu-workspace with browser-based terminal can be used on both local and remote server with the same experience. 
+When it runs on the remote server, the access can be restricted with a password, and secured with TLS encryption. 
+
+[`Python-Workspace`]
+
+[`Ansible-Terraform-Workspace`]
+
+[`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) - has all the features of the *Base-Workspace*, and in addition - 
 a powerful browser-based version of Visual Studio Code. This workspace allows complete isolation of many IT-related projects, such as 
 software development, devops, QA, data analysis, data engineering, data science and other. Workspace can be used as local development environment, 
 as well as remote, when started on the cloud server, and can be secured with password. Workspace-in-docker allows to completely isolate and switch easily 
@@ -90,84 +77,129 @@ swithing between such complex environments would require multiple actions and ca
 can be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customized. Can be used as build, test or even 
 runtime environment.  
 
-4. [`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - alternative workspace to the `workspace-in-docker`. It has all the features ot the latter, except for the 
+[`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - alternative workspace to the `workspace-in-docker`. It has all the features ot the latter, except for the 
 different implementation of the Visual Studio Code. While `workspace-in-docker` has [Eclipse Theia IDE](https://theia-ide.org/), Codeserver-Workspace 
 includes [Codeserver](https://github.com/cdr/code-server) instead.   
 
-5. [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) - an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
+[`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) - an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
 of documentation, tutorials, and training.  
 
- 
-## Why dev environmet in docker
+[`Base-Workspace`](./workspaces/base-workspace/README.md) - docker as a light-weight Virtual Machine with batteries included, 
+designed to be used entirely through browser-based interfaces. Base-Workspace has its own UI, and a collection of applications for more 
+convenient work, such as File Browser to easily exchange files and folders with workspace, Cronicle - advanced job scheduler with great UI, 
+MkDocs for documentation of the workspace and projects. This workspace includes all the features of the *Ubuntu-workspace*.
 
-Have your ever participated in several software (sysops, analytics, BI, data science, ML) projects at the same time? 
-And each of them having different environments (dev, stage, prod), cloud config file, k8s cluster, ansible secret, 
-terraform workspace... Managing such a collection of environments is so much easier 
-if everything is packaged inside a docker container, that you can start and stop by one single command.
+## Why workspace In Docker 
 
-There are lots of limitations compared to local environment. For example, you will have to work only with WEB-based tools - this limits your choices 
-and might not include your favourite shiny IDE, on which you spent so many months to configure and learn. Also a web-based IDE is always slower 
-than its native alternative, and probably not as feature-rich.  
+Compared to the local environment, where you can install any application with a nice native interface, dockerized workspaces are much 
+less flexible. They contain only terminal-based or browser-based tools. Also, workspaces in docker have an overhead of running inside 
+the docker container, which can result in some performance implications.  
 
-But the benefits of isolating everything related to the specific project in one docker image that can be saved, versioned, moved to another machine, 
-deployed on cloud server or shared with anyone, by far outweighs those limitations.   
+At the same time, dockerized workspaces have several very strong advantages, that local workspaces don't. 
+Some workspace benefits come from docker itself:
 
-*Workspaces promote non-canonical way of using docker, taking advantage of features, we don't often use.* 
+- **Containerization.** Everything in the workspace is packed in a docker container.
+- **Isolation.** Changes in one environment cannot affect another environment.
+- **Easy-to-switch.** Start and stop workspaces with just one action. 
+- **Shareability.** Share workspace as a whole (code, files, secrets, configuration, data, etc.) with your peers.
+- **Platform-agnostic.** Run on any system where docker can run.
+- **Movability.** You can move the entire workspaces between laptops, PCs, and servers.
+- **Collaboration.** Launch workspace in cloud, and use together with your peers.
+- **Versions and backups.** Commit workspaces to images, or save to files. Back up the entire workspace before making changes, keep versions. 
 
-We already run a lot in containers. Why not build our apps in containers as well? 
-Workspace encapsulates nicely project or experiment with all the dependencies, helping to avoid situation when one environment can affect another.
+Other features are coming from the concept of the workspace itself, and only satisfied if the workspace is done properly:
 
-> Docker is a great tool to bundle together all the things that are related to the same project. It is light-weight and you can start multiple workspaces.
+- **Cloud-ready.** You work with workspace through browser-based or terminal-based interfaces. Hence workspace is ready to be launched on the remote server, 
+container orchestration platform or Kubernetes, and be used from any of your devices. 
+- **Feature-reach.** Workspace is not merely an IDE inside a docker container. It includes the whole toolkit necessary to solve the problem.   
+- **Readiness.** Tooling that is needed to tackle a specific problem is pre-selected, set up, and configured with sane defaults.
+- **Easy to use.** Workspace is convenient, it has UI, and tooling is well-documented. 
+- **Independence.** Workspace is fully open-source. It does not use any proprietary technology, it does not depend on any cloud.
+- **Opinionated.** Workspace is an opinionated system of chosen tools and practices, that according to its creator, are best suited 
+for the specific purpose.         
 
-We often over-engineer and waste time on something that we could do better. If we do something on our local machines, it becomes isolated, non-transferrable 
-and not shareable. If we do the same work inside a running docker container, we can commit it to the new image and share with peers or run 
-on cloud servers, and this is all - just 3 commands in terminal.
+## Use-cases
 
-## Workspaces-in-docker vs. cloud IDE
+There are many problems that workspaces in docker can solve. Dockerized workspaces can be a good choice in situations when:
 
-There are other options that provide isolated environments and let work in cloud directly. 
-Cloud9, CodeAnywhere, GitPod, GroomIDE you name it - are awesome and affordable services, that are even easier to use than workspaces-in-docker. 
-But workspaces-in-docker have some serious advantages: 
+**You need to get started fast.** The creation of a new workspace is a tedious task. You need to install a programming language, 
+set up and configure multiple tools (this can take days). You'd have to research, chose, and learn how to do such things as linting, 
+testing, pre-commit hooks, debugging, and profiling (can take months). This workspace has those tools selected and set up. 
+Documentation on how to use them is provided, with an example.
 
-- workspaces-in-docker are transferrable, they can be used on both local machine as well as in cloud, 
-being easily moved back and forth. You might not always have perfect internet, and running workspace on the local machine can be more convenient. 
-And you can always move workspace to a powerfule server in cloud within couple minutes.  
+**You are working on multiple projects.** If you are working on a serious IT project, the chances are that you are dealing with multiple 
+Git branches, various configuration files, and environmental variables. There is a good chance Git branches have different dependencies 
+and versions, so you also use virtual environments. It is likely that you also have different development and production environments, 
+with the need to change the profile of a cloud provider, kubeconfig, use another ssh-key. Switching between such environments even of 
+a single project requires several actions, which is terrible. Things become even less convenient when we are working with multiple IT projects. 
+Managing such projects, and switching between them becomes a real overhead. When you are working in a dockerized workspace, the switch 
+is just one action of stopping one container and starting another!   
 
-- workspaces-in-docker are more configurable. Tey are open-source docker images after all. Create new image from the workspace image, 
-and you will have  highly customized personal workspace. 
+**You need to move workspaces.** Let's assume you mostly work on a Linux/macOS laptop, but you have a powerful gaming PC at home, 
+and might want to use it for builds, simulations, training ML models, etc. You might realize the algorithm you are using needs extra 
+high resources or needs to run for many hours to finish, and a very powerful cloud server should be used. Dockerized workspace 
+can be moved as-is from one machine to another within minutes, no matter if it is a laptop, PC, or virtual cloud server.    
 
-Workspaces-in-docker is a middle ground between two extremes: the unwieldy static local environment - unseparable from your laptop, 
-and euphemeral cloud environments that are much less versatile. 
+**You need to put your work to production really fast.** You have developed a piece of code that must be running all the time. Or jobs that should run on schedule. 
+You cannot keep your laptop running all the time. You need to quickly move to the cloud. If you don't have time or resources to build production-ready 
+docker images, create CI/CD, configure servers, you can simply move your workspace to the cloud as-is. Depending on the situation, such "rapid" deployment might 
+be well-justified for proofs-of-concept, experiments, scheduling supporting tasks, etc. 
 
-## Workspaces-in-docker vs. other docker workspaces 
+**Yo need an environment fto isolate an experiment.** You want to try a new framework, library, package, or simply update your dependencies to the latest version. Try to do it in 
+a self-contained isolated environment first. 
 
-The idea of development in docker is not new at all. In fact there are other projects in GitHub 
-that encourage users to work directly in the docker containers.   
+**You require backups and versions of the entire workspace.** Your work may go well beyond the development-debugging-testing-deployment cycle. 
+For example, if you are a data analyst, data scientist, researcher you make experiments, simulations, train ML models. Such work often involves 
+frequent changes to your environment (updating packages, install new applications, change datasets, etc.). To reproduce analytics, 
+experiment, or ML model training you need to have an exact version of your environment at a specific point in time. Dockerized workspaces in docker 
+solve this problem very well! At any moment you can backup and save your entire workspace running in the docker container, and launch it 
+as a new workspace whenever you want.
 
-On the left side of the spectrum, there are WEB-based IDE, each of them having their own docker images.   
+**Collaboration made simple.** You need a workspace that can be shared with your peers or colleagues. Launch it on the cloud server 
+and use together.  
 
-On the right side there exist over-packed docker images for particular use-cases, that include way too many tools than probably needed.  
+**You need to deliver results.** If you are a freelancer or contractor, you might want to send your client the whole workspace 
+you worked in. This will help your client to reproduce results without bothering you with questions after the contract is closed.  
 
-Workspaces-in-docker take the niche in the middle. Instead of building one heavy unwieldy image that focuses on one specific use-case, 
-we create a "constructor" stack of images build on top of each other for better control and ease of customization.  
+**You want to improve team's productivity.** The workspace for a serious project includes a lot of tooling, standards and conventions, 
+secrets and configurations, ssh keys, environmental variables, VPN, and much more. Your team probably would like to do it once. 
+When everyone needs to make this work, it is such a waste of time! An how much easier it is to onboard new team members if they can use 
+an environment where everything is ready to get started right away. 
 
-And we take security seriously. Workspaces-in-docker by default run under non-root user. Of course you can run or enter workspace as root too. 
-This makes it secure to share with peers, or deploy production ready applications directly as workspace container.
+**You need to onboard freelancer/contractor asap.** The time freelancer spends to set up the environment - is the time you are paying for. 
+Use a workspace, customized for the tasks you typically hire an external workforce for. Let freelancers be able to start real work 
+as soon as possible. Save time and money.
 
-## Workspaces-in-docker principles 
+**You are buildding internal development platform.** An Internal Developer Platform, or IDP, is a self-service layer that allows developers 
+to interact independently with their organization's delivery setup, enabling them to self-serve environments, deployments, databases, 
+logs, and anything else they need to run their applications. Customize workspaces for the specifics of your IDP. Support and maintain 
+workspaces for your company, and let engineers do the real work rather than bothering how to configure and use your company's IDP. 
 
-When developing our dockerized workspaces, we try to set and follow some rules:
+**You want to help others.** You know how to tackle a complex project. You know how to use different tooling, practices, and standards, 
+to be successful and efficient in the specific area or tasks. You spent months setting it up, you have tried different versions and package combinations. 
+You have made scripts to automate work. Everything seems easy for you now, and you are ready to write a blog post to help others. 
+You can go one step further! Fellow engineers, analysts, and scientists are months behind you. Create a workspace with everything set up and ready. 
+Together with your publication, it will greatly help people who struggle with the same problem.  
 
-- worksapces should be easy to use and solve real problems
-- start with generic workspaces, suitable for common needs
-- more specific workspaces should be built on top of generic workspaces
-- rather than building ubder-workspace for all needs, workspaces should branch out from ther generic workspace and focus on specific needs
-- workspaces should be well-tested and documented
-- workspaces should include only open source tools
-- workspaces don't include as much stuff as possible, workspace should have minimal needed set of tools
-- include in the workspace only tools that share processes and data. Reverse proxy, load balanncers, 
-databases, server resource monitors should not be the part of the workspace. Instead they should be integrated with 
-workspace in docker compose.
+
+## How to make your own workspace
+
+This repo was created with the idea in mind - to set up basics for building custom workspaces. The workspaces, shared in this project 
+are build based on each other. Some of the workspaces are highly customized, have a narrow scope, and focuse on a specific task. 
+Other workspaces are more general, and intended to be used for further customization.  
+
+The most general workspace - is [`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md). It sets the basics for using docker 
+in order to run multiple processes, adds cron, zsh and other applications that will be used in most workspaces. 
+
+Other general workspaces are the [`Base-Workspace`](./workspaces/base-workspace/README.md), that adds several browser-based applications,  
+like task scheduler, file browser, documentation framowork and workspace own page. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) 
+adds [Eclipse Theia](https://theia-ide.org/) to the Base-Workspace. Theia - is an open-source browser-based VS-Code version, making 
+Workspace-in-docker to be a general base workspace, to be used in order to create workspaces for specific tasks (like Python workspace, or 
+Ansible workspace). 
+
+[`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - is an alternative to the Workspace-in-docker. It is also a general 
+base workspace to build upon, but it has a different VS-Code version - [Codeserver](https://github.com/cdr/code-server). 
+
 
 ## Publications
 

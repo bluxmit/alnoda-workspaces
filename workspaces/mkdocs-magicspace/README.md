@@ -1,7 +1,11 @@
 # MkDocs-MagicSpace
 
-MkDocs-MagicSpace is an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
-of documentation, tutorials, and training.  
+*Good documentation is great! Bad documentation is better than nothing.*   
+
+MkDocs-MagicSpace is an all-in-one tool, carefully crafted to make the development of gorgeous documentation 
+websites as easy as possible.   
+
+Try it out:
 
 ```
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace

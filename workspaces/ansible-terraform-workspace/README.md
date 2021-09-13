@@ -2,11 +2,7 @@
 
 This workspace - is a "dockerized" development environment with [Ansible](https://docs.ansible.com/) 
 and [Terraform](https://www.terraform.io/) and lots of other stuff installed, 
-so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
-</p>
+so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible
 
 
 Try it out
@@ -65,6 +61,15 @@ and open [localhost:8020](http://localhost:8020) in browser.
 
 ## About
 The workspace contains browser-based Visual Studio Code and multiple tools which make working with Ansible and Terraform more convenient.  
+
+<div align="center" style="font-style: italic;">
+    Demo: Ansible-Terraform workspace
+</div>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
+</p>
+
 
 **Ansible tools:**
 
@@ -237,10 +242,11 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 -p 8080:8080 -p
 
 ### Multiple workspaces
 
-Typically you would run one workspace at a time, but there might be cases whenn launching more than one workspace might be needed. 
-Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8035 are taken.   
+Typically you would run one workspace at a time, but there might be cases when launching more than one workspace might be needed. 
+Every workspace needs a range of ports. If one workspace is up and running, and uses the default port range, then ports 8020-8035 are taken.   
 
-Ansible-terraform workspace itself uses 10 ports (8020-8029), but it is recommended to map several extra ports just in case. Having extra ports, 
+Ansible-terraform workspace itself uses 10 ports (8020-8029), but it is recommended to map several extra ports for the applications you 
+will launch when working in the workspace, for example, Blast Radius or Rover. Having extra ports, 
 you can always launch new applications on these ports, and they will be immediately exposed outside of the workspace.  
 
 In order to start another workspace we need to provide a different port range, for example

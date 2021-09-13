@@ -8,7 +8,11 @@ mv /home/examples/simple-script /home/project
 
 ### Pre-commit 
 
-
+```
+cd /home/examples/simple-script && pre-commit install 
+git add .
+git commit -m "initial"
+```
 
 
 ### [Flake8](https://flake8.pycqa.org/en/latest/)
