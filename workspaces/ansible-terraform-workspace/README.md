@@ -2,8 +2,13 @@
 
 This workspace - is a "dockerized" development environment with [Ansible](https://docs.ansible.com/) 
 and [Terraform](https://www.terraform.io/) and lots of other stuff installed, 
-so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible
+so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible. 
+Workspace will help to code and develop; visualize infrastructures and planned terraform changes; 
+display ansible hosts plays; schedule and observe executions and more!
 
+<p align="center">
+  <img src="./img/ansible-terraform-wid-collage.svg" alt="Collage">
+</p>
 
 Try it out
 

@@ -20,7 +20,7 @@ This project was created to share dockerized workspaces, and to set an example o
 ## What is workspace In Docker 
 
 ***TLDR: Workspaces are toolsets designed for a specific project and packaged as docker images. They make it easy to switch between projects; 
-can be moved between laptops, PCs and cloud servers; can run in cloud and be used from any device; have versions and 
+can be moved between laptops, PCs, and cloud servers; can run in the cloud and be used from any device; have versions and 
 backups; can be used by several users and make collaboration easier.***
 
 
@@ -145,10 +145,10 @@ You cannot keep your laptop running all the time. You need to quickly move to th
 docker images, create CI/CD, configure servers, you can simply move your workspace to the cloud as-is. Depending on the situation, such "rapid" deployment might 
 be well-justified for proofs-of-concept, experiments, scheduling supporting tasks, etc. 
 
-**Yo need an environment fto isolate an experiment.** You want to try a new framework, library, package, or simply update your dependencies to the latest version. Try to do it in 
+**Yo need an environment to isolate an experiment.** You want to try a new framework, library, package, or simply update your dependencies to the latest version. Try to do it in 
 a self-contained isolated environment first. 
 
-**You require backups and versions of the entire workspace.** Your work may go well beyond the development-debugging-testing-deployment cycle. 
+**You require backups and versions for the entire workspace.** Your work may go well beyond the development-debugging-testing-deployment cycle. 
 For example, if you are a data analyst, data scientist, researcher you make experiments, simulations, train ML models. Such work often involves 
 frequent changes to your environment (updating packages, install new applications, change datasets, etc.). To reproduce analytics, 
 experiment, or ML model training you need to have an exact version of your environment at a specific point in time. Dockerized workspaces in docker 
@@ -185,14 +185,14 @@ Together with your publication, it will greatly help people who struggle with th
 ## How to make your own workspace
 
 This repo was created with the idea in mind - to set up basics for building custom workspaces. The workspaces, shared in this project 
-are build based on each other. Some of the workspaces are highly customized, have a narrow scope, and focuse on a specific task. 
-Other workspaces are more general, and intended to be used for further customization.  
+are build based on each other. Some of the workspaces are highly customized, have a narrow scope, and focus on a specific task. 
+Other workspaces are more general and intended to be used for further customization.  
 
 The most general workspace - is [`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md). It sets the basics for using docker 
-in order to run multiple processes, adds cron, zsh and other applications that will be used in most workspaces. 
+in order to run multiple processes, adds cron, zsh, and other applications that will be used in most workspaces. 
 
-Other general workspaces are the [`Base-Workspace`](./workspaces/base-workspace/README.md), that adds several browser-based applications,  
-like task scheduler, file browser, documentation framowork and workspace own page. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) 
+Other general workspaces are the [`Base-Workspace`](./workspaces/base-workspace/README.md), which adds several browser-based applications,  
+like task scheduler, file browser, documentation framework and workspace own page. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) 
 adds [Eclipse Theia](https://theia-ide.org/) to the Base-Workspace. Theia - is an open-source browser-based VS-Code version, making 
 Workspace-in-docker to be a general base workspace, to be used in order to create workspaces for specific tasks (like Python workspace, or 
 Ansible workspace). 
