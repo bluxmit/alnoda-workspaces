@@ -7,7 +7,7 @@ Workspace will help to code and develop; visualize infrastructures and planned t
 display ansible hosts plays; schedule and observe executions and more!
 
 <p align="center">
-  <img src="./img/ansible-terraform-wid-collage.svg" alt="Collage">
+  <img src="./img/ansible-terraform-wid-collage.png" alt="Collage">
 </p>
 
 Try it out
