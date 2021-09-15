@@ -211,7 +211,7 @@ You can also run applications that should run permanently, and run jobs on sched
 The simplest deployment of the workkspace requires only 3 steps:
 
 - get virtual server on your favourite cloud (Digital Ocean, Linode, AWS, GC, Azure ...) 
-- [install docker](https://docs.docker.com/engine/install/) on this server
+- [install docker](https://docs.docker.com/engine/install/) on this server (often you can get server with docker already installed)
 - ssh to the remote server and start workspace 
 
 ```

@@ -26,6 +26,10 @@ port_increments = {
     }
 
 workspace_meta = {
+    "ubuntu-workspace": {
+        "port-range": 10,
+        "entrypoints": []
+    },
     "base-workspace": {
         "port-range": 10,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]

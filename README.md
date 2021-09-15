@@ -53,15 +53,7 @@ simulation UIs, custom dashboards, and many other.
 [`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md) - docker as a light-weight Virtual Machine. It 
 provides isolation of environments, but uses less resources than VMs. Ubuntu-workspace allows to start multiple processes inside the 
 same docker container, has docker-in-docker, Python and Node.js, and a collection of common applications such as text editors, 
-git, supervisord, z-shell etc.  
-
-*Versions:*
-
-- *18.04-0.2 - minimalistic, work via terminal (size )*
-- *18.04-0.5 - includes docker-in-docker (size )*
-- *18.04-0.7 - adds browser-based terminal (size )*
-
-Ubuntu-workspace with browser-based terminal can be used on both local and remote server with the same experience. 
+git, supervisord, z-shell etc. Ubuntu-workspace with browser-based terminal can be used on both local and remote server with the same experience. 
 When it runs on the remote server, the access can be restricted with a password, and secured with TLS encryption. 
 
 [`Python-Workspace`]
@@ -159,7 +151,7 @@ as a new workspace whenever you want.
 and use together.  
 
 **You need to deliver results.** If you are a freelancer or contractor, you might want to send your client the whole workspace 
-you worked in. This will help your client to reproduce results without bothering you with questions after the contract is closed.  
+you worked in. This will help your client to reproduce results without bothering you with questions after the contract is closed.    
 
 **You want to improve team's productivity.** The workspace for a serious project includes a lot of tooling, standards and conventions, 
 secrets and configurations, ssh keys, environmental variables, VPN, and much more. Your team probably would like to do it once. 

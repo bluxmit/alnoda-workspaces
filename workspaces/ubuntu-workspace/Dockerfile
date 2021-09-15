@@ -123,12 +123,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
     && echo "------------------------------------------------------ Web-based terminal" \
-    && apt-get install -y build-essential cmake libjson-c-dev libwebsockets-dev \
-    && cd /tmp && git clone https://github.com/tsl0922/ttyd.git \
-    && cd /tmp/ttyd && mkdir build \
-    && cd /tmp/ttyd/build && cmake .. \
-    && cd /tmp/ttyd/build && make && make install \
-    && rm -rf /tmp/ttyd \
+    && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.aarch64 \
+    && mv ttyd.aarch64 /usr/bin/ttyd \
+    && chmod +x /usr/bin/ttyd \
+    && echo "------------------------------------------------------ utils" \
+    && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
+    && mv /tmp/alnoda-workspaces/utils /home/abc/ \
+    && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ User" \
     && chown abc /home/project \
     && chmod 777 /etc/supervisord/ \

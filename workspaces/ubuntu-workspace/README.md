@@ -1,20 +1,21 @@
 # Ubuntu-workspace
 
-```Ubuntu-workspace``` - is an attempt to use docker as a lightweight Virtual Machine. It 
-provides isolation of environments, but uses fewer resources than VMs.  
+Use docker as a lightweight Virtual Machine. Ubuntu-workspace provides isolation of environments, 
+but required fewer resources than VMs. USe locally or in cloud.
 
-Ubuntu-workspace allows to start multiple processes inside the same docker container, has docker-in-docker, Python, and Node.js, and a collection of common applications such as text editors, 
-git, supervisord, z-shell, etc. Ubuntu-workspace exposes browser-based terminal and can be used on both local and remote servers providing the same experience. 
-When it runs on the remote server, access can be restricted with a password.
+Try it out:
 
-<p align="center">
-  <img src="img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="750">
-</p>
+```
+docker run --name space-1 -d -p 8026:8026 alnoda/ubuntu-workspace
+```
+
+and open localhost:8026 in browser.
 
 ## Contents
 
- * [Use-cases](#use-cases)
- * [Getting started](#getting-started)
+* [About](#about)
+* [Why this workspace](#why-this-workspace)
+* [Getting started](#getting-started)
     * [Ports](#ports)
     * [Run as root](#run-as-root)
     * [Docker in docker](#docker-in-docker)
@@ -35,17 +36,60 @@ When it runs on the remote server, access can be restricted with a password.
     * [Java](#java)
     * [Run applications permanently](#run-applications-permanently)
 
-## Use-cases
+
+## About 
+
+Ubuntu-workspace comes in 2 versions: minimal an standard. The default version is standard. 
+
+### Minimal 
+
+Minimal Ubuntu-workspace allows to start multiple processes inside the same docker container, has Python, Node.js (nodeenv), 
+and a collection of common applications such as text editors, git, supervisord, z-shell, etc.
 
 Primarily intended as an advanced Ubuntu terminal that runs anywhere, this workspace works best 
 when you need interactive Linux, python, or node shell for ad-hock tasks.  
 
-Ubuntu workspace is also a basis for building more sophisticated workspaces with UI interfaces.   
+<div align="center" style="font-style: italic;">
+    Demo: Minimal Ubuntu-workspace
+</div>
 
-Ubuntu-workspace even can be used as a development environment for those who prefer developing directly in the terminal. 
-For those who like more convenient IDE there are more suitable workspaces (for example, workspace-in-docker or codeserver-workspace).  
+<p align="center">
+  <img src="img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="750">
+</p>
 
-## Getting started
+### Standard
+
+In addition to the features of the Minimal Ubuntu-workspace, this workspace also has docker-in-docker and a browser-based 
+terminal. The latter allows to launch workspace on any cloud server and work with it from any device. When the workspace 
+runs on the remote server, access can be restricted with a password, and communication with the server is encrypted. 
+
+<div align="center" style="font-style: italic;">
+    Demo: Standard Ubuntu-workspace
+</div>
+
+<p align="center">
+  <img src="img/ubuntu-workspace-remote.gif" alt="Standard Ubuntu workspace" width="750">
+</p>
+
+
+## Why this workspace
+
+This workspace provides a terminal to the completely isolated Linux environment. This can be quite useful when you need to:
+
+- make experiments (try new packages, versions, stacks, etc.) without risk of affecting the primary environment.
+- collaborate with colleagues easily by sharing the entire workspaces.
+- run background jobs on schedule, and be able to start/stop the whole group of jobs with one action.
+- move the entire local workspace to any powerful cloud server in minutes.
+- back up entire workspaces with important work, and have versions of the workspaces.
+
+More information: 
+- [Advantages of the dockerized workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#why-workspace-in-docker) 
+- [Situations when workspace is a good choice](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#use-cases)
+- [The way I use Docker as interactive environment for tries and experiments](https://medium.com/@bluxmit/the-way-i-use-docker-as-interactive-environment-for-tries-and-experiments-52ac06c0ec69)
+- [Docker as a lightweight VM - docker image that you can use as VM substitute](https://medium.com/@bluxmit/docker-as-a-lightweight-vm-docker-image-that-you-can-use-as-vm-substitute-164032e4ed0b)
+
+
+## Launch Workspace
 
 In order to avoid confusion, the following convention is adopted: 
 
@@ -53,14 +97,25 @@ In order to avoid confusion, the following convention is adopted:
 command to execute outside of the workspace
 ```
 
-> `command to execute inside the workspace (after entering running docker container)`
+> `command to execute inside the workspace (after entering running docker container, or in the browser-based workspace terminal)`
+
+### Start local workspace
+
+In order to **start standard Ubuntu-workspace** open terminal, and execute:
 
 ```sh
 docker run --name space-1 -d -p 8026:8026 alnoda/ubuntu-workspace
 ```
-and open your browser on [http://localhost:8026](http://localhost:8026)  
+and navigate in browser to [http://localhost:8026](http://localhost:8026)  
 
-You can also ssh into the running workspace container from your console
+Minimal Ubuntu-workspace does not expose any applications, and does not require a port. 
+You can **start minimal Ubuntu-workspace** by executin in terminal
+
+```
+docker run --name space-1 -d alnoda/ubuntu-workspace:minimal
+```
+
+Now you can ssh into the running workspace container (both minimal and standard workspaces) 
 ```sh
 docker exec -it space-1 /bin/zsh
 ```
@@ -70,52 +125,78 @@ If you don't want to use z-shell
 docker exec -it space-1 /bin/bash
 ```
 
-***You can work in Ubuntu via terminal now.***
-
 ### Ports
-In the example above, the workspace container was started with a port mapping "-p 8026:8026" in order to expose WEB-based terminal. 
-This might be useful if you are planning to move your workspace to cloud server or prefer web-based terminal. 
-If you are planning to work only locally and prefer your console, you might not need it, and you can start workspace without any port mappings
+In the example above, the standard Ubuntu-workspace container was started with a port mapping "-p 8026:8026" to expose a browser-based terminal. 
+Browser-based is especially useful if you are planning to move your workspace to cloud server or prefer web-based terminal over your system terminal. 
+Browser-based terminal is true color, and might work better with some of the terminnal-based applications.  
+
+Workspace - is an interactive environment, and you often don't know how many applications you will launch when working inside the workspace. 
+That's why it is reasonable to allocate a small port range for the workspace. Then you will always have extra ports that you 
+can use
 
 ```sh
-docker run --name space-1  -d alnoda/ubuntu-workspace
+docker run --name space-1 -d -p 8020-8030:8020-8030 alnoda/ubuntu-workspace
 ```
 
-It might be the case that some applications will be installed and launched inside the workspace. In order to use those applications outside the workspace, 
-it is necessary to add more port mappings. For example, assume we are planning to install application inside the workspace with web-ui on port 19011
+Sometimes you cannot chose the port applications runs on, and might want to provide it separately when starting the workspace
 
-```sh
-docker run --name space-1 -d -p 8026:8026 -p 19011:19011 alnoda/ubuntu-workspace
+```
+docker run --name space-1 -d -p 8020-8030:8020-8030 -p 19011:19011 alnoda/ubuntu-workspace
 ```
 
-> It is not a problem if you don't expose any ports, but later on realise you need them -
-> you will just create new image, and run it exposing the required port (look in the section [Create new image](#create-new-image)) 
+**NOTE:** It is not a problem if you don't expose any ports from the start. If later on you realise that other ports are needed, 
+you will simply [commit workspace to a new image, and start the workspace again with more ports](#create-new-image).
+
 
 ### Run as root
-The default user is **abc** with passwordless sudo to install packages. If you'd rather work as root, then you should ssh into running container as
+
+The default workspace user is **abc**, it has passwordless sudo to install packages. If you'd rather work as root, then you should ssh into running container as
+
 ```sh
 docker exec -it --user=root space-1 /bin/zsh
 ```
-You can of course open several terminals to the same running containner as both abc and root users at the same time.
+
+You can of course open several terminals to the same running containner as both abc and root users at the same time.  
+
+If you plan to work as root user all the time, start workspace as a root in the first place:
+
+```
+docker run --name space-1 -d -p 8020-8030:8020-8030 --user=root alnoda/ubuntu-workspace
+``` 
+
+**NOTE:** start workspace as a root user if you run workspace for personal use only! If you provide workspace for freelancer, partner, 
+collaborator, client or for internal development platform - use default user `abc`. 
 
 
 ### Docker in docker
 
-It is possible to work with docker directly from the workspace. 
+Standard Ubuntu-workspace has docker in docker. This means that you can build docker images, start and stop docker 
+containers directly from the workspace. In order to enable docker-in-docker start workspace with:
 
 ```
 docker run --name space-1 -d -p 8026:8026 -v /var/run/docker.sock:/var/run/docker.sock alnoda/ubuntu-workspace
 ```
 
-NOTE: in order to use docker in docker you need to or enter into the workspace container as root
+**NOTE:** Default `abc` user will not be able to use docker inside the workspace. 
+To use docker in docker you need to or enter into the workspace container as a root user 
+
 ```sh
 docker exec -it --user=root space-1 /bin/zsh
 ```
 
+*(or launch workspace as root in the first place)*  
+
+
+**NOTE:** docker-in-docker is realised by mapping `docker.sock` to the container. This essentially means that 
+root user of the workspace has control over all docker containers in the entire system. Allow docker-in-docker 
+only for personal use.
+
 ### Run in cloud
 
-Running workspaces on the remote server is great for collaboration, heavy workloads or periodic tasks. 
-Workspace has WEB-based terminal, and you will be able to use workspace from browser on any device.  
+Running workspaces on the remote server is convenient for collaboration (share workspace); running heavy or long-running workloads 
+(i.e. simulations); scheduling periodic tasks, and other. Ubuntu-workspace has WEB-based terminal, 
+and you will be able to use workspace from any device.  
+
 
 It is very easy to run your workspace in cloud on any server. You are completely independent on the 
 cloud provider, can easily start, stop and move workspaces between servers.    

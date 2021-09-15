@@ -149,16 +149,28 @@ cloud server, and used by multiple users.
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/collaborate.png" alt="Htop" width="750">
 </p>
 
+*(you need to implement lock file in Ansible yourself, it is not a standard feature of Ansible.)*
+
+#### Why using workspace
 
 In addition to what's already mentioned, Ansible-Terraform Workspace has the benefits of any other dockerized workspace:
 
-2) Shareability. You can share your workspace as a whole, with all the dependencies and installed applications. Prepare workspace for the team, 
-or deliver as a result to your client. You can even push it to docker hub and make a public contribution. 
+- Avoid the tedious process of setting dev environment on your laptop
+- Work conveniently with multiple IT projects on the same laptop
+- Move all your work to another machine instantly
+- Start working right away in the workspace prepared for the task
+- Run dev environment in cloud and work from any device, be independent on any cloud service or cloud provider
+- Back-up entire workspaces with important work, save versions of the workspaces before changes
+- Collaborate by sharing the entire workspace or run it in the cloud
+- Move from dev to POC/MVP in a minute
+- Make experiments (try new packages, versions, frameworks) without risking affecting existing environment
+- With a single command start, stop and resume job schedules, related to the same project
+- Create a custom dev environment for your team, and help new-comers to save time on setting up their environments
+-  Move dev environment back and forth between powerful Windows PC and macOS laptop in minutes
 
-3) Environment in cloud. Start workspace inn cloud rather than on your local machine, and use it from any device.
+Read in detail about the [advantages of the dockerized workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#why-workspace-in-docker) 
+and the [situations when workspace is a good choice](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#use-cases)   
 
-
-***NOTE:*** you need to implement lock file in Ansible yourself, it is not a standard feature of Ansible.   
 
 ## Launch Workspace
 
