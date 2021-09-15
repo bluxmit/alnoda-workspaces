@@ -21,6 +21,7 @@ and open localhost:8026 in browser.
     * [Docker in docker](#docker-in-docker)
     * [Run in cloud](#run-in-cloud)
 * [Features](#features)
+* [Use Workspace](#use-workspace)
     * [Install new packages](#install-new-packages)
     * [Schedule jobs with cron](#schedule-jobs-with-cron)
     * [Python](#python)
@@ -195,98 +196,60 @@ only for personal use.
 
 Running workspaces on the remote server is convenient for collaboration (share workspace); running heavy or long-running workloads 
 (i.e. simulations); scheduling periodic tasks, and other. Ubuntu-workspace has WEB-based terminal, 
-and you will be able to use workspace from any device.  
+and you will be able to use workspace from any device.   
 
-
-It is very easy to run your workspace in cloud on any server. You are completely independent on the 
-cloud provider, can easily start, stop and move workspaces between servers.    
-
-It is recommended to start workspace with authentication, otherwise anyone will be 
-able to use your workspace. Use this simple docker-compose file to start workspace in 
-cloud with basic authentication
+Workspace - is just a docker image, hence it can run on any server where docker can run. The easiest way to 
+launch workspace on the remote server is to ssh there, and execute the same command you'd use for the local 
 
 ```
-version: "3.3"
-services:
-  traefik:
-    image: "traefik:v2.4"
-    container_name: "traefik"
-    command:
-      - "--providers.docker"
-      - "--entrypoints.terminal.address=:8026"
-    ports:
-      - 8026:8026
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-  workspace:
-    image: alnoda/ubuntu-workspace
-    labels:
-      # To create user:password pair, execute in any workspace echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g
-      - "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
-      - "traefik.enable=true"
-      # terminal
-      - "traefik.http.services.terminal.loadbalancer.server.port=8026"
-      - "traefik.http.routers.terminal.service=terminal"
-      - "traefik.http.routers.terminal.rule=PathPrefix(`/`)"
-      - "traefik.http.routers.terminal.entrypoints=terminal"
-      - "traefik.http.routers.terminal.middlewares=basic-auth"
+docker run --name space-1 -d -p 8026:8026 alnoda/ubuntu-workspace
 ```
 
-This configuration launches workspace with the default authentication user:pass is **admin:admin**. 
-You might want to generate new credentials.  
+**NOTE:** workspace launched this way is not secure and not protected. Anyone will be able to use it. Use this 
+method only in the trusted internal network.   
 
-The password for the traefik basic auth must be encrypted with the **htpasswd**. For connvenience, 
-it is installed in every workspace-in-docker, and the easiest way is to generate the password 
-is to launch workspace locally first, use its terminal to create a password, and then start 
-workspace on remote server.  
+#### Secure remote workspace
 
-To encrypt password open terminal of the local workspace and execute 
+Ubuntu-workspace (the standard version) can be launchedd on the cloud server securely, with authentication and TLS 
+encryption. There are different ways how to make this happen, one of thm - is to put workspace behind the reverse proxy 
+with HTTPS, TLS encryption and auth middleware. Here is an [example of a docker-compose with Traefik proxy](./doc/remote-wid.md), 
+it add auth but no encryption.  
 
-> ```echo $(htpasswd -nB <userName>) | sed -e s/\\$/\\$\\$/g```  
+Standard Ubuntu-workspace includes a small utility that will generate everything needed to spin-up workspace with 
+authentication and HTTPS with self-signed certificate. To use the utility, [start the workspace on a local machine first](#standard), 
+open workspace terminal, and execute 
 
-substitute `<userName>` with the new user name, and prowide password on prompt. After this htpasswd will output encrypted password.
+> `python /home/abc/utils/remote.py --workspace="ubuntu-workspace" --host="<IP_OF_CLOUD_SERVER_WITH_PUBLIC_ACCESS>" --user="<ANY_USER_NAME>" --password="<ANY_USER_PASSWORD>"`   
 
-Don't forget to change this line in the docker-compose file with the new user:encpypted_pass
+Notice that you'll need to set the following: 
 
-```
-- "traefik.http.middlewares.basic-auth.basicauth.users=admin:$$2y$$05$$eub6CV.CwUYCCQjNBvSf5uZnzdRmVwGZ/ncxecb9O7WxCR8aLuM3K"
-```
+- IP_OF_CLOUD_SERVER_WITH_PUBLIC_ACCESS
+- ANY_USER_NAME
+- ANY_USER_PASSWORD 
 
-Create file ```remote-workspace-auth.yaml``` on the remote server, paste yaml from above (preferrably with new auth) 
-and start workspace 
+For example,   
 
-```
-docker-compose -f remote-workspace-auth.yaml up -d 
-```
+> `python /home/abc/utils/remote.py --workspace="ubuntu-workspace" --host="68.183.69.198" --user="user1" --password="pass1"`   
 
-Now you can open in browser ```http://<ip-of-remote-server>:8026```  and use WEB-based terminal to work with your remote workspace 
+Now you can navigate in your browser to `<IP_OF_CLOUD_SERVER_WITH_PUBLIC_ACCESS>:8026` in order to open the workspace terminal.  
+
+**NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
 
 <p align="center">
-  <img src="img/web-based-terminal.png" alt="Htop" width="500">
+  <img src="img/accept-risks.png" alt="accept-risks.png" width="500">
 </p>
 
-Stop remote workspace
+After you accept the risk, authentication window will appear asking you the user and password, that you have set as`<ANY_USER_NAME>`, `<ANY_USER_PASSWORD>`.   
 
-```
-docker-compose -f remote-workspace-auth.yaml stop
-```
+<p align="center">
+  <img src="img/auth.png" alt="auth.png" width="500">
+</p>
 
-Start remore workspace again
-
-```
-docker-compose -f remote-workspace-auth.yaml start
-```
-
-Delete remote workspace
-
-```
-docker-compose -f remote-workspace-auth.yaml down
-```
 
 ## Features
 
-In order to make working in the ubuntu-workspace more convenient, some terminal-based tools are installed. They 
-make it easier to browse files, check running processes and resource utilisation and edit text files.  
+To make working in the ubuntu-workspace more convenient, it already includes several terminal-based applications. 
+The latter make it easier to browse files, check running processes and resource utilization and edit text files.  
 
 Explore file system with Midnight Commander
 
@@ -328,6 +291,8 @@ mcedit sendmail.py
 <p align="center">
   <img src="img/mcedit.png" alt="Htop" width="500">
 </p>
+
+## Use Workspace
 
 ### Install new packages
 Install new packages with ```sudo apt install```, for example emacs
@@ -544,7 +509,7 @@ a remote server is only 3 commands:
 If you don't want to use container registry, then there are 2 steps more involved:
 
 1. [Commit workspace to the a image](#save-and-load-images)
-2. [Save image to file](save-and-loa-images) 
+2. [Save image to file](#save-and-load-images)
 3. Copy file to remote server. There are many options:
     - Launch filexchange workspace on the remote server 
     - Use [cyberduck](https://cyberduck.io/) 
