@@ -157,7 +157,7 @@ In addition to what's already mentioned, Ansible-Terraform Workspace has the ben
 
 - Avoid the tedious process of setting dev environment on your laptop
 - Work conveniently with multiple IT projects on the same laptop
-- Move all your work to another machine instantly
+- Move all your work to another machine easily
 - Start working right away in the workspace prepared for the task
 - Run dev environment in cloud and work from any device, be independent on any cloud service or cloud provider
 - Back-up entire workspaces with important work, save versions of the workspaces before changes
@@ -269,7 +269,7 @@ you can always launch new applications on these ports, and they will be immediat
 In order to start another workspace we need to provide a different port range, for example
 
 ```sh
-docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/ansible-terraform workspace
+docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/ansible-terraform-workspace
 ```
 
 Notice that in addition we set environmental variable ***ENTRY_PORT***, which should be equal to the first port in the new range. 
@@ -361,7 +361,7 @@ use this method only if you launch workspace in the secure internal network or i
 *You might want to restrict access to the cloud workspace, and secure encrypted communication with it*  
 
 There are many situations when running Ansible-Terraform workspace in the public network over Internet is required. This can be done 
-by running the Workspace behind the reverse proxy over secure encrypted HTTPS protocol with authentication. [Here](./docs/example-compose.md) is the example of a 
+by running the Workspace behind the reverse proxy over secure encrypted HTTPS protocol with authentication. [Here](https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/ansible-terraform-workspace/docs/example-compose.md) is the example of a 
 docker-compose file that launches Ansible-Terrafom workspace behind the proxy with middlewares that enable HTTPS and auth (TLS certificates are 
 not included in the example). For some engineers it might be an easy task to make such a thing, but for many who do not have experience in this area,
 this would be a daunting task that can easily consume several days of your life. That's why Ansible-Terraform workspace comes with a nice little tool, that generates a docker-compose project 

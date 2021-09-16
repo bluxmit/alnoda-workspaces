@@ -6,8 +6,9 @@ FROM ${docker_registry}/workspace-in-docker:${image_tag}
 USER root
 
 COPY python-requirements.txt /home/abc/installed-python-packages
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 COPY ./examples/ /home/examples/
-COPY ./pylintrc /home/abc/
+COPY .pylintrc /home/abc/
 
 RUN pip install -r /home/abc/installed-python-packages/python-requirements.txt \
     && echo "------------------------------------------------------ graphviz" \

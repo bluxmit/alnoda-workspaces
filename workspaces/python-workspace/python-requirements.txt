@@ -16,8 +16,11 @@ snakeviz==2.1.0
 pyinstrument==3.4.2
 # https://github.com/nvdv/vprof
 vprof==0.38
+# https://pypi.org/project/pylint-json2html/
+pylint-json2html==0.3.0
+# https://pypi.org/project/pytest-html-reporter/
+pytest-html-reporter==0.2.6
 
-## dev, test, lint
 poetry==1.1.6
 black==21.5b2
 isort==5.8.0
@@ -25,7 +28,6 @@ flake8==3.9.2
 mypy==0.812
 pytest==6.2.4
 pytest-regressions==2.2.0
-pytest-html-reporter==0.2.6
 logzero==1.7.0
 pylint==2.10.2
 

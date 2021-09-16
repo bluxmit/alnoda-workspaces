@@ -42,6 +42,10 @@ workspace_meta = {
         "port-range": 15,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
     },
+    "python-workspace": {
+        "port-range": 15,
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+    },
     "mkdocs-magicspace": {
         "port-range": 15,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]

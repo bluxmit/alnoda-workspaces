@@ -7,7 +7,7 @@ Documentation: https://docs.pytest.org/en/latest/
 """
 
 
-from app import calc_result
+from script import calc_result
 
 
 def test_1():
