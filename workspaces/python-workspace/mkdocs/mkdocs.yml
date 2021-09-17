@@ -1,0 +1,71 @@
+# ===========================================================
+# NAVIGATION
+# ===========================================================
+
+nav:
+  - Home: pages/home/home.md
+  - About: README.md
+  - Docs: docs.md
+
+
+# ===========================================================
+# CONFIGURATION
+# ===========================================================
+
+site_name: My Python Workspace
+repo_url: https://github.com/bluxmit/alnoda-workspaces
+site_url: https://alnoda.org
+edit_uri: ""
+
+# ===========================================================
+# APPEARANCE
+# ===========================================================
+
+theme:
+  name: 'material'
+  favicon: 'assets/favicon.ico'
+  logo: 'assets/Alnoda-logo.svg'
+  custom_dir: overrides
+  icon:
+    repo: fontawesome/brands/git-alt
+  features:
+    - navigation.instant
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+      primary: light-blue
+      accent: deep orange
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+      primary: indigo  
+      accent: deep orange
+    
+
+extra:
+  # Link to open when your logo is clicked
+  homepage: https://alnoda.org
+  host_url: http://localhost
+
+plugins:
+  - search
+  # Enable Macros and jinja2 templates
+  - macros:
+      module_name: macros/helpers
+
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+
+
+
+
+          
+ 
+
+
+

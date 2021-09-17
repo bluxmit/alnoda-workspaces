@@ -55,7 +55,7 @@ when you need interactive Linux, python, or node shell for ad-hock tasks.
 </div>
 
 <p align="center">
-  <img src="img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="750">
+  <img src="img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="900">
 </p>
 
 ### Standard
@@ -69,7 +69,7 @@ runs on the remote server, access can be restricted with a password, and communi
 </div>
 
 <p align="center">
-  <img src="img/ubuntu-workspace-remote.gif" alt="Standard Ubuntu workspace" width="750">
+  <img src="img/ubuntu-workspace-remote.gif" alt="Standard Ubuntu workspace" width="900">
 </p>
 
 
@@ -236,13 +236,13 @@ Now you can navigate in your browser to `<IP_OF_CLOUD_SERVER_WITH_PUBLIC_ACCESS>
 **NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
 
 <p align="center">
-  <img src="img/accept-risks.png" alt="accept-risks.png" width="500">
+  <img src="img/accept-risks.png" alt="accept-risks.png" width="750">
 </p>
 
 After you accept the risk, authentication window will appear asking you the user and password, that you have set as`<ANY_USER_NAME>`, `<ANY_USER_PASSWORD>`.   
 
 <p align="center">
-  <img src="img/auth.png" alt="auth.png" width="500">
+  <img src="img/auth.png" alt="auth.png" width="750">
 </p>
 
 
@@ -256,7 +256,7 @@ Explore file system with Midnight Commander
 > ```mc```
 
 <p align="center">
-  <img src="img/mc.png" alt="Moonlignt commander" width="500">
+  <img src="img/mc.png" alt="Moonlignt commander" width="750">
 </p>
 
 Launch system-monitor, process-viewer and process-manager  
@@ -264,7 +264,7 @@ Launch system-monitor, process-viewer and process-manager
 htop
 ```
 <p align="center">
-  <img src="img/htop.png" alt="Htop" width="500">
+  <img src="img/htop.png" alt="Htop" width="750">
 </p>
 
 Explore file/folder sizes
@@ -272,7 +272,7 @@ Explore file/folder sizes
 ncdu
 ```
 <p align="center">
-  <img src="img/ncdu.png" alt="Htop" width="500">
+  <img src="img/ncdu.png" alt="Htop" width="750">
 </p>
 
 Text editors ```vim```, ```nano``` and ```mcedit``` are available. For example, clone git repo and edit python file with nano
@@ -282,14 +282,14 @@ cd sendmail
 nano sendmail.py 
 ```
 <p align="center">
-  <img src="img/nano.png" alt="Htop" width="500">
+  <img src="img/nano.png" alt="Htop" width="750">
 </p>
 
 ```
 mcedit sendmail.py 
 ```
 <p align="center">
-  <img src="img/mcedit.png" alt="Htop" width="500">
+  <img src="img/mcedit.png" alt="Htop" width="750">
 </p>
 
 ## Use Workspace

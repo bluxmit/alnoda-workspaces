@@ -1,7 +1,11 @@
 # Python workspace 
 
 Python development enviroment inside the isolated docker container. Includes VS-code IDE, 
-job scheduler and other tools for linting, testing, auto-documentation, and profiling. 
+job scheduler and other tools for linting, testing, auto-documentation and profiling. 
+
+<p align="center">
+  <img src="./img/python-wid-collage.png" alt="Collage">
+</p>
 
 Try it out
 
@@ -56,7 +60,15 @@ and open [localhost:8020](http://localhost:8020) in browser.
 
 
 ## About
-The workspace contains browser-based Visual Studio Code and multiple tools which make working with Python more convenient.  
+The workspace contains browser-based Visual Studio Code and multiple tools which make working with Python more convenient.   
+
+<div align="center" style="font-style: italic;">
+    Demo: Python workspace
+</div>
+
+<p align="center">
+  <img src="./img/python-wid.gif" alt="Htop" width="900">
+</p>
 
 **Python tools:**
 
@@ -173,7 +185,7 @@ Open [localhost:8020](http://localhost:8020), and from there open other applicat
 </div>
 
 <p align="center">
-  <img src="./img/python-workspace-ui.png" alt="python-workspace-ui.png" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/python-workspace-ui.png" alt="python-workspace-ui.png" width="750">
 </p>
 
 The rest of the ports from the port range can be used in order to expose optional applications, or applications you might 
@@ -227,7 +239,7 @@ Terminnal - is one of the main developer tools. There are several ways how to wo
 </div>
 
 <p align="center">
-  <img src="./img/python-terminal.gif" alt="python-terminal.gif" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/python-terminal.gif" alt="python-terminal.gif" width="750">
 </p> 
 
 *(Browser-based terminals always work under the user you started the workspace with, the default is non root user "abc")*
@@ -327,7 +339,7 @@ for example:
 After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
 
 <p align="center">
-  <img src="./img/generate-remote.gif" alt="generate-remote.gif" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/generate-remote.gif" alt="generate-remote.gif" width="750">
 </p>
 
 
@@ -340,6 +352,14 @@ docker-compose up -d
 
 That's it, you workspace is running securely on the remote server, using 
 self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, and authentication is added. 
+
+**NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
+
+![accept-risk](https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/accept-risks.png)
+
+After you accept the risk, authentication window will appear asking you the user and password, that you have set as<ANY_USER_NAME>, <ANY_USER_PASSWORD> 
+
+![auth](https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/auth.png)
 
 
 ## Use Workspace
@@ -354,11 +374,11 @@ IPython provides a rich toolkit to help you make the most of using Python intera
 is a powerful interactive Python shell. IPython is very handy. For example, starting with IPython 7.0, and when using 
 Python 3.6 and above, IPython offer the ability to run asynchronous code from the REPL.  
 
-To start IYython kernel, open workspace terminal ad execute `ipython`. Below is an example of installing packages and 
+To start IPython kernel, open workspace terminal ad execute `ipython`. Below is an example of installing packages and 
 evaluation of async code in IPython shell - something you cannot do in a standard python shell: 
 
 <p align="center">
-  <img src="./img/ipython.png" alt="ipython.png" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/ipython.png" alt="ipython.png" width="900">
 </p> 
 
 **NOTE:** in order not to increase the Workspace image size, by default Python Workspace can only render notebooks. 
@@ -370,7 +390,7 @@ try to run a cell in the note, you will see a pop-out winndow suggesting to inst
 </div>
 
 <p align="center">
-  <img src="./img/notebooks-install.png" alt="notebooks-install.png" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/notebooks-install.png" alt="notebooks-install.png" width="900">
 </p> 
 
 ### Schedule python jobs
@@ -391,7 +411,7 @@ folder is served by the Static-file server
 </div>
 
 <p align="center">
-  <img src="./img/exchange-rates.gif" alt="exchange-rates.gif" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/exchange-rates.gif" alt="exchange-rates.gif" width="900">
 </p> 
 
 Fetching echange rates - is a typical problems for nearly every business, that is working on the international market. You can 
@@ -402,7 +422,7 @@ schedule execution of this script to fetch exchange rates daily
 </div>
 
 <p align="center">
-  <img src="./img/schedule-exchange-rates.gif" alt="exchange-rates.gif" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/schedule-exchange-rates.gif" alt="exchange-rates.gif" width="900">
 </p> 
 
 **NOTE:** Scheduling jobs is especially useful when the Workspace is running on a cloud server. 
@@ -426,7 +446,7 @@ The resulting report will be produced to the folder `/home/static-server/<NAME-O
 </div>
 
 <p align="center">
-  <img src="./img/python-report.gif" alt="python-report.gif" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/python-report.gif" alt="python-report.gif" width="900">
 </p> 
 
 *(In addition, all pytests statistics will be collected, and available in foldder `/home/static-server/<NAME-OF-PYTHON-PROJECT-FOLDER>`)*.  
@@ -439,7 +459,7 @@ Pytest-html-reporter generates a beautiful static html report based on pytest fr
 that shows all historical tests and statistics.   
 
 <p align="center">
-  <img src="./img/pytest-html-report.png" alt="pytest-html-report.png" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/pytest-html-report.png" alt="pytest-html-report.png" width="750">
 </p> 
 
 To execute tests, and generate report with Pytest-html-reporter, cd to the python project tests folder, 
@@ -456,7 +476,7 @@ the output will be in folder `/home/static-server/my-pytest-report` that is serv
 </div>
 
 <p align="center">
-  <img src="./img/pytest-html-report.gif" alt="pytest-html-report.gif" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/pytest-html-report.gif" alt="pytest-html-report.gif" width="900">
 </p> 
 
 #### [Pdoc3](https://github.com/pdoc3/pdoc)
@@ -471,7 +491,7 @@ with output into `` where it can be viewed with Static-file server
 </div>
 
 <p align="center">
-  <img src="./img/pdoc3.gif" alt="pdoc3.gif" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/pdoc3.gif" alt="pdoc3.gif" width="900">
 </p> 
 
 
@@ -490,7 +510,7 @@ Vprof is a browser-based profiling tool. Here is an example of profiling scripts
 </div>
 
 <p align="center">
-  <img src="./img/vprof.gif" alt="vprof.gif" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/vprof.gif" alt="vprof.gif" width="900">
 </p> 
 
 
@@ -509,7 +529,7 @@ You will see thae link appeared in the terminal, open it in browser
 </div>
 
 <p align="center">
-  <img src="./img/snakeviz.gif" alt="snakeviz.gif" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/snakeviz.gif" alt="snakeviz.gif" width="900">
 </p> 
 
 #### [Flameprof](https://github.com/baverman/flameprof/)
@@ -526,7 +546,7 @@ Let's profile and visualize one of python modules in the example project:
 </div>
 
 <p align="center">
-  <img src="./img/flameprof.png" alt="flameprof.png" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/flameprof.png" alt="flameprof.png" width="750">
 </p> 
 
 
@@ -546,7 +566,7 @@ Profile and visualize one of python modules in the example project:
 </div>
 
 <p align="center">
-  <img src="./img/pyinstrument.png" alt="pyinstrument.png" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/pyinstrument.png" alt="pyinstrument.png" width="900">
 </p> 
 
 
@@ -570,7 +590,7 @@ an HTML document:
 </div>
 
 <p align="center">
-  <img src="./img/pylint.png" alt="pylint.png" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/pylint.png" alt="pylint.png" width="750">
 </p> 
 
 #### Pre-commit 
@@ -857,7 +877,7 @@ the new page has appeared in your Workspace UI - it has live reload, and you don
 
 
 <p align="center">
-  <img src="./img/workspace-docs.gif" alt="workspace-docs" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/workspace-docs.gif" alt="workspace-docs" width="900">
 </p>
 
 You can easily build beautiful static website from this documentation
