@@ -4,7 +4,7 @@ General-purpose dockerized workspace - an environment fully isolated inside a do
 to file or restored, pushed to docker registry, started on a cloud server.  
 
 <p align="center">
-  <img src="./img/wid-collage.png" alt="Collage">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-collage.png" alt="Collage">
 </p>
 
 
@@ -22,7 +22,7 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
 * [Launch Workspace](#launch-workspace)
     * [Workspace terminal](#workspace-terminal)
     * [Multiple workspaces](#multiple-workspaces)
-    * [Open more ports](#open-more-ports)
+    * [Understanding ports](#understanding-ports)
     * [Docker in docker](#docker-in-docker)
     * [Run on remote server](#run-on-remote-server)
 * [Use Workspace](#use-workspace)
@@ -47,7 +47,7 @@ The Workspace contains browser-based Visual Studio Code, and several browser-bas
 </div>
 
 <p align="center">
-  <img src="./img/wid-demo.gif" alt="WID demo" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-demo.gif" alt="WID demo" width="900">
 </p>
 
 **Tools with UI** 
@@ -75,6 +75,9 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - supervisord
 - cron
 
+*NOTE: This is an alternative workspace to the `codeserver-workspace`. It has all the features ot the latter, except for the 
+different implementation of the Visual Studio Code.*
+
 ## Code Editor
 
 The main code editor of this workspace is [**Eclipse Theia**](https://theia-ide.org/docs/) - an open-source version of popular Visual Studio Code IDE. 
@@ -82,7 +85,7 @@ despite Eclipse Theia is a browser-based code editor, it is fast, responsive, an
 rendering of notebooks has a tree-based file browser, and a great number of pre-installed color themes.  
 
 <p align="center">
-  <img src="./img/theia-themes.png" alt="theia-themes.png" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/theia-themes.png" alt="theia-themes.png" width="900">
 </p>
 
 You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
@@ -97,7 +100,7 @@ popular extensions installed
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/theia.gif" alt="Theia demo" width="900">
 </p>
 
-## Why this image 
+## Why workspace in docker 
 
 Workspace-in-docker - is a completely self-contained and fully isolated development environment, that runs inside a docker container. 
 This image includes everything necessary to start coding right away. To use Workspace-in-docker, you don't need to install or use any other tools, apart from docker itself. 
@@ -204,8 +207,38 @@ docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/wo
 Notice that in addition we need to set environmental variable ENTRY_PORT, which should be equal to the first port in the new range. 
 Workspace UI usues this variable to know the new port range, and redirects to the proper addresses of the workspace applications' UIs.
 
-### Open more ports
-We started workspace container with a port range mapped "-p 8020-8035". If you are planning to expose more applications 
+
+### Understanding ports
+The workspace was started with a port range mapping ***-p 8020-8035***. 
+This is because workspace contains a set of applications with browser-based UI 
+
+| Port      | Application               |
+| --------- | ------------------------- |
+| 8020      | Workspace UI              |
+| 8021      | Filebrowser               |
+| 8022      | Static file server        |
+| 8023      | Cronicle                  |
+| 8024      | Ungit                     |
+| 8025      | VS-Code (Theia)           |
+| 8026      | Terminal                  |
+| 8027      | Midnight Commander        |
+| 8028      | Htop                      |
+
+You don't need to memorize these ports. Workspace has UI from where you can open any of these applications. 
+Open [localhost:8020](http://localhost:8020), and from there open other applications included in the workspace.  
+
+<div align="center" style="font-style: italic;">
+    Demo: Workspace UI 
+</div>
+
+<p align="center">
+  <img src="./img/wid-ui.png" alt="wid-ui.png" width="750">
+</p>
+
+The rest of the ports from the port range can be used in order to expose optional applications, or applications you might 
+install in future. So we map several extra ports just inn case.   
+
+If you are planning to expose more applications 
 from inside of a container, add additional port mapping, for example
 
 ```sh
@@ -217,7 +250,7 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 -p 443:443 alno
 ```
 
 **NOTE:** It is not a problem if you don't expose any ports, but later on realise you need them - 
-you will just create new image, and run it exposing the required port (look in the section [Create new image](#create-new-image)) 
+you will just create new image, and run it exposing the required port (look in the section [Create new image](#create-new-workspace-image)) 
 
 ### Docker in docker
 
@@ -241,7 +274,7 @@ You can also run applications that should run permanently, and run jobs on sched
 
 #### Unsecure remote workspace
 
-The simplest deployment of the workkspace requires only 3 steps:
+The simplest deployment of the workspace requires only 3 steps:
 
 - get virtual server on your favourite cloud (Digital Ocean, Linode, AWS, GC, Azure ...) 
 - [install docker](https://docs.docker.com/engine/install/) on this server

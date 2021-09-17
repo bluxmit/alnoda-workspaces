@@ -35,4 +35,6 @@ RUN echo "------------------------------------------------------ code-server" \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
 
+# USER abc  # currently Code-server does not work undder abc
+
 COPY code-server-run.sh /opt/codeserver/code-server-run.sh 

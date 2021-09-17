@@ -1,7 +1,11 @@
 # Ubuntu-workspace
 
 Use docker as a lightweight Virtual Machine. Provides isolation of environments, 
-and requires less resources than VMs. Run locally or on a cloud server (with HTTPS and auth).
+and requires less resources than VMs. Run locally or on a cloud server (with HTTPS and auth).  
+
+<p align="center">
+  <img src="./img/ubuntu-wid-collage.png" alt="Collage">
+</p>
 
 Try it out:
 

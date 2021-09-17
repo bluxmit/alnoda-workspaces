@@ -3,7 +3,7 @@
 *Good documentation is great! Bad documentation is better than nothing.*   
 
 MkDocs-MagicSpace is an all-in-one tool, carefully crafted to make the development of gorgeous documentation 
-websites as easy as possible.   
+websites like [**this one**](https://mkdocs-magicspace.alnoda.org/) as easy as possible.   
 
 Try it out:
 

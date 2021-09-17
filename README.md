@@ -37,49 +37,50 @@ solution. Designed for specific IT projects, workspaces could also include frame
 tools to visualize and study data, report generators, task orchestrators, infrastructure visualization tools, interactive notebooks, 
 simulation UIs, custom dashboards, and many other.   
 
-
 <div align="center" style="font-style: italic;">
-    Demo: Workspace in docker
+    Demo: Ansible-Terraform workspace
 </div>
 
-
 <p align="center">
-  <img src="./workspaces/workspace-in-docker/img/workspace-demo.gif" alt="Htop" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
 </p>
-
 
 ## Available workspaces
 
-[`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md) - docker as a light-weight Virtual Machine. It 
-provides isolation of environments, but uses less resources than VMs. Ubuntu-workspace allows to start multiple processes inside the 
+[`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md). Docker as a light-weight Virtual Machine. It 
+provides isolation of environments, but uses less resources than VMs. Allows to start multiple processes inside the 
 same docker container, has docker-in-docker, Python and Node.js, and a collection of common applications such as text editors, 
 git, supervisord, z-shell etc. Ubuntu-workspace with browser-based terminal can be used on both local and remote server with the same experience. 
 When it runs on the remote server, the access can be restricted with a password, and secured with TLS encryption. 
 
-[`Python-Workspace`]
+[`Python-Workspace`](./workspaces/python-workspace/README.md). Python development enviroment inside the isolated docker container. Includes VS-code IDE, 
+job scheduler and other tools for linting, testing, auto-documentation and profiling. Start coding in Python rght away! Has all the features of 
+the Base-workspace and Ubuntu-workspace.
 
-[`Ansible-Terraform-Workspace`]
+[`Ansible-Terraform-Workspace`](./workspaces/ansible-terraform-workspace/README.md). This workspace - is a "dockerized" development environment 
+with [Ansible](https://docs.ansible.com/), [Terraform](https://www.terraform.io/) and lots of other stuff installed, 
+so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible. 
+Workspace will help to code and develop; visualize infrastructures and planned terraform changes; 
+display ansible hosts plays; schedule and observe executions and more! Has all the features of 
+the Base-workspace and Ubuntu-workspace.
 
-[`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) - has all the features of the *Base-Workspace*, and in addition - 
-a powerful browser-based version of Visual Studio Code. This workspace allows complete isolation of many IT-related projects, such as 
-software development, devops, QA, data analysis, data engineering, data science and other. Workspace can be used as local development environment, 
-as well as remote, when started on the cloud server, and can be secured with password. Workspace-in-docker allows to completely isolate and switch easily 
-between projects that involve multiple programming languages, different clouds, k8s clusters and have system dependencies. Withou this workspace 
-swithing between such complex environments would require multiple actions and can be tedious work. Workspace-in-docker is great for collaborative work, 
-can be easily shared, moved to any cloud server, backed up, has versions and can be easily extended and customized. Can be used as build, test or even 
-runtime environment.  
+[`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) - an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
+of documentation, tutorials, and training. Has all the features of the Base-workspace and Ubuntu-workspace.
 
-[`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - alternative workspace to the `workspace-in-docker`. It has all the features ot the latter, except for the 
+[`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md). General-purpose dockerized workspace - an environment fully isolated inside a docker container. 
+It can run anywhere, can be started and stopped, moved to another machine, archived to file or restored, pushed to docker registry, started on a cloud server. 
+This workspace has a powerful cod editor (browser-based VS-Code version), its own UI, and a collection of applications for more 
+convenient work, such as File Browser to easily exchange files and folders with workspace, Cronicle - advanced job scheduler with great UI, 
+MkDocs for documentation of the workspace and projects. Has all the features of the Base-workspace and Ubuntu-workspace.
+
+[`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - an alternative workspace to the `workspace-in-docker`. It has all the features ot the latter, except for the 
 different implementation of the Visual Studio Code. While `workspace-in-docker` has [Eclipse Theia IDE](https://theia-ide.org/), Codeserver-Workspace 
 includes [Codeserver](https://github.com/cdr/code-server) instead.   
 
-[`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) - an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
-of documentation, tutorials, and training.  
-
-[`Base-Workspace`](./workspaces/base-workspace/README.md) - docker as a light-weight Virtual Machine with batteries included, 
-designed to be used entirely through browser-based interfaces. Base-Workspace has its own UI, and a collection of applications for more 
+[`Base-Workspace`](./workspaces/base-workspace/README.md). Base-Workspace has its own UI, and a collection of applications for more 
 convenient work, such as File Browser to easily exchange files and folders with workspace, Cronicle - advanced job scheduler with great UI, 
-MkDocs for documentation of the workspace and projects. This workspace includes all the features of the *Ubuntu-workspace*.
+MkDocs for documentation of the workspace and projects. Does not include code editor, has all the features of Ubuntu-workspace. 
+
 
 ## Why workspace In Docker 
 
