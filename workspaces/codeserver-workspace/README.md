@@ -4,7 +4,7 @@ General-purpose dockerized workspace - an environment fully isolated inside a do
 to file or restored, pushed to docker registry, started on a cloud server.   
 
 <p align="center">
-  <img src="./img/codeserver-wid-collage.png" alt="Collage">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-wid-collage.png" alt="Collage">
 </p>
 
 #### Try it out
@@ -46,7 +46,7 @@ The Workspace contains browser-based Visual Studio Code, and several browser-bas
 </div>
 
 <p align="center">
-  <img src="./img/codeserver-wid-demo.gif" alt="WID demo" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-wid-demo.gif" alt="WID demo" width="900">
 </p>
 
 **Tools with UI** 
@@ -91,7 +91,7 @@ The IDE is already configured to make code highlighting for many programming lan
 </div>
 
 <p align="center">
-  <img src="./img/codeserver-demo.gif" alt="Code-server demo" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-demo.gif" alt="Code-server demo" width="900">
 </p>
 
 
@@ -217,7 +217,7 @@ Open [localhost:8020](http://localhost:8020), and from there open other applicat
 </div>
 
 <p align="center">
-  <img src="./img/codeserver-ui.png" alt="codeserver-ui.png" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-ui.png" alt="codeserver-ui.png" width="750">
 </p>
 
 The rest of the ports from the port range can be used in order to expose optional applications, or applications you might 
@@ -298,7 +298,7 @@ use utility `/home/abc/utils/remote.py` to generate create docker-compose projec
 After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
 
 <p align="center">
-  <img src="./img/codeserver-remote-gen.gif" alt="generate-remote.gif" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-remote-gen.gif" alt="generate-remote.gif" width="750">
 </p>
 
 . Copy this folder to the remote server where you want to launch the Python workspace. 
@@ -594,7 +594,7 @@ the new page has appeared in your Workspace UI - it has live reload, and you don
 
 
 <p align="center">
-  <img src="./img/codeserver-docs.gif" alt="workspace-docs" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-docs.gif" alt="workspace-docs" width="900">
 </p>
 
 You can easily build beautiful static website from this documentation

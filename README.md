@@ -185,7 +185,7 @@ The most general workspace - is [`Ubuntu-workspace`](./workspaces/ubuntu-workspa
 in order to run multiple processes, adds cron, zsh, and other applications that will be used in most workspaces. 
 
 Other general workspaces are the [`Base-Workspace`](./workspaces/base-workspace/README.md), which adds several browser-based applications,  
-like task scheduler, file browser, documentation framework and workspace own page. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) 
+like task scheduler, file browser, documentation framework and workspace own UI. [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) 
 adds [Eclipse Theia](https://theia-ide.org/) to the Base-Workspace. Theia - is an open-source browser-based VS-Code version, making 
 Workspace-in-docker to be a general base workspace, to be used in order to create workspaces for specific tasks (like Python workspace, or 
 Ansible workspace). 

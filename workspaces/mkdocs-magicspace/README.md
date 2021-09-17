@@ -5,27 +5,33 @@
 MkDocs-MagicSpace is an all-in-one tool, carefully crafted to make the development of gorgeous documentation 
 websites like [**this one**](https://mkdocs-magicspace.alnoda.org/) as easy as possible.   
 
+<p align="center">
+  <img src="./img/mkdocs-collage.png" alt="Collage">
+</p>
+
+
 Try it out:
 
 ```
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
 ```
 
-and open [http://localhost:8020] in browser  
+and open [localhost:8020](http://localhost:8020) in browser  
 
 ## Contents
 
+* [Why documentation websites with MkDocs](#why-documentation-websites-with-mkdocs)
+* [About](#about)
+* [MkDocs features](#mkdocs-features)
 * [Use-cases](#use-cases)
-* [Why documentation websites](#why-documentation-websites)
-* [Features](#features)
-* [The technology behind](#the-technology-behind)
 * [Launch Workspace](#launch-workspace)
     * [Workspace terminal](#workspace-terminal)
     * [Multiple workspaces](#multiple-workspaces)
     * [Open more ports](#open-more-ports)
     * [Docker in docker](#docker-in-docker)
     * [Run on remote server](#run-on-remote-server)
- * [Use Workspace](#use-workspace)
+* [Use Workspace](#use-workspace)
+    * [Create MkDocs website](#create-mkdocs-website)
  	* [Install applications](#install-applications)
  	* [Schedule jobs with Cron](#schedule-jobs-with-cron)
  	* [Python](#python)
@@ -39,30 +45,9 @@ and open [http://localhost:8020] in browser
     * [Move workspace to the cloud](#move-workspace-to-the-cloud)
 
 
-## Use-cases
+## Why documentation websites with MkDocs
 
-With the help of MkDocs-MagicSpace you can develop, build and serve the following kinds of websites:
-
-1. Awesome looking docs for your open-source project. Use HTML & CSS to create front page and markdown for doc pages.
-
-2. User manuals and API docs. While enterprise docs are for internal use, create great-looking API websites for your users, and manuals for your customers.
-
-1. Enterprise documentation websites that unite numerous git repositories into one documentation project.
-
-4. Tutorials and training websites. Do you have a lot of experience in something? Share it with the world. 
-MkDocs-MagicSpace helps you to highlight the code in many programming languages, write complex mathematical formulas, 
-[draw diagrams]((https://mermaid-js.github.io/mermaid/#/)) and so much more!
-
-5. With MkDocs-MagicSpace you can also create books, booklets, and brochures as .pdf files.  
-
-One of the most convenient features of the MkDocs-MagicSpace - is that it is a workspace in docker. 
-You use it on your local machine, you can run it on the remote server and collaborate with your colleagues, 
-you can give it to your peer as a whole. And you can use it to serve your docs from any server, no matter 
-if it is public or inside the company's VPN.
-
-## Why documentation websites
-
-*Why create separate documentation websites? Why not just write Git readme files?*
+*Why create separate documentation websites? And if so, why MkDocs?*
 
 - MkDocs website with beautiful themes looks much better than any readme file. The resulting documentation website looks professional and awesome.
 - MkDocs adds text search to your documentation website.
@@ -72,22 +57,18 @@ if it is public or inside the company's VPN.
 can create a unified documentation website from multiple repositories in Github, GitLab, Bitbucket.
 - You can add such features as Google Analytics, multi-language localization.
 
-*And what about Confluent?*   
 
-The approach of having docs in different places (Git repositories, Confluent, Wiki, etc.) has serious drawbacks. It creates chaos, and documentation inevitably diverges with time.
-And you never know where to look for the information you need.
+## About
 
-The best docs live together with the code. With MkDocs-MagicSpace you can follow this practice with ease, build a documentation website 
-from one or many git repositories, include readme files that live close to the code. You can have a build process that even creates 
-auto-documentation directly from the code. 
+The Workspace contains browser-based Visual Studio Code, and several browser-based tools that make it more convenient to work from inside a docker container.  
 
-## Features
+<div align="center" style="font-style: italic;">
+    Demo: MkDocs-MagicSpace
+</div>
 
-MkDocs-MagicSpace has [**MkDocs**](https://squidfunk.github.io/mkdocs-material/) installed with a collection of extensions and plugins 
-that bring MkDocs to the next level. 
-
-MkDocs-MagicSpace is an extension of the [workspace-in-docker](https://github.com/Alnoda/workspaces-in-docker/blob/main/workspaces/workspace-in-docker/README.md) 
-and has all its features:
+<p align="center">
+  <img src="./img/mkdocs-magicspace-demo.gif" alt="Magicspace demo" width="900">
+</p>
 
 - **Workspace UI** - launch all workspace tools from one place.
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
@@ -99,10 +80,23 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
 
-Built on top of Base-workspace and Ubuntu-workspace, this workspace gets all the features those workspaces have. 
-In particular, workspace-in-docker provides excellent experience when working directly in the terminal, and has docker-in-docker.
+**Other:**
+- Docker in docker
+- [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+- Python 3, Pip 
+- Node/nodeenv
+- git, git-flow 
+- curl, wget, telnet, jq, 
+- nano, vim, mc, ncdu, htop
+- supervisord
+- cron
 
-#### The technology behind
+Built on top of [Workspace-in-docker](https://github.com/Alnoda/workspaces-in-docker/blob/main/workspaces/workspace-in-docker/README.md), 
+[Base-workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/README.md), and 
+[Ubuntu-workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/ubuntu-workspace/README.md), 
+this workspace gets all the features those workspaces have. 
+
+#### MkDocs features
 
 MkDocs-MagicSpace in its essense is all about [**MkDocs**](https://www.mkdocs.org/) -  a fast, simple and downright gorgeous static site generator that's geared towards 
 building project documentation. 
@@ -124,6 +118,29 @@ MkDocs-MagicSpace has lots of packages and extensions already installed:
 - [Mkdocs-table-reader-plugin]() - directly insert CSV files as tables in your website.
 
 **(The complete list of installed packages - /home/abc/installed-python-packages/mkdocs-requirements.txt)**
+
+## Use-cases
+
+This workspace has many tools and dependencies, configuring it from scratch will cost you a lot of time.  
+
+With the help of MkDocs-MagicSpace you can develop, build and serve the following kinds of websites:
+
+1. Awesome looking docs for your open-source project. Use HTML & CSS to create front page and markdown for doc pages.
+
+2. User manuals and API docs. While enterprise docs are for internal use, create great-looking API websites for your users, and manuals for your customers.
+
+1. Enterprise documentation websites that unite numerous git repositories into one documentation project.
+
+4. Tutorials and training websites. Do you have a lot of experience in something? Share it with the world. 
+MkDocs-MagicSpace helps you to highlight the code in many programming languages, write complex mathematical formulas, 
+[draw diagrams]((https://mermaid-js.github.io/mermaid/#/)) and so much more!
+
+5. With MkDocs-MagicSpace you can also create books, booklets, and brochures as .pdf files.  
+
+One of the most convenient features of the MkDocs-MagicSpace - is that it is a workspace in docker. 
+You use it on your local machine, you can run it on the remote server and collaborate with your colleagues, 
+you can give it to your peer as a whole. And you can use it to serve your docs from any server, no matter 
+if it is public or inside the company's VPN.
 
 ## Launch Workspace
 
@@ -277,25 +294,67 @@ use utility `/home/abc/utils/remote.py` to generate create docker-compose projec
 
 > `python /home/abc/utils/remote.py --workspace="mkdocs-magicspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
 
-**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
+**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice. 
 
-You see folder `/home/abc/utils/remote` is created. Copy this folder to the remote server (any location). Ssh to the server, cd into 
-the directory you copied and execute `docker-compose up -d`.  
+After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
+
+<p align="center">
+  <img src="./img/mkdocs-remote.gif" alt="mkdocs-remote.gif" width="750">
+</p>
+
+. Copy this folder to the remote server where you want to launch the Python workspace. 
+You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
+
+```sh
+docker-compose up -d
+```  
 
 That's it, you workspace is running securely on the remote server, using 
-self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, 
-and authentication is added. 
+self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, and authentication is added. 
+
+**NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/accept-risks.png" alt="accept-risk" width="750">
+</p> 
+
+After you accept the risk, authentication window will appear asking you the user and password, that you have set as<ANY_USER_NAME>, <ANY_USER_PASSWORD> 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/auth.png" alt="auth" width="750">
+</p> 
+
 
 ## Use Workspace
 
-Among the common actions you'd do in the workspace are
+### Create MkDocs website  
 
-- installation of new applications and runtimes 
-- edit files, write code, scripts
-- build, compile and execute code 
-- start/stop applications and services
-- schedule tasks and scripts
-- process data
+[MkDocs](https://www.mkdocs.org/) is very powerful. Even more powerful it becomes with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).  
+But this workspace takes it to the space by having tons of Markdown plugins carefully selected, configured, and set up. It would be impossible to 
+demonstrate all of the advanced Markdown features in the Readme file, simply because standard engines that render Markdown do not support the 
+advanced features.  
+
+We have prepared extended Markdown tutorials, so that you don't need to search in the Internet for docs of every Markdown plugin. 
+They are all in one place: 
+
+* [Intro](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/)
+* [Basics](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/basics/)
+* [Hack the markdown](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/hack-markdown/)
+* [Improve readability with tabs, lists and footnotes](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/improve-readability/)
+* [Create tables](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/tables/)
+* [Highlight with blockquotes and admonitions](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/highlight-what-matters/)
+* [Make it classy with emoji, icons and more](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/classy-markdown/)
+* [Make images awesome](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/images/)
+* [Add the code](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/add-the-code/)
+* [Write formulas](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/formulas/)
+* [Draw diagrams](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/diagrams/)
+* [Use templates](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/templates-macros/)
+
+In addition you can find here tutorials how to build and deploy your website in just couple of clicks 
+* [Build website](https://mkdocs-magicspace.alnoda.org/tutorials/get-online/build-workspace/)
+* [Publish on GitHub Pages](https://mkdocs-magicspace.alnoda.org/tutorials/get-online/github-pages/)
+
+
 
 ### Install applications
 
