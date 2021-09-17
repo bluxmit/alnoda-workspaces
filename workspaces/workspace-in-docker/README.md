@@ -1,29 +1,31 @@
 # Workspace-in-docker
 
-Workspace-in-docker - is a completely self-contained and fully isolated development environment, that runs inside a docker container. 
-This image includes everything necessary to start coding right away. To use Workspace-in-docker, you don't need to install or use any other tools, apart from docker itself. Workspace can be used on a laptop, PC or launched on the remote server with HTTPS 
-and authentication. Can be shared, backed up, and has versions. 
+General-purpose dockerized workspace - an environment fully isolated inside a docker container. It can run anywhere, can be started and stopped, moved to another machine, archived 
+to file or restored, pushed to docker registry, started on a cloud server.  
+
+<p align="center">
+  <img src="./img/wid-collage.png" alt="Collage">
+</p>
+
 
 #### Try it out
  
 ```
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
-```   
-
-![Workspaces are amazing!](./img/workspace-demo.gif)
+```  
 
 ## Contents
 
- * [Why this image](#why-this-image)
- * [Use-cases](#use-cases)
- * [Features](#features)
- * [Launch Workspace](#launch-workspace)
+* [About](#about)
+* [Code Editor](#code-editor)
+* [Why workspace in docker](#why-workspace-in-docker)
+* [Launch Workspace](#launch-workspace)
     * [Workspace terminal](#workspace-terminal)
     * [Multiple workspaces](#multiple-workspaces)
     * [Open more ports](#open-more-ports)
     * [Docker in docker](#docker-in-docker)
     * [Run on remote server](#run-on-remote-server)
- * [Use Workspace](#use-workspace)
+* [Use Workspace](#use-workspace)
  	* [Install applications](#install-applications)
  	* [Schedule jobs with Cron](#schedule-jobs-with-cron)
  	* [Python](#python)
@@ -36,51 +38,24 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
     * [Save and load workspace images](#save-and-load-workspace-images)
     * [Move workspace to the cloud](#move-workspace-to-the-cloud)
 
-## Why this image 
+## About
 
-> Have your ever participated in several software development projects at the same time? And each of them having different environments (dev, stage, prod). 
-> Managing such multiple environments is much easier is everything is packaged inside a docker container.
+The Workspace contains browser-based Visual Studio Code, and several browser-based tools that make it more convenient to work from inside a docker container.  
 
-This workspace allows complete isolation of many IT-related projects, such as software development, DevOps, QA, data analysis, data engineering, data science, and others. 
-Workspace can be used as a local development environment, as well as a remote dev environment, when started on the cloud server, and can be secured with a password. 
+<div align="center" style="font-style: italic;">
+    Demo: Workspace in docker
+</div>
 
-Workspace-in-docker allows to completely isolate and switch easily between projects that involve multiple programming languages, cloud CLIs, 
-k8s clusters, configurations, and have system dependencies. Without this workspace, switching between such complex environments would require multiple actions and can be tedious work.  
+<p align="center">
+  <img src="./img/wid-demo.gif" alt="WID demo" width="900">
+</p>
 
-Workspace-in-docker is great for collaborative work - it can be easily shared, moved to any cloud server, backed up, has versions, and can be easily extended and customized.  Can be used as a build, test, or even runtime environment.  
+**Tools with UI** 
 
-Workspace makes it extremely easy to launch small products, created by hobby developers. The fact that the development, build, and runtime environment is the very same workspace, deployment of a web application becomes as easy, as committing workspace to a docker image and run it on any server. No need to write dockerfile, and waste time trying to replicate 
-your development environment in a production docker image.  
-  
-Workspace-in-docker is a good choice if you want to control and versatility. It is lightweight, 
-includes open-source tools and is nearly as convenient as working directly with a local environment.
-
-> Docker is a great tool to bundle together all the things that are related to a single project. It is light-weight and you can start multiple workspaces.
-
-## Use-cases
-
-- Avoid the tedious process of setting dev environment on your laptop
-- Work conveniently with multiple IT projects on the same laptop
-- Move all your work to another machine instantly
-- Simple way to start coding for newbies 
-- Run dev environment in cloud and work from any device, being independent on any cloud service or cloud provider
-- Back-up entire workspaces with important work, save versions of the workspaces before changes
-- Collaborate with peers by sharing the entire workspace or run it in the cloud
-- Move from dev to production in a minute
-- Make experiments (try new packages, versions, frameworks) without risking affecting existing environment
-- With a single command start, stop and resume job schedules, related to the same project 
-- Create a custom dev environment for your team, and help new-comers to save time on setting up their environments
-- Move dev environment back and forth between powerful Windows PC and macOS laptop in a minute
-
-## Features
-
-Workspace-in-docker has all the features of the [*Base-Workspace*](https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/README.md), 
-in addition it includes a powerful browser-based version of Visual Studio Code. It is a lightweight VM alternative, which provides full isolation, 
-consumes little resources and contains full-fledged IDE.
-
-- **Workspace UI** - launch all workspace tools from one place.
+- Workspace own UI. Launch all workspace tools from one place. Customize to your yown needs, include docs.
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud.
+VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.  
+- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
 - [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
 - [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
 - [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
@@ -88,6 +63,65 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - [**MkDocs**](https://squidfunk.github.io/mkdocs-material/)  - maintain documentation for your workspace or project with only markdown. 
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
+
+**Other:**
+- Docker in docker
+- [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+- Python 3, Pip 
+- Node/nodeenv
+- git, git-flow 
+- curl, wget, telnet, jq, 
+- nano, vim, mc, ncdu, htop
+- supervisord
+- cron
+
+## Code Editor
+
+The main code editor of this workspace is [**Eclipse Theia**](https://theia-ide.org/docs/) - an open-source version of popular Visual Studio Code IDE. 
+despite Eclipse Theia is a browser-based code editor, it is fast, responsive, and full-featured. It features code highlighting, autocompletion, 
+rendering of notebooks has a tree-based file browser, and a great number of pre-installed color themes.  
+
+<p align="center">
+  <img src="./img/theia-themes.png" alt="theia-themes.png" width="900">
+</p>
+
+You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
+The IDE is already configured to make code highlighting for a great number of programming languages and file types. It also has many 
+popular extensions installed  
+
+<div align="center" style="font-style: italic;">
+    Demo: Eclipse Theia
+</div>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/theia.gif" alt="Theia demo" width="900">
+</p>
+
+## Why this image 
+
+Workspace-in-docker - is a completely self-contained and fully isolated development environment, that runs inside a docker container. 
+This image includes everything necessary to start coding right away. To use Workspace-in-docker, you don't need to install or use any other tools, apart from docker itself. 
+Workspace can be used on a laptop, PC or launched on the remote server with HTTPS and authentication. Can be shared, backed up, and has versions. 
+Very convenient if you work on multiple projects and need an easy way to switch between them.  
+
+Read in detail about the [advantages of the dockerized workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#why-workspace-in-docker) 
+and the [situations when workspace is a good choice](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#use-cases)   
+
+**TLDR:** This workspace might be quite useful when you want to:
+
+- Avoid the tedious process of setting dev environment on your laptop
+- Work conveniently with multiple IT projects on the same machine
+- Be able to move all your work to another machine 
+- Simple way to start coding
+- Run dev environment in cloud and work from any device, being independent of cloud provider
+- Back-up entire workspaces with important work, save versions of the workspaces before changes
+- Collaborate with colleagues by sharing the entire workspace or run it in the cloud
+- Move from dev to POC in minutes
+- Make experiments (try new packages, versions, frameworks) without risking affecting existing environment
+- With a single command start, stop and resume job schedules, related to the same project 
+- Create a custom dev environment for your team, and help new-comers to save time on setting up their environments
+- Move dev environment back and forth between powerful Windows PC and macOS laptop 
+
 
 ## Launch Workspace
 
@@ -125,7 +159,7 @@ There are several ways how to work with terminal of the the workspace-in-docker:
 - ssh into the running the docker container (of the workspace) from your terminal
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/base-workspace/img/base-workspace-terminal.gif" alt="Base-Workspace terminal" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/base-workspace/img/base-workspace-terminal.gif" alt="Base-Workspace terminal" width="750">
 </p> 
 
 *(Browser-based terminals always work under the user you started the workspace with, the default is non root user "abc")*
@@ -243,12 +277,36 @@ use utility `/home/abc/utils/remote.py` to generate create docker-compose projec
 
 **NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
 
-You see folder `/home/abc/utils/remote` is created. Copy this folder to the remote server (any location). Ssh to the server, cd into 
-the directory you copied and execute `docker-compose up -d`.  
+After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
+
+<p align="center">
+  <img src="./img/wid-remote.gif" alt="generate-remote.gif" width="750">
+</p>
+
+. Copy this folder to the remote server where you want to launch the Python workspace. 
+You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
+
+```sh
+docker-compose up -d
+```  
 
 That's it, you workspace is running securely on the remote server, using 
-self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, 
-and authentication is added. 
+self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, and authentication is added. 
+
+
+**NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/accept-risks.png" alt="accept-risk" width="750">
+</p> 
+
+After you accept the risk, authentication window will appear asking you the user and password, that you have set as<ANY_USER_NAME>, <ANY_USER_PASSWORD> 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/auth.png" alt="auth" width="750">
+</p> 
+
+
 
 ## Use Workspace
 
@@ -489,10 +547,46 @@ a remote server is only 3 commands:
 If you don't want to use container registry, then there are 2 steps more involved:
 
 1. [Commit workspace to the a image](#create-new-workspace-image)
-2. [Save image to file](save-and-loa-images) 
+2. [Save image to file](#create-new-workspace-image) 
 3. Copy file to remote server. There are many options:
     - Launch filexchange workspace on the remote server 
     - Use [cyberduck](https://cyberduck.io/) 
     - use [scp](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/)
 4. [Load workspace image from file](#save-and-load-workspace-images) on the remote server 
 5. [Start workspace on the remote server](#run-on-remote-server) 
+
+
+## Workspace Documentation
+
+Workspace can easily be customized for your specific needs. You can also use Workspace for a complex project, and might need a 
+tool to write remarks, plans, action plans. As well as architectural artefacts for the components you wish to implement. Often it is 
+also needed to store somewhere snippets of code or shell commands that you often use in your work. It would be uncomfortable to use extra 
+tool or solution outside of the Workspace to store such remarks. 
+
+Because Workspace is a complete self-contained environment, it include tools to make remarks, plans, store pieces of code, write anything, 
+and even build complete static documentation websites that you can host on GitHub Pages for example.  
+
+[MkDocs](https://www.mkdocs.org/) is a part of the workspace, and its dev server is up and running every time you start the Workspace. In fact, 
+the workspace UI (port 8020 by default) - is served by the MkDocs dev server.  
+
+You can easily modify the UI, add more pages or update existing pages. The changes will be updated immediately without the need to do anything. 
+
+MkDocs project is located in the `/home/docs/` folder. It has subfolder called `docs` (so it is `/home/docs/docs/`) where all the Markdown documents 
+are stored. Simply create new `.md` file there. And add reference about this file to the MkDocs config `/home/docs/mkdocs.yml`. You will see that 
+the new page has appeared in your Workspace UI - it has live reload, and you dont need to do annything, just write in the markdown files.
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/workspace-docs.gif" alt="workspace-docs" width="900">
+</p>
+
+You can easily build beautiful static website from this documentation
+
+> `cd /home/docs/ && mkdocs build -d /home/static-server/my-doc-website` 
+
+The resulting HTML website is in folder `/home/static-server/my-doc-website`, you can view it with Static File Server and download to local 
+with Filebrowser.  
+
+You can make even more stunning documentation websites with advanced Markdown features using [MkDocs-Magicspace](https://mkdocs-magicspace.alnoda.org/).
+
+

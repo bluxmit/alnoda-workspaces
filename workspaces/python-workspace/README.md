@@ -131,8 +131,8 @@ You can install any extension from [open-vsx.org](https://open-vsx.org/) that ha
 
 ## Why this workspace
 
-This is a dockerized workspace - an environment completely isolated inside a docker container. It can run anywhere, can be started and stopped, moved to another machine, or archived. 
-Read in detail about the [advantages of the dockerized workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#why-workspace-in-docker) 
+This is a dockerized workspace - an environment completely isolated inside a docker container. It can run anywhere, can be started and stopped, moved to another machine, archived 
+to file or restored, pushed to docker registry, started on a cloud server. Read in detail about the [advantages of the dockerized workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#why-workspace-in-docker) 
 and the [situations when workspace is a good choice](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#use-cases)   
 
 **TLDR:** This workspace might be quite useful when you want to:
@@ -361,7 +361,6 @@ After the command is executed, you will see folder `/home/abc/utils/remote` is c
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/generate-remote.gif" alt="generate-remote.gif" width="750">
 </p>
 
-
 . Copy this folder to the remote server where you want to launch the Python workspace. 
 You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
 
@@ -374,11 +373,15 @@ self-signed TLS certificates for encrypted https communication between you lapto
 
 **NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
 
-![accept-risk](https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/accept-risks.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/accept-risks.png" alt="accept-risk" width="750">
+</p> 
 
 After you accept the risk, authentication window will appear asking you the user and password, that you have set as<ANY_USER_NAME>, <ANY_USER_PASSWORD> 
 
-![auth](https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/auth.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/auth.png" alt="auth" width="750">
+</p> 
 
 
 ## Use Workspace
