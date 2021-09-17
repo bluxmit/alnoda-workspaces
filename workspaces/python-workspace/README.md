@@ -4,7 +4,7 @@ Python development enviroment inside the isolated docker container. Includes VS-
 job scheduler and other tools for linting, testing, auto-documentation and profiling. 
 
 <p align="center">
-  <img src="./img/python-wid-collage.png" alt="Collage">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/python-wid-collage.png" alt="Collage">
 </p>
 
 Try it out
@@ -18,6 +18,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
 ## Contents
 
 * [About](#about)
+* [Code Editor](#code-editor)
 * [Why this workspace](#why-this-workspace)
 * [Launch Workspace](#launch-workspace)
     * [Start local workspace](#start-local-workspace)
@@ -60,14 +61,14 @@ and open [localhost:8020](http://localhost:8020) in browser.
 
 
 ## About
-The workspace contains browser-based Visual Studio Code and multiple tools which make working with Python more convenient.   
+The workspace contains browser-based Visual Studio Code and multiple tools which make working with Python in docker more convenient.   
 
 <div align="center" style="font-style: italic;">
     Demo: Python workspace
 </div>
 
 <p align="center">
-  <img src="./img/python-wid.gif" alt="Htop" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/python-wid.gif" alt="Htop" width="900">
 </p>
 
 **Python tools:**
@@ -112,9 +113,29 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - supervisord
 - cron
 
+## Code Editor
+
+The main code editor of this workspace is [**Eclipse Theia**](https://theia-ide.org/docs/) - an open-source version of popular Visual Studio Code IDE. 
+despite Eclipse Theia is a browser-based code editor, it is fast, responsive, and full-featured. It features code highlighting, autocompletion, 
+rendering of notebooks has a tree-based file browser and a great number of pre-installed color themes.  
+
+You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors.  
+
+<div align="center" style="font-style: italic;">
+    Demo: Eclipse Theia
+</div>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/theia.gif" alt="Theia demo" width="900">
+</p>
+
 ## Why this workspace
 
-This workspace might be quite useful when you want to:
+This is a dockerized workspace - an environment completely isolated inside a docker container. It can run anywhere, can be started and stopped, moved to another machine, or archived. 
+Read in detail about the [advantages of the dockerized workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#why-workspace-in-docker) 
+and the [situations when workspace is a good choice](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#use-cases)   
+
+**TLDR:** This workspace might be quite useful when you want to:
 
 - Avoid the tedious process of setting dev environment on your laptop
 - Work conveniently with multiple IT projects on the same laptop, and switching between them made simple
@@ -129,8 +150,6 @@ This workspace might be quite useful when you want to:
 - Create a custom dev environment for your team, and help new-comers to save time on setting up their environments
 - Move dev environment back and forth between powerful Windows PC and macOS laptop in minutes
 
-Read in detail about the [advantages of the dockerized workspace](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#why-workspace-in-docker) 
-and the [situations when workspace is a good choice](https://github.com/bluxmit/alnoda-workspaces/blob/main/README.md#use-cases)   
 
 ## Launch Workspace
 
