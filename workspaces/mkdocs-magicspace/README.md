@@ -6,7 +6,7 @@ MkDocs-MagicSpace is an all-in-one tool, carefully crafted to make the developme
 websites like [**this one**](https://mkdocs-magicspace.alnoda.org/) as easy as possible.   
 
 <p align="center">
-  <img src="./img/mkdocs-collage.png" alt="Collage">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/mkdocs-magicspace/img/mkdocs-collage.png" alt="Collage">
 </p>
 
 
@@ -67,7 +67,7 @@ The Workspace contains browser-based Visual Studio Code, and several browser-bas
 </div>
 
 <p align="center">
-  <img src="./img/mkdocs-magicspace-demo.gif" alt="Magicspace demo" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/mkdocs-magicspace/img/mkdocs-magicspace-demo.gif" alt="Magicspace demo" width="900">
 </p>
 
 - **Workspace UI** - launch all workspace tools from one place.
@@ -299,7 +299,7 @@ use utility `/home/abc/utils/remote.py` to generate create docker-compose projec
 After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
 
 <p align="center">
-  <img src="./img/mkdocs-remote.gif" alt="mkdocs-remote.gif" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/mkdocs-magicspace/img/mkdocs-remote.gif" alt="mkdocs-remote.gif" width="750">
 </p>
 
 . Copy this folder to the remote server where you want to launch the Python workspace. 

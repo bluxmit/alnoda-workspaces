@@ -47,7 +47,8 @@ simulation UIs, custom dashboards, etc.
 
 ## Available workspaces
 
-[`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md). Docker as a light-weight Virtual Machine. It 
+### [`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md) 
+Docker as a light-weight Virtual Machine. It 
 provides isolation of environments, but uses less resources than VMs. Allows to start multiple processes inside the 
 same docker container, has docker-in-docker, Python and Node.js, and a collection of common applications such as text editors, 
 git, supervisord, z-shell etc. Ubuntu-workspace with browser-based terminal can be used on both local and remote server with the same experience. 
@@ -57,7 +58,8 @@ When it runs on the remote server, the access can be restricted with a password,
 docker run --name space-1 -d -p 8020-8030:8020-8030 alnoda/ubuntu-workspace
 ```
 
-[`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md). General-purpose dockerized workspace - an environment fully isolated inside a docker container. 
+### [`Workspace-in-docker`](./workspaces/workspace-in-docker/README.md) 
+General-purpose dockerized workspace - an environment fully isolated inside a docker container. 
 It can run anywhere, can be started and stopped, moved to another machine, archived to file or restored, pushed to docker registry, started on a cloud server. 
 This workspace has a powerful cod editor (browser-based VS-Code version), its own UI, and a collection of applications for more 
 convenient work, such as File Browser to easily exchange files and folders with workspace, Cronicle - advanced job scheduler with great UI, 
@@ -67,7 +69,8 @@ MkDocs for documentation of the workspace and projects. Has all the features of 
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
 ```
 
-[`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) - an alternative workspace to the workspace-in-docker. It has all the features ot the latter, except for the 
+### [`Codeserver-Workspace`](./workspaces/codeserver-workspace/README.md) 
+An alternative workspace to the workspace-in-docker. It has all the features ot the latter, except for the 
 different implementation of the Visual Studio Code. While workspace-in-docker has [Eclipse Theia IDE](https://theia-ide.org/), Codeserver-Workspace 
 includes [Codeserver](https://github.com/cdr/code-server) instead.   
 
@@ -75,7 +78,8 @@ includes [Codeserver](https://github.com/cdr/code-server) instead.
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/codeserver-workspace
 ```
 
-[`Python-Workspace`](./workspaces/python-workspace/README.md). Python development enviroment inside the isolated docker container. Includes VS-code IDE, 
+### [`Python-Workspace`](./workspaces/python-workspace/README.md) 
+Python development enviroment inside the isolated docker container. Includes VS-code IDE, 
 job scheduler and other tools for linting, testing, auto-documentation and profiling. Start coding in Python rght away! Has all the features of 
 the Base-workspace and Ubuntu-workspace.  
 
@@ -83,7 +87,8 @@ the Base-workspace and Ubuntu-workspace.
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/python-workspace
 ```
 
-[`Ansible-Terraform-Workspace`](./workspaces/ansible-terraform-workspace/README.md). This workspace - is a "dockerized" development environment 
+### [`Ansible-Terraform-Workspace`](./workspaces/ansible-terraform-workspace/README.md) 
+This workspace - is a "dockerized" development environment 
 with [Ansible](https://docs.ansible.com/), [Terraform](https://www.terraform.io/) and lots of other stuff installed, 
 so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible. 
 Workspace will help to code and develop; visualize infrastructures and planned terraform changes; 
@@ -94,7 +99,8 @@ the Base-workspace and Ubuntu-workspace.
 docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 alnoda/ansible-terraform-workspace
 ```
 
-[`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) - an all-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
+### [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) 
+All-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
 of documentation, tutorials, and training. Has all the features of the Base-workspace and Ubuntu-workspace.
 
 ```
@@ -165,8 +171,8 @@ a self-contained isolated environment first.
 For example, if you are a data analyst, data scientist, researcher you make experiments, simulations, train ML models. Such work often involves 
 frequent changes to your environment (updating packages, install new applications, change datasets, etc.). To reproduce analytics, 
 experiment, or ML model training you need to have an exact version of your environment at a specific point in time. Dockerized workspaces in docker 
-solve this problem very well! At any moment you can backup and save your entire workspace running in the docker container, and launch it 
-as a new workspace whenever you want.
+solve this problem very well! At any moment you can backup and save your entire workspace as an image, and launch it 
+as a new workspace whenever and wherever you want.
 
 **Collaboration made simple.** You need a workspace that can be shared with your peers or colleagues. Launch it on the cloud server 
 and use together.  

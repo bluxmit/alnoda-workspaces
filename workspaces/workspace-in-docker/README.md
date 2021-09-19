@@ -232,7 +232,7 @@ Open [localhost:8020](http://localhost:8020), and from there open other applicat
 </div>
 
 <p align="center">
-  <img src="./img/wid-ui.png" alt="wid-ui.png" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-ui.png" alt="wid-ui.png" width="750">
 </p>
 
 The rest of the ports from the port range can be used in order to expose optional applications, or applications you might 
@@ -313,7 +313,7 @@ use utility `/home/abc/utils/remote.py` to generate create docker-compose projec
 After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
 
 <p align="center">
-  <img src="./img/wid-remote.gif" alt="generate-remote.gif" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-remote.gif" alt="wid-remote.gif" width="750">
 </p>
 
 . Copy this folder to the remote server where you want to launch the Python workspace. 
