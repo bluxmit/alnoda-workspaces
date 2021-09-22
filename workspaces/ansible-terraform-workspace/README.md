@@ -435,7 +435,7 @@ Ansible-report is a shell script that simply executes several ansible tools in o
 - ansible-inventory-grapher
 - ansible-playbook-grapher (for all ansible plays in the folder)
 
-You can also use any of the ansible toos separately. 
+You can also use any of the ansible tools separately. 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-report.gif" alt="Htop" width="900">
@@ -483,7 +483,7 @@ ansible-playbook-grapher --include-role-tasks example.yml -o /home/static-server
 #### [Ansible Doctor](https://ansible-doctor.geekdocs.de/)
 
 Ansible-doctor is a simple annotation like documentation generator based on Jinja2 templates. 
-hile ansible-doctor comes with a default template called readme, it is also possible to write your own templates.  
+while ansible-doctor comes with a default template called readme, it is also possible to write your own templates.  
 
 The first step is to identify if the given folder is an Ansible role. This check is very simple, 
 if the folder contains a sub-directory called tasks is MUST be an Ansible role! :)   
@@ -574,7 +574,7 @@ aws_access_key_id = <YOUR_AWS_KEY>
 aws_secret_access_key = <YOUR_AWS_SECRET>
 ```
 
-Clone your terraform project to the workspace, or if you dont have anny, you can use this terraform example repository:
+Clone your terraform project to the workspace, or if you don't have any, you can use this terraform example repository:
 
 > `git clone https://github.com/pvarentsov/terraform-aws-free-tier /home/project/aws-example` 
 
@@ -621,7 +621,7 @@ and start Rover to visualize terraform state
 </p>
 
 If you have followed hands-on the tutorial from the previous section (terraform report from the terraform-aws-free-tier repo), you 
-can vizualize it with Rover:
+can visualize it with Rover:
 
 > `rover --workingDir /home/project/aws-example/src/free-tier`
 
@@ -649,7 +649,7 @@ with some Terraform providers.*
 
 #### [Terraform pre-commit hook](https://github.com/antonbabenko/pre-commit-terraform)
 
-Pre-commit git hooks to take care of Terraform configurations. Workspace has all dependencies innstalled.  
+Pre-commit git hooks to take care of Terraform configurations. Workspace has all dependencies installed.  
 
 
 #### [Terraform Inframap](https://github.com/cycloidio/inframap)
@@ -709,8 +709,8 @@ Hint: example of cron job definition:
 **NOTE** you can disconnect from the image and close terminal - cron will continue working.
 
 > Instead of cron you might want to use Cronicle - a tool with Web UI, and a great list of features 
-> that will provide you with the dashboard, list of executions and statistics, even let you ser limis 
-> on resources for each jobs, and create depenndencies between jobs.
+> that will provide you with the dashboard, list of executions and statistics, even let you set limits 
+> on resources for each jobs, and create dependencies between jobs.
 
 #### Python
 Python and Pip are installed. To use python console, open workspace terminal and execute 
@@ -751,7 +751,7 @@ Open your browser on http://localhost:8030/
 If you want application to keep running after workspace terminal is closed start it with **"&!"** at the end. 
 
 For example, in the last section we started *npm-gui* tool with command `npm-gui 0.0.0.0:8030`. If you close the workspace terminal, 
-this application witll stop running. To keep it running after terminal is closed, execute
+this application will stop running. To keep it running after terminal is closed, execute
 
 > `npm-gui 0.0.0.0:8030 &!`   
 
@@ -795,7 +795,7 @@ docker stop space-1
 ```
 Workspace is stopped. All the processes and cron jobs are not running. 
 
-See all docker conntainers, including stopped
+See all docker containers, including stopped
 
 ```
 docker ps -a
@@ -873,7 +873,7 @@ docker load < space-image-0.4.tar
 
 #### Push workspace to a docker registry
 
-A better way to manage images is docker registries. You can use docker registries in multiple clouds. They are cheap annd very convenient.  
+A better way to manage images is docker registries. You can use docker registries in multiple clouds. They are cheap and very convenient.  
 Check out for example, [Registry in DigitalOcean](https://www.digitalocean.com/products/container-registry/) or in [Scaleway container registry](https://www.scaleway.com/en/container-registry/). There are more.   
 
 Pushing image to registry is merely 2 extra commands: 1) tag image; 2) push image   
@@ -883,7 +883,7 @@ You will be able to pull image on any device, local or cloud.
 ### Move workspace to the cloud
 
 Ease of running workspace in cloud, and ability to move workspaces between local machine and remote server  - 
-is one of the main features of the workspace, and the reasonn why the workspace is entirely in docker.  
+is one of the main features of the workspace, and the reason why the workspace is entirely in docker.  
 
 It is often a case that experiment, which started on personal notebook require more computational 
 resources, must be running for a long period of time, or executed periodically. All of these cases are 
@@ -912,7 +912,7 @@ If you don't want to use container registry, then there are 2 steps more involve
 ## Workspace Documentation
 
 Workspace can easily be customized for your specific needs. You can also use Workspace for a complex project, and might need a 
-tool to write remarks, plans, action plans. As well as architectural artefacts for the components you wish to implement. Often it is 
+tool to write remarks, plans, action plans. As well as architectural artifacts for the components you wish to implement. Often it is 
 also needed to store somewhere snippets of code or shell commands that you often use in your work. It would be uncomfortable to use extra 
 tool or solution outside of the Workspace to store such remarks. 
 
@@ -926,7 +926,7 @@ You can easily modify the UI, add more pages or update existing pages. The chang
 
 MkDocs project is located in the `/home/docs/` folder. It has subfolder called `docs` (so it is `/home/docs/docs/`) where all the Markdown documents 
 are stored. Simply create new `.md` file there. And add reference about this file to the MkDocs config `/home/docs/mkdocs.yml`. You will see that 
-the new page has appeared in your Workspace UI - it has live reload, and you dont need to do annything, just write in the markdown files.
+the new page has appeared in your Workspace UI - it has live reload, and you don't need to do anything, just write in the markdown files.
 
 
 <p align="center">
