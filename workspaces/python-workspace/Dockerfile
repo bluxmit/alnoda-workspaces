@@ -19,6 +19,7 @@ RUN pip install -r /home/abc/installed-python-packages/python-requirements.txt \
     && rm -rf /home/abc/utils || true \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
     && mv /tmp/alnoda-workspaces/utils /home/abc/ \
+    && rm -rf /tmp/alnoda-workspaces \
     && echo "alias python-report='/home/abc/utils/python-report.sh'" >> /home/abc/.zshrc \
     && chmod +x /home/abc/utils/python-report.sh && chown abc /home/abc/utils/python-report.sh \
     && echo "------------------------------------------------------ user" \
