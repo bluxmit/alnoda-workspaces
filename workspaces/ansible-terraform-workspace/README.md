@@ -1,10 +1,10 @@
 # Ansible-Terraform Workspace
 
-This workspace - is a "dockerized" development environment with [Ansible](https://docs.ansible.com/) 
-and [Terraform](https://www.terraform.io/) and lots of other stuff installed, 
-so that you don't need to do it yourself. Create infrastructures with Terraform, and configure it with Ansible. 
+This workspace - is a "dockerized" development environment with [Ansible](https://docs.ansible.com/), 
+[Terraform](https://www.terraform.io/), and lots of other stuff installed, 
+so that you don't need to do it yourself. Create infrastructures with Terraform, and configure with Ansible. 
 Workspace will help to code and develop; visualize infrastructures and planned terraform changes; 
-display ansible hosts plays; schedule and observe executions and more!
+display ansible hosts; schedule plays and much more!
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid-collage.png" alt="Collage">
@@ -230,7 +230,7 @@ install in future. So we map several extra ports just inn case.
 
 Ansible-Terraform workspace has the following applications installed, but not started by default  
 
-1) **Terraform Rover** provides great visualisation for your terraform infrastructure. To visualize any (innitialized) teffarorm project 
+1) **Terraform Rover** provides great visualization for your Terraform infrastructure. To visualize any (initialized) Teffarorm project 
 execute 
 
 > `rover --workingDir <TERRAFORM_PROJECT_FOLDER>`   
@@ -306,7 +306,7 @@ This way allows to ssh into the workspace as a root user at any time, even if th
 docker exec -it --user=root space-1 /bin/zsh
 ```
 
-You can work in Ubuntu terminal now. Execute the followinng command to know your workspace user 
+You can work in the Ubuntu terminal now. Execute the following command to know your workspace user 
 
 > `whoami`
 
@@ -387,15 +387,15 @@ After the command is executed, you will see folder `/home/abc/utils/remote` is c
 </p>
 
 
-. Copy this folder to the remote server where you want to launch Ansible-Terraform workspace. 
+Copy this folder to the remote server where you want to launch Ansible-Terraform workspace. 
 You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
 
 ```sh
 docker-compose up -d
 ```  
 
-That's it, you workspace is running securely on the remote server, using 
-self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, and authentication is added. 
+That's it, your workspace is running securely on the remote server, using 
+self-signed TLS certificates for encrypted HTTPS communication between your laptop and the remote workspace, and authentication is added. 
 
 
 
@@ -414,7 +414,7 @@ fully configured in the Ansible-Terraform workspace - it captures any execution 
 of any ansible playbook.  
 
 Ara server is up and running in the workspace, and available on the internal port 8029. If you mapped standard ports to your Ansible-Terraform 
-workspcae, then Ansible Ara WEB UI is onn [localhost:8029](http://localhost:8029)
+workspcae, then Ansible Ara WEB UI is on [localhost:8029](http://localhost:8029)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/Ansible-Ara.gif" alt="Htop" width="750">
@@ -544,8 +544,8 @@ Create infrastructure with
 
 #### Terraform report
 
-A small tool that produces several outputs from a terraform project, and visualizes terraform plan as an interactive HTML page.  
-Terraform report can be generated from the small example terraform project, included in the Workspcae
+A small tool that produces several outputs from a terraform project and visualizes terraform plan as an interactive HTML page.  
+Terraform report can be generated from the small example terraform project, included in the Workspace
 
 > `cd /home/examples/terraform-scaleway/ && terraform-report`  
 
@@ -606,8 +606,8 @@ Use Static File Server to review the report
 
 #### Terraform Rover
 
-[Rover](https://github.com/im2nguyen/rover) - is an awesome Terraform vizualizer with browser-based UI. Rover helps to better understand 
-Terraform state and planned changes. To see how Rover works, you can use a basic tterraform example in folder */home/examples/terraform-scaleway/*. 
+[Rover](https://github.com/im2nguyen/rover) - is an awesome Terraform visualizer with browser-based UI. Rover helps to better understand 
+Terraform state and planned changes. To see how Rover works, you can use a basic Terraform example in folder */home/examples/terraform-scaleway/*. 
 Initialize Terraform project first  
 
 > `cd /home/examples/terraform-scaleway/ && terraform init`  
