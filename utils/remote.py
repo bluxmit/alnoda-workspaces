@@ -136,7 +136,7 @@ def make_authlabels(user, password, auth_mid_name="basic-auth"):
     return authlabels
     
 
-def get_compose_dict(workspace_name, host_ip, start_port, user, password):
+def get_compose_dict(workspace_name, host_ip, start_port, user, password, custom_image=None):
     """ Create dict of values for docker-compose. This dict is 
     to be transformed into docker-compose.yaml
     """
@@ -162,13 +162,20 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password):
         "./config.yml:/etc/traefik/dynamic_conf/conf.yml:ro"
         ]
     # Add Workspace values to the dict
+    full_image = f"alnoda/{workspace_name}"
+    if custom_image is not None:
+        full_image = custom_image
     y["services"]["workspace"] = {}
-    y["services"]["workspace"]["image"] = f"alnoda/{workspace_name}"
+    y["services"]["workspace"]["image"] = full_image
     y["services"]["workspace"]["environment"] = {
         "WRK_HOST": host_ip, 
+        "ENTRY_PORT": start_port,
         "WRK_PROTO": "https",
         "ARA_API_SERVER": f"http://{host_ip}:{start_port + port_increments['ANSIBLE_ARA']}",
-        "ARA_API_CLIENT": "https"
+        "ARA_API_CLIENT": "https",
+        "ARA_CORS_ORIGIN_WHITELIST": f"['https://{host_ip}', 'http://{host_ip}']",
+        "ARA_ALLOWED_HOSTS": f"['127.0.0.', 'localhost', '::1', '{host_ip}']",
+        "ARA_EXTERNAL_AUTH": "True"
         }
     y["services"]["workspace"]["labels"] = get_workspace_labels(ep)
     # Add auth
@@ -186,6 +193,7 @@ def main(cmd_args):
     start_port = int(cmd_args.port)
     user = cmd_args.user
     password = cmd_args.password
+    custom_image = cmd_args.image
     try: 
         shutil.rmtree("./remote")
     except: 
@@ -196,7 +204,7 @@ def main(cmd_args):
     # Create Traefik config
     traefik_config()
     # Create docker-compose file
-    comp_dict = get_compose_dict(workspace_name, host_ip, start_port, user, password)
+    comp_dict = get_compose_dict(workspace_name, host_ip, start_port, user, password, custom_image)
     with open("./remote/docker-compose.yaml", "a") as y:
         y.write(yaml.dump(comp_dict, default_style='"'))
     return
@@ -209,8 +217,6 @@ if __name__ == "__main__":
     parser.add_argument("--host")
     parser.add_argument("--user")
     parser.add_argument("--password")
+    parser.add_argument("--image", default=None)
     cmd_args = parser.parse_args()
     main(cmd_args)
-
-
-
