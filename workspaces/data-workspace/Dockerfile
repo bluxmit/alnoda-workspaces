@@ -1,0 +1,225 @@
+ARG docker_registry=docker.io/alnoda
+ARG parent_image=python-workspace
+ARG parent_image_tag=3.9-0.2
+
+##################################################################################################################################  
+########################  BUILD (NBviewer)
+################################################################################################################################## 
+
+FROM python:3.8-buster as builder
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
+RUN apt-get update \
+ && apt-get install -yq --no-install-recommends \
+    ca-certificates \
+    libcurl4-gnutls-dev \
+    git \
+    nodejs \
+    npm
+
+RUN apt-get install -y libmemcached-dev zlib1g-dev
+
+# Python requirements
+COPY nbviewer/requirements-dev.txt /srv/nbviewer/
+COPY nbviewer/requirements.txt /srv/nbviewer/
+RUN python3 -mpip install -r /srv/nbviewer/requirements-dev.txt 
+RUN python3 -mpip install -r /srv/nbviewer/requirements.txt
+
+WORKDIR /srv/nbviewer
+
+# Copy source tree in
+COPY nbviewer /srv/nbviewer
+RUN python3 setup.py build && \
+    python3 -mpip wheel -vv . -w /wheels
+
+
+##################################################################################################################################  
+############################  FINAL IMAGE
+##################################################################################################################################   
+
+FROM ${docker_registry}/${parent_image}:${parent_image_tag}
+LABEL maintainer="Bluxmit <bluxmit@gmail.com>"
+
+USER root
+
+################################################################# LUIGI
+
+ENV LUIGI_VERSION="3.0.3"
+ARG LUIGI_CONFIG_DIR="/opt/luigi/"
+
+COPY luigi /opt/
+RUN mkdir -p /etc/service/luigid/
+
+
+################################################################# JUPYTER
+
+ARG NB_USER="abc"
+ARG NB_UID="1000"
+ARG NB_GID="100"
+
+# Fix DL4006
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+USER root
+
+# Install all OS dependencies for notebook server that starts but lacks all
+# features (e.g., download as all possible file formats)
+# Install tini: init for containers
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    wget \
+    ca-certificates \
+    sudo \
+    locales \
+    fonts-liberation \
+    run-one && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen
+
+# Configure environment
+ENV CONDA_DIR=/opt/conda \
+    SHELL=/bin/bash \
+    NB_USER="${NB_USER}" \
+    NB_UID=${NB_UID} \
+    NB_GID=${NB_GID} \
+    LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US.UTF-8
+ENV PATH="${CONDA_DIR}/bin:${PATH}" \
+    HOME="/home/${NB_USER}"
+
+# Copy a script that we will use to correct permissions after running certain commands
+COPY ./jupyter/fix-permissions /usr/local/bin/fix-permissions
+RUN chmod a+rx /usr/local/bin/fix-permissions
+
+# Enable prompt color in the skeleton .bashrc before creating the default NB_USER
+# hadolint ignore=SC2016
+RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc && \
+   # Add call to conda init script see https://stackoverflow.com/a/58081608/4413446
+   echo 'eval "$(command conda shell.bash hook 2> /dev/null)"' >> /etc/skel/.bashrc
+
+# Create NB_USER with name abc user with UID=1000 and in the 'users' group
+# and make sure these dirs are writable by the `users` group.
+RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
+    sed -i.bak -e 's/^%admin/#%admin/' /etc/sudoers && \
+    sed -i.bak -e 's/^%sudo/#%sudo/' /etc/sudoers && \
+    mkdir -p "${CONDA_DIR}" && \
+    usermod -a -G ${NB_GID} ${NB_USER} && \
+    chown -R abc /opt/conda && \
+    chmod g+w /etc/passwd && \
+    fix-permissions "${HOME}" && \
+    fix-permissions "${CONDA_DIR}"
+
+USER ${NB_USER}
+ARG PYTHON_VERSION=default
+
+# Setup work directory for backward-compatibility
+RUN mkdir "/home/${NB_USER}/work" && \
+    fix-permissions "/home/${NB_USER}"
+
+# Install conda as abc and check the sha256 sum provided on the download site
+WORKDIR /tmp
+
+# ---- Miniforge installer ----
+# Check https://github.com/conda-forge/miniforge/releases
+# Package Manager and Python implementation to use (https://github.com/conda-forge/miniforge)
+# We're using Mambaforge installer, possible options:
+# - conda only: either Miniforge3 to use Python or Miniforge-pypy3 to use PyPy
+# - conda + mamba: either Mambaforge to use Python or Mambaforge-pypy3 to use PyPy
+# Installation: conda, mamba, pip
+RUN set -x && \
+    # Miniforge installer
+    miniforge_arch=$(uname -m) && \
+    miniforge_installer="Mambaforge-Linux-${miniforge_arch}.sh" && \
+    wget --quiet "https://github.com/conda-forge/miniforge/releases/latest/download/${miniforge_installer}" && \
+    /bin/bash "${miniforge_installer}" -f -b -p "${CONDA_DIR}" && \
+    rm "${miniforge_installer}" && \
+    # Conda configuration see https://conda.io/projects/conda/en/latest/configuration.html
+    conda config --system --set auto_update_conda false && \
+    conda config --system --set show_channel_urls true && \
+    if [[ "${PYTHON_VERSION}" != "default" ]]; then mamba install --quiet --yes python="${PYTHON_VERSION}"; fi && \
+    mamba list python | grep '^python ' | tr -s ' ' | cut -d ' ' -f 1,2 >> "${CONDA_DIR}/conda-meta/pinned" && \
+    # Using conda to update all packages: https://github.com/mamba-org/mamba/issues/1092
+    conda install --quiet --yes 'tini=0.18.0' && \
+    conda update --all --quiet --yes && \
+    conda clean --all -f -y && \
+    rm -rf "/home/${NB_USER}/.cache/yarn" && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+# Install Jupyter Notebook, Lab, and Hub
+# Generate a notebook server config
+# Cleanup temporary files
+# Correct permissions
+# Do all this in a single RUN command to avoid duplicating all of the
+# files across image layers when the permissions change
+RUN mamba install --quiet --yes \
+    'notebook' \
+    'jupyterhub' \
+    'jupyterlab' && \
+    mamba clean --all -f -y && \
+    npm cache clean --force && \
+    jupyter notebook --generate-config && \
+    jupyter lab clean && \
+    rm -rf "/home/${NB_USER}/.cache/yarn" && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+# Copy local files as late as possible to avoid cache busting
+COPY ./jupyter/start.sh ./jupyter/start-notebook.sh ./jupyter/start-singleuser.sh /usr/local/bin/
+# Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
+COPY ./jupyter/jupyter_notebook_config.py /etc/jupyter/
+
+# Fix permissions on /etc/jupyter as root
+USER root
+
+# Prepare upgrade to JupyterLab V3.0 #1205
+RUN sed -re "s/c.NotebookApp/c.ServerApp/g" \
+    /etc/jupyter/jupyter_notebook_config.py > /etc/jupyter/jupyter_server_config.py && \
+    fix-permissions /etc/jupyter/
+
+RUN chmod 0777 /usr/local/bin/start-notebook.sh \
+    && mkdir -p /var/log/supervisord 
+
+
+################################################################# NBVIEWER
+
+# To change the number of threads use env var NBVIEWER_THREADS
+# docker run -d -e NBVIEWER_THREADS=4 -p 80:8080 nbviewer
+ENV NBVIEWER_THREADS 2          # default - 2 threads
+ENV LANG=C.UTF-8
+
+COPY --from=builder /wheels /wheels
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+    && apt-get install -yq --no-install-recommends \
+        ca-certificates \
+        libcurl4 \
+        git \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /home/nbviewer
+
+
+################################################################# PACKAGES & MODULES
+
+#RUN apt-get install -y default-libmysqlclient-dev build-essential
+
+COPY data-workspace.txt /home/abc/installed-python-packages/
+COPY data-workspace.conf /etc/supervisord/
+
+################## USER
+
+RUN chown -R abc /var/log/supervisord \
+    && chown -R abc /opt/conda /etc/jupyter \
+    && mkdir -p ${LUIGI_CONFIG_DIR} \
+    && chown -R abc ${LUIGI_CONFIG_DIR} /etc/service/luigid/ \
+    && chown -R abc /home/abc/installed-python-packages \
+    && chown -R abc /home/nbviewer 
+   # && pip install -r /home/abc/installed-python-packages/data-workspace.txt 
+
+USER abc
+
+

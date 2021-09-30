@@ -1,0 +1,9 @@
+{% extends "error.html" %}
+{% block error_detail %}
+<p>You are requesting a page that does not exist!</p>
+{% if 'HTTP 404' in message %}
+<p>The remote resource was not found. </p>
+{% elif message %}
+<p>{{message}}</p>
+{% endif %}
+{% endblock %}
