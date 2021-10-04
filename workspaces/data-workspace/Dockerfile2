@@ -1,42 +1,6 @@
 ARG docker_registry=docker.io/alnoda
 ARG parent_image=python-workspace
-ARG parent_image_tag=3.9-0.2
-
-##################################################################################################################################  
-########################  BUILD (NBviewer)
-################################################################################################################################## 
-
-FROM python:3.8-buster as builder
-
-ENV DEBIAN_FRONTEND=noninteractive
-ENV LANG=C.UTF-8
-RUN apt-get update \
- && apt-get install -yq --no-install-recommends \
-    ca-certificates \
-    libcurl4-gnutls-dev \
-    git \
-    nodejs \
-    npm
-
-RUN apt-get install -y libmemcached-dev zlib1g-dev
-
-# Python requirements
-COPY nbviewer/requirements-dev.txt /srv/nbviewer/
-COPY nbviewer/requirements.txt /srv/nbviewer/
-RUN python3 -mpip install -r /srv/nbviewer/requirements-dev.txt 
-RUN python3 -mpip install -r /srv/nbviewer/requirements.txt
-
-WORKDIR /srv/nbviewer
-
-# Copy source tree in
-COPY nbviewer /srv/nbviewer
-RUN python3 setup.py build && \
-    python3 -mpip wheel -vv . -w /wheels
-
-
-##################################################################################################################################  
-############################  FINAL IMAGE
-##################################################################################################################################   
+ARG parent_image_tag=3.9-0.2 
 
 FROM ${docker_registry}/${parent_image}:${parent_image_tag}
 LABEL maintainer="Bluxmit <bluxmit@gmail.com>"
@@ -49,8 +13,6 @@ COPY ./mkdocs/helpers.py /home/docs/macros
 COPY ./mkdocs/Jupyter.png /home/docs/docs/pages/home/home/
 COPY ./mkdocs/Jupyterlab.png /home/docs/docs/pages/home/home/
 COPY ./mkdocs/Nbviewer.png /home/docs/docs/pages/home/home/
-COPY ./mkdocs/Luigi.png /home/docs/docs/pages/home/home/
-
 
 ################################################################# LUIGI
 
@@ -59,7 +21,6 @@ ARG LUIGI_CONFIG_DIR="/opt/luigi/"
 
 COPY ./luigi /opt/luigi/
 RUN mkdir -p /etc/service/luigid/ \
-    && mkdir -p /var/log/luigi \
     && mkdir -p /var/log/jupyter
 
 
@@ -88,7 +49,7 @@ RUN apt-get update --yes && \
     run-one && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
-    locale-gen
+    locale-gen 
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda \
@@ -203,8 +164,6 @@ RUN chmod 0777 /usr/local/bin/start-notebook.sh \
 ENV NBVIEWER_THREADS 2          # default - 2 threads
 ENV LANG=C.UTF-8
 
-COPY --from=builder /wheels /wheels
-
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get install -yq --no-install-recommends \
         ca-certificates \
@@ -230,7 +189,6 @@ RUN chown -R abc /var/log/supervisord \
     && chown -R abc ${LUIGI_CONFIG_DIR} /etc/service/luigid/ \
     && chown -R abc /home/abc/installed-python-packages \
     && chown -R abc /home/nbviewer \
-    && chown -R abc /var/log/luigi \
     && chown -R abc /var/log/jupyter \
     && pip install -r /home/abc/installed-python-packages/data-workspace.txt 
 
