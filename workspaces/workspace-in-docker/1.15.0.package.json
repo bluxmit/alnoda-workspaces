@@ -107,15 +107,10 @@
         "teabyii.ayu": "https://open-vsx.org/api/teabyii/ayu/0.20.1/file/teabyii.ayu-0.20.1.vsix",
         "yurihs.sublime-vscode-theme": "https://open-vsx.org/api/yurihs/sublime-vscode-theme/1.4.1/file/yurihs.sublime-vscode-theme-1.4.1.vsix",
         "wesbos.theme-cobalt2": "https://open-vsx.org/api/wesbos/theme-cobalt2/2.1.6/file/wesbos.theme-cobalt2-2.1.6.vsix",
-        "github.github-vscode-theme": "https://open-vsx.org/api/GitHub/github-vscode-theme/4.1.1/file/GitHub.github-vscode-theme-4.1.1.vsix",
         "armandphilippot.coldark": "https://open-vsx.org/api/armandphilippot/coldark/1.2.9/file/armandphilippot.coldark-1.2.9.vsix",
         "radiolevity.search-lights": "https://open-vsx.org/api/radiolevity/search-lights/1.10.1/file/radiolevity.search-lights-1.10.1.vsix",
         "vladeeg.vscode-theme-vlight": "https://open-vsx.org/api/Vladeeg/vscode-theme-vlight/2.1.0/file/Vladeeg.vscode-theme-vlight-2.1.0.vsix",
         "akamud.vscode-theme-onelight": "https://open-vsx.org/api/akamud/vscode-theme-onelight/2.2.3/file/akamud.vscode-theme-onelight-2.2.3.vsix",
-        "akamud.vscode-theme-onedark": "https://open-vsx.org/api/akamud/vscode-theme-onedark/2.2.3/file/akamud.vscode-theme-onedark-2.2.3.vsix",
-        "daylerees.rainglow": "https://open-vsx.org/api/daylerees/rainglow/1.5.2/file/daylerees.rainglow-1.5.2.vsix",
-        "emroussel.atom-icons": "https://open-vsx.org/api/emroussel/atom-icons/1.2.0/file/emroussel.atom-icons-1.2.0.vsix",
-        "laurenttreguier.vscode-simple-icons": "https://open-vsx.org/api/LaurentTreguier/vscode-simple-icons/1.16.0/file/LaurentTreguier.vscode-simple-icons-1.16.0.vsix",
-        "technicolor-creamsicle.deepdark-material": "https://open-vsx.org/api/technicolor-creamsicle/deepdark-material/3.3.0/file/technicolor-creamsicle.deepdark-material-3.3.0.vsix"
-    }
+        "akamud.vscode-theme-onedark": "https://open-vsx.org/api/akamud/vscode-theme-onedark/2.2.3/file/akamud.vscode-theme-onedark-2.2.3.vsix"
+        }
 }
