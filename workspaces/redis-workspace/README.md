@@ -51,7 +51,7 @@ Open Redis Commander UI on [http://localhost:8029/](http://localhost:8029/) and 
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/Rediscommander.png" alt="Redis commander" width="750">
 </p> 
 
-Alternatively use browser-based VS-code with Redis extension
+Alternatively use browser-based VS-code [http://localhost:8025/](http://localhost:8025/) with Redis extension
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/Theia-redis.png" alt="Theia" width="750">
