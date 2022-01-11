@@ -1,7 +1,7 @@
 
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-0.9
+ARG image_tag=18.04-0.8
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -48,7 +48,6 @@ USER root
 RUN mkdir -p -m 777 /opt/theia \
     && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
     && mkdir -p -m 777 /home/project \
-    && apt-get update \
     && apt-get install -y libsecret-1-dev \
     && rm -rf /home/docs
 
