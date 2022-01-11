@@ -7,7 +7,7 @@ Docker image with Redis, and many other tools that make development with Redis m
 </p>
 
 ```
-docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-wid
+docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-workspace
 ```
 
 open your browser on [http://localhost:8020](http://localhost:8020)

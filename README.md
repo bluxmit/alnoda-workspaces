@@ -106,7 +106,7 @@ Now in addition to Redis, you've got a whole set of tools with UIs, that allow y
 import datasets, install Redis modules and more.
 
 ```
-docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-wid
+docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-workspace
 ```
 
 ### [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) 
