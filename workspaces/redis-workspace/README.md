@@ -20,7 +20,7 @@ install Redis modules and more.
 
 __List of tools__
 
-- [**Eclipse Theia**](https://theia-ide.org/docs/)
+- [Eclipse Theia](https://theia-ide.org/docs/)
 - [Redis extension for VS-Code](https://open-vsx.org/extension/cweijan/vscode-redis-client)
 - [Iredis](https://github.com/laixintao/iredis)
 - [Redis-dump](https://github.com/yannh/redis-dump-go)
@@ -64,7 +64,7 @@ iredis --newbie
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/iredis.png" alt="Iredis" width="450">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/iredis.png" alt="Iredis" width="400">
 </p> 
 
 Create dump of the Redis database
