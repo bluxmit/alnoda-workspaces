@@ -99,6 +99,16 @@ the Base-workspace and Ubuntu-workspace.
 docker run --name space-1 -d -p 8020-8035:8020-8035 -p 9000:9000 alnoda/ansible-terraform-workspace
 ```
 
+### [`Redis-Workspace`](./workspaces/redis-workspace/README.md) 
+Docker image with Redis, and many other tools that make development with Redis much more convenient. Substitute 
+in your development docker-compose.yaml file standard redis image with this one, add port-mapping -p 8020-8035:8020-8035. 
+Now in addition to Redis, you've got a whole set of tools with UIs, that allow you to explore you Redis database, get and set keys, 
+import datasets, install Redis modules and more.
+
+```
+docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-wid
+```
+
 ### [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) 
 All-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
 of documentation, tutorials, and training. Has all the features of the Base-workspace and Ubuntu-workspace.
