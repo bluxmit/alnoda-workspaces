@@ -109,6 +109,12 @@ import datasets, install Redis modules and more.
 docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-workspace
 ```
 
+### [`Kafka-Workspace`](./workspaces/kafka-workspace/README.md) 
+Docker image with Kafka, and some other tools to improve Kafka development experience.
+```
+docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/kafka-workspace
+```
+
 ### [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) 
 All-in-one tool, carefully crafted to develop, build and serve awesome static websites, for the purpose 
 of documentation, tutorials, and training. Has all the features of the Base-workspace and Ubuntu-workspace.
