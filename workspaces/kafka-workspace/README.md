@@ -7,7 +7,7 @@ Docker image with Kafka, and many other tools that make development with Kafka m
 </p>
 
 ```
-docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/kafka-wid
+docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/kafka-workspace
 ```
 
 open your browser on [http://localhost:8020](http://localhost:8020)
@@ -89,7 +89,7 @@ echo 'Bob wins Oscar' | kt produce -topic quickstart-events -literal
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/kt-demo.png" alt="KT demo" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/kt-demo.png" alt="KT demo" width="350">
 </p> 
 
 ### [kafkactl](https://github.com/deviceinsight/kafkactl)
