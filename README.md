@@ -240,6 +240,8 @@ base workspace to build upon, but it has a different VS-Code version - [Codeserv
 
 - [The way I use Docker as interactive environment for tries and experiments](https://medium.com/@bluxmit/the-way-i-use-docker-as-interactive-environment-for-tries-and-experiments-52ac06c0ec69)
 - [Docker as a lightweight VM - docker image that you can use as VM substitute](https://medium.com/@bluxmit/docker-as-a-lightweight-vm-docker-image-that-you-can-use-as-vm-substitute-164032e4ed0b)
+- [The better development experience with Kafka](https://medium.com/@bluxmit/the-better-development-experience-with-kafka-54f15705a8ee)
+- [Improve development experience with Redis](https://medium.com/@bluxmit/improve-development-experience-with-redis-96d14ef473ae)
 
 ## Feedback and contribution
 

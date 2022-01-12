@@ -12,6 +12,10 @@ docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/kafka-workspace
 
 open your browser on [http://localhost:8020](http://localhost:8020)
 
+### Why
+
+Get started with Kafka very easy. Motivation explained in [this Medium article](https://medium.com/@bluxmit/the-better-development-experience-with-kafka-54f15705a8ee)
+
 __Tools included__
 - [kcat](https://github.com/edenhill/kcat)
 - [kafkactl](https://github.com/deviceinsight/kafkactl)
