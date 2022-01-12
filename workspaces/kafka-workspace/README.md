@@ -24,7 +24,7 @@ Workspace includes multiple CLI tools for Kafka with their own unique features.
 
 ### Quickstart
 
-Open workspace UI [http://localhost:800/](http://localhost:800/) for quick access to all the tools
+Open workspace UI [http://localhost:8020/](http://localhost:8020/) for quick access to all the tools
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/Kafka-wid.png" alt="Kafka WID" width="750">
