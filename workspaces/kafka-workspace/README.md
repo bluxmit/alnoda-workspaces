@@ -37,13 +37,7 @@ to the local Kafka cluster using VS-code Kafka extension. You only need to provi
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/theia-connect-kafka.png" alt="Theia connect WID" width="750">
 </p> 
 
-Using VS-code Kafka extension create topic "quickstart-events" 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/theia-connect-kafka.png" alt="Theia connect WID" width="750">
-</p> 
-
-Cosume events from this topic directly in VS-code using Kafka extension 
+Using VS-code Kafka extension create topic "quickstart-events", and cosume events from this topic directly in VS-code using Kafka extension 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/theia-kafka-consume.png" alt="Theia Kafka consume" width="750">
