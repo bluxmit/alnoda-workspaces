@@ -911,7 +911,9 @@ with Filebrowser.
 
 You can make even more stunning documentation websites with advanced Markdown features using [MkDocs-Magicspace](https://mkdocs-magicspace.alnoda.org/).
 
-
+##### Potential features
+- [scalene](https://github.com/plasma-umass/scalene)
+- [pyheat](https://github.com/csurfer/pyheat)
 
 
 
