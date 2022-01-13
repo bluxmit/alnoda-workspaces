@@ -45,7 +45,7 @@ cat /home/project/redis-datasets/movie-database/import_actors.redis | redis-cli
 cat /home/project/redis-datasets/movie-database/import_movies.redis | redis-cli 
 ```
 
-Open Redis Commander UI on [http://localhost:8029/](http://localhost:8029/) and explore Redis databeses 
+Open Redis Commander UI on [http://localhost:8029/](http://localhost:8029/) and explore Redis databases 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/Rediscommander.png" alt="Redis commander" width="750">
