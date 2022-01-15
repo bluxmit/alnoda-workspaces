@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-0.9
+ARG image_tag=18.04-0.11
 
 FROM ${docker_registry}/workspace-in-docker:${image_tag}
 

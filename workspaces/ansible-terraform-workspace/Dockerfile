@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-0.7
+ARG image_tag=18.04-0.11
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -63,10 +63,12 @@ COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 COPY ./mkdocs/home.md /home/docs/docs/pages/home
 COPY ./mkdocs/Ara.png /home/docs/docs/pages/home/home/
 COPY ./mkdocs/Blast-radius.png /home/docs/docs/pages/home/home/
+COPY ./mkdocs/Terraform-Rover.png /home/docs/docs/pages/home/home/
 COPY ./mkdocs/helpers.py /home/docs/macros 
 COPY README.md /home/docs/docs/docs.md
 
-RUN echo "------------------------------------------------------ ansible ara" \
+RUN apt-get -y update \
+    && echo "------------------------------------------------------ ansible ara" \
     && echo "UTC" > /etc/timezone \
     && mkdir -p /home/abc/.ara/server \
     && ara-manage makemigrations  \
@@ -79,7 +81,6 @@ RUN echo "------------------------------------------------------ ansible ara" \
     && rm /tmp/terraform_0.14.6_linux_amd64.zip \
     && echo "------------------------------------------------------ blast-radius" \
     && apt-get install -y graphviz \
-    && mkdir -p /home/terraform \
     && echo "------------------------------------------------------ terraform-docs" \
     && cd /tmp && curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.15.0/terraform-docs-v0.15.0-linux-amd64.tar.gz \
     && tar -xzf terraform-docs.tar.gz \
@@ -133,6 +134,8 @@ RUN echo "------------------------------------------------------ ansible ara" \
     && chown -R abc /home/abc/installed-python-packages \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
+
+ENV TERRAFORM_ROVER="http://localhost:9000"
 
 USER abc
 

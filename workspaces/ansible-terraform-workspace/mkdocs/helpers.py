@@ -14,7 +14,8 @@ port_increments = {
     "TERMINAL_URL": 6,
     "MC_URL": 7,
     "HTOP_URL": 8,
-    "ANSIBLE_ARA": 9
+    "ANSIBLE_ARA": 9,
+    "BLAST_RADIUS": 10
     }
 
 # this function name should not be changed
@@ -29,7 +30,7 @@ def define_env(env):
     @env.macro
     def get_tool_url(env):
         try:
-            return os.environ[name]
+            return os.environ[env]
         except:
             # Get host
             host = "localhost"

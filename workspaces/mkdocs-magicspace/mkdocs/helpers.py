@@ -13,7 +13,8 @@ port_increments = {
     "IDE_URL": 5,
     "TERMINAL_URL": 6,
     "MC_URL": 7,
-    "HTOP_URL": 8
+    "HTOP_URL": 8,
+    "MKDOCS_LIVE": 10
     }
 
 # this function name should not be changed

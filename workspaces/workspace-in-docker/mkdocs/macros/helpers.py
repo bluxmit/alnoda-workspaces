@@ -28,7 +28,7 @@ def define_env(env):
     @env.macro
     def get_tool_url(env):
         try:
-            return os.environ[name]
+            return os.environ[env]
         except:
             # Get host
             host = "localhost"

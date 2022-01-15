@@ -1,6 +1,6 @@
 # Python workspace 
 
-Python development enviroment inside the isolated docker container. Includes VS-code IDE, 
+Python development environment inside the isolated docker container. Includes VS-code IDE, 
 job scheduler and other tools for linting, testing, auto-documentation and profiling. 
 
 <p align="center">

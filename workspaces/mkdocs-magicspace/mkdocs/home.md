@@ -73,22 +73,10 @@
             "description": "Browse, upload and download files and folders to and from the Workspace"
         },
         {
-            "env": "ANSIBLE_ARA",
-            "name": "Ansible Ara",
-            "image": "Ara.png",
-            "description": "Monitor for all Ansible plays"
-        },
-        {
-            "env": "TERRAFORM_ROVER",
-            "name": "Terraform Rover",
-            "image": "Terraform-Rover.png",
-            "description": "Not started! Start manually with your Terraform project dir, i.e.  <b>cd /home/examples/terraform-scaleway/; terraform init; rover --workingDir /home/examples/terraform-scaleway/</b>"
-        },
-        {
-            "env": "BLAST_RADIUS",
-            "name": "Blast Radius",
-            "image": "Blast-radius.png",
-            "description": "Not started! Start manually with your Terraform project dir, i.e.  <b>cd /home/examples/terraform-scaleway; terraform init; blast-radius --serve --port 8030</b>"
+            "env": "MKDOCS_LIVE",
+            "name": "MkDocs live server",
+            "image": "Magicspace-web.png",
+            "description": "Serve your MkDocs project with live reload. For example, <b>cd /home/examples/mkdocs-material; mkdocs serve -a 0.0.0.0:8030</b>"
         },
         {
             "env": "CRONICLE_URL",

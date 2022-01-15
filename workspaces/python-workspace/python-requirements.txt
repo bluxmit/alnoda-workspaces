@@ -31,3 +31,4 @@ pytest-regressions==2.2.0
 logzero==1.7.0
 pylint==2.10.2
 
+jupyter==1.0.0
