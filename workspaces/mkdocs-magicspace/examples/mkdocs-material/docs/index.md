@@ -68,7 +68,7 @@ $$
 \left(\frac{\left(\sqrt{\frac{73^2}{12x}}\sqrt{\frac{x|x|}{\log_x}}\right)}{\sqrt[3]{\frac xy}}\right)
 $$  
 
-#### Diargams
+#### Diagrams
 
 ```mermaid
 classDiagram
