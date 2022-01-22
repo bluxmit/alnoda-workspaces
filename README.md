@@ -13,7 +13,7 @@
 
 ## What is workspace In Docker 
 
-***TLDR: Workspaces are toolsets packed together for specific tasks.  
+***TLDR: Workspaces are toolsets packed together for specific tasks.***  
 
 Workspaces are a single docker image, running multiple processes. Workspaces include only browser-based 
 applications, making them suitable for both local and cloud deployment.  
@@ -24,7 +24,7 @@ terminal and IDE to develop annd schedule maintenance tasks.
 
 When running locally, workspaces help to isolate tasks, easily switch between projects.  
 They be moved between laptops, PCs, and cloud servers; can run in the cloud and be used from any device; have versions and 
-backups; can be used by several users and make collaboration easier.***
+backups; can be used by several users and make collaboration easier.
 
 
 <p align="center">
