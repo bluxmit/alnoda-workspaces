@@ -13,7 +13,7 @@ Filebrowser to upload/download data files directly inside the workspace, browser
 browser-based, which makes it suitable for running workspace in kubernetes.
 
 ```
-docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/elasticsearch-workspace
+docker run --name elawid-1 -d -p 8020-8035:8020-8035 alnoda/elasticsearch-workspace
 ```
 
 open your browser on [http://localhost:8020](http://localhost:8020)
@@ -126,6 +126,10 @@ and start it with `docker-compose up`
 Wait untill the cluster is fully ready, open Kibana on [http://localhost:5601](/http://localhost:5601/) and import 
 all sample datasets.  
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/Kibana-sample.png" alt="Kibana" width="750">
+</p>
+
 Open workspace UI [http://localhost:8020/](http://localhost:8020/) for quick access to all the workspace tools 
 
 <p align="center">
@@ -140,7 +144,7 @@ vulcanizer --host es01 shards
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/vulcanizer-demo.png" alt="vulcanizer" width="450">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/vulcanizer-demo.png" alt="vulcanizer" width="750">
 </p>
 
 Use elasticdump to export index `kibana_sample_data_ecommerce` (from eCommerce sample dataset) to S3 
@@ -153,21 +157,21 @@ elasticdump \
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/elasticdump-demo.png" alt="elasticdump" width="450">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/elasticdump-demo.png" alt="elasticdump" width="750">
 </p>
 
 Open browser-based IDE [http://localhost:8026/](http://localhost:8026/) and create file `/home/project/export.sh` file with the script to export data to S3. 
 Make it executable with `chmod +x /home/project/export.sh`. 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/IDE-demo.png" alt="IDE" width="450">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/IDE-demo.png" alt="IDE" width="750">
 </p>
 
 Open browser-based Scheduler [http://localhost:8026/](http://localhost:8026/) (user/pass: admin/admin), 
 and schedule script, for example weekly. Select category - "general", plugin - "Shell Script"
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/Cronicle-demo.png" alt="Cronicle" width="450">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/Cronicle-demo.png" alt="Cronicle" width="750">
 </p>
 
 

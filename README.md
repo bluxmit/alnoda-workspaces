@@ -1,11 +1,5 @@
 # Workspaces in docker
 
-*Good engineers make, great engineers share.*  
-
-Making a tool - environment ready for complex engineering, analytical, operations, data science, or other IT project - is not easy. 
-If you've made one, share it! It might be of great use for someone.  
-
-This project was created to share dockerized workspaces, and to set an example of how such workspaces can be developed.
  
 ### Contents
 
@@ -19,8 +13,17 @@ This project was created to share dockerized workspaces, and to set an example o
 
 ## What is workspace In Docker 
 
-***TLDR: Workspaces are toolsets designed for a specific project and packaged as docker images. They make it easy to switch between projects; 
-can be moved between laptops, PCs, and cloud servers; can run in the cloud and be used from any device; have versions and 
+***TLDR: Workspaces are toolsets packed together for specific tasks.  
+
+Workspaces are a single docker image, running multiple processes. Workspaces include only browser-based 
+applications, making them suitable for both local and cloud deployment.  
+
+Workspaces have browser-based VS-code, terminal, scheduler, and can be helpful to interact with solutions, deployed on K8s 
+that do not expose entrypoints beyound K8s cluster, such as databases, kafka. Workspace can be used as a convenient 
+terminal and IDE to develop annd schedule maintenance tasks.  
+
+When running locally, workspaces help to isolate tasks, easily switch between projects.  
+They be moved between laptops, PCs, and cloud servers; can run in the cloud and be used from any device; have versions and 
 backups; can be used by several users and make collaboration easier.***
 
 
@@ -113,6 +116,14 @@ docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-workspace
 Docker image with Kafka, and some other tools to improve Kafka development experience.
 ```
 docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/kafka-workspace
+```
+
+### [`Elasticsearch-Workspace`](./workspaces/elasticsearch-workspace/README.md) 
+A tool to quickly develop and schedule Elasticsearch/Opensearch maintenance scripts. 
+Such as taking snapshot backups of indexes, migrating to another Elasticsearch cluster, transferring Elasticsearch data to S3, importing data into Elasticsearch. 
+As well as deleting/moving/archeiving old indexes, reindexing, rebalancing uneven shard distribution, export report queries to S3, etc.
+```
+docker run --name elawid-1 -d -p 8020-8035:8020-8035 alnoda/elasticsearch-workspace
 ```
 
 ### [`MkDocs-MagicSpace`](./workspaces/mkdocs-magicspace/README.md) 
