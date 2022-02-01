@@ -1,5 +1,8 @@
-# Kafka workspace
+<p align="center">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p> 
 
+# Kafka workspace
 Docker image with Kafka, and many other tools that make development with Kafka much more convenient.
 
 <p align="center">

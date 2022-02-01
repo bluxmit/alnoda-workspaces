@@ -1,4 +1,6 @@
-
+<p align="center">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p> 
 
 # Base-workspace
 

@@ -1,10 +1,13 @@
-# Workspace-in-docker
+<p align="center">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p> 
 
+# Workspace in docker
 General-purpose dockerized workspace - an environment fully isolated inside a docker container. It can run anywhere, can be started and stopped, moved to another machine, archived 
 to file or restored, pushed to docker registry, started on a cloud server.  
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-collage.png" alt="Collage">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-collage-sm.jpg" alt="Collage">
 </p>
 
 

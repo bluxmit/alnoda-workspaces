@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p> 
+
 # Ansible-Terraform Workspace
 
 This workspace - is a "dockerized" development environment with [Ansible](https://docs.ansible.com/), 

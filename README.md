@@ -1,8 +1,8 @@
-# Workspaces in docker
-
 <p align="center">
   <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p> 
+
+# Workspaces in docker
 
 Workspace is a single docker image with a number of applications and tools for specific task, 
 such as Python development or Postgres management.

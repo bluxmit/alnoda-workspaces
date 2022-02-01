@@ -1,5 +1,8 @@
-# Python workspace 
+<p align="center">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p> 
 
+# Python workspace 
 Python development environment inside the isolated docker container. Includes VS-code IDE, 
 job scheduler and other tools for linting, testing, auto-documentation and profiling. 
 

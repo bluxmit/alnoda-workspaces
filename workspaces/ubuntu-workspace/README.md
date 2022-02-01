@@ -1,5 +1,8 @@
-# Ubuntu-workspace
+<p align="center">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p> 
 
+# Ubuntu-workspace
 Use docker as a lightweight Virtual Machine. Provides isolation of environments, 
 and requires less resources than VMs. Run locally or on a cloud server (with HTTPS and auth).  
 
