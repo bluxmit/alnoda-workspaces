@@ -15,8 +15,7 @@ such as Python development or Postgres management.
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
 </p>
 
-> If you like this project, please support it by simply putting a Github star. 
-Share this library with friends on Twitter and everywhere else you can.
+> If you like this project, please support it by simply putting a Github star and sharing with friends on Twitter.
  
 ### Contents
 

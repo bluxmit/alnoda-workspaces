@@ -62,8 +62,6 @@ All in a single docker image.
 
 __*Below you'll find examples and short tutorials how to use most of the tools included in the workspace.*__ 
 
-> If you like this project, please support it by simply putting a Github star. 
-Share this library with friends on Twitter and everywhere else you can.
 
 ### Try it out
 ```
@@ -184,7 +182,7 @@ You can disable pspg by deleting the (last) line _PAGER='pspg -s 4 --interactive
 Monitor live activity, collect and analyse metrics, perform load tests.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/postgres-workspace/img/pgmetrics.png" alt="pgmetrics" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/postgres-workspace/img/pgmetrics.png" alt="pgmetrics" width="500">
 </p> 
 
 ### pgmetrics
