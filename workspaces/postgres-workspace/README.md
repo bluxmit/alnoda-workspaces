@@ -3,7 +3,7 @@
 </p> 
 
 # Postgres workspace
-Great number of tools to manage PostgreSQL database, develop and schedule database scripts and applications. 
+Lots of tools to manage PostgreSQL database, develop and schedule database scripts and applications. 
 All in a single docker image.
 
 <p align="center">
