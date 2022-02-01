@@ -1,7 +1,7 @@
 # Workspaces in docker
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/img/Alnoda-white.svg" alt="Alnoda logo" width="250">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p> 
 
 Workspace is a single docker image with a number of applications and tools for specific task, 
