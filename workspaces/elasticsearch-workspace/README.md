@@ -3,9 +3,8 @@
 </p> 
 
 # Elasticsearch workspace
-A tool to quickly develop and schedule Elasticsearch/Opensearch maintenance scripts. 
-Such as taking snapshot backups of indexes, migrating to another Elasticsearch cluster, transferring Elasticsearch data to S3, importing data into Elasticsearch. 
-As well as deleting/moving/archeiving old indexes, reindexing, rebalancing uneven shard distribution, export report queries to S3, etc.
+A tool to manage Elasticsearch/Opensearch clusters. Schedule backups of Elasticsearch indexes, 
+migrate to other clusters, export and import Elasticsearch data to S3.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-collage.png" alt="Collage">

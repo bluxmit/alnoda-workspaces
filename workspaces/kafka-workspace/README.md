@@ -3,7 +3,8 @@
 </p> 
 
 # Kafka workspace
-Docker image with Kafka, and many other tools that make development with Kafka much more convenient.
+Docker image with Kafka, and many tools to manage Kafka clustters in cloud, improve development experience 
+or get started with Kafka fast.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/kafka-wid-collage.png" alt="Collage">

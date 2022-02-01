@@ -3,8 +3,8 @@
 </p> 
 
 # Ubuntu-workspace
-Use docker as a lightweight Virtual Machine. Provides isolation of environments, 
-and requires less resources than VMs. Run locally or on a cloud server (with HTTPS and auth).  
+Docker as a "light-weight Virtual Machine". Get an isolated Ubuntu environment for development, testing or experimentation 
+that requires less resources than VM.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/ubuntu-wid-collage.png" alt="Collage">
