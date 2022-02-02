@@ -27,7 +27,7 @@ All in a single docker image.
 7. Postgres CLI tools: 
     - [psql](https://www.postgresql.org/docs/current/app-psql.html). Standard PostgreSQL interactive terminal.
     - [pgcli](https://www.pgcli.com/). Command line interface for Postgres with auto-completion and syntax highlighting.
-    - [pspg](https://iboxshare.com/okbob/pspg). Data visualizer.
+    - [pspg](https://github.com/okbob/pspg). Data visualizer.
 8. Performance and load testing tools: 
     - [pgmetrics](https://pgmetrics.io/). Collect 350+ metrics from a running PostgreSQL server.
     - [pgCenter](https://github.com/lesovsky/pgcenter). Admin tool for observing and troubleshooting Postgres.
@@ -177,7 +177,7 @@ pgcli usda
 pgcli -h my-postgres-host -p 5432 -U postgres -W -d mydb
 ```
 ### pspg
-[Pspg](https://iboxshare.com/okbob/pspg) is a unix pager (with very rich functionality) designed for work with tables. 
+[Pspg](https://github.com/okbob/pspg) is a unix pager (with very rich functionality) designed for work with tables. 
 Pspg is enabled by default, and will automatically applied to psql and pgcli if the result of SELECT statement is large. 
 You can disable pspg by deleting the (last) line _PAGER='pspg -s 4 --interactive --no-mouse'_  from file /home/abc/.zshrc. 
 (or you can modify configuration).
