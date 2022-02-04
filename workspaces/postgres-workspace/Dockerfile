@@ -129,6 +129,7 @@ RUN echo "------------------------------------------------------ postgres" \
     && echo "------------------------------------------------------ yuniql" \   
     && curl https://github.com/rdagumampan/yuniql/releases/download/v1.1.55/yuniql-cli-linux-x64-latest.tar.gz -L -o /tmp/yuniql.tar.gz \
     && tar -xvzf /tmp/yuniql.tar.gz -C /bin \
+    && rm /tmp/yuniql.tar.gz \
     && echo "------------------------------------------------------ migra" \ 
     && pip install migra==3.0.1621480950 \
     # && echo "------------------------------------------------------ pgsh" \ 

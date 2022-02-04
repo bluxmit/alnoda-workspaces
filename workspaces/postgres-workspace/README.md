@@ -602,6 +602,7 @@ git clone https://github.com/lob/pg_insights /home/pg_insights
 Any contribution is welcome! If you believe some tool should be added, feel free to create a pull request.
 
 __Potential candidates__
+- [dbmate](https://github.com/amacneil/dbmate)
 - [pg_back](https://github.com/orgrim/pg_back)
 - [trdsql](https://github.com/noborus/trdsql#PostgreSQL)
 - [eralchemy](https://github.com/Alexis-benoist/eralchemy). Functionality already available by schemaspy. But can be useful for custom doc preparation.
