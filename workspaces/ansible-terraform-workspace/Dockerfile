@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-0.11
+ARG image_tag=18.04-1.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
