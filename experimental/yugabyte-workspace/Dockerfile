@@ -10,6 +10,12 @@ RUN echo "------------------------------------------------------ yugabyte 2.11" 
     && tar xvfz /tmp/yugabyte-2.11.0.0-b7-linux-x86_64.tar.gz \
     && mv /tmp/yugabyte-2.11.0.0/ /opt/yugabyte \
     && /opt/yugabyte/bin/post_install.sh \
+    echo "------------------------------------------------------ tpcc" \
+    && cd /tmp && wget https://github.com/yugabyte/YCSB/releases/download/1.0/ycsb.tar.gz \
+    && tar -xzf ycsb.tar.gz \
+    && chmod +x /tmp/tpcc/tpccbenchmark \
+    && mv /tmp/tpcc /opt/tpcc \
+    && ln -s /opt/tpcc/tpccbenchmark /usr/bin/tpccbenchmark \
     && echo "------------------------------------------------------ user" \
     && chown -R abc /opt/yugabyte
 
