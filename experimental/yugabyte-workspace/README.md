@@ -41,6 +41,7 @@ nano config/workload_all.xml  # change <DBName> to loadtest
 
 3. Prepare and execute load test
 ```
+cd /opt/tpcc
 ./tpccbenchmark --create=true --nodes=yuga-yb-tservers loadtest
 
 ./tpccbenchmark --load=true \
@@ -60,7 +61,7 @@ Help
 ```
 cd /opt/yugabyte-workload-gen
 
-java -jar yb-sample-apps.jar
+java -jar yb-sample-apps.jar --help
 ```
 
 Example of use
