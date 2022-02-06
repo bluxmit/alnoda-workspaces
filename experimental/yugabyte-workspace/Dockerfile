@@ -16,8 +16,13 @@ RUN echo "------------------------------------------------------ yugabyte 2.11" 
     && chmod +x /tmp/tpcc/tpccbenchmark \
     && mv /tmp/tpcc /opt/tpcc \
     && ln -s /opt/tpcc/tpccbenchmark /usr/bin/tpccbenchmark \
+    echo "------------------------------------------------------ Yugabyte workload generator" \
+    && mkdir /opt/yugabyte-workload-gen \
+    && cd /opt/yugabyte-workload-gen && wget https://github.com/yugabyte/yb-sample-apps/releases/download/1.3.9/yb-sample-apps.jar \
     && echo "------------------------------------------------------ user" \
-    && chown -R abc /opt/yugabyte
+    && chown -R abc /opt/yugabyte \
+    && chown -R abc /opt/tpcc \
+    && chown -R abc /opt/yugabyte-workload-gen
 
 ENV PATH="/opt/yugabyte/bin:/opt/yugabyte/postgres/bin:${PATH}"
 
