@@ -577,7 +577,7 @@ Now you can push these docks push to Github.
 ### pg_flame 
 [pg_flame](https://github.com/mgartner/pg_flame) - a flamegraph generator for Postgres EXPLAIN ANALYZE output.
 ```
-psql usda -qAtc 'SELECT *
+psql usda -qAtc 'EXPLAIN (ANALYZE, FORMAT JSON) SELECT *
    FROM nut_data N
    JOIN food_des F ON F.ndb_no = N.ndb_no
    JOIN datsrcln D ON D.nutr_no = N.nutr_no
