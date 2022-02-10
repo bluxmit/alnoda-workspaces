@@ -597,6 +597,24 @@ Convenient SQL for monitoring Postgres database health. Clone repo and use it to
 ```
 git clone https://github.com/lob/pg_insights /home/pg_insights
 ```
+### sqlfluff
+[Sqlfluff](https://www.sqlfluff.com/) is a moduler sql linter for humans.
+
+```
+echo "select * from t where id=1" >/tmp/test.sql
+sqlfluff lint /tmp/test.sql
+```
+
+Results in:
+
+```
+== [/tmp/test.sql] FAIL
+L:   1 | P:   1 | L044 | Query produces an unknown number of result columns.
+L:   1 | P:  27 | L006 | Missing whitespace before =
+L:   1 | P:  27 | L006 | Missing whitespace after =
+```
+
+
 
 ## Contribution
 Any contribution is welcome! If you believe some tool should be added, feel free to create a pull request.
