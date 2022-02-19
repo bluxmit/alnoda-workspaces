@@ -602,7 +602,7 @@ git clone https://github.com/lob/pg_insights /home/pg_insights
 Any contribution is welcome! If you believe some tool should be added, feel free to create a pull request.
 
 __Potential candidates__
-- [sqlfluff](https://github.com/sqlfluff/sqlfluff). dialect-flexible and configurable SQL linter. Designed with ELT applications in mind, SQLFluff also works with Jinja templating and dbt. 
+- [sqlfluff](https://github.com/sqlfluff/sqlfluff). Dialect-flexible and configurable SQL linter. Designed with ELT applications in mind, SQLFluff also works with Jinja templating and dbt.
 - [dbmate](https://github.com/amacneil/dbmate)
 - [pg_back](https://github.com/orgrim/pg_back)
 - [trdsql](https://github.com/noborus/trdsql#PostgreSQL)
@@ -616,3 +616,4 @@ __Potential candidates__
 - [pgsh](https://github.com/sastraxi/pgsh). Lack of documentation.
 - [dbvisualizer](https://github.com/eska-muc/dbvisualizer). Functionality is already covered in schemaspy.
 - [er-diagram-endpoint](https://github.com/kedziorski/er-diagram-endpoint). Lack of recent updates.
+- [pgdiff](https://github.com/joncrlsn/pgdiff). Pgdiff compares the schema between two PostgreSQL 9 databases. NNice, but last release is in 2017. Also, Migra covers the same functionality.
