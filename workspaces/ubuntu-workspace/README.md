@@ -599,6 +599,7 @@ The application is running and can be accessed on localhost:19011
 It will be running even if you stop the container, or commit it and create new images
 
 ### Candidates
+- [Fig](https://github.com/withfig/autocomplete). adds autocomplete to the terminal.
 - [spacemacs](https://www.spacemacs.org/)
 - [hyper](https://github.com/vercel/hyper)
 - [xplr](https://github.com/sayanarijit/xplr)

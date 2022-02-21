@@ -603,6 +603,7 @@ Any contribution is welcome! If you believe some tool should be added, feel free
 
 __Potential candidates__
 - [sqlfluff](https://github.com/sqlfluff/sqlfluff). Dialect-flexible and configurable SQL linter. Designed with ELT applications in mind, SQLFluff also works with Jinja templating and dbt.
+- [sqlpipe](https://sqlpipe.com/about/). Looks great. Haven't tried yet.
 - [dbmate](https://github.com/amacneil/dbmate)
 - [pg_back](https://github.com/orgrim/pg_back)
 - [trdsql](https://github.com/noborus/trdsql#PostgreSQL)
