@@ -21,7 +21,7 @@ docker run --name elawid-1 -d -p 8020-8035:8020-8035 alnoda/elasticsearch-worksp
 open your browser on [http://localhost:8020](http://localhost:8020)
 
 ## What's includes
-- [elasticdump](https://github.com/elasticsearch-dump/elasticsearch-dump) - sawesome tool for moving and saving indices.
+- [elasticdump](https://github.com/elasticsearch-dump/elasticsearch-dump) - awesome tool for moving and saving indices.
 - [esbulk](https://github.com/miku/esbulk) - fast parallel command line bulk loading utility for Elasticsearch. 
 - [vulcanizer](https://github.com/github/vulcanizer) - cli for interacting with an Elasticsearch cluster.
 
