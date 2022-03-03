@@ -3,7 +3,7 @@
 </p>  -->
 
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/ukraine-flag-vector.webp" alt="Ukraine" width="150">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/ukraine-flag.png" alt="Ukraine" width="150">
 </p> 
 
 # Workspaces in docker
