@@ -1,6 +1,6 @@
 # SQLite Workspace
 
-Collection of tools to work with SQLite.   
+Collection of tools to work with SQLite. Useful if you need to develop embedded SQLite databases.   
 
 Helps to get started fast locally, because SQLite and toolset are already installed and configured. It is only needed 
 to start a container.  
@@ -20,12 +20,13 @@ Open [localhost:8020](http://localhost:8020)
 __SQLite Features:__
 
 1. [sqlean](https://github.com/nalgeon/sqlean). The ultimate set of compiled SQLite extensions.
-2. [sqlite-web](https://github.com/coleifer/sqlite-web). Web-based SQLite database browser.
-3. [litecli](https://github.com/dbcli/litecli). CLI for SQLite.
-4. [sqlite-viewer](https://github.com/inloop/sqlite-viewer). View SQLite file online.
-5. [Web-GUI-for-SQLite](https://github.com/cyrilbois/Web-GUI-for-SQLite). Alternative tool to view SQLite file online.
-6. [DBdesigner](https://github.com/akreienbring/dbdesigner). Draw ERD diagrams and use it to generate DDL code.
-7. [tbls](https://github.com/k1LoW/tbls). Generate documentation (essentially data catalog) from the database
+2. [nocodb](https://docs.nocodb.com/). Great UI to fill SQLite with data. NocoDB is an open source Airtable alternative. 
+3. [sqlite-web](https://github.com/coleifer/sqlite-web). Web-based SQLite database browser.
+4. [litecli](https://github.com/dbcli/litecli). CLI for SQLite.
+5. [sqlite-viewer](https://github.com/inloop/sqlite-viewer). View SQLite file online.
+6. [Web-GUI-for-SQLite](https://github.com/cyrilbois/Web-GUI-for-SQLite). Alternative tool to view SQLite file online.
+7. [DBdesigner](https://github.com/akreienbring/dbdesigner). Draw ERD diagrams and use it to generate DDL code.
+8. [tbls](https://github.com/k1LoW/tbls). Generate documentation (essentially data catalog) from the database
 
 __Workspace Features:__
 
@@ -52,6 +53,26 @@ __Workspace Features:__
 12. Workspace own UI, from which you can open all applications and documentation.
 
 ## Get started
+
+### NocoDB
+
+[NocoDB](https://docs.nocodb.com/). NocoDB is an open source Airtable alternative. Use it to create SQLite tables, develop databases 
+without SQL. 
+
+Launch the workspace, navigate to the Workspace UI and open NocoDB. Or open [localhost:8030](http://localhost:8030/) directly in browser. 
+Create new user (provide any email,pass). Create tables, enter data, import data files, create forms and much more.  
+
+NocoDB is backed by SQLite3, database file `/opt/nocodb/noco.db `.  
+
+You can query NocoDB databse directly with sqlite-web. Open it through the Workspace UI, or navigate to [localhost:8031](http://localhost:8031/) directly.  
+
+At any moment you can copy SQLite database from NocoDB with all the data, edit, modify and configure for the needs of your application. 
+- Copy of NocoDB database and continue developing with Sqlite-web
+```
+mv -f /opt/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite 
+```
+Open Sqlite-web on [localhost:8032](http://localhost:8032/)
+
 
 ### Sqlite 
 
@@ -87,29 +108,46 @@ sqlite3
 
 ### [sqlite-web](https://github.com/coleifer/sqlite-web)
 
-Serve any SQLite database. There is a port assigned - 8033. Use this port to start sqlite-web for your database. 
-Workspace UI has a shorcut to quickly open sqlite-web running on port 8033.
+Serve any SQLite database. There are 2 SQlite database served by default:
+- NocoDB database. Sqlite-web is served on [localhost:8031](http://localhost:8031/)
+- "Main" database. Empty SQlite3 database. Sqlite-web is served on [localhost:8032](http://localhost:8032/)
+- "Example/test" database. Filled with test "Chinook" database. Sqlite-web is served on [localhost:8033](http://localhost:8033/)
 
-Example, start sqlite-web on port 8033 for SQLite database file `/home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite`
+
+__Copy SQlite databases__
+SQlite is just a file, jou can copy it and replace other databases. For example, if you want to copy NocoDB database 
+into the "Main" database, which is served by Sqlite-web on [localhost:8032](http://localhost:8032/) simply execute 
+```
+mv -f /opt/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite 
+```
+
+__Serve on-demand SQlite database__
+One port 8034 is reserved for serving on-demand database with Sqlite-web. 
+Serve it with the following command
+```
+sqlite_web <path-to-your-sqlite-database-file> --host 0.0.0.0 --port 8034
+```
+
+Example, start sqlite-web on port 8034 for SQLite database file `/home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite`
 
 ```
-sqlite_web /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite --host 0.0.0.0 --port 8033 
+sqlite_web /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite --host 0.0.0.0 --port 8034 
 ```
 
 and with extensions loaded:
 
 ```
-sqlite_web /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite --host 0.0.0.0 --port 8033  -e /home/sqlite-extensions/text.so -e /home/sqlite-extensions/unicode.so -e /home/sqlite-extensions/uuid.so
+sqlite_web /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite --host 0.0.0.0 --port 8034  -e /home/sqlite-extensions/text.so -e /home/sqlite-extensions/unicode.so -e /home/sqlite-extensions/uuid.so
 ```
 
 ### [sqlite-viewer](https://github.com/inloop/sqlite-viewer). View SQLite file online.
 
-Upload SQLite database file (from your local machine) annd explore.
+Upload SQLite database file (from your local machine) and explore.
 
 
 ### [Web-GUI-for-SQLite](https://github.com/cyrilbois/Web-GUI-for-SQLite)
 
-Upload SQLite database file (from your local machine) annd explore.
+Upload SQLite database file (from your local machine) and explore.
 
 
 ### [litecli](https://github.com/dbcli/litecli)

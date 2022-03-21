@@ -11,8 +11,31 @@ COPY supervisord-sqlite.conf /etc/supervisord/
 COPY mkdocs /home/docs
 COPY README.md /home/docs/docs/docs.md
 
+# apt-get install -y sqlite3 \
+
 RUN echo "------------------------------------------------------ sqlite3" \
-    && apt-get install -y sqlite3 \
+    && cd /tmp && wget https://sqlite.org/2021/sqlite-autoconf-3350400.tar.gz \
+    && tar zxvf /tmp/sqlite-autoconf-3350400.tar.gz \
+    && cd /tmp/sqlite-autoconf-3350400 \
+    && ./configure --prefix=/usr     \
+            --disable-static  \
+            --enable-fts5     \
+            CPPFLAGS="-DSQLITE_ENABLE_FTS3=1  \
+            -DSQLITE_ENABLE_FTS4=1            \
+            -DSQLITE_ENABLE_COLUMN_METADATA=1 \
+            -DSQLITE_ENABLE_UNLOCK_NOTIFY=1   \
+            -DSQLITE_ENABLE_DBSTAT_VTAB=1     \
+            -DSQLITE_SECURE_DELETE=1          \
+            -DSQLITE_ENABLE_FTS3_TOKENIZER=1" \
+    && make \
+    && make install \
+    && rm /tmp/sqlite-autoconf-3350400.tar.gz \
+    && rm -rf /tmp/sqlite-autoconf-3350400 \
+    && echo "------------------------------------------------------ nocodb" \
+    && cd /; mkdir /opt/nocodb/ \
+    && git clone https://github.com/nocodb/nocodb-seed /opt/nocodb/ \
+    && cd /opt/nocodb && nodeenv --node=12.18.3 --npm=6.0.0 env \
+    && cd /opt/nocodb && . env/bin/activate && npm install \
     && echo "------------------------------------------------------ cli" \
     && pip install litecli==1.7.0 \
     && echo "------------------------------------------------------ rclone" \
@@ -53,6 +76,8 @@ RUN echo "------------------------------------------------------ sqlite3" \
     && chown -R abc /opt/dbdesigner \
     && mkdir /var/log/dbdesigner && chown -R abc /var/log/dbdesigner \
     && mkdir /var/log/sqlite-web && chown -R abc /var/log/sqlite-web \
+    && chown -R abc /opt/nocodb \
+    && mkdir /var/log/nocodb && chown -R abc /var/log/nocodb \
     && echo "export PAGER='pspg -s 4 --no-mouse'" >> /home/abc/.zshrc  \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
@@ -62,8 +87,11 @@ COPY dbdesigner/startUp.js /opt/dbdesigner/dist/startUp.js
 
 ENV SQLITE_VIEWER_URL=http://localhost:8022/sqlite-viewer/ \
     SQLITE_WEB_GUI_URL=http://localhost:8022/web-gui-sqlite/ \
-    SQLITE_WEB_CUSTOM_URL=http://localhost:8033/
+    SQLITE_WEB_CUSTOM_URL=http://localhost:8034/ \
+    PORT=8030 
 
 USER abc
+
+
 
 

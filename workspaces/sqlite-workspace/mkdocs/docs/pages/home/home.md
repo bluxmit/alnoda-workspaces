@@ -79,22 +79,22 @@
             "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
         },
         {
-            "env": "DBDESIGNER_URL",
-            "name": "DB designer",
-            "image": "dbdesigner.png",
-            "description": "Visual design tool for Entity Relationship Diagrams & SQL generator"
+            "env": "NOCODB_URL",
+            "name": "NocoDB",
+            "image": "Nocodb.png",
+            "description": "Open source Airtable alternative. GUI for your SQLite database."
+        },
+        {
+            "env": "SQLITE_WEB_NOCODB",
+            "name": "SQLite database browser for NocoDB",
+            "image": "db-test.jpg",
+            "description": "Explore and query SQLite database of NocoDB"
         },
         {
             "env": "SQLITE_WEB_MAIN_URL",
             "name": "SQLite database browser (main)",
             "image": "db-main.jpg",
             "description": "Develop SQLite database with the help of WEB UI"
-        },
-        {
-            "env": "SQLITE_WEB_TEST_URL",
-            "name": "SQLite database browser (test)",
-            "image": "db-test.jpg",
-            "description": "Develop SQLite testing database with the help of WEB UI"
         },
         {
             "env": "SQLITE_WEB_EXAMPLE_URL",
@@ -106,7 +106,13 @@
             "env": "SQLITE_WEB_CUSTOM_URL",
             "name": "SQLite database browser (custom)",
             "image": "db-custom.jpg",
-            "description": "Not started! Start manually with your SQLite database, i.e.  <b>sqlite_web /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite --host 0.0.0.0 --port 8033</b>"
+            "description": "Not started! Start manually with your SQLite database, i.e.  <b>sqlite_web /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite --host 0.0.0.0 --port 8034</b>"
+        },
+        {
+            "env": "DBDESIGNER_URL",
+            "name": "DB designer",
+            "image": "dbdesigner.png",
+            "description": "Visual design tool for Entity Relationship Diagrams & SQL generator"
         },
         {
             "env": "SQLITE_VIEWER_URL",

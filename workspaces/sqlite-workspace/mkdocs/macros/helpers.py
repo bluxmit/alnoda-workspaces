@@ -15,9 +15,10 @@ port_increments = {
     "MC_URL": 7,
     "HTOP_URL": 8,
     "DBDESIGNER_URL": 9,
-    "SQLITE_WEB_TEST_URL": 10,
-    "SQLITE_WEB_MAIN_URL": 11,
-    "SQLITE_WEB_EXAMPLE_URL": 12
+    "NOCODB_URL": 10,
+    "SQLITE_WEB_NOCODB": 11,
+    "SQLITE_WEB_MAIN_URL": 12,
+    "SQLITE_WEB_EXAMPLE_URL": 13
     }
 
 # this function name should not be changed
