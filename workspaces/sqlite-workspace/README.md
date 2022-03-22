@@ -62,16 +62,26 @@ without SQL.
 Launch the workspace, navigate to the Workspace UI and open NocoDB. Or open [localhost:8030](http://localhost:8030/) directly in browser. 
 Create new user (provide any email,pass). Create tables, enter data, import data files, create forms and much more.  
 
-NocoDB is backed by SQLite3, database file `/opt/nocodb/noco.db `.  
+#### query NocoDB data 
+NocoDB is backed by SQLite3, database file `/home/nocodb/noco.db `.  
 
 You can query NocoDB databse directly with sqlite-web. Open it through the Workspace UI, or navigate to [localhost:8031](http://localhost:8031/) directly.  
 
 At any moment you can copy SQLite database from NocoDB with all the data, edit, modify and configure for the needs of your application. 
 - Copy of NocoDB database and continue developing with Sqlite-web
 ```
-mv -f /opt/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite 
+mv -f /home/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite 
 ```
 Open Sqlite-web on [localhost:8032](http://localhost:8032/)
+
+#### NocoDB with another SQLite database
+
+If yopu create NocoDB project with external database, tables created by NocoDB will not have prefixes.  
+
+For example, create project with the example Chinook SQLite database file `/home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite`, 
+and query data also with sqlite-web on [localhost:8033](http://localhost:8033/).  
+
+Or create NocoDB project with external SQLite database file `/home/project/sqlite-db/db-main.sqlite` and query with sqlite-web on [localhost:8032](http://localhost:8032/).
 
 
 ### Sqlite 
@@ -114,14 +124,14 @@ Serve any SQLite database. There are 2 SQlite database served by default:
 - "Example/test" database. Filled with test "Chinook" database. Sqlite-web is served on [localhost:8033](http://localhost:8033/)
 
 
-__Copy SQlite databases__
+#### Copy SQlite databases
 SQlite is just a file, jou can copy it and replace other databases. For example, if you want to copy NocoDB database 
 into the "Main" database, which is served by Sqlite-web on [localhost:8032](http://localhost:8032/) simply execute 
 ```
-mv -f /opt/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite 
+mv -f /home/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite 
 ```
 
-__Serve on-demand SQlite database__
+#### Serve on-demand SQlite database
 One port 8034 is reserved for serving on-demand database with Sqlite-web. 
 Serve it with the following command
 ```

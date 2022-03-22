@@ -32,10 +32,11 @@ RUN echo "------------------------------------------------------ sqlite3" \
     && rm /tmp/sqlite-autoconf-3350400.tar.gz \
     && rm -rf /tmp/sqlite-autoconf-3350400 \
     && echo "------------------------------------------------------ nocodb" \
-    && cd /; mkdir /opt/nocodb/ \
-    && git clone https://github.com/nocodb/nocodb-seed /opt/nocodb/ \
-    && cd /opt/nocodb && nodeenv --node=12.18.3 --npm=6.0.0 env \
-    && cd /opt/nocodb && . env/bin/activate && npm install \
+    && cd /; mkdir /home/nocodb/ \
+    && git clone https://github.com/nocodb/nocodb-seed /home/nocodb/ \
+    && cd /home/nocodb && nodeenv --node=12.18.3 --npm=6.0.0 env \
+    && cd /home/nocodb && . env/bin/activate && npm install \
+    && rm -rf /home/nocodb/.git \
     && echo "------------------------------------------------------ cli" \
     && pip install litecli==1.7.0 \
     && echo "------------------------------------------------------ rclone" \
@@ -76,7 +77,7 @@ RUN echo "------------------------------------------------------ sqlite3" \
     && chown -R abc /opt/dbdesigner \
     && mkdir /var/log/dbdesigner && chown -R abc /var/log/dbdesigner \
     && mkdir /var/log/sqlite-web && chown -R abc /var/log/sqlite-web \
-    && chown -R abc /opt/nocodb \
+    && chown -R abc /home/nocodb \
     && mkdir /var/log/nocodb && chown -R abc /var/log/nocodb \
     && echo "export PAGER='pspg -s 4 --no-mouse'" >> /home/abc/.zshrc  \
     && find /home -type d | xargs -I{} chown -R abc {} \
