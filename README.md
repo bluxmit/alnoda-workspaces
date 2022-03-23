@@ -100,6 +100,13 @@ websites like [**this one**](https://mkdocs-magicspace.alnoda.org/) as easy as p
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
 ```
 
+### [`SQLite-Workspace`](./workspaces/sqlite-workspace/README.md) 
+Collection of tools to develop SQLite databases. Useful if you need to create an embedded database for your application, 
+and fill it with data.   
+```
+docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/sqlite-workspace
+```
+
 ### [`Ubuntu-workspace`](./workspaces/ubuntu-workspace/README.md) 
 Docker as a "light-weight Virtual Machine". Get an isolated Ubuntu environment for development, testing or experimentation 
 that requires less resources than VM.    

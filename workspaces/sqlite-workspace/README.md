@@ -1,6 +1,7 @@
 # SQLite Workspace
 
-Collection of tools to work with SQLite. Useful if you need to develop embedded SQLite databases.   
+Collection of tools to develop SQLite databases. Useful if you need to create an embedded database for your application, 
+and fill it with data.   
 
 Helps to get started fast locally, because SQLite and toolset are already installed and configured. It is only needed 
 to start a container.  
