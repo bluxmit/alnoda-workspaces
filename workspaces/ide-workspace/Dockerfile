@@ -1,7 +1,7 @@
 
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=20.04-2.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -56,7 +56,7 @@ COPY settings.json /home/abc/.theia/settings.json
 COPY supervisord-theia.conf /etc/supervisord/
 
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/docs.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 

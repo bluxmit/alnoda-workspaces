@@ -1,57 +1,25 @@
-<p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p> 
-
-# Workspace in docker
-General-purpose dockerized development environment. Fully isolated inside a docker container. 
-Includes code editor, terminal, scheduler and filebrowser. 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-collage-sm.jpg" alt="Collage">
-</p>
-
-
-#### Try it out
- 
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/workspace-in-docker
-```  
-
 ## Contents
 
-* [About](#about)
-* [Code Editor](#code-editor)
+* [All features](#all-features)
 * [Why workspace in docker](#why-workspace-in-docker)
 * [Launch Workspace](#launch-workspace)
     * [Workspace terminal](#workspace-terminal)
     * [Multiple workspaces](#multiple-workspaces)
     * [Understanding ports](#understanding-ports)
-    * [Docker in docker](#docker-in-docker)
-    * [Run on remote server](#run-on-remote-server)
-* [Use Workspace](#use-workspace)
- 	* [Install applications](#install-applications)
- 	* [Schedule jobs with Cron](#schedule-jobs-with-cron)
- 	* [Python](#python)
- 	* [Node.js](#node.js)
- 	* [Run applications and services inside the workspace](#run-applications-and-services-inside-the-workspace)
 * [Manage workspaces](#manage-workspaces)
     * [Start and stop workspaces](#start-and-stop-workspaces)
     * [Create new workspace image](#create-new-workspace-image)
     * [Manage workspace images](#manage-workspace-images)
     * [Save and load workspace images](#save-and-load-workspace-images)
     * [Move workspace to the cloud](#move-workspace-to-the-cloud)
+* [Self-hosted workspace](#self-hosted-workspace)
+    * [Unsecure remote workspace](#unsecure-remote-workspace)
+    * [Secure remote workspace](#secure-remote-workspace)
+* [Workspace Documentation](#workspace-documentation)
 
-## About
 
-The Workspace contains browser-based Visual Studio Code, and several browser-based tools that make it more convenient to work from inside a docker container.  
-
-<div align="center" style="font-style: italic;">
-    Demo: Workspace in docker
-</div>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-demo.gif" alt="WID demo" width="900">
-</p>
+## All features
+The full lost of workspace features
 
 **Tools with UI** 
 
@@ -66,42 +34,20 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - [**MkDocs**](https://squidfunk.github.io/mkdocs-material/)  - maintain documentation for your workspace or project with only markdown. 
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
-
-**Other:**
-- Docker in docker
-- [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-- Python 3, Pip 
-- Node/nodeenv
-- git, git-flow 
-- curl, wget, telnet, jq, 
-- nano, vim, mc, ncdu, htop
-- supervisord
-- cron
+- **Ubuntu 20.4** with the following apps
+    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+    - Python 3, Pip 
+    - Node/nodeenv
+    - git, git-flow, lazygit 
+    - curl, wget, telnet, jq
+    - nano, vim, mc
+    - ncdu, htop, glances, vizex
+    - supervisord
+    - cron
 
 *NOTE: This is an alternative workspace to the `codeserver-workspace`. It has all the features ot the latter, except for the 
 different implementation of the Visual Studio Code.*
 
-## Code Editor
-
-The main code editor of this workspace is [**Eclipse Theia**](https://theia-ide.org/docs/) - an open-source version of popular Visual Studio Code IDE. 
-despite Eclipse Theia is a browser-based code editor, it is fast, responsive, and full-featured. It features code highlighting, autocompletion, 
-rendering of notebooks has a tree-based file browser, and a great number of pre-installed color themes.  
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/theia-themes.png" alt="theia-themes.png" width="900">
-</p>
-
-You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
-The IDE is already configured to make code highlighting for a great number of programming languages and file types. It also has many 
-popular extensions installed  
-
-<div align="center" style="font-style: italic;">
-    Demo: Eclipse Theia
-</div>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/theia.gif" alt="Theia demo" width="900">
-</p>
 
 ## Why workspace in docker 
 
@@ -156,17 +102,13 @@ Workspace has its own UI, which includes quiklaunch (home) page and documentatio
 From the quiklaunch you can open any workspace tool. Documentation pages you modify in order 
 to document the project, workspace use and setup.  
 
-### Workspace terminal
+## Workspace terminal
 
 There are several ways how to work with terminal of the the workspace-in-docker: 
 
 - built-it in-browser terminal
 - use terminal provided by in-browser IDE [http://localhost:8025](http://localhost:8025) ([unless other ports are mapped](#multiple-workspaces))
 - ssh into the running the docker container (of the workspace) from your terminal
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/base-workspace/img/base-workspace-terminal.gif" alt="Base-Workspace terminal" width="750">
-</p> 
 
 *(Browser-based terminals always work under the user you started the workspace with, the default is non root user "abc")*
 
@@ -190,7 +132,7 @@ You can work in Ubuntu terminal now. Execute the followinng command to know your
 
 > `whoami`
 
-### Multiple workspaces
+## Multiple workspaces
 
 Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8035 are taken.   
 
@@ -210,8 +152,7 @@ docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/wo
 Notice that in addition we need to set environmental variable ENTRY_PORT, which should be equal to the first port in the new range. 
 Workspace UI usues this variable to know the new port range, and redirects to the proper addresses of the workspace applications' UIs.
 
-
-### Understanding ports
+## Understanding ports
 The workspace was started with a port range mapping ***-p 8020-8035***. 
 This is because workspace contains a set of applications with browser-based UI 
 
@@ -235,7 +176,7 @@ Open [localhost:8020](http://localhost:8020), and from there open other applicat
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-ui.png" alt="wid-ui.png" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/wid-ui.png" alt="wid-ui.png" width="750">
 </p>
 
 The rest of the ports from the port range can be used in order to expose optional applications, or applications you might 
@@ -255,192 +196,6 @@ docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 -p 443:443 alno
 **NOTE:** It is not a problem if you don't expose any ports, but later on realise you need them - 
 you will just create new image, and run it exposing the required port (look in the section [Create new image](#create-new-workspace-image)) 
 
-### Docker in docker
-
-It is possible to work with docker directly from the workspace (using workspace terminal). 
-
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -v /var/run/docker.sock:/var/run/docker.sock alnoda/workspace-in-docker
-```
-
-NOTE: in order to use docker in docker you need to or enter into the workspace container as root
-```sh
-docker exec -it --user=root space-1 /bin/zsh
-```
-
-### Run on remote server
-
-Because workspace is just a docker image, running it in any other server is as easy as running it on local laptop.  
-
-Running on remote server makes it much simpler to collaborate, because you can just share credentials to the workspace with your peers, and they will be able to use it. 
-You can also run applications that should run permanently, and run jobs on schedule.  
-
-#### Unsecure remote workspace
-
-The simplest deployment of the workspace requires only 3 steps:
-
-- get virtual server on your favourite cloud (Digital Ocean, Linode, AWS, GC, Azure ...) 
-- [install docker](https://docs.docker.com/engine/install/) on this server
-- ssh to the remote server and start workspace 
-
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/workspace-in-docker
-```
-
-**NOTE:** When running workspace on the remote server, add envronmental variable `-e WRK_HOST="<ip-of-your-remote-server>"`. 
-Workspace UI needss this variable to know how redirect properly to the workspace applications' UIs.
-
-Open in your browser `<ip-of-your-remote-server>:8020`  
-
-If docker-in-docker is required, then 
-
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/workspace-in-docker
-```
-
-This way launches workspace in cloud, but such workspace is not secure, everyone who knows IP of your server will be able to use it.  
-
-#### Secure remote workspace
-
-*You might want to restrict access to the workspace, and secure encrypted communication with the workspace*  
-
-Workspace-in-docker contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
-
-If you want to run workspace on the remote server securely, start workspace-in-docker on your local laptop first, open its terminal and 
-use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
-
-> `python /home/abc/utils/remote.py --workspace="workspace-in-docker" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
-
-**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
-
-After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-remote.gif" alt="wid-remote.gif" width="750">
-</p>
-
-. Copy this folder to the remote server where you want to launch the Python workspace. 
-You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
-
-```sh
-docker-compose up -d
-```  
-
-That's it, you workspace is running securely on the remote server, using 
-self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, and authentication is added. 
-
-
-**NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/accept-risks.png" alt="accept-risk" width="750">
-</p> 
-
-After you accept the risk, authentication window will appear asking you the user and password, that you have set as<ANY_USER_NAME>, <ANY_USER_PASSWORD> 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/auth.png" alt="auth" width="750">
-</p> 
-
-
-
-## Use Workspace
-
-Among the common actions you'd do in the workspace are
-
-- installation of new applications and runtimes 
-- edit files, write code, scripts
-- build, compile and execute code 
-- start/stop applications and services
-- schedule tasks and scripts
-- process data
-
-### Install applications
-
-Use workspace workspace terminal to install new applications. 
-Install with ```sudo apt install```. The default *abc* user is allowed to install packages.  
-
-For example, in order to install [Emacs text editor](https://www.gnu.org/software/emacs/) open workspace terminal, and execute 
-
-> `sudo apt install emacs`
-
-
-### Schedule jobs with Cron 
-
-Schedule execution of any task with cron - a time-based job scheduler in Unix-like computer operating systems.   
-
-Open workspace terminal, and execute
-
-> `crontab -e`
-
-*(chose [1] nano as editor on the first time)*
-In the end of the opened file add line  
-
-> `* * * * * echo $(whoami) >> /home/cron.txt`
-
-This will print every minute username to file */home/cron.txt* . *(Hit Ctrl+X to exit nano)*
-
-Hint: example of cron job definition:   
-```
-.---------------- minute (0 - 59)   
-|  .------------- hour (0 - 23)
-|  |  .---------- day of month (1 - 31)
-|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
-|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
-|  |  |  |  |
-*  *  *  *  *  command to be executed
-```
-
-**NOTE** you can disconnect from the image and close terminal - cron will continue working.
-
-> Instead of cron you might want to use Cronicle - a tool with Web UI, and a great list of features 
-> that will provide you with the dashboard, list of executions and statistics, even let you ser limis 
-> on resources for each jobs, and create depenndencies between jobs.
-
-### Python
-Python and Pip are installed. To use python console, open workspace terminal and execute 
-
-> `python`
-
-install python package with pip, for 
-
-> `pip install pandas`
-
-If you are planning to work with python, we recommend to install IPython, that provides a rich toolkit to help 
-you make the most of using Python interactively. Install and start ipython
-
-> ```pip install ipython```  
-> `ipython`
-
-### Node.js
-We recommend to use nodeenv to create different node environments.  
-
-For example, open workspace terminal, create folder npmgui, and activate environment with node v. 12.18.3 and npm v.6.0.0
-
-> `cd /home`  
-> `mkdir npmgui; cd npmgui`  
-> `nodeenv --node=12.18.3 --npm=6.0.0 env`
-
-Let's install package and start node application 
-
-> `. env/bin/activate && npm i -g npm-gui`   
-> `npm-gui 0.0.0.0:8030`
-
-Open your browser on http://localhost:8030/ 
-
-**NOTE:** If you close terminal, the application will stop. See how to [start applications that reamin live after closing a workspace terminal](#run-applications-and-services-inside-the-workspace)
-
-
-### Run applications and services inside the workspace
-
-If you want application to keep running after workspace terminal is closed start it with **"&!"** at the end. 
-
-For example, in the last section we started *npm-gui* tool with command `npm-gui 0.0.0.0:8030`. If you close the workspace terminal, 
-this application witll stop running. To keep it running after terminal is closed, execute
-
-> `npm-gui 0.0.0.0:8030 &!`   
-
-Now, if you disconnect from the workspace and close terminal, the application will continue running in the workspace, untill [workspace is stopped](#start-and-stop-workspaces).   
 
 ## Manage workspaces
 
@@ -590,6 +345,81 @@ If you don't want to use container registry, then there are 2 steps more involve
     - use [scp](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/)
 4. [Load workspace image from file](#save-and-load-workspace-images) on the remote server 
 5. [Start workspace on the remote server](#run-on-remote-server) 
+
+
+## Self-hosted workspace
+
+Because workspace is just a docker image, running it in any other server is as easy as running it on local laptop.  
+
+Running on remote server makes it much simpler to collaborate, because you can just share credentials to the workspace with your peers, and they will be able to use it. 
+You can also run applications that should run permanently, and run jobs on schedule.  
+
+#### Unsecure remote workspace
+
+The simplest deployment of the workspace requires only 3 steps:
+
+- get virtual server on your favourite cloud (Digital Ocean, Linode, AWS, GC, Azure ...) 
+- [install docker](https://docs.docker.com/engine/install/) on this server
+- ssh to the remote server and start workspace 
+
+```
+docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/workspace-in-docker
+```
+
+**NOTE:** When running workspace on the remote server, add envronmental variable `-e WRK_HOST="<ip-of-your-remote-server>"`. 
+Workspace UI needss this variable to know how redirect properly to the workspace applications' UIs.
+
+Open in your browser `<ip-of-your-remote-server>:8020`  
+
+If docker-in-docker is required, then 
+
+```
+docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/workspace-in-docker
+```
+
+This way launches workspace in cloud, but such workspace is not secure, everyone who knows IP of your server will be able to use it.  
+
+#### Secure remote workspace
+
+*You might want to restrict access to the workspace, and secure encrypted communication with the workspace*  
+
+Workspace-in-docker contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
+
+If you want to run workspace on the remote server securely, start workspace-in-docker on your local laptop first, open its terminal and 
+use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
+
+> `python /home/abc/utils/remote.py --workspace="workspace-in-docker" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
+
+**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
+
+After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/wid-remote.gif" alt="wid-remote.gif" width="750">
+</p>
+
+. Copy this folder to the remote server where you want to launch the Python workspace. 
+You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
+
+```sh
+docker-compose up -d
+```  
+
+That's it, you workspace is running securely on the remote server, using 
+self-signed TLS certificates for encrypted https communication between you laptop and the remote workspace, and authentication is added. 
+
+
+**NOTE:** The HTTPS is with self-signed certificate, and your browser will show a warning, asking you to accept the risk 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/accept-risks.png" alt="accept-risk" width="750">
+</p> 
+
+After you accept the risk, authentication window will appear asking you the user and password, that you have set as<ANY_USER_NAME>, <ANY_USER_PASSWORD> 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/auth.png" alt="auth" width="750">
+</p> 
 
 
 ## Workspace Documentation

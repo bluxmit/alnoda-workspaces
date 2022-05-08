@@ -79,4 +79,5 @@ Use File Browser [http://localhost:8021](http://localhost:8021) to get the dump 
 
 
 
-
+### Future extensions
+- [phpRedisAdmin](https://github.com/erikdubbelboer/phpRedisAdmin)

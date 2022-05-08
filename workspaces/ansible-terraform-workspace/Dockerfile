@@ -1,9 +1,9 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=2.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
-ARG DEPLOY_IMAGE=${docker_registry}/workspace-in-docker:${image_tag}
+ARG DEPLOY_IMAGE=${docker_registry}/ide-workspace:${image_tag}
 
 ################################################################################ BUILD THEIA (with specific plugins)
 
@@ -59,13 +59,13 @@ COPY ara-settings.yaml /home/abc/.ara/server/settings.yaml
 ENV ANSIBLE_CALLBACK_PLUGINS="/usr/local/lib/python3.9/dist-packages/ara/plugins/callback" ARA_API_CLIENT="http" ARA_API_SERVER="http://0.0.0.0:8029" ARA_TIME_ZONE="UTC"
 
 # Customize mkdocs
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
-COPY ./mkdocs/home.md /home/docs/docs/pages/home
-COPY ./mkdocs/Ara.png /home/docs/docs/pages/home/home/
-COPY ./mkdocs/Blast-radius.png /home/docs/docs/pages/home/home/
-COPY ./mkdocs/Terraform-Rover.png /home/docs/docs/pages/home/home/
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/Ara.png /home/docs/docs/assets/home/
+COPY ./mkdocs/Blast-radius.png /home/docs/docs/assets/home/
+COPY ./mkdocs/Terraform-Rover.png /home/docs/docs/assets/home/
 COPY ./mkdocs/helpers.py /home/docs/macros 
-COPY README.md /home/docs/docs/docs.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 
 RUN apt-get -y update \
     && echo "------------------------------------------------------ ansible ara" \

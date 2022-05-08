@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-0.7
+ARG image_tag=20.04-2.0
 
 FROM ${docker_registry}/ubuntu-workspace:${image_tag}
 
@@ -38,7 +38,7 @@ RUN echo "------------------------------------------------------ filebrowser, un
 	&& pip install -r /home/abc/installed-python-packages/mkdocs-requirements.txt \
     && echo "------------------------------------------------------ utils" \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    && mv /tmp/alnoda-workspaces/utils /home/abc/ \
+    && mv /tmp/alnoda-workspaces/utils /home/abc/ || true \
     && rm -rf /tmp/alnoda-workspaces \
 	&& echo "------------------------------------------------------ user" \
 	&& mkdir -p /home/static-server \

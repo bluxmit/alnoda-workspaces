@@ -1,1 +1,31 @@
+ARG docker_registry=docker.io/alnoda
+ARG image_tag=18.04-1.0
+
+FROM ${docker_registry}/workspace-in-docker:${image_tag}
+USER root
+
+RUN apt-get -y update \
+    && echo "------------------------------------------------------ java 8" \
+    && sudo apt-get install -y openjdk-8-jre \
+    && echo "------------------------------------------------------ maven" \
+    && wget https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz -P /tmp \
+    && tar xf /tmp/apache-maven-3.8.5-bin.tar.gz \
+    && mv apache-maven-3.8.5 /opt/maven \
+    && rm /tmp/apache-maven-3.8.5-bin.tar.gz \
+    && echo "------------------------------------------------------ gradle" \
+    && wget https://services.gradle.org/distributions/gradle-7.4.2-bin.zip -P /tmp \
+    && unzip -d /opt/gradle /tmp/gradle-7.4.2-bin.zip \
+    && rm /tmp/gradle-7.4.2-bin.zip 
+    
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
+    M2_HOME=/opt/maven \
+    MAVEN_HOME=/opt/maven \
+    PATH="/opt/maven/bin:${PATH}" 
+
+ENV GRADLE_HOME=/opt/gradle/gradle-7.4.2 \
+    PATH="/opt/gradle/gradle-7.4.2/bin:${PATH}"
+
+USER abc
+
+
 
