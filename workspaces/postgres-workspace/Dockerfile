@@ -8,7 +8,7 @@ ARG BUILD_IMAGE=node:12.18.3
 ARG DEPLOY_IMAGE=${docker_registry}/base-workspace:${image_tag}
 
 
-################################################################################ BUILD 
+################################################################################ BUILD
 
 ARG THEIA_VERSION=1.15.0
 FROM ${BUILD_IMAGE} as theia-builder
@@ -40,7 +40,7 @@ RUN yarn --pure-lockfile && \
 ################################################################################ IMAGE
 
 FROM dimitri/pgloader:ccl.latest as pgloader-builder
-FROM ${DEPLOY_IMAGE} 
+FROM ${DEPLOY_IMAGE}
 
 USER root
 
@@ -59,14 +59,14 @@ COPY README.md /home/docs/docs/docs.md
 COPY schemaspy/schemaspy.sh /opt/schemaspy/schemaspy.sh
 
 ENV SHELL=/bin/bash \
-    THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
+    THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \
     USE_LOCAL_GIT=true \
     HOME=/home/abc \
     PATH="/home/abc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/14/bin" \
     NVM_DIR=/home/abc/.nvm \
     PGDATA="/var/postgres"
 
-COPY --from=pgloader-builder /usr/local/bin/pgloader  /usr/bin/pgloader 
+COPY --from=pgloader-builder /usr/local/bin/pgloader  /usr/bin/pgloader
 
 RUN echo "------------------------------------------------------ postgres" \
     && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
@@ -90,11 +90,11 @@ RUN echo "------------------------------------------------------ postgres" \
     && echo "------------------------------------------------------ java" \
     && apt-get -y update \
     && apt-get install -y openjdk-8-jre \
-    && echo "------------------------------------------------------ python" \    
+    && echo "------------------------------------------------------ python" \
     && apt-get install -y libpq-dev python-dev python3-dev python3.9-dev \
     && pip install psycopg2==2.9.3 \
     && pip install pgcli==3.3.1 \
-    && echo "------------------------------------------------------ nodejs" \ 
+    && echo "------------------------------------------------------ nodejs" \
     && apt-get -y install curl dirmngr apt-transport-https lsb-release ca-certificates \
     && curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - \
     && apt-get install -y nodejs \
@@ -116,40 +116,40 @@ RUN echo "------------------------------------------------------ postgres" \
     && cd /tmp && wget https://github.com/lesovsky/pgcenter/releases/download/v0.9.2/pgcenter_0.9.2_linux_amd64.deb \
     && apt-get install -y /tmp/pgcenter_0.9.2_linux_amd64.deb \
     && rm /tmp/pgcenter_0.9.2_linux_amd64.deb \
-    && echo "------------------------------------------------------ pgclimb" \ 
+    && echo "------------------------------------------------------ pgclimb" \
     && cd /tmp && wget -O pgclimb https://github.com/lukasmartinelli/pgclimb/releases/download/v0.3/pgclimb_linux_amd64 \
     && chmod +x /tmp/pgclimb \
     && mv /tmp/pgclimb /usr/bin/pgclimb \
-    && echo "------------------------------------------------------ pgfutter" \ 
+    && echo "------------------------------------------------------ pgfutter" \
     && cd /tmp && wget https://github.com/lukasmartinelli/pgfutter/releases/download/v1.2/pgfutter_linux_386 \
     && chmod +x /tmp/pgfutter_linux_386 \
     && mv /tmp/pgfutter_linux_386 /usr/bin/pgfutter \
-    && echo "------------------------------------------------------ sqitch" \     
+    && echo "------------------------------------------------------ sqitch" \
     && apt-get install -y sqitch libdbd-pg-perl libdbd-sqlite3-perl sqlite3 \
-    && echo "------------------------------------------------------ yuniql" \   
+    && echo "------------------------------------------------------ yuniql" \
     && curl https://github.com/rdagumampan/yuniql/releases/download/v1.1.55/yuniql-cli-linux-x64-latest.tar.gz -L -o /tmp/yuniql.tar.gz \
     && tar -xvzf /tmp/yuniql.tar.gz -C /bin \
     && rm /tmp/yuniql.tar.gz \
-    && echo "------------------------------------------------------ migra" \ 
+    && echo "------------------------------------------------------ migra" \
     && pip install migra==3.0.1621480950 \
-    # && echo "------------------------------------------------------ pgsh" \ 
+    # && echo "------------------------------------------------------ pgsh" \
     # && npm i -g yarn@latest \
     # && yarn global add pgsh \
-    && echo "------------------------------------------------------ yandex-pgmigrate" \ 
+    && echo "------------------------------------------------------ yandex-pgmigrate" \
     && pip install yandex-pgmigrate==1.0.6 \
-    && echo "------------------------------------------------------ synth" \ 
+    && echo "------------------------------------------------------ synth" \
     && curl -sSL https://getsynth.com/install | sh \
-    && echo "------------------------------------------------------ mock-data" \ 
+    && echo "------------------------------------------------------ mock-data" \
     && curl https://github.com/faisaltheparttimecoder/mock-data/releases/download/v3.0/mock-linux-amd64-v3.0 -L -o /tmp/mock \
     && chmod +x /tmp/mock \
     && mv /tmp/mock /usr/bin/mock \
-    && echo "------------------------------------------------------ pev-2" \ 
+    && echo "------------------------------------------------------ pev-2" \
     && cd /tmp && wget https://github.com/dalibo/pev2/releases/download/v0.24.0/pev2.tar.gz \
     && tar -xzf /tmp/pev2.tar.gz \
     && mkdir /opt/pev2 && mv pev2 /opt/pev2 \
     && rm /tmp/pev2.tar.gz \
     && cd /opt/pev2 && nodeenv --node=12.18.3 env && . env/bin/activate && npm install -g http-server \
-    && echo "------------------------------------------------------ pgflame" \ 
+    && echo "------------------------------------------------------ pgflame" \
     && cd /tmp && wget https://github.com/mgartner/pg_flame/releases/download/v1.2/pg_flame_1.2_Linux_i386.tar.gz \
     && tar -xzf /tmp/pg_flame_1.2_Linux_i386.tar.gz \
     && chmod +x /tmp/pg_flame \
@@ -176,6 +176,9 @@ RUN echo "------------------------------------------------------ postgres" \
     && cd /tmp && wget https://github.com/kaishuu0123/erd-go/releases/download/v2.0.0/linux_amd64_erd-go \
     && chmod +x /tmp/linux_amd64_erd-go \
     && mv /tmp/linux_amd64_erd-go /usr/bin/erd-go \
+    && cd /tmp && wget https://github.com/kaishuu0123/erd-go/releases/download/v2.0.0/linux_amd64_erd-go \
+    && echo "------------------------------------------------------ sqlfluff" \
+    && pip install sqlfluff==0.9.4 \
     # && echo "------------------------------------------------------ utils" \
     # && rm -rf /home/abc/utils || true \
     # && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
@@ -200,8 +203,6 @@ RUN echo "------------------------------------------------------ postgres" \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {}
 
-COPY dbdesigner/startUp.js /opt/dbdesigner/dist/startUp.js 
+COPY dbdesigner/startUp.js /opt/dbdesigner/dist/startUp.js
 
 USER abc
-
-
