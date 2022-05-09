@@ -22,7 +22,9 @@ docker exec -it --user=root space-1 /bin/zsh
 
 Explore file system with Midnight Commander
 
-> ```mc```
+```
+mc
+```
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/mc.png" alt="Moonlignt commander" width="750">
@@ -61,7 +63,12 @@ mcedit sendmail.py
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/mcedit.png" alt="Htop" width="750">
 </p>
 
+## Browser terminal
+
+This workspace has browser-based terminal up and running. Open [localhost:8026](http://localhost:8026) in browser. 
+Start the workspace on Rasberri Pi and use it via Tablet.
+
 ## Docker in docker
 
-If you want to use docker, check out **ubuntu-docker-workspace**. It is the same, but with docker-in-docker. 
+If you want to use docker, check out [**ubuntu-docker-workspace**](../../ubuntu-docker-workspace/README.md). It is the same, but with docker-in-docker. 
 

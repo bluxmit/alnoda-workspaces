@@ -2,8 +2,8 @@
   <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p>  
 
-# Ubuntu-workspace
-Containerized Linux terminal environment. Essentially Ubuntu 20.04 docker image extended with typical console apps installed, such as Git, 
+# Ubuntu workspace
+Containerized Linux terminal environment. Essentially Ubuntu 20.04 docker image extended with typical console apps, such as Git, 
 file browsers and system monitors.
 
 Start

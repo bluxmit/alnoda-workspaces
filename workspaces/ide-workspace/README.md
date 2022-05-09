@@ -36,7 +36,7 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
 - Quicklaunch UI with getting started tutorial
-- **Ubuntu 20.4** with the following CLI apps installed:
+- **Ubuntu 20.4** with:
     - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
     - Python 3, Pip 
     - Node/nodeenv

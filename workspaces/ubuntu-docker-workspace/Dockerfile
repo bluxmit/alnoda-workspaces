@@ -10,6 +10,11 @@ RUN echo "------------------------------------------------------ Docker" \
         $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
     && apt-get update \
     && apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin \
+    && echo "------------------------------------------------------ Ctop" \
+    && echo "deb http://packages.azlux.fr/debian/ buster main" | tee /etc/apt/sources.list.d/azlux.list \
+    && wget -qO - https://azlux.fr/repo.gpg.key | apt-key add - \
+    && apt-get update \
+    && apt-get install -y docker-ctop \
     && echo "------------------------------------------------------ Lazydocker" \
     && wget -P /tmp https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_x86.tar.gz \
     && mkdir /tmp/lazydocker  && tar -xzf /tmp/lazydocker_0.12_Linux_x86.tar.gz --directory /tmp/lazydocker \
@@ -25,4 +30,3 @@ RUN echo "------------------------------------------------------ Docker" \
     && rm /tmp/dive_0.9.2_linux_amd64.deb 
     
 USER abc
-
