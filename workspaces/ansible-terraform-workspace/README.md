@@ -45,7 +45,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [**Inframap**](https://github.com/cycloidio/inframap)
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](docs/features.md).
+See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
 
 <div align="center" style="font-style: italic;">
     Demo: Ansible-Terraform workspace

@@ -1,9 +1,10 @@
 <p align="center">
   <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p> 
+</p>  
 
 # Ubuntu-workspace
-Containerized terminal environment. Essentially Ubuntu 20.04 docker image with typical terminal applications added.
+Containerized Linux terminal environment. Essentially Ubuntu 20.04 docker image extended with typical console apps installed, such as Git, 
+file browsers and system monitors.
 
 Start
 
@@ -17,22 +18,34 @@ Enter workspace
 docker exec -it --user=root space-1 /bin/zsh
 ```
 
+## Features
+
+- **Ubuntu 20.4** with the following apps
+    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+    - Python 3, Pip 
+    - Node/nodeenv
+    - git, git-flow, lazygit 
+    - curl, wget, telnet, jq
+    - nano, vim, mc
+    - ncdu, htop, glances, vizex
+    - supervisord
+    - cron
+
 ## Why this image
 
-If you need to isolate something without polluting main environment. This image simply adds typical console applications to 
-the Ubuntu 20.04 image:
+If you need to isolate some work without polluting main environment.
 
-- 
+## Docs
+See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](docs/workspaces.md).
 
-- [Fig](https://github.com/withfig/autocomplete). adds autocomplete to the terminal.
-- [spacemacs](https://www.spacemacs.org/)
-- [hyper](https://github.com/vercel/hyper)
-- [xplr](https://github.com/sayanarijit/xplr)
-- [vizex](https://github.com/bexxmodd/vizex)
-- [lazygit](https://github.com/jesseduffield/lazygit)
-- [gitui](https://github.com/extrawurst/gitui)
-- [bashtop](https://github.com/aristocratos/bashtop)
-- [amp](https://github.com/jmacdonald/amp)
-- [fff](https://github.com/dylanaraps/fff)
-- [slap](https://github.com/slap-editor/slap)
-- [glow](https://github.com/charmbracelet/glow)
+
+<div align="center" style="font-style: italic;">
+    Demo: Ubuntu-workspace
+</div>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="900">
+</p>
+
+
+

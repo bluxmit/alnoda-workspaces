@@ -1,12 +1,13 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=2.0
 
-FROM ${docker_registry}/workspace-in-docker:${image_tag}
+FROM ${docker_registry}/codeserver-workspace:${image_tag}
 USER root
 
 RUN apt-get -y update \
     && echo "------------------------------------------------------ java 8" \
     && sudo apt-get install -y openjdk-8-jre \
+    && apt-get install -y openjdk-8-jdk \
     && echo "------------------------------------------------------ maven" \
     && wget https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz -P /tmp \
     && tar xf /tmp/apache-maven-3.8.5-bin.tar.gz \

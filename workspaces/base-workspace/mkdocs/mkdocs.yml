@@ -4,14 +4,14 @@
 
 nav:
   - Home: README.md
-  - Docs: docs.md
+  - Get started: getting-started.md
 
 
 # ===========================================================
 # CONFIGURATION
 # ===========================================================
 
-site_name: Base Workspace
+site_name: Workspace
 repo_url: https://github.com/bluxmit/alnoda-workspaces
 site_url: https://alnoda.org
 edit_uri: ""

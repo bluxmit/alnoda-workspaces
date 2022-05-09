@@ -1,7 +1,5 @@
 # Getting started
 
-## General
-
 ### Quicklaunch
 
 From the quicklaunch page you can open workspace tools, such as code editor or terminal 
@@ -20,14 +18,6 @@ Code editor of this workspace is [**Eclipse Theia**](https://theia-ide.org/docs/
 despite Eclipse Theia is a browser-based code editor, it is fast, responsive, and full-featured. It features code highlighting, autocompletion, 
 rendering of notebooks has a tree-based file browser, and a great number of pre-installed color themes.  
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/theia-themes.png" alt="theia-themes.png" width="900">
-</p>
-
-You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
-The IDE is already configured to make code highlighting for a great number of programming languages and file types. It also has many 
-popular extensions installed  
-
 <div align="center" style="font-style: italic;">
     Demo: Eclipse Theia
 </div>
@@ -35,6 +25,11 @@ popular extensions installed
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/theia.gif" alt="Theia demo" width="900">
 </p>
+
+You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
+The IDE is already configured to make code highlighting for a great number of programming languages and file types. It also has many 
+popular extensions installed  
+
 
 ### Terminal
 
@@ -208,7 +203,7 @@ can use to view the artifacts, that include interactive HTML pages
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/terraform-report-scaleway.gif" alt="Htop" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/terraform-report-scaleway.gif" alt="Htop" width="750">
 </p>
 
 

@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=20.04-2.0
 
 FROM ${docker_registry}/base-workspace:${image_tag}
 
@@ -7,17 +7,18 @@ USER root
 
 COPY supervisord-codeserver.conf /etc/supervisord/
 COPY ./mkdocs/helpers.py /home/docs/macros
-COPY ./mkdocs/home.md /home/docs/docs/pages/home/
-COPY ./mkdocs/IDE.jpg /home/docs/docs/pages/home/home/
+COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/IDE.jpg /home/docs/docs/assets/home/
 COPY README.md /home/docs/docs/docs.md
 
 RUN echo "------------------------------------------------------ code-server" \
-	&& mkdir -p -m 777 /opt/codeserver \
-	&& cd /opt/codeserver && nodeenv --node=12.18.3 --npm=6.0.0 env \
-	&& cd /opt/codeserver && . env/bin/activate &&  npm install -g --unsafe-perm code-server@3.10.2 \
+	&& apt-get install -y build-essential pkg-config \
+    && mkdir -p -m 777 /opt/codeserver \
+	&& cd /opt/codeserver && nodeenv --node=16.15.0 --npm=1.0.10 env \
+	&& cd /opt/codeserver && . env/bin/activate &&  npm install -g yarn && yarn global add code-server@4.4.0 \
 	&& mkdir -p -m 777 /home/project \
 	&& mkdir -p -m 777 /opt/codeserver/data \
-	&& mkdir -p -m 777 /opt/codeserver/extensions \ 
+	&& mkdir -p -m 777 mkdir /opt/vscode/extensions \ 
 	&& mkdir -p -m 777 /var/log/codeserver \
     && echo "------------------------------------------------------ utils" \
     && rm -rf /home/abc/utils || true \
@@ -27,14 +28,17 @@ RUN echo "------------------------------------------------------ code-server" \
 	&& echo "------------------------------------------------------ user" \
 	&& chown -R abc /home/project \
 	&& chown -R abc /opt/codeserver \
-	&& chown -R abc /opt/codeserver/data \
-	&& chown -R abc /opt/codeserver/extensions \
+    && chown -R abc  /opt/vscode \
     && chown -R abc /home/docs \
     && chown -R abc /home/abc/utils \
     && chown -R abc /home/abc/installed-python-packages \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
 
-# USER abc  # currently Code-server does not work undder abc
+USER abc  
 
 COPY code-server-run.sh /opt/codeserver/code-server-run.sh 
+
+
+
+

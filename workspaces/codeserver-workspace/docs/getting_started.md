@@ -20,24 +20,19 @@ From the quicklaunch page you can open workspace tools, such as code editor or t
 
 ## Code Editor
 
-Code editor of this workspace is [**Eclipse Theia**](https://theia-ide.org/docs/) - an open-source version of popular Visual Studio Code IDE. 
-despite Eclipse Theia is a browser-based code editor, it is fast, responsive, and full-featured. It features code highlighting, autocompletion, 
-rendering of notebooks has a tree-based file browser, and a great number of pre-installed color themes.  
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/theia-themes.png" alt="theia-themes.png" width="900">
-</p>
+The main code editor of this workspace is [Code-server](https://github.com/cdr/code-server) - an open-source version of popular Visual Studio Code IDE. 
+despite Code-server is a browser-based code editor, it is fast, responsive, and full-featured. It features code highlighting, autocompletion, 
+rendering of notebooks has a tree-based file browser, and many color themes.  
 
 You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
-The IDE is already configured to make code highlighting for a great number of programming languages and file types. It also has many 
-popular extensions installed  
+The IDE is already configured to make code highlighting for many programming languages and file types.  
 
 <div align="center" style="font-style: italic;">
-    Demo: Eclipse Theia
+    Demo: Code-server
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/theia.gif" alt="Theia demo" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-demo.gif" alt="Code-server demo" width="900">
 </p>
 
 ## Terminal

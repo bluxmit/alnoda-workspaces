@@ -20,7 +20,7 @@ COPY supervisord-workspace-base.conf /etc/supervisord/
 COPY filebrowser.json /opt/filebrowser/.filebrowser.json
 
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/docs.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 COPY mkdocs-requirements.txt /home/abc/installed-python-packages/mkdocs-requirements.txt
 
 RUN echo "------------------------------------------------------ filebrowser, ungit, static server" \
