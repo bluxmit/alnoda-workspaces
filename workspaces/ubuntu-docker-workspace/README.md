@@ -44,12 +44,3 @@ If you need to isolate some work without polluting main environment.
 
 ## Docs
 See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
-
-
-<div align="center" style="font-style: italic;">
-    Demo: Ubuntu-workspace
-</div>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/ubuntu-workspace.gif" alt="Ubuntu workspace" width="900">
-</p>
