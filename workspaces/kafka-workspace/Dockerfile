@@ -1,7 +1,7 @@
 
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=2.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -56,7 +56,7 @@ COPY settings.json /home/abc/.theia/settings.json
 COPY supervisord-kafka-wid.conf /etc/supervisord/
 
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/docs.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
@@ -67,12 +67,15 @@ ENV SHELL=/bin/bash \
 
 RUN echo "------------------------------------------------------ java" \
     && apt-get -y update \
-    && apt-get install -y openjdk-8-jre \
+    && cd /tmp && wget https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz \
+    && tar xvf openjdk-17.0.2_linux-x64_bin.tar.gz \
+    && rm -rf openjdk-17.0.2_linux-x64_bin.tar.gz \
+    && mv /tmp/jdk-17.0.2/ /opt/jdk-17/ \
     && echo "------------------------------------------------------ kafka" \
-    && cd /tmp && wget https://dlcdn.apache.org/kafka/3.0.0/kafka_2.13-3.0.0.tgz \
-    && tar -xzf kafka_2.13-3.0.0.tgz \
-    && mv kafka_2.13-3.0.0 /opt/kafka \
-    && rm /tmp/kafka_2.13-3.0.0.tgz \
+    && cd /tmp && wget https://dlcdn.apache.org/kafka/3.1.0/kafka_2.13-3.1.0.tgz \
+    && tar -xzf kafka_2.13-3.1.0.tgz \
+    && mv kafka_2.13-3.1.0 /opt/kafka \
+    && rm kafka_2.13-3.1.0.tgz \
     && echo "------------------------------------------------------ kafkacat" \
     && apt-get -y install kafkacat \
     && echo "------------------------------------------------------ kt" \
@@ -115,6 +118,9 @@ RUN echo "------------------------------------------------------ java" \
     && chown -R abc /home/abc/installed-python-packages \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
+
+ENV export JAVA_HOME=/opt/jdk-17
+ENV PATH="/opt/jdk-17/bin:$PATH"
     
 USER abc
 

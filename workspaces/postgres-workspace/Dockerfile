@@ -1,7 +1,7 @@
 
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=2.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -55,7 +55,7 @@ COPY settings.json /home/abc/.theia/settings.json
 COPY supervisord-postgres.conf /etc/supervisord/
 
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/docs.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 COPY schemaspy/schemaspy.sh /opt/schemaspy/schemaspy.sh
 
 ENV SHELL=/bin/bash \
@@ -91,7 +91,7 @@ RUN echo "------------------------------------------------------ postgres" \
     && apt-get -y update \
     && apt-get install -y openjdk-8-jre \
     && echo "------------------------------------------------------ python" \
-    && apt-get install -y libpq-dev python-dev python3-dev python3.9-dev \
+    && apt-get install -y libpq-dev python-dev python3-dev python3.8-dev \
     && pip install psycopg2==2.9.3 \
     && pip install pgcli==3.3.1 \
     && echo "------------------------------------------------------ nodejs" \
@@ -179,11 +179,6 @@ RUN echo "------------------------------------------------------ postgres" \
     && cd /tmp && wget https://github.com/kaishuu0123/erd-go/releases/download/v2.0.0/linux_amd64_erd-go \
     && echo "------------------------------------------------------ sqlfluff" \
     && pip install sqlfluff==0.9.4 \
-    # && echo "------------------------------------------------------ utils" \
-    # && rm -rf /home/abc/utils || true \
-    # && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    # && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    # && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ user" \
     && mkdir /var/log/postgres && chown -R abc /var/log/postgres \
     && chown -R abc /var/log/postgresql \

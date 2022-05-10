@@ -3,16 +3,15 @@
 # ===========================================================
 
 nav:
-  - Home: pages/home/home.md
-  - About: README.md
-  - Docs: docs.md
+  - Home: README.md
+  - Get started: getting-started.md
 
 
 # ===========================================================
 # CONFIGURATION
 # ===========================================================
 
-site_name: My Workspace
+site_name: Kafka Workspace
 repo_url: https://github.com/bluxmit/alnoda-workspaces
 site_url: https://alnoda.org
 edit_uri: ""

@@ -3,126 +3,65 @@
 </p> 
 
 # Kafka workspace
-Docker image with Kafka, and many tools to manage Kafka clustters in cloud, improve development experience 
-or get started with Kafka fast.
+Single-node Kafka cluster together with several Kafka CLI tools in containerized dev/admin environment. 
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/kafka-wid-collage.png" alt="Collage">
-</p>
+## Why this images
 
+1. If you need a tool to interact with Kakfa, such as produce and consume events, explore, manage, query 
+and troubleshoot your Kafka clusters
+
+2. To directly access Kafka inside your kubernetes cluster.
+
+3. A better Kafka docker image for local dev environment. You get single-nnode Kafka together with the toolset to work with it.
+
+4. If you want to get started with Kafka easy and fast. Motivation explained in [this Medium article](https://medium.com/@bluxmit/the-better-development-experience-with-kafka-54f15705a8ee)
+
+## Start
+ 
 ```
 docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/kafka-workspace
-```
+```  
 
-open your browser on [http://localhost:8020](http://localhost:8020)
+and open [localhost:8020](http://localhost:8020) in browser.  
 
-### Why
+## Features
 
-Get started with Kafka very easy. Motivation explained in [this Medium article](https://medium.com/@bluxmit/the-better-development-experience-with-kafka-54f15705a8ee)
+**Single-node Kafka cluster**
 
-__Tools included__
-- [kcat](https://github.com/edenhill/kcat)
-- [kafkactl](https://github.com/deviceinsight/kafkactl)
-- [trubka](https://github.com/xitonix/trubka)
-- [kt](https://github.com/fgeller/kt)
-- [kcli](https://github.com/cswank/kcli)
-- [**and all the workspace-in-docker toolset**](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/workspace-in-docker)
+**Kafka CLI tools**
 
-Workspace includes multiple CLI tools for Kafka with their own unique features. 
+- [kcat](https://github.com/edenhill/kcat) - generic non-JVM producer and consumer for Apache Kafka.
+- [kafkactl](https://github.com/deviceinsight/kafkactl) - command-line interface for interaction with Apache Kafka.
+- [trubka](https://github.com/xitonix/trubka) - Kafka CLI tool built in Go which gives you everything you need.
+- [kt](https://github.com/fgeller/kt) - Kafka tool that likes JSON.
+- [kcli](https://github.com/cswank/kcli) - Kafka read only command line browser.
 
-### Quickstart
+**Dev tools:**
 
-Open workspace UI [http://localhost:8020/](http://localhost:8020/) for quick access to all the tools
+- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
+VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.  
+- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
+- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
+- [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
+- [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
+- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
+- [**MkDocs**](https://squidfunk.github.io/mkdocs-material/)  - create awesome documentation for your project with only markdown. 
+- [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
+- [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
+- Quicklaunch UI with getting started tutorial
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/Kafka-wid.png" alt="Kafka WID" width="750">
-</p> 
+Image is built from **Ubuntu 20.4** with the additional CLI apps
 
-Open browser-based VS-code editor from the workspace UI, or go directly to [http://localhost:8025/](http://localhost:8025/), and connect 
-to the local Kafka cluster using VS-code Kafka extension. You only need to provide the name for the cluster, which can be any.
+- [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+- Python 3, Pip 
+- Node/nodeenv
+- curl, wget, telnet, jq
+- **Git:** git, git-flow, lazygit 
+- **File browsers:** mc, xplr
+- **Text editors:** nano, vim, mcedit
+- **System monitors:** ncdu, htop, glances, vizex
+- **Process Control:** supervisord
+- **Job scheduler:** cron
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/theia-connect-kafka.png" alt="Theia connect WID" width="750">
-</p> 
-
-Using VS-code Kafka extension create topic "quickstart-events", and cosume events from this topic directly in VS-code using Kafka extension 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/theia-kafka-consume.png" alt="Theia Kafka consume" width="750">
-</p> 
-
-### Kafka native tools
-Kafka distribution itself contains command line tools that allow to create topics, send and consume events, etc. 
-Open workspace terminal [http://localhost:8026/](http://localhost:8026/) and go to Kafka directory
-```
-cd /opt/kafka
-```
-- create topic
-```
-bin/kafka-topics.sh --create --partitions 1 --replication-factor 1 --topic quickstart-events --bootstrap-server localhost:9092
-```
-- send some messages
-```
-bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
-```
-- consume messages
-```
-bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
-```
-
-### [kt](https://github.com/fgeller/kt)
-Configure brokers, topic, Kafka version and authentication via environment variables KT_BROKERS, KT_TOPIC, KT_KAFKA_VERSION and KT_AUTH.  
-- Set topic to "quickstart-events" (local Kafka instance by default) 
-```
-export KT_TOPIC="quickstart-events"
-```
-- Get information about topics, brockers and consumer groups
-```
-kt topic 
-kt group
-```
-- consume messages
-```
-kt consume 
-```
-- produce messages
-```
-echo 'Bob wins Oscar' | kt produce -topic quickstart-events -literal
-```
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/kafka-workspace/img/kt-demo.png" alt="KT demo" width="350">
-</p> 
-
-### [kafkactl](https://github.com/deviceinsight/kafkactl)
-- Consume from topic "quickstart-events"
-```
-kafkactl consume  quickstart-events --from-beginning
-kafkactl consume quickstart-events --from-beginning --print-keys --print-timestamps -o yaml
-```
-
-### [kcat](https://github.com/edenhill/kcat)
-- Consume topic "quickstart-events"
-```
-kafkacat -b localhost -t quickstart-events
-```
-- Produce events to the topic 
-```
-echo "Hello World" | kafkacat -b localhost -t quickstart-events
-```
-
-### [kcli](https://github.com/cswank/kcli)
-Launch kcli in the Workspace terminal
-```
-kcli
-```
-
-### [trubka](https://github.com/xitonix/trubka)
-- Consume from the topic "quickstart-events"
-```
-trubka consume plain quickstart-events --brokers localhost:9092
-```
-- Produce message to the topic
-```
-trubka produce plain quickstart-events "Random Data" --brokers localhost:9092
-```
+## Docs
+See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).

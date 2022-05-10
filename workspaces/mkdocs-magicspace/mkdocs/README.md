@@ -1,8 +1,11 @@
 <style>
 /* These styles apply only to this page! */
-    .md-content__button {
-        display: none;
-    }
+  .md-content__button {
+    display: none;
+  }
+  .md-sidebar--secondary{
+    display: none !important;
+  }
   .md-typeset h1 {
       line-height: 0;
       margin: 0;
@@ -57,49 +60,55 @@
         {
             "env": "IDE_URL",
             "name": "IDE",
-            "image": "IDE.jpg",
+            "image": "assets/home/IDE.jpg",
             "description": "Browser-based version of Visual Studio Code. Develop in any language, install hundreeds of extensions"
         },
         {
             "env": "TERMINAL_URL",
             "name": "Terminal",
-            "image": "Terminal.png",
+            "image": "assets/home/Terminal.png",
             "description": "Full-fledged browser-based terminal with Z-shell"
         },
         {
             "env": "FILEBROWSER_URL",
             "name": "File Browser",
-            "image": "Filebrowser.png",
+            "image": "assets/home/Filebrowser.png",
             "description": "Browse, upload and download files and folders to and from the Workspace"
+        },
+        {
+            "env": "MKDOCS_LIVE",
+            "name": "MkDocs live server",
+            "image": "assets/home/Magicspace-web.png",
+            "description": "Serve your MkDocs project with live reload. For example, <b>cd /home/examples/mkdocs-material; mkdocs serve -a 0.0.0.0:8030</b>"
         },
         {
             "env": "CRONICLE_URL",
             "name": "Cronicle",
-            "image": "Cronicle.jpg",
+            "image": "assets/home/Cronicle.jpg",
             "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
         },
         {
             "env": "UNGIT_URL",
             "name": "Ungit",
-            "image": "Ungit.jpg",
+            "image": "assets/home/Ungit.jpg",
             "description": "Manage Git repositories and work flow using beautiful UI"
         },
         {
             "env": "STATICFS_URL",
             "name": "Static File Server",
-            "image": "Static-server.png",
+            "image": "assets/home/Static-server.png",
             "description": "Serve any static websites like a breeze"
         },
         {
             "env": "MC_URL",
             "name": "M.Commander",
-            "image": "MC.jpg",
+            "image": "assets/home/MC.jpg",
             "description": "Feature rich visual file manager with internal text viewer and editor" 
         },
         {
             "env": "HTOP_URL",
             "name": "Process monitor",
-            "image": "Htop.jpg",
+            "image": "assets/home/Htop.jpg",
             "description": "Monitor running process and resource utilization"
         }
         ] 

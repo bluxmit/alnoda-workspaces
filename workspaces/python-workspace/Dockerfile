@@ -1,12 +1,13 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=2.0
 
-FROM ${docker_registry}/workspace-in-docker:${image_tag}
+FROM ${docker_registry}/ide-workspace:${image_tag}
 
 USER root
 
 COPY python-requirements.txt /home/abc/installed-python-packages
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 COPY ./examples/ /home/examples/
 COPY .pylintrc /home/abc/
 
@@ -19,7 +20,7 @@ RUN pip install -r /home/abc/installed-python-packages/python-requirements.txt \
     && rm -rf /home/abc/utils || true \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
     && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    && rm -rf /tmp/alnoda-workspaces \
+    && rm -rf /tmp/alnoda-workspaces \ 
     && echo "alias python-report='/home/abc/utils/python-report.sh'" >> /home/abc/.zshrc \
     && chmod +x /home/abc/utils/python-report.sh && chown abc /home/abc/utils/python-report.sh \
     && echo "------------------------------------------------------ user" \

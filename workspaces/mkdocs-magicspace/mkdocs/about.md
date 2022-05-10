@@ -1,19 +1,5 @@
-<p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p> 
-
-# MkDocs-MagicSpace
-
 MkDocs-MagicSpace is an all-in-one tool, carefully crafted to make the development of gorgeous documentation 
 websites like [**this one**](https://mkdocs-magicspace.alnoda.org/) as easy as possible.   
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/mkdocs-magicspace/img/mkdocs-collage.png" alt="Collage" width="750">
-</p>
-
-## Why this images
-
-If want a ready tool to develop and build beautiful doccumentation websites with only Markdown.
 
 ## Why documentation websites with MkDocs
 
@@ -26,14 +12,6 @@ If want a ready tool to develop and build beautiful doccumentation websites with
 - Using MkDocs-MagicSpace you create documentation from the same markdown readme files you have in your repo together with the code. And you 
 can create a unified documentation website from multiple repositories in Github, GitLab, Bitbucket.
 - You can add such features as Google Analytics, multi-language localization.
-
-## Start
- 
-```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
-```  
-
-and open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
@@ -80,6 +58,6 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](https://mkdocs-magicspace.alnoda.org/tutorials/get-started/), 
-[extended Markdown tutorials](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/) 
+See our guides on [**getting started with MkDocs**](https://mkdocs-magicspace.alnoda.org/tutorials/get-started/), 
+[**extended Markdown tutorials**](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/) 
 and [**advanced features**](https://mkdocs-magicspace.alnoda.org/docs/).

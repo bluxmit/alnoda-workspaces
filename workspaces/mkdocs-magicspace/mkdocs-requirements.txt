@@ -1,15 +1,15 @@
 # https://squidfunk.github.io/mkdocs-material/getting-started/#installation
-mkdocs-material==7.1.9
-mkdocs-material-extensions==1.0.1
+mkdocs-material==8.2.14 
+mkdocs-material-extensions==1.0.3 
 
 # https://pygments.org/
-Pygments==2.9.0
+Pygments== 2.12.0 
 
 # https://facelessuser.github.io/pymdown-extensions/
-pymdown-extensions==8.2
+pymdown-extensions==9.4
 
 # https://github.com/mkdocstrings/mkdocstrings
-mkdocstrings==0.15.2
+mkdocstrings==0.18.1
 
 # https://ai2business.github.io/mkdocstrings-sourcelink/
 mkdocstrings-sourcelink==0.3.2
@@ -18,7 +18,10 @@ mkdocstrings-sourcelink==0.3.2
 mkdocs-mermaid2-plugin==0.5.1
 
 # https://github.com/backstage/mkdocs-monorepo-plugin
-mkdocs-monorepo-plugin==0.4.15
+mkdocs-monorepo-plugin==1.0.1
+
+# https://github.com/jdoiro3/mkdocs-multirepo-plugin
+mkdocs-multirepo-plugin==0.3.5
 
 # https://github.com/fralau/mkdocs_macros_plugin
 mkdocs-macros-plugin==0.5.12
@@ -37,9 +40,6 @@ mkdocs-autolinks-plugin==0.4.0
 
 # https://github.com/fralau/mkdocs-mermaid2-plugin
 mkdocs-mermaid2-plugin==0.5.1
-
-# https://mkdocstrings.github.io/
-mkdocstrings==0.15.2
 
 # https://github.com/fiinnnn/mkdocs-mktemplate-plugin
 mkdocs-mktemplate-plugin==1.0.0 

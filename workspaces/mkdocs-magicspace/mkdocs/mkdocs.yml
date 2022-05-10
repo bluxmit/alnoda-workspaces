@@ -3,9 +3,8 @@
 # ===========================================================
 
 nav:
-  - Home: pages/home/home.md
-  - About: README.md
-  - Get started: get-started.md
+  - Home: README.md
+  - About: about.md
   - Showcase: showcase.md
 
 

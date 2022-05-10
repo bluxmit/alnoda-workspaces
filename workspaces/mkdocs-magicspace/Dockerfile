@@ -1,7 +1,7 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=2.0
 
-FROM ${docker_registry}/workspace-in-docker:${image_tag}
+FROM ${docker_registry}/ide-workspace:${image_tag}
 
 USER root
 
@@ -11,12 +11,13 @@ COPY settings.json /home/abc/.theia/settings.json
 COPY mkdocs-requirements.txt /home/abc/installed-python-packages
 
 # Customize mkdocs
-COPY ./mkdocs/IDE.jpg /home/docs/docs/pages/home/home/
-COPY ./mkdocs/showcase.md /home/docs/docs/showcase.md
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
-COPY ./mkdocs/home.md /home/docs/docs/pages/home
+COPY ./mkdocs/README.md /home/docs/docs/
+COPY ./mkdocs/about.md /home/docs/docs/
+COPY ./mkdocs/IDE.jpg /home/docs/docs/assets/home/
+COPY ./mkdocs/Magicspace-web.png /home/docs/docs/assets/home/
+COPY ./mkdocs/showcase.md /home/docs/docs/showcase.md
 COPY ./mkdocs/helpers.py /home/docs/macros 
-COPY ./mkdocs/Magicspace-web.png /home/docs/docs/pages/home/home/
 COPY ./examples/ /home/examples/
 
 RUN apt-get -y update \
@@ -32,7 +33,9 @@ RUN apt-get -y update \
     && echo "------------------------------------------------------ user" \  
     && chown -R abc /home/examples \
     && chown -R abc /home/abc/utils \
-    && chown -R abc /home/abc/installed-python-packages 
+    && chown -R abc /home/abc/installed-python-packages \
+    && find /home -type d | xargs -I{} chown -R abc {} \
+    && find /home -type f | xargs -I{} chown abc {} 
 
 USER abc
 
