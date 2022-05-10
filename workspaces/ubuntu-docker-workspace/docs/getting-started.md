@@ -9,7 +9,7 @@ ctop
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-docker-workspace/img/ctop.png" alt="Ctop" width="500">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-docker-workspace/img/ctop.png" alt="Ctop" width="750">
 </p>
 
 ## [Lazydocker](https://github.com/jesseduffield/lazydocker) 
@@ -56,5 +56,5 @@ Start the workspace on Rasberri Pi and use it via Tablet.
 
 ## Extra
 
-This workspace has all the features of the [**ubuntu-workspace**](../../ubuntu-workspace/README.md)   
+This workspace has all the features of the [**ubuntu-workspace**](../../ubuntu-workspace/docs/getting-started.md)   
  

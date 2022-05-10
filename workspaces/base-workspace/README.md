@@ -24,16 +24,17 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
 - Quicklaunch UI with getting started tutorial
-- **Ubuntu 20.4** with the following apps
+- **Ubuntu 20.4** with the following CLI apps
     - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
     - Python 3, Pip 
     - Node/nodeenv
-    - git, git-flow, lazygit 
     - curl, wget, telnet, jq
-    - nano, vim, mc
-    - ncdu, htop, glances, vizex
-    - supervisord
-    - cron
+    - **Git:** git, git-flow, lazygit 
+    - **File browsers:** mc, xplr
+    - **Text editors:** nano, vim, mcedit
+    - **System monitors:** ncdu, htop, glances, vizex
+    - **Process Control:** supervisord
+    - **Job scheduler:** cron
 
 ## Why this image
 

@@ -34,6 +34,7 @@
 * [Create documentation](#create-documentation)
 * [Customize Workspace](#customize-workspace)
     * [Customize Quickstart](#customize-quickstart)
+    * [Customize zsh](#customiz-zsh)
 
 ## Intro
 
@@ -253,7 +254,9 @@ from inside of a container, add additional port mapping, for example
 ```sh
 docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 alnoda/ide-workspace
 ```
+
 You can add multiple port mappings:
+
 ```sh
 docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 -p 443:443 alnoda/ide-workspace
 ```
@@ -272,16 +275,21 @@ Specialized workspaces include more CLI applications.
 Use workspace terminal to work with CLI apps.
 
 ### Install apps
+
 Install new packages with ```sudo apt install```, for example emacs
+
 ```
 sudo apt install emacs
 ```
 
 ### Schedule jobs with cron
+
 Schedule execution of any task with cron. Create cron task with
+
 ```
 crontab -e
 ```
+
 *(chose [1] nano as editor)*
 In the end of the opened file add line  
 
@@ -303,6 +311,7 @@ This will print every minute username to file */home/cron.txt* . Ctrl+X to exit 
 **NOTE** you can disconnect from the image and close terminal. cron will continue working.
 
 ### Python
+
 Python and Pip are installed. To start python console simply execute
 
 ```
@@ -359,6 +368,7 @@ is an image. When you execute this command
 ```sh
 docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ide-workspace
 ```
+
 you create container called **space-1** from the image **alnoda/ide-workspace**. You can create any number of containers, but you need to 
 [map different ports to each of them](#multiple-workspaces).  
 
@@ -383,6 +393,7 @@ Stop workspace
 ```sh
 docker stop space-1 
 ```
+
 Workspace is stopped. All the processes and cron jobs are not running. 
 
 See all docker conntainers, including stopped
@@ -538,11 +549,18 @@ This way launches workspace in cloud, but such workspace is not secure, everyone
 ide-workspace contains utility that will generate everything needed to launch the workspace in cloud in a secure way, with authentication and with TLS.  
 
 If you want to run workspace on the remote server securely, start ide-workspace on your local laptop first, open its terminal and 
-use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. Simply execute
+use utility `/home/abc/utils/remote.py` to generate create docker-compose project with TLS certificates. 
+
+First install htpasswd 
+
+> `apt-get install -y apache2-utils`
+
+Second, execute
 
 > `python /home/abc/utils/remote.py --workspace="ide-workspace" --port="8020" --host="68.183.69.198" --user="user1" --password="pass1"`  
 
-**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice.  
+**NOTE:** you have to specify the correct host (IP of the server you want to run the workspace on), and user and password of your choice, and specify 
+the name of the workspace you use. 
 
 After the command is executed, you will see folder `/home/abc/utils/remote` is created. Download it out from the workspace to the local environment using the Filebrowser:
 
@@ -550,7 +568,7 @@ After the command is executed, you will see folder `/home/abc/utils/remote` is c
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/wid-remote.gif" alt="wid-remote.gif" width="750">
 </p>
 
-. Copy this folder to the remote server where you want to launch the Python workspace. 
+Copy this folder to the remote server where you want to launch the Python workspace. 
 You can use cyberduck or [scp](https://kb.iu.edu/d/agye). ssh to the server, cd to the directory you copied and execute 
 
 ```sh
@@ -651,40 +669,64 @@ docker run --name space-4 -d -p 19011:19011 space-image:0.4
 
 ## Create documentation
 
+[MkDocs](https://www.mkdocs.org/) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) are included in the workspace.  
+
+To start, clone the boilerplate and install dependencies
+
+```
+git clone https://github.com/peaceiris/mkdocs-material-boilerplate.git
+cd mkdocs-material-boilerplate
+pip install -r requirements.txt
+```
+
+Start MkDocs development server 
+
+```
+mkdocs serve -a 0.0.0.0:8035 --config-file mkdocs-sample.yml
+```
+
+Open [localhost:8035](http://localhost:8035/) 
+
+Build static docs 
+
+```
+mkdocs build -d /home/static-server/my-doc-website --config-file mkdocs-sample.yml
+```
+
+Open [localhost:8022](http://localhost:8022/)
 
 
 ## Customize Workspace
 
 ### Customize Quickstart
 
-Workspace can easily be customized for your specific needs. You can also use Workspace for a complex project, and might need a 
-tool to write remarks, plans, action plans. As well as architectural artefacts for the components you wish to implement. Often it is 
-also needed to store somewhere snippets of code or shell commands that you often use in your work. It would be uncomfortable to use extra 
-tool or solution outside of the Workspace to store such remarks. 
+Quickstart is served with [MkDocs](https://www.mkdocs.org/) from the `/home/docs/` folder. Simply modify `/home/docs/mkdocs.yml` to 
+see the changes applied immediately. 
 
-Because Workspace is a complete self-contained environment, it include tools to make remarks, plans, store pieces of code, write anything, 
-and even build complete static documentation websites that you can host on GitHub Pages for example.  
-
-[MkDocs](https://www.mkdocs.org/) is a part of the workspace, and its dev server is up and running every time you start the Workspace. In fact, 
-the workspace UI (port 8020 by default) - is served by the MkDocs dev server.  
-
-You can easily modify the UI, add more pages or update existing pages. The changes will be updated immediately without the need to do anything. 
-
-MkDocs project is located in the `/home/docs/` folder. It has subfolder called `docs` (so it is `/home/docs/docs/`) where all the Markdown documents 
-are stored. Simply create new `.md` file there. And add reference about this file to the MkDocs config `/home/docs/mkdocs.yml`. You will see that 
-the new page has appeared in your Workspace UI - it has live reload, and you dont need to do annything, just write in the markdown files.
+For example, let's add new page to Quickstart. To do that create new `.md` file in folder `/home/docs/docs/`. 
+And add reference about this file to the MkDocs config `/home/docs/mkdocs.yml`. You will see that 
+the new page has appeared in your Workspace UI.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/workspace-docs.gif" alt="workspace-docs" width="900">
 </p>
 
-You can easily build beautiful static website from this documentation
+### Customize zsh
 
-> `cd /home/docs/ && mkdocs build -d /home/static-server/my-doc-website` 
+Zsh config is located in `/home/abc/.zshrc`. Customize themes, plugins, colors.  
 
-The resulting HTML website is in folder `/home/static-server/my-doc-website`, you can view it with Static File Server and download to local 
-with Filebrowser.  
+Add env variables, for example 
 
-You can make even more stunning documentation websites with advanced Markdown features using [MkDocs-Magicspace](https://mkdocs-magicspace.alnoda.org/).
+```
+export MY_NAME="foo"
+```
+
+Add aliases, for example 
+
+```
+alias ls="ls -lah"
+```
+
+Restart terminal to see changes applied.
 
 

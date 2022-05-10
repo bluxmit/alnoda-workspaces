@@ -20,21 +20,23 @@ docker exec -it space-1 /bin/zsh
 
 ## Features
 
-- **Ubuntu 20.4** with:
+- **Ubuntu 20.4** with the following CLI apps
     - Docker
     - [Ctop](https://github.com/bcicen/ctop) - Top-like interface for container metrics.
     - [Lazydocker](https://github.com/jesseduffield/lazydocker) - A simple terminal UI for both docker and docker-compose, written in Go with the gocui library.
     - [Sen](https://github.com/TomasTomecek/sen) - A terminal user interface for containers.
     - [Dive](https://github.com/wagoodman/dive) - A tool for exploring a docker image, layer contents, and discovering ways to shrink the size of your Docker/OCI image.
     - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
     - Python 3, Pip 
     - Node/nodeenv
-    - git, git-flow, lazygit 
     - curl, wget, telnet, jq
-    - nano, vim, mc
-    - ncdu, htop, glances, vizex
-    - supervisord
-    - cron
+    - **Git:** git, git-flow, lazygit 
+    - **File browsers:** mc, xplr
+    - **Text editors:** nano, vim, mcedit
+    - **System monitors:** ncdu, htop, glances, vizex
+    - **Process Control:** supervisord
+    - **Job scheduler:** cron
 
 ## Why this image
 

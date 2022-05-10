@@ -18,7 +18,7 @@ ssh into the running workspace container as root user
 docker exec -it --user=root space-1 /bin/zsh
 ```
 
-## Examples
+## File browser
 
 Explore file system with Midnight Commander
 
@@ -27,24 +27,21 @@ mc
 ```
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/mc.png" alt="Moonlignt commander" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/mc.png" alt="Midnight commander" width="750">
 </p>
 
-Launch system-monitor, process-viewer and process-manager  
+Or with Xplr
+
 ```
-htop
+xplr
 ```
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/htop.png" alt="Htop" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/xplr.png" alt="Xplr" width="750">
 </p>
 
-Explore file/folder sizes
-```
-ncdu
-```
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/ncdu.png" alt="Htop" width="750">
-</p>
+
+## Text editor
 
 Text editors ```vim```, ```nano``` and ```mcedit``` are available. For example, clone git repo and edit python file with nano
 ```
@@ -60,7 +57,52 @@ nano sendmail.py
 mcedit sendmail.py 
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/mcedit.png" alt="Htop" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/mcedit.png" alt="Mcedit" width="750">
+</p>
+
+
+## System monitor
+
+Launch system-monitor, process-viewer and process-manager  
+
+```
+htop
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/htop.png" alt="Htop" width="750">
+</p>
+
+Explore processes and resources with Glances   
+
+```
+glances
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/glances.png" alt="glances" width="750">
+</p>
+
+Explore file/folder sizes
+```
+ncdu
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/ncdu.png" alt="Ncdu" width="750">
+</p>
+
+## Git
+
+Clone Git repo and explore with Lazygit
+
+```
+git clone https://github.com/peaceiris/mkdocs-material-boilerplate.git
+lazygit
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ubuntu-workspace/img/lazygit.png" alt="lazygit" width="750">
 </p>
 
 ## Browser terminal

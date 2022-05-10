@@ -82,8 +82,14 @@ def calc_entypoints(workspace_name, start_port):
     """ identify which of the port ranges are taken by the internal 
     applications, and which are free. Return list of all entrypoints
     """
-    workspace_entrypoints = workspace_meta[workspace_name]["entrypoints"]
-    workspace_port_range = workspace_meta[workspace_name]["port-range"]
+    try:
+        workspace_entrypoints = workspace_meta[workspace_name]["entrypoints"]
+    except:
+        workspace_entrypoints = workspace_meta['workspace-in-docker']["entrypoints"]
+    try:
+        workspace_port_range = workspace_meta[workspace_name]["port-range"]
+    except:
+        workspace_port_range = workspace_meta['workspace-in-docker']["port-range"]
     end_port = start_port + workspace_port_range
     internal_end_port = 8020 + workspace_port_range
     # Dict of entrypoints of entrypoint name and port
