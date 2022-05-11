@@ -6,17 +6,17 @@ FROM ${docker_registry}/ide-workspace:${image_tag}
 USER root
 
 COPY settings.json /home/abc/.theia/settings.json
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
+COPY README.md /home/docs/docs/docs.md
 
 RUN apt-get -y update \
-    # && echo "------------------------------------------------------ utils" \
-    # && rm -rf /home/abc/utils || true \
-    # && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    # && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    # && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ nodejs-17" \
     && curl -fsSL https://deb.nodesource.com/setup_17.x | bash - \
     && apt-get install -y nodejs \
+
+    && apt-get install nodejs
+
+
+
     && echo "------------------------------------------------------ esbulk" \
     && cd /tmp && wget https://github.com/miku/esbulk/releases/download/v0.7.5/esbulk_0.7.5_amd64.deb \
     && apt install /tmp/esbulk_0.7.5_amd64.deb \

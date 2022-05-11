@@ -7,7 +7,7 @@ USER root
 
 COPY supervisord-codeserver.conf /etc/supervisord/
 COPY ./mkdocs/helpers.py /home/docs/macros
-COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 COPY ./mkdocs/IDE.jpg /home/docs/docs/assets/home/
 COPY README.md /home/docs/docs/docs.md
 

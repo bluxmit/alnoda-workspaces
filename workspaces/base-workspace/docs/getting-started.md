@@ -2,13 +2,13 @@
 
 This tutorial shows how to scrap Google news on schedule with Base Workspace. 
 
-Navigate to Quickstart and open Terminal
+Workspace has full-size browser-base terminal, file manager, and task scheduler.
 
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/base-workspace-terminal.gif" alt="Terminal" width="500">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/base-workspace-terminal.gif?raw=true" alt="Terminal" width="500">
 </p>
 
-Install Python package GNews
+Install Python package GNews, execute in terminal
 
 ```
 pip install gnews
@@ -44,12 +44,12 @@ python3 scraper.py
 Navigate to Quickstart and Open file browser. View and download the output file 
 
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/filebrowser-demo.gif" alt="Filebrowser" width="500">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/filebrowser-demo.gif?raw=true" alt="Filebrowser" width="500">
 </p>
 
 Schedule daily executions with Cronicle
 
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/cronicle-demo.gif" alt="Filebrowser" width="500">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/cronicle-demo.gif?raw=true" alt="Filebrowser" width="500">
 </p>
 

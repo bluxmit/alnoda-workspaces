@@ -15,7 +15,7 @@ static server, job scheduler.
 
 1. If you need isolated dev environment where you can code and install packages and apps without affecting the base operating system.
 2. If you need self-hosted remote development environment.
-3. If you want to get started with Python fast.
+3. If you need to be just one command away from coding in Python.
 
 ## Start
  

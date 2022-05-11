@@ -34,7 +34,7 @@ You can install any extension from [open-vsx.org](https://open-vsx.org/) that ha
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/theia.gif" alt="Theia demo" width="900">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/theia.png" alt="Theia" width="750">
 </p>
 
 ## Terminal

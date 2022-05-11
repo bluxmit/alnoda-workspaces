@@ -110,13 +110,13 @@ Wait untill the cluster is fully ready, open Kibana on [http://localhost:5601](/
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/Kibana-sample.png" alt="Kibana" width="750">
 </p>
 
-Open workspace UI [http://localhost:8020/](http://localhost:8020/) for quick access to all the workspace tools 
+Open Quickstart page [localhost:8020](http://localhost:8020/) for quick access to all the workspace tools 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/workspace-in-docker/img/wid-demo.gif" alt="WID demo" width="900">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/ide-workspace/img/wid-ui.png?raw=true" alt="WID demo" width="900">
 </p>
 
-Open browser-based terminal [http://localhost:8026/](http://localhost:8026/), check cluster nodes and shards
+Open browser-based terminal [localhost:8026](http://localhost:8026/), check cluster nodes and shards
 
 ```
 vulcanizer --host es01 nodes
@@ -140,14 +140,14 @@ elasticdump \
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/elasticdump-demo.png" alt="elasticdump" width="750">
 </p>
 
-Open browser-based IDE [http://localhost:8026/](http://localhost:8026/) and create file `/home/project/export.sh` file with the script to export data to S3. 
+Open browser-based IDE [localhost:8026](http://localhost:8026/) and create file `/home/project/export.sh` file with the script to export data to S3. 
 Make it executable with `chmod +x /home/project/export.sh`. 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/IDE-demo.png" alt="IDE" width="750">
 </p>
 
-Open browser-based Scheduler [http://localhost:8026/](http://localhost:8026/) (user/pass: admin/admin), 
+Open browser-based Scheduler [localhost:8026](http://localhost:8026/) (user/pass: admin/admin), 
 and schedule script, for example weekly. Select category - "general", plugin - "Shell Script"
 
 <p align="center">

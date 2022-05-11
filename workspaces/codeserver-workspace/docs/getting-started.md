@@ -2,9 +2,7 @@
 
 ## Intro
 
-The main feature of the workspace is IDE, a browser-based VS-Code version. Often IDE alone is not enough for convenient software development. 
-In addition, workspace includes full-screen terminal, file manager, and task scheduler. This workspace is based on the Ubuntu 20 docker image, 
-with typical terminal applications, such as Git installed.
+Workspace has browser-based VS-Code version with full-screen terminal, file manager, and task scheduler. 
 
 ## Quicklaunch
 
@@ -18,14 +16,7 @@ From the quicklaunch page you can open workspace tools, such as code editor or t
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/wid-ui.png" alt="wid-ui.png" width="750">
 </p>
 
-## Code Editor
-
-The main code editor of this workspace is [Code-server](https://github.com/cdr/code-server) - an open-source version of popular Visual Studio Code IDE. 
-despite Code-server is a browser-based code editor, it is fast, responsive, and full-featured. It features code highlighting, autocompletion, 
-rendering of notebooks has a tree-based file browser, and many color themes.  
-
-You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
-The IDE is already configured to make code highlighting for many programming languages and file types.  
+You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors.  
 
 <div align="center" style="font-style: italic;">
     Demo: Code-server
@@ -34,8 +25,6 @@ The IDE is already configured to make code highlighting for many programming lan
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-demo.gif" alt="Code-server demo" width="900">
 </p>
-
-## Terminal
 
 Workspace has full-size browser-base terminal
 
