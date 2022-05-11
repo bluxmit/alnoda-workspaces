@@ -4,7 +4,7 @@
 
 These tutorials demonstrates how to use Postgres workspace to explore and interact with Postgres.  
 
-To start, open workspace UI [http://localhost:8020/](http://localhost:8020/) for quick access to all the tools. 
+To start, open Quickstart page [http://localhost:8020/](http://localhost:8020/) for quick access to all the tools. 
 Use terminal to execute commands from this tutorial.
 
 ## Postgres

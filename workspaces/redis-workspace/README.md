@@ -3,81 +3,62 @@
 </p> 
 
 # Redis workspace
-Docker image with Redis, Redis Commander and other Redis CLI tools. Can be used to manage cloud Redis deployments, 
-or as Redis docker image with batteries included for local development.
+
+Docker image with Redis, Redis Commander and several CLI tools to interact with Redis.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/redis-wid-collage.png" alt="Collage">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/redis-wid-collage.png" alt="Collage" width="750">
 </p>
 
+## Why this images
+
+1. To directly interact with Redis inside your kubernetes cluster.
+2. A better Redis docker image for local dev environment. You get Redis together with the toolset to work with it.
+
+## Start
+ 
 ```
 docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-workspace
-```
+```  
 
-open your browser on [http://localhost:8020](http://localhost:8020)
+and open [localhost:8020](http://localhost:8020) in browser.  
 
-## Why
+## Features
 
-Substitute in your development `docker-compose.yaml` file standard redis image with this one, add port-mapping `-p 8020-8035:8020-8035`. 
-Now in addition to Redis, you've got a whole set of tools with UIs, that allow you to explore you Redis database, get and set keys, import datasets, 
-install Redis modules and more.  
+**Redis tools:**
 
-__List of tools__
-
-- [Eclipse Theia](https://theia-ide.org/docs/)
+- [Redis-commander](https://github.com/joeferner/redis-commander#readme) - Redis web management tool.
+- [Iredis](https://github.com/laixintao/iredis) - CLI for Redis with AutoCompletion and Syntax Highlighting.
+- [Redis-dump](https://github.com/yannh/redis-dump-go) - dump Redis keys to a file.
+- [Redis-Tui](https://github.com/mylxsw/redis-tui) - Redis Text-based UI client in CLI.
 - [Redis extension for VS-Code](https://open-vsx.org/extension/cweijan/vscode-redis-client)
-- [Iredis](https://github.com/laixintao/iredis)
-- [Redis-dump](https://github.com/yannh/redis-dump-go)
-- [Redis-Tui](https://github.com/mylxsw/redis-tui)
-- [Redis-commander](https://github.com/joeferner/redis-commander#readme)
 
-in addition - [the common workspace-in-docker toolset](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/workspace-in-docker). 
+**Dev tools:**
 
+- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
+VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.  
+- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
+- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
+- [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
+- [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
+- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
+- [**MkDocs**](https://squidfunk.github.io/mkdocs-material/)  - create awesome documentation for your project with only markdown. 
+- [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
+- [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
+- Quicklaunch UI with getting started tutorial
 
-### Get started
+Image is built from **Ubuntu 20.4** with the additional CLI apps
 
-Open workspace UI [http://localhost:800/](http://localhost:8020/) for quick access to all the tools 
+- [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+- Python 3, Pip 
+- Node/nodeenv
+- curl, wget, telnet, jq
+- **Git:** git, git-flow, lazygit 
+- **File browsers:** mc, xplr
+- **Text editors:** nano, vim, mcedit
+- **System monitors:** ncdu, htop, glances, vizex
+- **Process Control:** supervisord
+- **Job scheduler:** cron
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/Redis-wid.png" alt="Redis WID" width="750">
-</p> 
-
-Use workspace terminal [http://localhost:8026/](http://localhost:8026/) and load some Redis datasets 
-```
-git clone https://github.com/redis-developer/redis-datasets.git /home/project/redis-datasets
-cat /home/project/redis-datasets/movie-database/import_actors.redis | redis-cli 
-cat /home/project/redis-datasets/movie-database/import_movies.redis | redis-cli 
-```
-
-Open Redis Commander UI on [http://localhost:8029/](http://localhost:8029/) and explore Redis databases 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/Rediscommander.png" alt="Redis commander" width="750">
-</p> 
-
-Alternatively use browser-based VS-code [http://localhost:8025/](http://localhost:8025/) with Redis extension
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/Theia-redis.png" alt="Theia" width="750">
-</p> 
-
-In the Workspace terminal launch iredis CLI, get & set keys
-```
-iredis
-iredis --newbie
-```
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/iredis.png" alt="Iredis" width="400">
-</p> 
-
-Create dump of the Redis database
-```
-redis-dump-go -h localhost > /home/redis-movie-dump.resp 
-```
-Use File Browser [http://localhost:8021](http://localhost:8021) to get the dump to your PC 
-
-
-
-### Future extensions
-- [phpRedisAdmin](https://github.com/erikdubbelboer/phpRedisAdmin)
+## Docs
+See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).

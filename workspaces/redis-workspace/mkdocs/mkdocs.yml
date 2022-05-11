@@ -3,9 +3,8 @@
 # ===========================================================
 
 nav:
-  - Home: pages/home/home.md
-  - About: README.md
-  - Docs: docs.md
+  - Home: README.md
+  - Get started: getting-started.md
 
 
 # ===========================================================

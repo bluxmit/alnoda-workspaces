@@ -4,7 +4,9 @@
 
 # Postgres workspace
 
-Collected toolset to work with PostgreSQL. Query, explore, manage, develop, test performance, import annd export data, 
+Collection of tools to interact with PostgreSQL.  
+
+Query, explore, manage, develop, test performance, import annd export data, 
 generate mock data, create backups, manage migrations, generate reports, schedule tasks.
 
 ## Why this images

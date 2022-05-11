@@ -39,7 +39,7 @@ You can install any extension from [open-vsx.org](https://open-vsx.org/) that ha
 
 ## Terminal
 
-Open Tterminnal from the Quickstart page.
+Open Terminnal from the Quickstart page.
 
 <div align="center" style="font-style: italic;">
     Demo: Browser-based terminal

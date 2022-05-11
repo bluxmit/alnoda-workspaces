@@ -4,9 +4,8 @@
 
 # Python workspace 
 
-Dockerized Python development environment. Fully isolated inside a docker container. 
-Includes code editor, terminal, scheduler, filebrowser. As well as tools for linting, 
-testing, auto-documentation, performance and profiling.
+Docker image for Python development environment. Includes Python, python tooling together with browser-based IDE, file browser, 
+static server, job scheduler.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/python-wid-collage-sm.jpg" alt="Collage" width="750">
@@ -15,7 +14,7 @@ testing, auto-documentation, performance and profiling.
 ## Why this images
 
 1. If you need isolated dev environment where you can code and install packages and apps without affecting the base operating system.
-2. If you want self-hosted remote development environment.
+2. If you need self-hosted remote development environment.
 3. If you want to get started with Python fast.
 
 ## Start
