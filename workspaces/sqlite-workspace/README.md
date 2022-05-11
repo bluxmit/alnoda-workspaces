@@ -8,7 +8,7 @@ Collection of tools to develop SQLite databases.
 
 ## Why this images
 
-1. If you need to develop embedded SQLite database and fill it with data.
+If you need to develop embedded SQLite databases and fill them with data.
 
 ## Start
  
