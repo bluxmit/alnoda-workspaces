@@ -9,7 +9,7 @@ USER root
 COPY supervisord-sqlite.conf /etc/supervisord/
 
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/docs.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 
 # apt-get install -y sqlite3 \
 

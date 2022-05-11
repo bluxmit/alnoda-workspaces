@@ -5,18 +5,44 @@ This doc has examples how to use workspace toolset to develop and fill SQLite da
 Open Quickstart page [http://localhost:800/](http://localhost:8020/) for quick access to all the tools 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/Redis-wid.png" alt="Redis WID" width="750">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/sqlite-wid.png" alt="SQLITE WID" width="750">
 </p> 
 
-Use workspace terminal [http://localhost:8026/](http://localhost:8026/) for CLI commands. 
+Use workspace terminal [http://localhost:8026/](http://localhost:8026/) for CLI commands.  
+
+Workspace conntains example SQLite database, the file `/home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite`  
+
 
 ## NocoDB
 
 [NocoDB](https://docs.nocodb.com/). NocoDB is an open source Airtable alternative. Use it to create SQLite tables, develop databases 
-without SQL. 
+without SQL.  
+
+NocoDB can also be used to fill SQLite databases with data with the help of nice interactive UI. 
 
 Launch the workspace, navigate to the Workspace UI and open NocoDB. Or open [localhost:8030](http://localhost:8030/) directly in browser. 
 Create new user (provide any email,pass). Create tables, enter data, import data files, create forms and much more.  
+
+### NocoDB with existing SQLite database
+
+Create NocoDB project with an empty external SQLite database file `/home/project/sqlite-db/db-main.sqlite`. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/noco-new-main.png" alt="Noco new main" width="750">
+</p> 
+
+Create some data, and explore it with Sqlite-web [localhost:8032](http://localhost:8032/)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/sqliteweb-main.gif" alt="Sqliteweb main" width="750">
+</p> 
+
+You can also open existing SQLIte database, and edit it with NocoDB. Let's open example SQLite database `/home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite` 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/noco-chinook.gif" alt="noco chinook" width="750">
+</p> 
+
 
 ### query NocoDB data 
 
@@ -31,14 +57,6 @@ mv -f /home/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite
 ```
 Open Sqlite-web on [localhost:8032](http://localhost:8032/)
 
-### NocoDB with another SQLite database
-
-If yopu create NocoDB project with external database, tables created by NocoDB will not have prefixes.  
-
-For example, create project with the example Chinook SQLite database file `/home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite`, 
-and query data also with sqlite-web on [localhost:8033](http://localhost:8033/).  
-
-Or create NocoDB project with external SQLite database file `/home/project/sqlite-db/db-main.sqlite` and query with sqlite-web on [localhost:8032](http://localhost:8032/).
 
 ## Sqlite 
 
@@ -71,14 +89,25 @@ sqlite3
 .load /home/sqlite-extensions/stats
 ```
 
+### Upload & download SQLite databases
+
+No matter if workspace is used locally, in cloud or kubernetes you can upload and download database files using file browser 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/filebrowser-download.png" alt="Filebrowser" width="500">
+</p> 
+
 ### Copy SQlite databases
 
 SQlite is just a file, jou can copy it and replace other databases. For example, if you want to copy NocoDB database 
-into the "Main" database, which is served by Sqlite-web on [localhost:8032](http://localhost:8032/) simply execute 
+into the "Main" database, which is served by Sqlite-web on [localhost:8032](http://localhost:8032/) simply execute in terminal
 
 ```
 mv -f /home/nocodb/noco.db /home/project/sqlite-db/db-main.sqlite 
 ```
+
+You also can use file browser to move or copy files.
+
 
 ## [sqlite-web](https://github.com/coleifer/sqlite-web)
 
@@ -87,6 +116,11 @@ Serve any SQLite database. There are 2 SQlite database served by default:
 - NocoDB database. Sqlite-web is served on [localhost:8031](http://localhost:8031/)
 - "Main" database. Empty SQlite3 database. Sqlite-web is served on [localhost:8032](http://localhost:8032/)
 - "Example/test" database. Filled with test "Chinook" database. Sqlite-web is served on [localhost:8033](http://localhost:8033/)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/sqliteweb-chinook.gif" alt="sqliteweb chinook" width="750">
+</p> 
+
 
 ### Serve on-demand SQlite database
 
@@ -113,10 +147,18 @@ sqlite_web /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite --ho
 
 Explore and query SQLite databases. Upload SQLite database file (from your local machine) and explore.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/sqlite-viewer.png" alt="sqlite viewer" width="500">
+</p> 
+
 
 ## [Web-GUI-for-SQLite](https://github.com/cyrilbois/Web-GUI-for-SQLite)
 
 Explore and query SQLite databases. Upload SQLite database file (from your local machine) and explore.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/sqlite-web-gui.png" alt="sqlite web gui" width="500">
+</p> 
 
 
 ## [litecli](https://github.com/dbcli/litecli)
@@ -128,6 +170,15 @@ Open Terminal and try with example database:
 ```
 litecli /home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sqlite
 ```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/litecli-1.png" alt="litecli" width="500">
+</p> 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/litecli-2.png" alt="litecli pager" width="500">
+</p> 
+
 
 Load extensions
 
@@ -144,6 +195,19 @@ tbls doc sqlite:////home/static-server/sqlite-viewer/examples/Chinook_Sqlite.sql
 ```
 
 and view SVG files with Static File Server
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/tbls.gif" alt="tbls" width="750">
+</p> 
+
+
+### DB designer
+
+With DB designer you can visually create ERD diagrams, and generate DDL SQL scripts 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/sqlite-workspace/img/dbdesigner.png" alt="db designer" width="500">
+</p> 
 
 
 ## Advanced  

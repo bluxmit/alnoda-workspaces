@@ -54,7 +54,7 @@ COPY settings.json /home/abc/.theia/settings.json
 COPY supervisord-redis-wid.conf /etc/supervisord/
 
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/docs.md
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
