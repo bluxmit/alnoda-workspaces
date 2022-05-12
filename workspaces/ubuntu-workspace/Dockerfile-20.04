@@ -28,7 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && apt-get install -y sudo curl wget telnet jq \
     && echo "------------------------------------------------------ Allow users some priviledged actions" \
     && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
-    && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
+    && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
     && echo "------------------------------------------------------ GIT" \
     && apt-get install -y git git-flow \
     && wget -P /tmp https://github.com/jesseduffield/lazygit/releases/download/v0.34/lazygit_0.34_Linux_x86_64.tar.gz \

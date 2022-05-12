@@ -4,10 +4,12 @@ ARG image_tag=2.0
 FROM ${docker_registry}/codeserver-workspace:${image_tag}
 USER root
 
+COPY docs/getting-started.md /home/docs/docs/getting-started.md
+
 RUN echo "------------------------------------------------------ PHP " \
     && add-apt-repository -y ppa:ondrej/php \
     && apt-get -y update \
-    && apt -y install php8.1 \
+    && apt-get -y install php8.1 \
     && echo "------------------------------------------------------ modules" \
     && apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath \
     && echo "------------------------------------------------------ Composer" \
@@ -17,7 +19,6 @@ RUN echo "------------------------------------------------------ PHP " \
     && mv ./composer.phar /usr/bin/composer
 
 USER abc
-
 
 
 

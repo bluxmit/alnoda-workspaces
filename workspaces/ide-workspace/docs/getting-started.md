@@ -53,11 +53,12 @@ Workspace has full-size browser-base terminal
 Use workspace workspace terminal to install new applications. 
 Install with ```sudo apt install```. The default *abc* user is allowed to install packages.  
 
-For example, in order to install [Emacs text editor](https://www.gnu.org/software/emacs/) open workspace terminal, and execute 
+For example, in order to install PHP open workspace terminal, and execute 
 
 ```
+sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
-sudo apt install emacs
+sudo apt-get install php8.1
 ```
 
 ## Python

@@ -2,9 +2,9 @@
   <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p> 
 
-# Java workspace 
+# Node.js workspace 
 
-Docker image with Java and browser-based VS-Code version.
+Docker image with Node.js and browser-based VS-Code version.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
@@ -12,22 +12,24 @@ Docker image with Java and browser-based VS-Code version.
 
 ## Why this images
 
-1. If you need self-hosted remote development environment.
-2. If you want to be one command away from coding in Java.
+1. If you need self-hosted development environment.
+2. If you want to be one command away from coding in JavaScript.
 
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/java-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/nodejs-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
-- Java 
-- [Maven](https://maven.apache.org/)
-- [Gradle](https://gradle.org/)
+- Node 18.1.0
+- Npm 8.8.0
+- Yarn 1.22.18
+- [Nvm](https://github.com/nvm-sh/nvm)
+- [Nodeenv](https://pypi.org/project/nodeenv/)
 
 **Dev tools:**
 

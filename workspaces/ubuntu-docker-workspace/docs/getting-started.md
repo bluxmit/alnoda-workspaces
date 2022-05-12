@@ -52,7 +52,17 @@ dive alpine/postgres
 ## Browser terminal
 
 This workspace has browser-based terminal up and running. Open [localhost:8026](http://localhost:8026) in browser. 
-Start the workspace on Rasberri Pi and use it via Tablet.
+Start the workspace on Rasberri Pi and use it via Tablet.  
+
+In order to use browser-based terminal, expose port 8026
+
+```
+docker run --name space-1 -d -p 8026:8026 -v /var/run/docker.sock:/var/run/docker.sock --user=root alnoda/ubuntu-docker-workspace
+```
+
+<p align="center">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/ubuntu-workspace/img/web-based-terminal.png?raw=true" alt="dive" width="500">
+</p>
 
 ## Extra
 

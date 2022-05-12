@@ -2,9 +2,9 @@
   <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p> 
 
-# Java workspace 
+# PHP workspace 
 
-Docker image with Java and browser-based VS-Code version.
+Docker image with PHP, Composer and browser-based VS-Code version.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
@@ -13,21 +13,20 @@ Docker image with Java and browser-based VS-Code version.
 ## Why this images
 
 1. If you need self-hosted remote development environment.
-2. If you want to be one command away from coding in Java.
+2. If you want to be one command away from coding in PHP.
 
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/java-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/php-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
-- Java 
-- [Maven](https://maven.apache.org/)
-- [Gradle](https://gradle.org/)
+- PHP 
+- [Composer](https://getcomposer.org/)
 
 **Dev tools:**
 

@@ -9,7 +9,7 @@ file browsers and system monitors.
 Start
 
 ```
-docker run --name space-1 -d -p 8026:8026 alnoda/ubuntu-workspace
+docker run --name space-1 -d alnoda/ubuntu-workspace
 ```
 
 Enter workspace

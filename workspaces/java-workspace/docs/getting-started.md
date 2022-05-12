@@ -1,6 +1,6 @@
 ## Intro  
 
-To start, open Quickstart page [http://localhost:8020/](http://localhost:8020/) for quick access to all the tools
+To start, open Quickstart page [localhost:8020](http://localhost:8020/) for quick access to all the tools
     
 From the quicklaunch page you can open workspace tools, such as code editor or terminal 
 

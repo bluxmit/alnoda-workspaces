@@ -9,7 +9,7 @@ COPY supervisord-codeserver.conf /etc/supervisord/
 COPY ./mkdocs/helpers.py /home/docs/macros
 COPY docs/getting-started.md /home/docs/docs/getting-started.md
 COPY ./mkdocs/IDE.jpg /home/docs/docs/assets/home/
-COPY README.md /home/docs/docs/docs.md
+COPY ./mkdocs/README.md /home/docs/docs/README.md
 
 RUN echo "------------------------------------------------------ code-server" \
 	&& apt-get install -y build-essential pkg-config \
