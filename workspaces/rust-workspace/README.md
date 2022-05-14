@@ -2,36 +2,36 @@
   <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p> 
 
-# Elasticsearch workspace
-Several Elasticsearch CLI tools in a containerized dev/admin workspace.
+# Ruby workspace 
+
+Docker image with Ruby and browser-based VS-Code version. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
+</p>
 
 ## Why this images
 
-1. If you need self-hosted tool to interact with Elasticsearch/Opensearch, schedule backups of indexes, 
-migrate to other clusters, export and import Elasticsearch data to S3.
-
-2. To directly access Elasticsearch/Opensearch inside your kubernetes cluster.
+1. If you need self-hosted remote development environment.
+2. If you want to be one terminal command away from coding in Ruby.
 
 ## Start
  
 ```
-docker run --name elawid-1 -d -p 8020-8035:8020-8035 alnoda/elasticsearch-workspace
+docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ruby-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
-**Elasticsearch CLI tools**
-
-- [elasticdump](https://github.com/elasticsearch-dump/elasticsearch-dump) - awesome tool for moving and saving indices.
-- [esbulk](https://github.com/miku/esbulk) - fast parallel command line bulk loading utility for Elasticsearch. 
-- [vulcanizer](https://github.com/github/vulcanizer) - cli for interacting with an Elasticsearch cluster.
+- [Rust](https://www.rust-lang.org/) 
+- [Rustup](https://rustup.rs/)
 
 **Dev tools:**
 
-- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.  
+- [**Code-server**](https://github.com/cdr/code-server) - open source version of popular Visual Studio Code IDE. Codeserver has 
+VS-Code extensions and works in browser. 
 - [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
 - [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
 - [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
@@ -57,3 +57,4 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 
 ## Docs
 See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
