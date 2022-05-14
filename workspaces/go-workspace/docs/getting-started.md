@@ -109,6 +109,12 @@ To add module requirements and sums execute
 go mod tidy
 ```
 
+## Run, build and install
+
+- `go run` - to quickly test your go code and to check the output. But internally it compiles your code and builds an executable binary in a temporary location, launches that temp exe-file and finally cleans it when your app exits.
+- `go build` - compile and builds executable in current directory.
+- `go build` - will compile and move the executable to executable directory included in $PATH, so that you can run this executable from any path on the terminal. 
+
 Run the simple server with 
 
 ```
@@ -135,6 +141,7 @@ go install
 Now you can execute anywhere in terminal 
 
 ```
+export PORT=8030
 simpleserver
 ```
 
