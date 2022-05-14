@@ -30,61 +30,108 @@ Workspace has full-size browser-base terminal
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/base-workspace/img/base-workspace-terminal.gif" alt="Base-Workspace terminal" width="750">
 </p> 
 
+## Ruby
 
-## Hello World
-
-Check PHP version
-
-```
-php -v
-```
-
-Open IDE and create file `hello.php` with the following content
+Check Ruby version 
 
 ```
-<html>
- <head>
-  <title>PHP Test</title>
- </head>
- <body>
- <?php echo '<p>Hello World</p>'; ?> 
- </body>
-</html>
+ruby -v
 ```
 
-Start server in terminal 
+Install Rails - a web application development framework written in the Ruby programming language. 
 
 ```
-cd /home/project
-php -S 127.0.0.1:8030
+gem install rails
 ```
 
-Open [localhost:8030/hello.php](http://localhost:8030/hello.php) in browser
-
-## Website example
-
-Clone GitHub repo with a PHP website, for example
+Check version 
 
 ```
-git clone https://github.com/banago/simple-php-website.git
+rails --version
 ```
 
-Server with PHP development server
+## Bundler
+
+Create file `Gemfile` with the following content 
 
 ```
-cd simple-php-website
-php -S 0.0.0.0:8030
+source 'https://rubygems.org'
+gem 'nokogiri'
+gem 'rack', '~> 2.0.1'
+gem 'rspec'
 ```
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/php-workspace/img/serve-website.png" alt="serve-website" width="500">
-</p> 
-
-# Composer
-
-Install package with Composer
+Install all of the required gems 
 
 ```
-composer require phpunit/php-timer
+bundle install
 ```
+
+## Rbenv
+
+Use [rbenv](https://github.com/rbenv/rbenv) to pick a Ruby version for your application and guarantee that your development environment matches production. 
+
+List available versions, and install another one 
+
+```
+rbenv install --list
+rbenv install 3.0.4
+```
+
+Lists all Ruby versions known to rbenv, and shows an asterisk next to the currently active version. 
+
+```
+rbenv versions
+```
+
+__global environment__  
+
+
+Change global Ruby (for all folders)
+
+```
+rbenv global 3.0.4
+```
+
+__local environment (specific folder)__  
+
+Chose local Ruby environment for this specific folder
+
+```
+rbenv local 3.0.4
+```
+
+## Basic example 
+
+Create file `http_server.rb` 
+
+```rb
+# http_server.rb
+require 'socket'
+server = TCPServer.new 8030
+ 
+while session = server.accept
+  request = session.gets
+  puts request
+ 
+  session.print "HTTP/1.1 200\r\n" # 1
+  session.print "Content-Type: text/html\r\n" # 2
+  session.print "\r\n" # 3
+  session.print "Hello world! The time is #{Time.now}" #4
+ 
+  session.close
+end
+```
+
+Serve simple server 
+
+```
+ruby http_server.rb
+```
+
+Open browser on [localhost:8030](http://localhost:8030/)
+
+
+
+
 

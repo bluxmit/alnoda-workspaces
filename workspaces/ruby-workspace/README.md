@@ -4,7 +4,7 @@
 
 # Ruby workspace 
 
-Docker image with 
+Docker image with Ruby and browser-based VS-Code version. 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
@@ -13,7 +13,7 @@ Docker image with
 ## Why this images
 
 1. If you need self-hosted remote development environment.
-2. If you want to be one command away from coding in Ruby.
+2. If you want to be one terminal command away from coding in Ruby.
 
 ## Start
  
@@ -25,7 +25,9 @@ and open [localhost:8020](http://localhost:8020) in browser.
 
 ## Features
 
-- 
+- [Ruby](https://www.ruby-lang.org/) 
+- [Rbennv](https://github.com/rbenv/rbenv)
+- [Bundler](https://bundler.io/)
 
 **Dev tools:**
 
