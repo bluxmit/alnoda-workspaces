@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.0
+ARG image_tag=2.1
 
 FROM ${docker_registry}/codeserver-workspace:${image_tag}
 USER root

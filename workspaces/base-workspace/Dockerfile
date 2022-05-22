@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=20.04-2.0
+ARG image_tag=20.04-2.2
 
 FROM ${docker_registry}/ubuntu-workspace:${image_tag}
 
@@ -21,25 +21,28 @@ COPY filebrowser.json /opt/filebrowser/.filebrowser.json
 
 COPY mkdocs /home/docs
 COPY docs/getting-started.md /home/docs/docs/getting-started.md
+COPY docs/schedule-script.md /home/docs/docs/schedule-script.md
 COPY mkdocs-requirements.txt /home/abc/installed-python-packages/mkdocs-requirements.txt
 
-RUN echo "------------------------------------------------------ filebrowser, ungit, static server" \
-	&& apt-get -y update \
-	&& mkdir -p -m 777 /opt/filebrowser \
-	&& curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash \
+RUN apt-get -y update \
+    && echo "------------------------------------------------------ filebrowser" \
+	&& cd /tmp && wget https://github.com/filebrowser/filebrowser/releases/download/v2.21.1/linux-amd64-filebrowser.tar.gz \
+    && mkdir /tmp/filebrowser \
+    && tar xvf /tmp/linux-amd64-filebrowser.tar.gz -C /tmp/filebrowser \
+    && chmod +x /tmp/filebrowser/filebrowser \
+    && mv /tmp/filebrowser/filebrowser /opt/filebrowser/ \
+    && rm -rf /tmp/filebrowser/filebrowser \
+    && echo "------------------------------------------------------ ungit" \
 	&& apt-get install -y ssh net-tools --no-install-recommends \
 	&& mkdir -p /opt/ungit \
 	&& cd /opt/ungit && nodeenv --node=12.18.3 --npm=6.0.0 env \
 	&& cd /opt/ungit && . env/bin/activate && npm install -g ungit@1.5.9 \
+    && echo "------------------------------------------------------ static file server" \
 	&& mkdir -p /opt/serve \
 	&& cd /opt/serve && nodeenv --node=12.18.3 --npm=6.0.0 env \
 	&& cd /opt/serve && . env/bin/activate &&  npm install -g serve \
     && echo "------------------------------------------------------ mkdocs" \
 	&& pip install -r /home/abc/installed-python-packages/mkdocs-requirements.txt \
-    && echo "------------------------------------------------------ utils" \
-    && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    && mv /tmp/alnoda-workspaces/utils /home/abc/ || true \
-    && rm -rf /tmp/alnoda-workspaces \
 	&& echo "------------------------------------------------------ user" \
 	&& mkdir -p /home/static-server \
 	&& chown -R abc /opt/cronicle \

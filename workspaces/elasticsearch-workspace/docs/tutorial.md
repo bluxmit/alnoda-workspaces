@@ -1,6 +1,4 @@
-# Getting started
-
-## Intro
+# Elasticsearch workspace
 
 This tutorial demonstrates how to use Elasticsearch workspace to explore cluster and export index to S3. 
 

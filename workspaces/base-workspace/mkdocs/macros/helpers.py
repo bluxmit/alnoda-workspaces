@@ -12,7 +12,10 @@ port_increments = {
     "UNGIT_URL": 4,
     "TERMINAL_URL": 6,
     "MC_URL": 7,
-    "HTOP_URL": 8
+    "HTOP_URL": 8,
+    "PORT_8038": 18,
+    "PORT_8039": 19,
+    "PORT_8040": 20
     }
 
 

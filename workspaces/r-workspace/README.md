@@ -27,12 +27,10 @@ and open [localhost:8020](http://localhost:8020) in browser.
 ## Features
 
 - [R](https://www.r-project.org/) 
-- RStudio server
 
 **Dev tools:**
 
-- [**Code-server**](https://github.com/cdr/code-server) - open source version of popular Visual Studio Code IDE. Codeserver has 
-VS-Code extensions and works in browser. 
+- **RStudio server** - open source version of popular R IDE, browser-based. 
 - [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
 - [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
 - [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.

@@ -18,7 +18,7 @@ Includes code editor, terminal, scheduler and filebrowser.
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ide-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/ide-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  

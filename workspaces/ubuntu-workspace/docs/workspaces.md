@@ -158,7 +158,7 @@ command to execute outside of the workspace
 To start a workspace simply execute in terminal
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ide-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/ide-workspace
 ```
 
 *(It is recommended to run workspace in the daemon mode)*
@@ -201,7 +201,7 @@ You can work in Ubuntu terminal now. Execute the followinng command to know your
 
 ## Multiple workspaces
 
-Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8035 are taken.   
+Every workspace requires range of ports. If one workspace is up and running, the ports 8020-8040 are taken.   
 
 ide-workspace itself uses 9 ports (8020-8028), but it is recommended to map several extra ports just in case. Having extra ports, 
 you can always launch new applications on these ports, and they will be immediately exposed outside of the workspace.  
@@ -213,14 +213,14 @@ If you are planning to run more than one workspace at the same time, you can run
 the different port range, for example
 
 ```sh
-docker run --name space-2 -d -p 8040-8055:8020-8035 -e ENTRY_PORT=8040 alnoda/ide-workspace
+docker run --name space-2 -d -p 8050-8070:8020-8040 -e ENTRY_PORT=8050 alnoda/ide-workspace
 ```
 
 Notice that in addition we need to set environmental variable ENTRY_PORT, which should be equal to the first port in the new range. 
 Workspace UI usues this variable to know the new port range, and redirects to the proper addresses of the workspace applications' UIs.
 
 ## Understanding ports
-Usually workspace was started with a port range mapping ***-p 8020-8035***. 
+Usually workspace was started with a port range mapping ***-p 8020-8040***. 
 This is because workspace contains a set of applications with browser-based UI 
 
 | Port      | Application               |
@@ -252,13 +252,13 @@ If you are planning to expose more applications
 from inside of a container, add additional port mapping, for example
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 alnoda/ide-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 -p 8080:8080 alnoda/ide-workspace
 ```
 
 You can add multiple port mappings:
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 -p 8080:8080 -p 443:443 alnoda/ide-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 -p 8080:8080 -p 443:443 alnoda/ide-workspace
 ```
 
 **NOTE:** It is not a problem if you don't expose any ports, but later on realise you need them - 
@@ -366,7 +366,7 @@ There are two concepts to keep in mind: **images** and **containers**. Images ar
 is an image. When you execute this command 
 
 ```sh
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/ide-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/ide-workspace
 ```
 
 you create container called **space-1** from the image **alnoda/ide-workspace**. You can create any number of containers, but you need to 
@@ -526,7 +526,7 @@ The simplest deployment of the workspace requires only 3 steps:
 - ssh to the remote server and start workspace 
 
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/ide-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 -e WRK_HOST="<ip-of-your-remote-server>" alnoda/ide-workspace
 ```
 
 **NOTE:** When running workspace on the remote server, add envronmental variable `-e WRK_HOST="<ip-of-your-remote-server>"`. 
@@ -537,7 +537,7 @@ Open in your browser `<ip-of-your-remote-server>:8020`
 If docker-in-docker is required, then 
 
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/ide-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 -e WRK_HOST="<ip-of-your-remote-server>" -v /var/run/docker.sock:/var/run/docker.sock alnoda/ide-workspace
 ```
 
 This way launches workspace in cloud, but such workspace is not secure, everyone who knows IP of your server will be able to use it.  

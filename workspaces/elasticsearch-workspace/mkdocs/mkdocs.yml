@@ -4,14 +4,18 @@
 
 nav:
   - Home: README.md
-  - Get started: getting-started.md
+  - My apps: pages/my-apps.md
+  - Tutorials:
+    - Get started: getting-started.md
+    - Ansible: ansible.md
+    - Terraform: terraform.md
 
 
 # ===========================================================
 # CONFIGURATION
 # ===========================================================
 
-site_name: My Workspace
+site_name: Infra Workspace
 repo_url: https://github.com/bluxmit/alnoda-workspaces
 site_url: https://alnoda.org
 edit_uri: ""
@@ -34,14 +38,14 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
-      primary: brown  
-      accent: deep orange
+      primary: red  
+      accent: orange
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
-      primary: orange
-      accent: red
+      primary: red
+      accent: orange
 
 extra:
   # Link to open when your logo is clicked

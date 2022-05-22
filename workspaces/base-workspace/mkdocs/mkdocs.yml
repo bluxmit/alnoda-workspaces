@@ -4,7 +4,10 @@
 
 nav:
   - Home: README.md
-  - Get started: getting-started.md
+  - My apps: pages/my-apps.md
+  - Tutorials:
+    - Get started: getting-started.md
+    - Schedule script: schedule-script.md
 
 
 # ===========================================================

@@ -1,8 +1,11 @@
 # Getting started
 
-## Intro
+## About
 
-Workspace has browser-based VS-Code version with full-screen terminal, file manager, and task scheduler. 
+This workspace has browser-based VS-Code version, full-screen terminal, file manager, and task scheduler. 
+You can code, upload and dowload files and schedule periodic executios of scripts and jobs.  
+
+Workspace is based on the Ubuntu 20 docker image, with common CLI applications, such as Git, Vim, Nano and curl installed.
 
 ## Quicklaunch
 
@@ -16,15 +19,17 @@ From the quicklaunch page you can open workspace tools, such as code editor or t
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/wid-ui.png" alt="wid-ui.png" width="750">
 </p>
 
-You can install any extension from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors.  
+## Code Editor
 
-<div align="center" style="font-style: italic;">
-    Demo: Code-server
-</div>
+Code editor is a browser-based open-source Visual Studio Code. It is fast, responsive, and full-featured. It features code highlighting, 
+autocompletion, a great number of pre-installed color themes. You can install any extension 
+from [open-vsx.org](https://open-vsx.org/) that has hundreeds of extensions for VS Code compatible editors. 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-demo.gif" alt="Code-server demo" width="900">
 </p>
+
+## Terminal
 
 Workspace has full-size browser-base terminal
 
@@ -32,67 +37,73 @@ Workspace has full-size browser-base terminal
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/base-workspace/img/base-workspace-terminal.gif" alt="Base-Workspace terminal" width="750">
 </p> 
 
+## Scheduler
+
+Cronicle can execute on schedule scripts, jobs and tasks. It has nice UI to monitor executions and failures
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/cronicle.gif" alt="Cronicle" width="750">
+</p>
+
 ## Install applications
 
-Use workspace workspace terminal to install new applications. 
-Install with ```sudo apt install```. The default *abc* user is allowed to install packages.  
+Open workspace terminal to install new applications. 
+Simply execute `apt install` with `sudo`.  
 
-For example, in order to install PHP open workspace terminal, and execute 
+For example, install emacs 
 
+```sh
+sudo apt-get install emacs
 ```
+
+If you want to install PHP, execute
+
+```sh
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install php8.1
 ```
 
 ## Python
-Python and Pip are installed. To use python console, open workspace terminal and execute 
+Python and Pip are installed. Execute `python3` in terminal.  
 
-> `python3`
+To install python packages use PIP
 
-install python package with pip, for 
-
-> `pip install pandas`
-
-If you are planning to work with python, we recommend to install IPython, that provides a rich toolkit to help 
-you make the most of using Python interactively. Install and start ipython
-
-> ```pip install ipython```  
-> `ipython`
+```
+pip install pandas
+```
 
 ## Node.js
-We recommend to use nodeenv to create different node environments.  
+Use Nodeenv to create Node.js environments.  
 
-For example, open workspace terminal, create folder npmgui, and activate environment with node v. 12.18.3 and npm v.6.0.0
+For example, open workspace terminal, create folder npmgui, and activate environment with node v.12.18.3 and npm v.6.0.0
 
-> `cd /home`  
-> `mkdir npmgui; cd npmgui`  
-> `nodeenv --node=12.18.3 --npm=6.0.0 env`
+```
+cd /home
+mkdir npmgui; cd npmgui  
+nodeenv --node=12.18.3 --npm=6.0.0 env
+```
 
-Let's install package and start node application 
+Let's install package and start node application, explicitly on port 8040
 
-> `. env/bin/activate && npm i -g npm-gui`   
-> `npm-gui 0.0.0.0:8030`
+```
+. env/bin/activate && npm i -g npm-gui   
+npm-gui 0.0.0.0:8040
+```
 
-Open your browser on http://localhost:8030/ 
+In the Quicklaunch go to the tab 'My apps' and open app on the port 8040. 
 
-**NOTE:** If you close terminal, the application will stop. See how to [start applications that reamin live after closing a workspace terminal](#run-applications-and-services-inside-the-workspace)
+> **NOTE:** If you close terminal, the application will stop. If you want application to keep running after workspace terminal is closed 
+start it with **"&!"** at the end. 
 
-### Run applications and services inside the workspace
+## Keep services runnning
 
-If you want application to keep running after workspace terminal is closed start it with **"&!"** at the end. 
+Any application started in the terminal will run as long as your terminal session is alive. 
+If you want any application or service runing after terminal session is closed, start service with **"&!"** at the end of 
+the command.  
 
-For example, in the last section we started *npm-gui* tool with command `npm-gui 0.0.0.0:8030`. If you close the workspace terminal, 
-this application witll stop running. To keep it running after terminal is closed, execute
+For example, to start *npm-gui* and keep it running after terminal is closed, run 
 
-> `npm-gui 0.0.0.0:8030 &!`   
-
-Now, if you disconnect from the workspace and close terminal, the application will continue running in the workspace, untill [workspace is stopped](#start-and-stop-workspaces).   
-
-## Scheduler
-
-Cronicle allows scheduling scripts, jobs and tasks and it has nice UI
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/cronicle.gif" alt="Cronicle" width="750">
-</p>
+```
+npm-gui 0.0.0.0:8040 &!
+```   

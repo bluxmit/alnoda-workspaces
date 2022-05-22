@@ -4,7 +4,11 @@
 
 nav:
   - Home: README.md
-  - Get started: getting-started.md
+  - My apps: pages/my-apps.md
+  - Tutorials:
+    - Get started: getting-started.md
+    - Ansible: ansible.md
+    - Terraform: terraform.md
 
 
 # ===========================================================

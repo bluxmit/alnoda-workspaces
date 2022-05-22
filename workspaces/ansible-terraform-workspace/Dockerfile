@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.0
+ARG image_tag=2.2
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -56,7 +56,7 @@ COPY supervisord-infra.conf /etc/supervisord/
 
 # Ara 
 COPY ara-settings.yaml /home/abc/.ara/server/settings.yaml
-ENV ANSIBLE_CALLBACK_PLUGINS="/usr/local/lib/python3.9/dist-packages/ara/plugins/callback" ARA_API_CLIENT="http" ARA_API_SERVER="http://0.0.0.0:8029" ARA_TIME_ZONE="UTC"
+ENV ANSIBLE_CALLBACK_PLUGINS="/usr/local/lib/python3.8/dist-packages/ara/plugins/callback" ARA_API_CLIENT="http" ARA_API_SERVER="http://0.0.0.0:8029" ARA_TIME_ZONE="UTC"
 
 # Customize mkdocs
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
@@ -65,7 +65,8 @@ COPY ./mkdocs/Ara.png /home/docs/docs/assets/home/
 COPY ./mkdocs/Blast-radius.png /home/docs/docs/assets/home/
 COPY ./mkdocs/Terraform-Rover.png /home/docs/docs/assets/home/
 COPY ./mkdocs/helpers.py /home/docs/macros 
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
+COPY docs/ansible.md /home/docs/docs/
+COPY docs/terraform.md /home/docs/docs/
 
 RUN apt-get -y update \
     && echo "------------------------------------------------------ ansible ara" \
@@ -76,9 +77,9 @@ RUN apt-get -y update \
     && echo "------------------------------------------------------ ansible-lint" \
     && pip3 install "ansible-lint[yamllint]" \
     && echo "------------------------------------------------------ terraform" \
-    && cd /tmp && wget https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip \
-    && unzip terraform_0.14.6_linux_amd64.zip -d /usr/local/bin \
-    && rm /tmp/terraform_0.14.6_linux_amd64.zip \
+    && cd /tmp && wget https://releases.hashicorp.com/terraform/1.2.0/terraform_1.2.0_linux_amd64.zip \
+    && unzip terraform_1.2.0_linux_amd64.zip  -d /usr/local/bin \
+    && rm /tmp/terraform_1.2.0_linux_amd64.zip \
     && echo "------------------------------------------------------ blast-radius" \
     && apt-get install -y graphviz \
     && echo "------------------------------------------------------ terraform-docs" \
@@ -109,16 +110,15 @@ RUN apt-get -y update \
     && chmod +x inframap-linux-amd64 \
     && mv inframap-linux-amd64 /usr/bin/inframap \
     && echo "------------------------------------------------------ terraform rover" \
-    && cd /tmp && curl -Lo ./terraform-rover.zip https://github.com/im2nguyen/rover/releases/download/v0.1.6/rover_0.1.6_linux_amd64.zip \
-    && unzip /tmp/terraform-rover.zip -d /tmp/rover && rm terraform-rover.zip  \
-    && mv /tmp/rover/rover_v0.1.6 /tmp/rover/rover \
+    && cd /tmp && curl -Lo ./terraform-rover.zip https://github.com/im2nguyen/rover/releases/download/v0.3.2/rover_0.3.2_linux_amd64.zip \
+    && unzip /tmp/terraform-rover.zip -d /tmp/rover && rm /tmp/terraform-rover.zip  \
+    && mv /tmp/rover/rover_v0.3.2 /tmp/rover/rover \
     && chmod +x /tmp/rover/rover \
     && mv /tmp/rover/rover /usr/bin/rover \
     && rm -rf /tmp/rover \
     && echo "------------------------------------------------------ utils" \
-    && rm -rf /home/abc/utils || true \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    && mv /tmp/alnoda-workspaces/utils /home/abc/ \
+    && mv -f /tmp/alnoda-workspaces/utils/* /home/abc/utils \
     && rm -rf /tmp/alnoda-workspaces \
     && echo "alias ansible-report='/home/abc/utils/ansible-report.sh'" >> /home/abc/.zshrc \
     && chmod +x /home/abc/utils/ansible-report.sh && chown abc /home/abc/utils/ansible-report.sh \
@@ -135,7 +135,7 @@ RUN apt-get -y update \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
 
-ENV TERRAFORM_ROVER="http://localhost:9000"
+ENV TERRAFORM_ROVER="http://localhost:9000" 
 
 USER abc
 

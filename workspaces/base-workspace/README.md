@@ -9,7 +9,7 @@ You can host on your favourite Rasberry Pi.
 ## Start
 
 ```
-docker run --name space-1 --user=root -d -p 8020-8030:8020-8030 alnoda/base-workspace
+docker run --name space-1 --user=root -d -p 8020-8040:8020-8040 alnoda/base-workspace
 ```
 
 and open [localhost:8020](http://localhost:8020) in browser. 
@@ -38,7 +38,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
 
 ## Why this image
 
-If you need to schedule scripts and jobs, monitor executions, upload and download files. 
+1. If you need to schedule scripts and jobs, monitor executions, upload and download files. 
 
 ## Docs
 See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).

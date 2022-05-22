@@ -6,11 +6,13 @@ COPY zsh-in-docker.sh /tmp/zsh-in-docker.sh
 
 # Systemctl within Docker and Python 3.9
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \ 
-    && apt-get install -y wget \
-    && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py -O /usr/local/bin/systemctl  \
-    && chmod 0777 /usr/local/bin/systemctl \ 
+    && echo "------------------------------------------------------ Common stuff" \
+    && apt-get install -y sudo curl wget telnet jq \
     && apt-get install -y software-properties-common \
     && apt-get install -y zip gzip tar \
+    && echo "------------------------------------------------------ docker systemctl replacement" \
+    && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl  \
+    && chmod 0777 /usr/local/bin/systemctl \ 
     && echo "------------------------------------------------------ User" \
     && useradd -u 8877 abc \
     && chmod -R 777 /home \
@@ -24,8 +26,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && pip install --upgrade setuptools \
     && pip install --upgrade distlib \
     && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
-    && echo "------------------------------------------------------ Common stuff" \
-    && apt-get install -y sudo curl wget telnet jq \
     && echo "------------------------------------------------------ Allow users some priviledged actions" \
     && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
     && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
@@ -126,8 +126,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && pip install glances==3.2.5 \
     && pip install vizex==2.1.0 \
     && echo "------------------------------------------------------ Web-based terminal" \
-    && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.aarch64 \
-    && mv ttyd.aarch64 /usr/bin/ttyd \
+    && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64 \
+    && mv ttyd.x86_64 /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd \
     && echo "------------------------------------------------------ utils" \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
@@ -165,6 +165,7 @@ ENV PATH="/home/abc/.local/bin:${PATH}"
 
 # note! this will have consequences only when started as root (docker run ... --user root ...)  
 # systemctl start systemd-journald 
+#   I remove this from entrypoint, as it is not used significantly, but slows down the start
 
 # this entrypoint should be the same for all images that are built on top of this one
-ENTRYPOINT /etc/init.d/cron start; systemctl start systemd-journald; supervisord -c "/etc/supervisord/unified-supervisord.conf"
+ENTRYPOINT /etc/init.d/cron start; supervisord -c "/etc/supervisord/unified-supervisord.conf"

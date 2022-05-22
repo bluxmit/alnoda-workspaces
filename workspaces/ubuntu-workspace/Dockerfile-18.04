@@ -123,8 +123,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
     && echo "------------------------------------------------------ Web-based terminal" \
-    && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.aarch64 \
-    && mv ttyd.aarch64 /usr/bin/ttyd \
+    && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64 \
+    && mv ttyd.x86_64 /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd \
     && echo "------------------------------------------------------ utils" \
     && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \

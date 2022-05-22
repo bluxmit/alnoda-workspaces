@@ -9,6 +9,7 @@ default:
   - ::1
   - 0.0.0.0
   - localhost
+  - "*"
   BASE_DIR: /home/abc/.ara/server
   CORS_ORIGIN_ALLOW_ALL: true
   CORS_ORIGIN_REGEX_WHITELIST: []

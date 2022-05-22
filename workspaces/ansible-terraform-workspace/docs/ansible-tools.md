@@ -1,6 +1,5 @@
 # Ansible tools
 
-
 ### [Ansible-cmdb](https://github.com/fboender/ansible-cmdb)
 
 Ansible-cmdb takes the output of Ansible's fact gathering and converts 
