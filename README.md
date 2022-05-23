@@ -6,8 +6,8 @@ Containerized development, admin and professional environments.
 
 ## Why
 
-1. If you are building cloud development platform 
-2. If you need to get started fast without building your own toolset
+1. You are building cloud development platform 
+2. You need to get started fast without building your own toolset
 
 ## Workspace
 

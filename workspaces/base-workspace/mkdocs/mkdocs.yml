@@ -5,9 +5,7 @@
 nav:
   - Home: README.md
   - My apps: pages/my-apps.md
-  - Tutorials:
-    - Get started: getting-started.md
-    - Schedule script: schedule-script.md
+  - Docs: https://docs.alnoda.org/base-workspace/
 
 
 # ===========================================================

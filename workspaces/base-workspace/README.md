@@ -41,7 +41,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
 1. If you need to schedule scripts and jobs, monitor executions, upload and download files. 
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+See our guides on [**getting started**](https://docs.alnoda.org/base-workspace/) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
 
 <div align="center" style="font-style: italic;">
     Demo: Base workspace

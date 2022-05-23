@@ -20,8 +20,6 @@ COPY supervisord-workspace-base.conf /etc/supervisord/
 COPY filebrowser.json /opt/filebrowser/.filebrowser.json
 
 COPY mkdocs /home/docs
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
-COPY docs/schedule-script.md /home/docs/docs/schedule-script.md
 COPY mkdocs-requirements.txt /home/abc/installed-python-packages/mkdocs-requirements.txt
 
 RUN apt-get -y update \

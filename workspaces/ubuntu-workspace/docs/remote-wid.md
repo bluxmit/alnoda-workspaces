@@ -3,7 +3,7 @@
 This is the docker-compose that can be used to spin-up Ubuntu-workspace on the remote server together with the 
 reverse proxy, that adds authentication.  
 
-```
+```yaml
 version: "3.3"
 services:
   traefik:
