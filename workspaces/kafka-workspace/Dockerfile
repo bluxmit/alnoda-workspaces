@@ -7,7 +7,6 @@ ARG BUILD_IMAGE=node:12.18.3
 ARG DEPLOY_IMAGE=${docker_registry}/base-workspace:${image_tag}
 ARG MKDOCS_COPY_IMAGE=${docker_registry}/ide-workspace:${image_tag}
 
-
 ################################################################################ BUILD 
 
 ARG THEIA_VERSION=1.15.0

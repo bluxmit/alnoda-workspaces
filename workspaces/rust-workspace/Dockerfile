@@ -4,7 +4,7 @@ ARG image_tag=2.2
 FROM ${docker_registry}/codeserver-workspace:${image_tag}
 USER root
 
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 
 RUN apt-get -y update \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/rustup.sh \

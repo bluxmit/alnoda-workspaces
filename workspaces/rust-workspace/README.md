@@ -7,7 +7,7 @@
 Docker image with Rust and browser-based VS-Code version. 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
+  <img src="img/codeserver-collage-sm.jpg" alt="Collage" width="750">
 </p>
 
 ## Why this images
@@ -18,7 +18,7 @@ Docker image with Rust and browser-based VS-Code version.
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/rust-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/rust-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -56,5 +56,9 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
 
+See our guides on 
+
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace tutorial**](https://docs.alnoda.org/rust-workspace/tutorial/) 
+- [**project docs**](https://docs.alnoda.org/)

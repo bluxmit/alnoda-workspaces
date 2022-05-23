@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+  <img src="img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p> 
 
 Containerized development, admin and professional environments. 
@@ -24,13 +24,15 @@ Workspaces consist of
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
 </p>
 
-> If you like this project, please support it by simply putting a Github star and sharing with friends on Twitter.
- 
+## Docs
+
+Please visit our [**documentation website**](https://docs.alnoda.org)
 
 ## Contribution
 
 Pull requests welcome.  
 If you feel you need to discuss first, create an issue.
 
+> If you like this project, please support it by simply putting a Github star and sharing with friends on Twitter.
 
 

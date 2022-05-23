@@ -4,7 +4,7 @@ ARG image_tag=2.2-17
 FROM ${docker_registry}/java-workspace:${image_tag}
 USER root
 
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 
 RUN echo "------------------------------------------------------ coursier" \
     && cd /tmp && curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs \

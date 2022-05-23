@@ -14,7 +14,10 @@ port_increments = {
     "TERMINAL_URL": 6,
     "MC_URL": 7,
     "HTOP_URL": 8,
-    "STREAMLIT_URL": 9
+    "STREAMLIT_URL": 9,
+    "PORT_8038": 18,
+    "PORT_8039": 19,
+    "PORT_8040": 20
     }
 
 # this function name should not be changed

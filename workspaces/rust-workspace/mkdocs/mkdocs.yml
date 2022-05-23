@@ -5,14 +5,14 @@
 nav:
   - Home: README.md
   - My apps: pages/my-apps.md
-  - Docs: https://docs.alnoda.org/streamlit-workspace/
+  - Docs: https://docs.alnoda.org/rust-workspace/
 
 
 # ===========================================================
 # CONFIGURATION
 # ===========================================================
 
-site_name: Streamlit workspace
+site_name: Rust workspace
 repo_url: https://github.com/bluxmit/alnoda-workspaces
 site_url: https://docs.alnoda.org
 edit_uri: ""
@@ -35,14 +35,14 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
-      primary: blue grey  
-      accent: amber
+      primary: grey  
+      accent: orange
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
       primary: grey
-      accent: amber
+      accent: orange
 
 extra:
   # Link to open when your logo is clicked

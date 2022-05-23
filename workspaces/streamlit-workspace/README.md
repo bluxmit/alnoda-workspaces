@@ -7,7 +7,7 @@
 Docker image for building Streamlit applications.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
+  <img src="img/codeserver-collage-sm.jpg" alt="Collage" width="750">
 </p>
 
 ## Why this images
@@ -70,8 +70,12 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
 
+See our guides on 
+
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace tutorial**](https://docs.alnoda.org/streamlit-workspace/tutorial/) 
+- [**project docs**](https://docs.alnoda.org/)
 
 
 
