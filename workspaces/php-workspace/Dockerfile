@@ -1,10 +1,10 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.1
+ARG image_tag=2.2
 
 FROM ${docker_registry}/codeserver-workspace:${image_tag}
 USER root
 
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
 
 RUN echo "------------------------------------------------------ PHP " \
     && add-apt-repository -y ppa:ondrej/php \

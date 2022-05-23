@@ -1,4 +1,4 @@
-FROM alnoda/ubuntu-workspace:20.04-2.1
+FROM alnoda/ubuntu-workspace:20.04-2.2
 
 USER root
 

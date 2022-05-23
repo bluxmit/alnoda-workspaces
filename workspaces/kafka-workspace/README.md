@@ -19,7 +19,7 @@ and troubleshoot your Kafka clusters
 ## Start
  
 ```
-docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/kafka-workspace
+docker run --name rwid-1 -d -p 8020-8040:8020-8040 alnoda/kafka-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -63,5 +63,12 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Process Control:** supervisord
 - **Job scheduler:** cron
 
+
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
+See our guides
+
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace tutorial**](https://docs.alnoda.org/kafka-workspace/tutorial/)
+- [**workspace docs**](https://docs.alnoda.org/kafka-workspace/)
+- [**project docs**](https://docs.alnoda.org/)

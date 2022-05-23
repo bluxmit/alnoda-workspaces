@@ -30,7 +30,7 @@ can create a unified documentation website from multiple repositories in Github,
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/mkdocs-magicspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -80,6 +80,19 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](https://mkdocs-magicspace.alnoda.org/tutorials/get-started/), 
-[extended Markdown tutorials](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/) 
-and [**advanced features**](https://mkdocs-magicspace.alnoda.org/docs/).
+
+See our guides on 
+
+- [**getting started**](https://mkdocs-magicspace.alnoda.org/tutorials/get-started/)
+- [**extended Markdown tutorials**](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/) 
+- [**project docs**](https://docs.alnoda.org/)
+
+## Demo
+
+<div align="center" style="font-style: italic;">
+    Demo: MkDocs MagicSpace
+</div>
+
+<p align="center">
+  <img src="img/mkdocs-magicspace-demo.gif" alt="WID demo" width="900">
+</p>

@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.1-3.8
+ARG image_tag=2.2-3.8
 
 FROM ${docker_registry}/python-workspace:${image_tag}
 USER root

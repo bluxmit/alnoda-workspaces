@@ -13,7 +13,7 @@ Includes code editor, terminal, scheduler and filebrowser.
 ## Why this images
 
 1. If you need isolated dev environment where you can code and install packages and apps without affecting the base operating system.
-2. If you want self-hosted remote development environment.
+2. If you are building self-hosted remote development environment.
 
 ## Start
  

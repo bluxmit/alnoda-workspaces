@@ -4,7 +4,8 @@
 
 nav:
   - Home: README.md
-  - Get started: getting-started.md
+  - My apps: pages/my-apps.md
+  - Docs: https://docs.alnoda.org/kafka-workspace/
 
 
 # ===========================================================
@@ -13,7 +14,7 @@ nav:
 
 site_name: Kafka Workspace
 repo_url: https://github.com/bluxmit/alnoda-workspaces
-site_url: https://alnoda.org
+site_url: https://docs.alnoda.org
 edit_uri: ""
 
 # ===========================================================
@@ -45,8 +46,8 @@ theme:
 
 extra:
   # Link to open when your logo is clicked
-  homepage: https://alnoda.org
-  host_url: http://localhost
+  homepage: https://docs.alnoda.org
+  host_url: https://docs.alnoda.org
 
 plugins:
   - search

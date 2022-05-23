@@ -60,5 +60,6 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 See our guides
 
 - [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace tutorial**](https://docs.alnoda.org/elasticsearch-workspace/tutorial/)
 - [**workspace docs**](https://docs.alnoda.org/elasticsearch-workspace/)
 - [**project docs**](https://docs.alnoda.org/)

@@ -18,10 +18,10 @@ Docker image with PHP, Composer and browser-based VS-Code version.
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/php-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/php-workspace
 ```  
 
-and open [localhost:8020](http://localhost:8020) in browser.  
+open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
@@ -56,8 +56,10 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
 
+See our guides on 
 
-
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace tutorial**](https://docs.alnoda.org/php-workspace/tutorial/) 
+- [**project docs**](https://docs.alnoda.org/)
 

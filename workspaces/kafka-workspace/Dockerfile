@@ -1,10 +1,11 @@
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.1
+ARG image_tag=2.2
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
 ARG DEPLOY_IMAGE=${docker_registry}/base-workspace:${image_tag}
+ARG MKDOCS_COPY_IMAGE=${docker_registry}/ide-workspace:${image_tag}
 
 
 ################################################################################ BUILD 
@@ -40,6 +41,7 @@ RUN yarn --pure-lockfile && \
 
 ################################################################################ IMAGE
 
+FROM ${MKDOCS_COPY_IMAGE} as docs_image
 FROM ${DEPLOY_IMAGE} 
 
 USER root
@@ -54,8 +56,8 @@ COPY --from=0 /opt/theia /opt/theia
 COPY settings.json /home/abc/.theia/settings.json
 COPY supervisord-kafka-wid.conf /etc/supervisord/
 
-COPY mkdocs /home/docs
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
+COPY --from=docs_image /home/docs/ /home/docs/
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
