@@ -38,14 +38,14 @@ open [localhost:8020](http://localhost:8020) in browser.
 
 ## Why this image
 
-1. If you need to schedule scripts and jobs, monitor executions, upload and download files. 
+If you need to schedule scripts and jobs, monitor executions, upload and download files. 
 
 ## Docs
 
 See our guides
 
-- [**project docs**](https://docs.alnoda.org/)
 - [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**project docs**](https://docs.alnoda.org/)
 
 ## Demo
 
