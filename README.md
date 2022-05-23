@@ -35,4 +35,6 @@ If you feel you need to discuss first, create an issue.
 
 > If you like this project, please support it by simply putting a Github star and sharing with friends on Twitter.
 
-
+<p align="center">
+  <img src="img/stand_with_ukraine.png" alt="Ukraine" width="250">
+</p> 
