@@ -6,7 +6,8 @@ FROM ${docker_registry}/ide-workspace:${image_tag}
 USER root
 
 COPY settings.json /home/abc/.theia/settings.json
-COPY docs/tutorial.md /home/docs/docs/tutorial.md
+
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
 
 RUN apt-get -y update \
     # && echo "------------------------------------------------------ utils" \

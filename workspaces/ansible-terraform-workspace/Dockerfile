@@ -65,8 +65,6 @@ COPY ./mkdocs/Ara.png /home/docs/docs/assets/home/
 COPY ./mkdocs/Blast-radius.png /home/docs/docs/assets/home/
 COPY ./mkdocs/Terraform-Rover.png /home/docs/docs/assets/home/
 COPY ./mkdocs/helpers.py /home/docs/macros 
-COPY docs/ansible.md /home/docs/docs/
-COPY docs/terraform.md /home/docs/docs/
 
 RUN apt-get -y update \
     && echo "------------------------------------------------------ ansible ara" \

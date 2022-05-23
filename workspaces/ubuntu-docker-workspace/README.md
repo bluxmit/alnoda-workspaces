@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p>  
 
 # Ubuntu docker workspace

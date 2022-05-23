@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p> 
+  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p>  
 
 # Ansible-Terraform Workspace
 
@@ -8,7 +8,7 @@ Dockerized development environment for Ansible and Terraform. Workspace will hel
 visualize planned terraform changes; display ansible hosts plays; schedule and observe executions.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid-collage.png" alt="Collage" width="750">
+  <img src="img/ansible-terraform-wid-collage.png" alt="Collage" width="750">
 </p>
 
 ## Why this images
@@ -72,12 +72,19 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
+See our guides
+
+- [**project docs**](https://docs.alnoda.org/)
+- [**getting started - Ansible**](https://docs.alnoda.org/ansible-terraform-workspace/ansible-tools/)
+- [**getting started - Terraform**](https://docs.alnoda.org/ansible-terraform-workspace/terraform-tools/)
+
+## Demo 
 
 <div align="center" style="font-style: italic;">
     Demo: Ansible-Terraform workspace
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
+  <img src="img/ansible-terraform-wid.gif" alt="Htop" width="900">
 </p>

@@ -5,14 +5,14 @@
 nav:
   - Home: README.md
   - My apps: pages/my-apps.md
-  - Docs: https://docs.alnoda.org/elasticsearch-workspace/
+  - Docs: https://docs.alnoda.org/codeserver-workspace/
 
 
 # ===========================================================
 # CONFIGURATION
 # ===========================================================
 
-site_name: Elasticsearch workspace
+site_name: My workspace
 repo_url: https://github.com/bluxmit/alnoda-workspaces
 site_url: https://docs.alnoda.org
 edit_uri: ""
@@ -35,13 +35,13 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
-      primary: red  
-      accent: red
+      primary: brown  
+      accent: deep orange
     - scheme: slate
       toggle:
         icon: material/toggle-switch
         name: Switch to dark mode
-      primary: red
+      primary: orange
       accent: red
 
 extra:

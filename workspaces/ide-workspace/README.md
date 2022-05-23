@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p> 
+  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p>  
 
 # IDE-workspace
 General-purpose dockerized development environment. Fully isolated inside a docker container. 
@@ -49,7 +49,13 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
     - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
+See our guides
+
+- [**project docs**](https://docs.alnoda.org/)
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+
+## Demo
 
 <div align="center" style="font-style: italic;">
     Demo: IDE workspace

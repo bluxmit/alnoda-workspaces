@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p>  
+  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p>   
 
 # Base-workspace
 Containerized Linux environment for running jobs on schedule with browser-based scheduler, terminal and file manager. 
@@ -12,7 +12,7 @@ You can host on your favourite Rasberry Pi.
 docker run --name space-1 --user=root -d -p 8020-8040:8020-8040 alnoda/base-workspace
 ```
 
-and open [localhost:8020](http://localhost:8020) in browser. 
+open [localhost:8020](http://localhost:8020) in browser. 
 
 ## Features
 
@@ -41,14 +41,20 @@ and open [localhost:8020](http://localhost:8020) in browser.
 1. If you need to schedule scripts and jobs, monitor executions, upload and download files. 
 
 ## Docs
-See our guides on [**getting started**](https://docs.alnoda.org/base-workspace/) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
+See our guides
+
+- [**project docs**](https://docs.alnoda.org/)
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+
+## Demo
 
 <div align="center" style="font-style: italic;">
     Demo: Base workspace
 </div>
 
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/base-workspace.gif" alt="Base Workspace" width="750">
+  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-workspace/img/base-workspace.gif?raw=true" alt="Base Workspace" width="750">
 </p>
 
 

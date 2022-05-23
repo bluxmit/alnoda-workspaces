@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="https://github.com/bluxmit/alnoda-workspaces/blob/main/img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p> 
+  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+</p>  
 
 # Elasticsearch workspace
 Several Elasticsearch CLI tools in a containerized dev/admin workspace.
@@ -15,7 +15,7 @@ migrate to other clusters, export and import Elasticsearch data to S3.
 ## Start
  
 ```
-docker run --name elawid-1 -d -p 8020-8035:8020-8035 alnoda/elasticsearch-workspace
+docker run --name elawid-1 -d -p 8020-8040:8020-8040 alnoda/elasticsearch-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -56,4 +56,9 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
+See our guides
+
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace docs**](https://docs.alnoda.org/elasticsearch-workspace/)
+- [**project docs**](https://docs.alnoda.org/)
