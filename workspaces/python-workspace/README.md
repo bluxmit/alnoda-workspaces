@@ -8,7 +8,7 @@ Docker image for Python development environment. Includes Python, python tooling
 static server, job scheduler.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/python-workspace/img/python-wid-collage-sm.jpg" alt="Collage" width="750">
+  <img src="img/python-wid-collage-sm.jpg" alt="Collage" width="750">
 </p>
 
 ## Why this images
@@ -20,7 +20,7 @@ static server, job scheduler.
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8035:8020-8035 alnoda/python-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/python-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -70,4 +70,19 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
+See our guides on 
+
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace tutorial**](https://docs.alnoda.org/postgres-workspace/tutorial/) 
+- [**project docs**](https://docs.alnoda.org/)
+
+## Demo
+
+<div align="center" style="font-style: italic;">
+    Demo: Python workspace
+</div>
+
+<p align="center">
+  <img src="img/python-wid.gif" alt="postgres-wid-demo" width="750">
+</p> 

@@ -6,10 +6,10 @@ FROM ${docker_registry}/ide-workspace:${image_tag}
 USER root
 
 COPY python-requirements.txt /home/abc/installed-python-packages
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
 COPY ./examples/ /home/examples/
 COPY .pylintrc /home/abc/
+
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 
 RUN pip install -r /home/abc/installed-python-packages/python-requirements.txt \
     && echo "------------------------------------------------------ graphviz" \

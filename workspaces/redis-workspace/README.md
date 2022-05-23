@@ -7,7 +7,7 @@
 Docker image with Redis, Redis Commander and several CLI tools to interact with Redis.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/redis-workspace/img/redis-wid-collage.png" alt="Collage" width="750">
+  <img src="img/redis-wid-collage.png" alt="Collage" width="750">
 </p>
 
 ## Why this images
@@ -18,10 +18,10 @@ Docker image with Redis, Redis Commander and several CLI tools to interact with 
 ## Start
  
 ```
-docker run --name rwid-1 -d -p 8020-8035:8020-8035 alnoda/redis-workspace
+docker run --name rwid-1 -d -p 8020-8040:8020-8040 alnoda/redis-workspace
 ```  
 
-and open [localhost:8020](http://localhost:8020) in browser.  
+open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
@@ -61,4 +61,9 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - **Job scheduler:** cron
 
 ## Docs
-See our guides on [**getting started**](docs/getting-started.md) and [**advanced features**](../ubuntu-workspace/docs/workspaces.md).
+
+See our guides on 
+
+- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
+- [**workspace tutorial**](https://docs.alnoda.org/redis-workspace/tutorial/) 
+- [**project docs**](https://docs.alnoda.org/)

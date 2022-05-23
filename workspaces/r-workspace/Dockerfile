@@ -4,9 +4,12 @@ ARG image_tag=2.2
 FROM ${docker_registry}/base-workspace:${image_tag}
 USER root
 
-COPY mkdocs /home/docs
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
 COPY supervisord-rstudio.conf /etc/supervisord/
+
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/helpers.py /home/docs/macros
+COPY ./mkdocs/RStudio.png /home/docs/docs/assets/home/
+COPY ./mkdocs/README.md /home/docs/docs/README.md
 
 ### R
 ENV R_VERSION=4.2.0 \
