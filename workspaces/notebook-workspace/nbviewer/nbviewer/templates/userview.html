@@ -1,0 +1,13 @@
+{% extends "tabular.html" %}
+
+
+{% block entry scoped %}
+  <tr>
+    <td>
+      <a href="{{ from_base(entry.url) }}">
+        <i class="fa fa-fw fa-book"></i>
+        {{entry.name}}
+      </a>
+    </td>
+  </tr>
+{% endblock entry %}

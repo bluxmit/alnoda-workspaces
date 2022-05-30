@@ -1,5 +1,9 @@
+poetry==1.1.13
+
 # https://pypi.org/project/ipython/
 ipython==8.3.0 
+jupyter==1.0.0
+
 # https://pypi.org/project/prettyprinter/
 prettyprinter==0.18.0
 # https://github.com/antonbabenko/pre-commit-terraform
@@ -21,7 +25,6 @@ pylint-json2html==0.3.0
 # https://pypi.org/project/pytest-html-reporter/
 pytest-html-reporter==0.2.6
 
-poetry==1.1.13
 black==22.3.0
 isort==5.10.1
 flake8==4.0.1 
@@ -31,4 +34,3 @@ pytest-regressions==2.3.1
 logzero==1.7.0
 pylint==2.13.8
 
-jupyter==1.0.0

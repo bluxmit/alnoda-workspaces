@@ -6,10 +6,6 @@
 
 Docker image with R and browser-based RStudio version. 
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
-</p>
-
 ## Why this images
 
 1. If you need self-hosted remote development environment.

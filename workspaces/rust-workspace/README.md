@@ -7,7 +7,7 @@
 Docker image with Rust and browser-based VS-Code version. 
 
 <p align="center">
-  <img src="img/codeserver-collage-sm.jpg" alt="Collage" width="750">
+  <img src="../codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
 </p>
 
 ## Why this images

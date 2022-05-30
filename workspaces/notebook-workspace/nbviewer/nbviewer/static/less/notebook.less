@@ -1,0 +1,27 @@
+@import (less) "style/ipython.min.css";
+@import (reference) "../components/bootstrap/less/bootstrap";
+
+// Fixes regression of #391 when using bower-pygments
+.highlight {
+  @import (less) "../components/pygments/css/default.css";
+}
+
+// from inline
+.imgwrap {
+  text-align: center;
+}
+
+
+@media (max-width: 767px) {
+  div.input, div.output_area {
+    box-orient: vertical;
+  }
+
+  div.prompt {
+    text-align:left;
+  }
+  
+  .cell img {
+    .img-responsive;
+  }
+}

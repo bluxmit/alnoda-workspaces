@@ -6,6 +6,11 @@
 
 Collection of tools to develop SQLite databases.
 
+<p align="center">
+  <img src="img/sqlite-wid-collage.png" alt="Collage" width="750">
+</p>
+
+
 ## Why this images
 
 If you need to develop embedded SQLite databases and fill them with data.

@@ -9,6 +9,11 @@ Collection of tools to interact with PostgreSQL.
 Query, explore, manage, develop, test performance, import annd export data, 
 generate mock data, create backups, manage migrations, generate reports, schedule tasks.
 
+<p align="center">
+  <img src="img/postgres-wid-collage.png" alt="Collage" width="750">
+</p>
+
+
 ## Why this images
 
 1. If you need a toolset to interact with PostgreSQL and you don't have time to build it on your own.

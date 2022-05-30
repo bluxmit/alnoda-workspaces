@@ -5,6 +5,10 @@
 # Kafka workspace
 Single-node Kafka cluster together with several Kafka CLI tools in containerized dev/admin environment. 
 
+<p align="center">
+  <img src="img/kafka-wid-collage.jpg" alt="Collage" width="750">
+</p>
+
 ## Why this images
 
 1. If you need a tool to interact with Kakfa, such as produce and consume events, explore, manage, query 

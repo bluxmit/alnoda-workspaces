@@ -15,7 +15,7 @@ mkdocstrings==0.18.1
 mkdocstrings-sourcelink==0.3.2
 
 # https://github.com/fralau/mkdocs-mermaid2-plugin
-mkdocs-mermaid2-plugin==0.5.1
+mkdocs-mermaid2-plugin==0.6.0
 
 # https://github.com/backstage/mkdocs-monorepo-plugin
 mkdocs-monorepo-plugin==1.0.1
@@ -37,9 +37,6 @@ mkdocs-redirects==1.0.3
 
 # https://github.com/midnightprioriem/mkdocs-autolinks-plugin
 mkdocs-autolinks-plugin==0.4.0
-
-# https://github.com/fralau/mkdocs-mermaid2-plugin
-mkdocs-mermaid2-plugin==0.5.1
 
 # https://github.com/fiinnnn/mkdocs-mktemplate-plugin
 mkdocs-mktemplate-plugin==1.0.0 

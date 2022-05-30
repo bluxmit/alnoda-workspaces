@@ -7,6 +7,8 @@
 MkDocs-MagicSpace is an all-in-one tool, carefully crafted to make the development of gorgeous documentation 
 websites like [**this one**](https://mkdocs-magicspace.alnoda.org/) as easy as possible.   
 
+> Known Mermaid problem after major update (fix pending)
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/mkdocs-magicspace/img/mkdocs-collage.png" alt="Collage" width="750">
 </p>
