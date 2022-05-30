@@ -1,7 +1,0 @@
-User-agent: *
-Crawl-Delay: 10
-
-User-agent: dotbot
-Disallow: /
-User-agent: AhrefsBot
-Disallow: /
