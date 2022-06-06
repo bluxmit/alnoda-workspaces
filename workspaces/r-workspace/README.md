@@ -6,11 +6,15 @@
 
 Docker image with R and browser-based RStudio version. 
 
+<p align="center">
+  <img src="img/r-workspace-collage.png" alt="Collage" width="750">
+</p>
+
 ## Why this images
 
-1. If you need self-hosted remote development environment.
-2. If you want to be one terminal command away from coding in R.
-3. if you need isolated environment where you can work with R without polluting main environment.
+1. Uou need self-hosted remote development environment.
+2. You want to be one 'docker run' command away from having everything needed to work with R.
+3. You need isolated environment where you can work with R without polluting main environment.
 
 ## Start
  

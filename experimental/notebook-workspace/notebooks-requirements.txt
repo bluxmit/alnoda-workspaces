@@ -1,0 +1,23 @@
+
+## Notebooks
+markdown==3.3.7 
+nbconvert==6.5.0 
+nbformat==5.4.0 
+
+## Notebooks: Papermill
+papermill==2.3.4 
+
+## Notebook Extensions
+RISE==5.7.1                 # Slides
+
+
+## Notebooks: Voila
+voila==0.3.5 
+voila-gridstack==0.3.0
+voila-material==0.4.0 
+ipywidgets==7.7.0
+
+
+## Engineering Kedro
+kedro==0.18.1
+kedro-viz==4.6.0
