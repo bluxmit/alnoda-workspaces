@@ -12,9 +12,10 @@ Docker image with R and browser-based RStudio version.
 
 ## Why this images
 
-1. Uou need self-hosted remote development environment.
+1. You need self-hosted remote development environment for R.
 2. You want to be one 'docker run' command away from having everything needed to work with R.
-3. You need isolated environment where you can work with R without polluting main environment.
+3. You need isolated environment where you can work with R without affecting main environment.
+4. You need an environment that you can "move" to a more powerful machine if needed.
 
 ## Start
  

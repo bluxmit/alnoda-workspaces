@@ -1,6 +1,0 @@
-{
-    "terminal.integrated.shell.linux": "/bin/zsh",
-    "workbench.colorTheme": "Atom One Light",
-    "git-graph.maxDepthOfRepoSearch": 3,
-    "workbench.iconTheme": "theia-file-icons"
-}

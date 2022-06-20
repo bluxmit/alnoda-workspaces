@@ -12,3 +12,4 @@
 - [fff](https://github.com/dylanaraps/fff)
 - [slap](https://github.com/slap-editor/slap)
 - [glow](https://github.com/charmbracelet/glow)
+- [dooit](https://github.com/kraanzu/dooit)

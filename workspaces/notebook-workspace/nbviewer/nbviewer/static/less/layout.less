@@ -1,0 +1,83 @@
+body {
+  padding-top: @navbar-height;
+  &.scrolled .navbar-fixed-top {
+    box-shadow: 1px 1px 1px #999;
+  }
+}
+
+.navbar-header .navbar-toggle {
+  padding: 5px 8px;
+}
+
+.fa.menu-icon {
+  line-height: 8px;
+  margin-right: 5px;
+  position:relative;
+  top:5px;
+}
+
+.back-to-top {
+  margin: @navbar-height * 0.5;
+}
+
+footer {
+  padding: 15px 0;
+  background-color: @footer-bg;
+  color: #ddd;
+
+  a {
+    color: #fff;
+    &:hover{
+      color: #fff;
+      text-decoration: dotted;
+    }
+  }
+}
+
+pre, code {
+  /* restore default mono font */
+  font-family: monospace;
+}
+
+td.page_links {
+  text-align: center;
+}
+
+.navbar-fixed-top {
+  .nav > li > a{
+    &:hover, &.active{
+      color: @jupyter-brand;
+    }
+  }
+  .navbar-brand {
+    padding: 15px 0 0 15px;
+  }
+}
+
+.breadcrumb a, .table-nbviewer a, .nbviewer-error a{
+  color: grey;
+  white-space: nowrap;
+  &:hover{
+    color: @jupyter-brand;
+    text-decoration: none;
+  };
+}
+
+.container-main {
+  min-height: 100vh;
+}
+
+// binder icon
+.fa-icon-binder {
+  width: 24px;
+  height: 24px;
+  margin-top: -8px;
+  background-image: url(../img/icon-binder.png);
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 24px;
+  &:hover, &.active {
+    &:extend(.fa-icon-binder);
+    background-image: url(../img/icon-binder-color.png);
+  }
+}

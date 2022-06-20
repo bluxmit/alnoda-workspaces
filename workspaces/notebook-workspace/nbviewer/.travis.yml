@@ -1,0 +1,50 @@
+language: python
+
+node_js:
+- 6
+
+python:
+- 3.5
+- 3.6
+
+before_install:
+- sudo apt-get update
+- sudo apt-get install -qq libzmq3-dev pandoc libcurl4-gnutls-dev libmemcached-dev libgnutls28-dev
+- pip install --upgrade setuptools pip
+- pip install -r requirements-dev.txt
+
+install:
+- pip install --upgrade setuptools pip
+- pip install -r requirements.txt
+- pip install -e .
+
+# run tests
+script:
+- invoke test
+
+# list the jobs
+jobs:
+  include:
+    - name: autoformatting check
+      python: 3.6
+      # NOTE: It does not suffice to override to: null, [], or [""]. Travis will
+      #       fall back to the default if we do.
+      before_install: echo "Do nothing before install."
+      install: pip install pre-commit
+      script:
+        - pre-commit run --all-files
+      after_success: echo "Do nothing after success."
+      after_failure:
+        - |
+          echo "You can install pre-commit hooks to automatically run formatting"
+          echo "on each commit with:"
+          echo "    pre-commit install"
+          echo "or you can run by hand on staged files with"
+          echo "    pre-commit run"
+          echo "or after-the-fact on already committed files with"
+          echo "    pre-commit run --all-files"
+
+env:
+  global:
+  - secure: Sv53YMdsVTin1hUPRqIuvdAOJ0UwklEowW49qpxY9wSgiAM79D+e1b5Yxrn+RTtS3WGlvK1aKHICc+2ajccEJkKFL8WDy2SnTnoWPadrEy4NAGLkNMGK+bAYMnLNoNRbSGVz5JpvNJ7JkeaEplhJ572OJOxa1X7ZF9165ZbOWng=
+  - secure: ajFM7ch1/xYyEjusyTzd963GOOLg5/H0lxvQ7L6r+LBDDro79FxNPMcAkZxF7n24rkPO8I+AP3FfUwbQf4ShmGkAdsxSFMc2d7GDUowxiicPr5bMitygxlzl2ox2lWdpt4QldmEywbrCKKwt/cZkKxE8er9xBcwe7xw/2xUYOLk=

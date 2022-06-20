@@ -1,0 +1,90 @@
+# ===========================================================
+# NAVIGATION
+# ===========================================================
+
+nav:
+  - standard-notebook.ipynb
+  - scientific-notebook-demo.ipynb
+  - index.md
+
+
+# ===========================================================
+# CONFIGURATION
+# ===========================================================
+
+site_name: MkDocs ++ Jupyter
+edit_uri: ""
+
+# ===========================================================
+# APPEARANCE
+# ===========================================================
+
+theme:
+  name: 'material'
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - search.suggest
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+      primary: black  
+      accent: blue
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+      primary: deep orange
+      accent: red
+
+extra:
+  # Link to open when your logo is clicked
+  homepage: https://alnoda.org
+  host_url: http://localhost
+
+plugins:
+  - search
+  - mkdocs-jupyter
+  - include-markdown
+  # Enable Macros and jinja2 templates
+  - awesome-pages
+
+markdown_extensions:
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed
+  - abbr
+  - pymdownx.snippets
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.escapeall
+  - pymdownx.smartsymbols
+  - pymdownx.tilde:
+      smart_delete: true
+  - footnotes
+
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+
+          
+ 
+
+
+

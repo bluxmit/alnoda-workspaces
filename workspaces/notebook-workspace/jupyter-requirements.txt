@@ -1,0 +1,31 @@
+
+## Notebook Extensions
+jupyterlab==3.4.2
+jupyter-lsp==1.5.1          # Autocompletion
+RISE==5.7.1                 # Slides
+ipywidgets==7.7.0
+qgrid==1.3.1                # dataframe viz (Jupyter only)
+lux-api==0.5.1              # data discovery (both Jupyter and Jupyterlab)
+lux-widget==0.1.11
+dtale==2.5.1                # perfect data viz and discovery (Jupyterlab only) 
+fugue==0.6.6                # SQL on pandas
+jupytext==1.13.8            # jupyter as plain text
+
+## Basic data packages
+numpy==1.22.4 
+pandas==1.4.2 
+scipy==1.8.1
+matplotlib==3.5.2 
+seaborn==0.11.2 
+plotnine==0.8.0 
+altair==4.2.0
+plotly==5.8.0 
+
+# Interactive notebook apps
+jupyter-dash==0.4.2
+
+
+## Other 
+# sqlalchemy==1.4.37  #<- problems with luigi history
+sqlalchemy==1.3.23
+luigi==3.0.3

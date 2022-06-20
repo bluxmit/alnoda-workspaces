@@ -1,0 +1,8 @@
+{% extends "error.html" %}
+{% block error_detail %}
+<p>Something went wrong.</p>
+<p> If this is reproducible, please <a href="https://github.com/jupyter/nbviewer/issues">let us know</a>.</p>
+{% if message %}
+<p>The upstream error was {{message}}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+jupyterlab==3.3.0
+
+## Notebooks: Productionalize
+markdown==3.3.7 
+nbconvert==6.5.0 
+nbformat==5.4.0 
+papermill==2.3.4 
+nbless==0.2.38
+
+## Notebooks: Voila
+voila==0.3.5 
+# voila-gridstack==0.3.0
+voila-material==0.4.0 
+ipywidgets==7.7.0
+
+## Notebook Extensions
+RISE==5.7.1                 # Slides
+ipywidgets==7.7.0
+qgrid==1.3.1                # dataframe viz (Jupyter only)
+lux-api==0.5.1              # data discovery (both Jupyter and Jupyterlab)
+lux-widget==0.1.11
+dtale==2.5.1                # perfect data viz and discovery (Jupyterlab only) 
+fugue==0.6.6                # SQL on pandas
+jupytext==1.13.8            # jupyter as plain text
+
+## Autocompletion
+jupyter-lsp==1.5.1    
+jupyterlab-lsp==3.10.1      
+python-lsp-server==1.4.1
+jedi-language-server==0.36.0
+
+## Data and viz packages
+numpy==1.22.4 
+pandas==1.4.2 
+scipy==1.8.1
+matplotlib==3.5.2 
+seaborn==0.11.2 
+plotnine==0.8.0 
+altair==4.2.0
+plotly==5.8.0 
+datapane==0.14.0
+
+## Interactive web app
+jupyter-dash==0.4.2
+panel==0.13.1
+
+## Pipelines 
+# sqlalchemy==1.4.37  #<- problems with luigi history
+sqlalchemy==1.3.23
+luigi==3.0.3
+ploomber==0.19.6
