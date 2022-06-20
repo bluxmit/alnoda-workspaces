@@ -6,7 +6,7 @@
 Single-node Kafka cluster together with several Kafka CLI tools in containerized dev/admin environment. 
 
 <p align="center">
-  <img src="img/kafka-wid-collage.jpg" alt="Collage" width="750">
+  <img src="img/kafka-wid-collage.png" alt="Collage" width="750">
 </p>
 
 ## Why this images
