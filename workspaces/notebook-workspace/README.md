@@ -20,7 +20,8 @@ Serve notebooks for reporting. Create data pipelines from notebooks. Schedule ex
 4. You want to turn notebooks into analytical reporting apps or interactive web applications 
 5. You want to productionalize notebooks - create pipelines of batch jobs and schedule their executions
 
-There are short tutorials on how to use all of the mentioned features, with example notebooks. 
+There are short [tutorials](https://docs.alnoda.org/notebook-workspace/) on how to use most of the mentioned features, 
+with example notebooks. 
 
 ## Start
  

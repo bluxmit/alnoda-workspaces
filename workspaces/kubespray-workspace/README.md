@@ -2,9 +2,14 @@
   <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
 </p>  
 
-# Ansible-Terraform Workspace
+# Kubespray Workspace
 
 Collection of tools to install, explore, develop, manage and maintain Kubernetes cluster. 
+
+<p align="center">
+  <img src="img/kubespray-wid-collage.png" alt="Collage" width="750">
+</p>
+
 
 ## Why this images
 
@@ -33,14 +38,14 @@ and open [localhost:8020](http://localhost:8020) in browser.
 
 **Kubernetes tools:**
 
-- [Kubespray](https://github.com/kubernetes-sigs/kubespray#requirements) with required dependencies. 
-- [Octant](https://github.com/vmware-tanzu/octant) - highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
-- Kubectl - Kubernetes command-line tool, allows you to run commands against Kubernetes clusters.
-- [Helm](https://helm.sh/) - package manager for Kubernetes.
-- [K9s](https://github.com/derailed/k9s) - Kubernetes CLI To Manage Your Clusters In Style.
-- [Kube-shell](https://github.com/cloudnativelabs/kube-shell) - integrated shell for working with the Kubernetes CLI.
-- [Krew](https://krew.sigs.k8s.io/) - plugin manager for kubectl command-line tool.
-- [kubectl-aliases](https://github.com/ahmetb/kubectl-aliases) - hundreds of convenient shell aliases for kubectl.
+- [**Kubespray**](https://github.com/kubernetes-sigs/kubespray#requirements) - Deploy a Production Ready Kubernetes Cluster. 
+- [**Octant**](https://github.com/vmware-tanzu/octant) - Highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
+- [**Kubectl**](https://kubernetes.io/docs/reference/kubectl/) - Kubernetes command-line tool, allows you to run commands against Kubernetes clusters.
+- [**Helm**](https://helm.sh/) - Package manager for Kubernetes.
+- [**K9s**](https://github.com/derailed/k9s) - Kubernetes CLI To Manage Your Clusters In Style.
+- [**Kube-shell**](https://github.com/cloudnativelabs/kube-shell) - Integrated shell for working with the Kubernetes CLI.
+- [**Krew**](https://krew.sigs.k8s.io/) - Plugin manager for kubectl command-line tool.
+- [**kubectl-aliases**](https://github.com/ahmetb/kubectl-aliases) - Hundreds of convenient shell aliases for kubectl.
 
 **Ansible tools:**
 
