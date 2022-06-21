@@ -22,7 +22,11 @@ port_increments = {
     "TERMINAL_URL": 6,
     "MC_URL": 7,
     "HTOP_URL": 8,
-    "ANSIBLE_ARA": 9
+    "ANSIBLE_ARA": 9,
+    "OCTANT": 11,
+    "PORT_8038": 18,
+    "PORT_8039": 19,
+    "PORT_8040": 20
     }
 
 workspace_meta = {
@@ -32,27 +36,31 @@ workspace_meta = {
     },
     "base-workspace": {
         "port-range": 10,
-        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "workspace-in-docker": {
         "port-range": 15,
-        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "codeserver-workspace": {
         "port-range": 15,
-        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "python-workspace": {
         "port-range": 15,
-        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "mkdocs-magicspace": {
         "port-range": 15,
-        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL"]
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "ansible-terraform-workspace": {
         "port-range": 15,
-        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA"]
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA", "PORT_8038", "PORT_8039", "PORT_8040"]
+    },
+    "kubespray-workspace": {
+        "port-range": 15,
+        "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA", "OCTANT", "PORT_8038", "PORT_8039", "PORT_8040"]
     }
 }
 
