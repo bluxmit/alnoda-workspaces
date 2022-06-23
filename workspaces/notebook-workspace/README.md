@@ -4,10 +4,9 @@
 
 # Jupyter notebook workspace 
 
-Opinionated Jupyter notebook & Jupyter Lab instsllation, together with the tolset which helps 
-to get the most out of Jupyter notebooks.  
+Opinionated Jupyter notebook & Jupyter Lab installation, together with the toolset to get the most out of the Jupyter notebooks. 
 
-Explore and analyze data, build reports, presentations and documentations. Convert notebooks to various formats. 
+Explore and analyze data, build reports, presentations and documentation. Convert notebooks to various formats. 
 Serve notebooks for reporting. Create data pipelines from notebooks. Schedule executions with UI and monitoring tool. 
 
 ![Workspace collage](img/notebook-wid-collage.png)
