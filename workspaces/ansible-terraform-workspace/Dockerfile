@@ -67,6 +67,7 @@ COPY ./mkdocs/Terraform-Rover.png /home/docs/docs/assets/home/
 COPY ./mkdocs/helpers.py /home/docs/macros 
 
 RUN apt-get -y update \
+    && apt-get install -y python-is-python3 \
     && echo "------------------------------------------------------ ansible ara" \
     && echo "UTC" > /etc/timezone \
     && mkdir -p /home/abc/.ara/server \
