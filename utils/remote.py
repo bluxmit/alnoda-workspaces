@@ -35,31 +35,31 @@ workspace_meta = {
         "entrypoints": []
     },
     "base-workspace": {
-        "port-range": 10,
+        "port-range": 20,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "workspace-in-docker": {
-        "port-range": 15,
+        "port-range": 20,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "codeserver-workspace": {
-        "port-range": 15,
+        "port-range": 20,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "python-workspace": {
-        "port-range": 15,
+        "port-range": 20,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "mkdocs-magicspace": {
-        "port-range": 15,
+        "port-range": 20,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "ansible-terraform-workspace": {
-        "port-range": 15,
+        "port-range": 20,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA", "PORT_8038", "PORT_8039", "PORT_8040"]
     },
     "kubespray-workspace": {
-        "port-range": 15,
+        "port-range": 20,
         "entrypoints": ["DOCS_URL", "FILEBROWSER_URL", "STATICFS_URL", "CRONICLE_URL", "UNGIT_URL", "IDE_URL", "TERMINAL_URL", "MC_URL", "HTOP_URL", "ANSIBLE_ARA", "OCTANT", "PORT_8038", "PORT_8039", "PORT_8040"]
     }
 }
@@ -189,7 +189,8 @@ def get_compose_dict(workspace_name, host_ip, start_port, user, password, custom
         "ARA_API_CLIENT": "https",
         "ARA_CORS_ORIGIN_WHITELIST": f"['https://{host_ip}', 'http://{host_ip}']",
         "ARA_ALLOWED_HOSTS": f"['127.0.0.', 'localhost', '::1', '{host_ip}']",
-        "ARA_EXTERNAL_AUTH": "True"
+        "ARA_EXTERNAL_AUTH": "True",
+        "OCTANT_ACCEPTED_HOSTS": f"{host_ip}",
         }
     y["services"]["workspace"]["labels"] = get_workspace_labels(ep)
     # Add auth
