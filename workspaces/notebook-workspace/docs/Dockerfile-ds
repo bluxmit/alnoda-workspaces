@@ -25,7 +25,10 @@ RUN echo "------------------------------------------------------ BeakerX" \
     && jupyter nbextension install --py jupyter_tabnine \
     && jupyter nbextension enable jupyter_tabnine --py \
     && jupyter serverextension enable --py jupyter_tabnine
+    
 
+https://github.com/LineaLabs/lineapy#getting-started
+https://nteract-scrapbook.readthedocs.io/en/latest/index.html
 
 ## Engineering Kedro
 kedro==0.18.1
