@@ -10,14 +10,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && apt-get install -y sudo curl wget telnet jq \
     && apt-get install -y software-properties-common \
     && apt-get install -y zip gzip tar \
-    && echo "------------------------------------------------------ docker systemctl replacement" \
-    && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl  \
-    && chmod 0777 /usr/local/bin/systemctl \ 
     && echo "------------------------------------------------------ User" \
     && useradd -u 8877 abc \
-    && chmod -R 777 /home \
+    && chown -R abc /home \
     && mkdir -p /home/abc \
     && chown -R abc /home/abc \
+    && echo "------------------------------------------------------ docker systemctl replacement" \
+    && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl  \
+    && chown -R abc /usr/local/bin/systemctl \ 
     && echo "------------------------------------------------------ Python" \
     && apt-get install -y python3-distutils \
     && apt-get install -y python3-pip \
@@ -43,8 +43,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "------------------------------------------------------ Cron" \
     && apt-get install -y cron \
     && mkdir -p /var/log/supervisord/ \
-    && chmod -R 777 /var/spool/cron/crontabs \
-    && chmod -R 777 /var/log \
+    && chown -R abc /var/spool/cron/crontabs \
+    && chown -R abc /var/log \
     && chmod gu+rw /var/run \
     && chmod gu+s /usr/sbin/cron \
     && echo "# Allow cron for user abc" >> /etc/sudoers \
@@ -55,8 +55,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && pip3 install supervisor==4.2.2 \
     && apt-get -y update \
     && apt-get install -y systemd \
-    && chmod -R 777 /etc/supervisord/ \
-    && chmod -R 777 /var/log/supervisord/ \
+    && chown -R abc /etc/supervisord/ \
+    && chown -R abc /var/log/supervisord/ \
     && echo "------------------------------------------------------ ZSH root" \
     && HOME=/root \
     && chmod +x /tmp/zsh-in-docker.sh \
@@ -113,14 +113,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && printf '%s\n%s\n' "export ZSH_DISABLE_COMPFIX=true" "$(cat /home/abc/.zshrc)" > /home/abc/.zshrc \
     && echo "------------------------------------------------------ Code editors" \
     && apt-get install -y nano vim \
-    && echo "------------------------------------------------------ File browsers: MC, Xplr" \
+    && echo "------------------------------------------------------ File browsers: MC" \
     && apt-get install -y mc \
-    && wget -P /tmp https://github.com/sayanarijit/xplr/releases/download/v0.17.6/xplr-linux.tar.gz \
-    && \mkdir /tmp/xplr  && tar -xzf /tmp/xplr-linux.tar.gz --directory /tmp/xplr \
-    && chmod +x /tmp/xplr/xplr \
-    && mv /tmp/xplr/xplr /usr/bin/ \
-    && rm /tmp/xplr-linux.tar.gz \
-    && rm -rf /tmp/xplr \
+    && echo "------------------------------------------------------ multitasking in a terminal " \
+    && apt-get install -y tmux \
     && echo "------------------------------------------------------ Sys monitoring: Glances, Vizex" \
     && apt-get install -y ncdu htop \
     && pip install glances==3.2.5 \
@@ -135,9 +131,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ User" \
     && chown abc /home/project \
-    && chmod 777 /etc/supervisord/ \
     && mkdir -p /home/abc/.local/bin \ 
-    && chmod 755 /home/abc/.local && chmod 755 /home/abc/.local/bin \
+    && chown abc /home/abc/.local && chown abc /home/abc/.local/bin \
     && chown abc /home/abc/.local && chown abc /home/abc/.local/bin  \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} \

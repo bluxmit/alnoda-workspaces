@@ -2,11 +2,13 @@
 
 __WIP__
 
-## Tools
+## Infra viz
 
 - https://github.com/duo-labs/cloudmapper
 - https://github.com/ludwigm/infrastructure-graph 
 - https://github.com/prparikh02/aws-vpc-visualizer
+- https://github.com/kotlarz/infrastructure-diagrams
+- https://github.com/Cloud-Architects/cloudiscovery
 
 ## VS-code extensions
 
@@ -23,3 +25,6 @@ __WIP__
 - https://github.com/dbcli/athenacli
 - https://github.com/aws/aws-sam-cli 
 - https://github.com/barnybug/cli53
+
+
+
