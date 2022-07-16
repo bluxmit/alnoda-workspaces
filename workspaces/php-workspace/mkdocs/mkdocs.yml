@@ -5,6 +5,7 @@
 nav:
   - Home: README.md
   - My apps: pages/my-apps.md
+  - About: about.md
   - Docs: https://docs.alnoda.org/php-workspace/
 
 
@@ -23,26 +24,23 @@ edit_uri: ""
 
 theme:
   name: 'material'
-  favicon: 'assets/favicon.ico'
-  logo: 'assets/Alnoda-logo.svg'
+  favicon: 'assets/php-circle.svg'
+  logo: 'assets/php-circle.svg'
   custom_dir: overrides
   icon:
-    repo: fontawesome/brands/git-alt
+    repo: fontawesome/brands/github
   features:
     - navigation.instant
   palette:
-    - scheme: default
+    - scheme: php
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to light mode
-      primary: white  
-      accent: teal
-    - scheme: slate
-      toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to dark mode
-      primary: white
-      accent: teal
+    - scheme: php-dark
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode 
+
 
 extra:
   # Link to open when your logo is clicked
@@ -50,11 +48,12 @@ extra:
   host_url: http://docs.alnoda.org
 
 plugins:
-  - search
   # Enable Macros and jinja2 templates
   - macros:
       module_name: macros/helpers
 
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/config.js

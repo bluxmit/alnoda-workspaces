@@ -20,3 +20,27 @@
     - [stern](https://github.com/stern/stern) - logs from multiple pods on Kubernetes and multiple containers within the pod. Each result is color coded for quicker debugging.
     - [tree](https://github.com/ahmetb/kubectl-tree) - show a tree of object hierarchies through ownerReferences.
     - [view-secret](https://github.com/elsesiy/kubectl-view-secret) - easy secret decoding. Useful if you want to see what's inside of a secret. 
+
+```
+kubectl krew install access-matrix \
+    && kubectl krew install df-pv \
+    && kubectl krew install graph \
+    && kubectl krew install iexec \
+    && kubectl krew install janitor \
+    && kubectl krew install ktop \
+    && kubectl krew install mtail \
+    && kubectl krew install modify-secret \
+    && kubectl krew install nsenter \
+    && kubectl krew install node-restart \
+    && kubectl krew install operator \
+    && kubectl krew install pexec \
+    && kubectl krew install pod-lens \
+    && kubectl krew install popeye \
+    && kubectl krew install pv-migrate \
+    && kubectl krew install resource-capacity \
+    && kubectl krew install sshd \
+    && kubectl krew install sql \
+    && kubectl krew install stern \
+    && kubectl krew install tree \
+    && kubectl krew install view-secret 
+```

@@ -1,16 +1,13 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
-FROM ${docker_registry}/base-workspace:${image_tag}
+FROM ${docker_registry}/base-devspace:${image_tag}
 
 USER root
 
 COPY supervisord-codeserver.conf /etc/supervisord/
 
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
-COPY ./mkdocs/helpers.py /home/docs/macros
-COPY ./mkdocs/IDE.jpg /home/docs/docs/assets/home/
-COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/ /home/docs/
 
 RUN echo "------------------------------------------------------ code-server" \
 	&& apt-get install -y build-essential pkg-config \
