@@ -27,7 +27,8 @@ theme:
   favicon: 'assets/python-circle.svg'
   logo: 'assets/python-circle-white.svg'
   custom_dir: overrides
-  font: Fira Sans
+  font: 
+    text: Source Sans Pro
   icon:
     repo: fontawesome/brands/github
   features:

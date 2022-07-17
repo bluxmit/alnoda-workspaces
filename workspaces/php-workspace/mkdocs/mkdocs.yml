@@ -27,7 +27,8 @@ theme:
   favicon: 'assets/php-circle.svg'
   logo: 'assets/php-circle-white.svg'
   custom_dir: overrides
-  font: Fira Sans
+  font: 
+    text: Fira Sans
   icon:
     repo: fontawesome/brands/github
   features:

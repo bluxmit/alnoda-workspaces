@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+  <img src="./img/python-circle.svg" alt="Python logo" width="150">
 </p>  
 
-# Python workspace 
+# Python-automate workspace 
 
-Docker image for Python development environment. Includes Python, python tooling together with browser-based IDE, file browser, 
-static server, job scheduler.
+Containerized development and execution environment for the projects where Python is used to automate various tasks. 
+Includes Python, python tooling, browser-based IDE, file browser, git manager, visual job scheduler, static server.
 
 <p align="center">
   <img src="img/python-wid-collage-sm.jpg" alt="Collage" width="750">
@@ -13,14 +13,15 @@ static server, job scheduler.
 
 ## Why this images
 
-1. If you need isolated dev environment where you can code and install packages and apps without affecting the base operating system.
-2. If you need self-hosted remote development environment.
-3. If you need to be just one command away from coding in Python.
+1. You need an environment where you can write and schedule Python code to automate all kinds of tasks and operation.
+2. If you need isolated dev environment where you can code and install packages and apps without affecting the base operating system.
+3. If you need self-hosted remote development and execution environment.
+3. If you need to be just one command away from coding in Python and optimize manual work.
 
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/python-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/python-automate-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -63,11 +64,12 @@ Image is built from **Ubuntu 20.4** with the additional CLI apps
 - Node/nodeenv
 - curl, wget, telnet, jq
 - **Git:** git, git-flow, lazygit 
-- **File browsers:** mc, xplr
+- **File browsers:** mc
 - **Text editors:** nano, vim, mcedit
 - **System monitors:** ncdu, htop, glances, vizex
 - **Process Control:** supervisord
 - **Job scheduler:** cron
+- **Terminal multiplexer:** tmux 
 
 ## Docs
 

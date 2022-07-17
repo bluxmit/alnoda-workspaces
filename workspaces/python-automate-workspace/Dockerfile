@@ -1,15 +1,19 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 FROM ${docker_registry}/ide-workspace:${image_tag}
 
 USER root
 
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/python-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/python-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
+
 COPY python-requirements.txt /home/abc/installed-python-packages
 COPY ./examples/ /home/examples/
 COPY .pylintrc /home/abc/
-
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 
 RUN pip install -r /home/abc/installed-python-packages/python-requirements.txt \
     && echo "------------------------------------------------------ graphviz" \
