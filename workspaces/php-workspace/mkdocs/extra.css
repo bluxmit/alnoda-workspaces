@@ -1,17 +1,19 @@
-[data-md-color-scheme="codeserver"] {
-  --md-primary-fg-color:        #271647;
-  --md-primary-fg-color--light: #271647;
-  --md-primary-fg-color--dark:  #271647;
-  --md-accent-fg-color:         #44DA88;
+[data-md-color-scheme="php"] {
+  --md-primary-fg-color:        #4F5B93;
+  --md-primary-fg-color--light: #4F5B93;
+  --md-primary-fg-color--dark:  #4F5B93;
+  --md-accent-fg-color:         #793862;
+
+  --md-default-bg-color:        #E6E6EA;
 }
 
-[data-md-color-scheme="codeserver-dark"] {
-  --md-primary-fg-color:        #2b3ac4;
-  --md-primary-fg-color--light: #2b3ac4;
-  --md-primary-fg-color--dark:  #2b3ac4;
-  --md-accent-fg-color:         #44DA88;
+[data-md-color-scheme="php-dark"] {
+  --md-primary-fg-color:        #8892BF;
+  --md-primary-fg-color--light: #8892BF;
+  --md-primary-fg-color--dark:  #8892BF;
+  --md-accent-fg-color:         #793862;
   
-  --md-default-bg-color:        #2E303E;
+  --md-default-bg-color:        #292d40;
   --md-default-fg-color--light: #E9EBFC;
   --md-typeset-color:           #E9EBFC;
   --md-typeset-a-color:         #E9EBFC;

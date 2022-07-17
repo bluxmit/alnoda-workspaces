@@ -55,6 +55,8 @@ RUN apt-get -y update \
 	&& mkdir -p /var/log/static-file-server && chown -R abc /var/log/static-file-server \
 	&& mkdir -p /var/log/mkdocs && chown -R abc /var/log/mkdocs \
     && chown -R abc /home/abc/utils \
-    && chown -R abc /home/abc/installed-python-packages
+    && chown -R abc /home/abc/installed-python-packages \
+    && find /home -type d | xargs -I{} chown -R abc {} \
+    && find /home -type f | xargs -I{} chown abc {} 
     
 USER abc

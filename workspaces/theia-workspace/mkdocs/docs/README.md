@@ -33,7 +33,7 @@
     min-height: 170px;
   }
   .tool-caption{
-    font-family:  Roboto, Helvetica, sans-serif;
+    font-family: inherit;
     text-align: center;
     margin-top: 10px;
     font-size:  1.2rem;
@@ -45,7 +45,7 @@
     line-height: 1.5;
   }
   .tool-description{
-    font-family:  Helvetica, sans-serif;
+    font-family: inherit;
     text-align: center;
     margin-top: 10px;
     font-size:  0.7rem;

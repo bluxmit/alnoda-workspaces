@@ -25,8 +25,9 @@ edit_uri: ""
 theme:
   name: 'material'
   favicon: 'assets/php-circle.svg'
-  logo: 'assets/php-circle.svg'
+  logo: 'assets/php-circle-white.svg'
   custom_dir: overrides
+  font: Fira Sans
   icon:
     repo: fontawesome/brands/github
   features:
