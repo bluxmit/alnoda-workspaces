@@ -37,7 +37,7 @@ RUN apt-get -y update \
 	&& cd /opt/ungit && . env/bin/activate && npm install -g ungit@1.5.9 \
     && echo "------------------------------------------------------ static file server" \
 	&& mkdir -p /opt/serve \
-	&& cd /opt/serve && nodeenv --node=12.18.3 --npm=6.0.0 env \
+	&& cd /opt/serve && nodeenv --node=16.14.1 --npm=6.0.0 env \
 	&& cd /opt/serve && . env/bin/activate &&  npm install -g serve \
     && echo "------------------------------------------------------ mkdocs" \
 	&& pip install -r /home/abc/installed-python-packages/mkdocs-requirements.txt \

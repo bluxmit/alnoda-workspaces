@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
-</p>  
-
 # Code-server workspace
 
 General-purpose containerized isolated development environment.  

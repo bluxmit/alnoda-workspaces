@@ -76,12 +76,6 @@
             "description": "Browse, upload and download files and folders to and from the Workspace"
         },
         {
-            "env": "CRONICLE_URL",
-            "name": "Cronicle",
-            "image": "assets/home/Cronicle.jpg",
-            "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
-        },
-        {
             "env": "UNGIT_URL",
             "name": "Ungit",
             "image": "assets/home/Ungit.jpg",
@@ -92,6 +86,12 @@
             "name": "Static File Server",
             "image": "assets/home/Static-server.png",
             "description": "Serve any static websites like a breeze"
+        },
+        {
+            "env": "CRONICLE_URL",
+            "name": "Cronicle",
+            "image": "assets/home/Cronicle.jpg",
+            "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
         },
         {
             "env": "MC_URL",

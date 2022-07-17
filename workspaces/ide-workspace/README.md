@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+  <img src="./img/laptop-circle.svg" alt="Workspace logo" width="150">
 </p>  
 
 # IDE-workspace
-General-purpose dockerized development environment. Fully isolated inside a docker container. 
-Includes code editor, terminal, scheduler and filebrowser. 
+General-purpose, fully isolated contaierized development environment. 
+Includes code editor, terminal, filebrowser, git manager, static file server and job scheduler. 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ide-workspace/img/wid-collage-sm.jpg" alt="Collage" width="750">
@@ -41,12 +41,13 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
     - Python 3, Pip 
     - Node/nodeenv
     - curl, wget, telnet, jq
-    - **Git:** git, git-flow, lazygit 
+    - **Git:** git, git-flow 
     - **File browsers:** mc, xplr
     - **Text editors:** nano, vim, mcedit
     - **System monitors:** ncdu, htop, glances, vizex
     - **Process Control:** supervisord
     - **Job scheduler:** cron
+    - **Terminal multiplexer:** tmux 
 
 ## Docs
 
