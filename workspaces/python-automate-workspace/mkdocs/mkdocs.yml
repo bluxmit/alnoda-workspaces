@@ -5,7 +5,6 @@
 nav:
   - Home: README.md
   - My apps: pages/my-apps.md
-  - About: about.md
   - Docs: https://docs.alnoda.org/python-workspace/
 
 
@@ -24,24 +23,26 @@ edit_uri: ""
 
 theme:
   name: 'material'
-  favicon: 'assets/python-circle.svg'
-  logo: 'assets/python-circle-white.svg'
+  favicon: 'assets/favicon.ico'
+  logo: 'assets/Alnoda-logo.svg'
   custom_dir: overrides
-  font: Fira Sans
   icon:
-    repo: fontawesome/brands/github
+    repo: fontawesome/brands/git-alt
   features:
     - navigation.instant
   palette:
-    - scheme: python
+    - scheme: slate
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch
         name: Switch to dark mode
-    - scheme: python-dark
+      primary: light-blue
+      accent: deep orange
+    - scheme: default
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode 
-
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+      primary: indigo  
+      accent: deep orange
 
 extra:
   # Link to open when your logo is clicked
@@ -49,12 +50,11 @@ extra:
   host_url: http://docs.alnoda.org
 
 plugins:
+  - search
   # Enable Macros and jinja2 templates
   - macros:
       module_name: macros/helpers
 
-extra_css:
-  - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/config.js
