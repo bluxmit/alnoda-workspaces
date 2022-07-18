@@ -1,21 +1,26 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
-FROM ${docker_registry}/codeserver-workspace:${image_tag}
+FROM ${docker_registry}/theia-workspace:${image_tag}
 USER root
 
 COPY examples/example /home/abc/example
+
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/java-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/java-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 RUN apt-get -y update \
     && echo "------------------------------------------------------ java 17" \
     && sudo apt-get install -y openjdk-17-jre \
     && apt-get install -y openjdk-17-jdk \
     && echo "------------------------------------------------------ maven" \
-    && wget https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz -P /tmp \
-    && tar xf /tmp/apache-maven-3.8.5-bin.tar.gz \
-    && mv apache-maven-3.8.5 /opt/maven \
-    && rm /tmp/apache-maven-3.8.5-bin.tar.gz \
+    && wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz -P /tmp \
+    && tar xf /tmp/apache-maven-3.8.6-bin.tar.gz \
+    && mv apache-maven-3.8.6 /opt/maven \
+    && rm /tmp/apache-maven-3.8.6-bin.tar.gz \
     && echo "------------------------------------------------------ gradle" \
     && wget https://services.gradle.org/distributions/gradle-7.4.2-bin.zip -P /tmp \
     && unzip -d /opt/gradle /tmp/gradle-7.4.2-bin.zip \

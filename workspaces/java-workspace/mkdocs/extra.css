@@ -1,0 +1,19 @@
+[data-md-color-scheme="java"] {
+  --md-primary-fg-color:        #2585C2;
+  --md-primary-fg-color--light: #9B1C16;
+  --md-primary-fg-color--dark:  #9B1C16;
+  --md-accent-fg-color:         #2585C2;
+
+  --md-typeset-a-color:         #E61F24;
+}
+
+[data-md-color-scheme="java-dark"] {
+  --md-primary-fg-color:        #507E9C;
+  --md-accent-fg-color:         #F09114;
+  
+  --md-default-bg-color:        #111B27;
+  --md-default-fg-color--light: #BAAD69;
+  --md-typeset-color:           #BAAD69;
+  --md-typeset-a-color:         #BAAD69;
+}
+

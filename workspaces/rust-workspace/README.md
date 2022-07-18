@@ -4,7 +4,7 @@
 
 # Rust workspace 
 
-Containerized isolated development environment for Rust programming lannguage.
+Containerized isolated development environment for Rust programming language.
 
 <p align="center">
   <img src="../codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">

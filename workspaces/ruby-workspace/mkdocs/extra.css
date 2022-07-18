@@ -1,0 +1,21 @@
+[data-md-color-scheme="ruby"] {
+  --md-primary-fg-color:        #9B1C16;
+  --md-primary-fg-color--light: #9B1C16;
+  --md-primary-fg-color--dark:  #9B1C16;
+  --md-accent-fg-color:         #CC342D;
+
+  --md-typeset-a-color:         #212121;
+}
+
+[data-md-color-scheme="ruby-dark"] {
+  --md-primary-fg-color:        #CC342D;
+  --md-primary-fg-color--light: #CC342D;
+  --md-primary-fg-color--dark:  #CC342D;
+  --md-accent-fg-color:         #CC342D;
+  
+  --md-default-bg-color:        #0D1016;
+  --md-default-fg-color--light: #9CDCFE;
+  --md-typeset-color:           #F0F0EC;
+  --md-typeset-a-color:         #F0F0EC;
+}
+
