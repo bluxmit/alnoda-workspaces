@@ -1,6 +1,6 @@
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 FROM ${docker_registry}/ide-workspace:${image_tag}
 USER root
@@ -8,6 +8,10 @@ USER root
 COPY settings.json /home/abc/.theia/settings.json
 
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/osearch-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/osearch-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 RUN apt-get -y update \
     # && echo "------------------------------------------------------ utils" \

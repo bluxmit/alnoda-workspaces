@@ -4,7 +4,7 @@ ARG image_tag=3.0
 FROM ${docker_registry}/base-workspace:${image_tag}
 USER root
 
-# COPY supervisord-rstudio.conf /etc/supervisord/
+COPY supervisord-rstudio.conf /etc/supervisord/
 COPY rocker_scripts /rocker_scripts
 
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 

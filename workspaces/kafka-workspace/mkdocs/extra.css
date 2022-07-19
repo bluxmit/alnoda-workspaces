@@ -1,0 +1,18 @@
+[data-md-color-scheme="kafka"] {
+  --md-primary-fg-color:        #252525;
+  --md-accent-fg-color:         #19758F;
+
+  --md-default-fg-color--light: #003B5C;
+  --md-default-bg-color:        #F5F7F7;
+}
+
+[data-md-color-scheme="kafka-dark"] {
+  --md-primary-fg-color:        #252525;
+  --md-accent-fg-color:         #19758F;
+  
+  --md-default-bg-color:        #343741;
+  --md-default-fg-color--light: #9CDCFE;
+  --md-typeset-color:           #9CDCFE;
+  --md-typeset-a-color:         #9CDCFE;
+}
+

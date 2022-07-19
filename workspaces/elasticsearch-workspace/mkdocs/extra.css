@@ -1,0 +1,19 @@
+[data-md-color-scheme="opensearch"] {
+  --md-primary-fg-color:        #003B5C;
+  --md-accent-fg-color:         #00A3E0;
+
+  --md-default-fg-color--light: #003B5C;
+  --md-default-bg-color:        #F5F7F7;
+}
+
+[data-md-color-scheme="elasticsearch-dark"] {
+  --md-primary-fg-color:        #176655;
+  --md-accent-fg-color:         #FEC514;
+  
+  --md-default-bg-color:        #343741;
+  --md-default-fg-color--light: #9CDCFE;
+  --md-typeset-color:           #9CDCFE;
+  --md-typeset-a-color:         #9CDCFE;
+}
+
+

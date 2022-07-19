@@ -1,0 +1,1 @@
+Containerized environment to interact, manage and administer Opensearch and Elasticsearch cluster.

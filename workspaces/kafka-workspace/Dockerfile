@@ -1,6 +1,6 @@
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -56,7 +56,12 @@ COPY settings.json /home/abc/.theia/settings.json
 COPY supervisord-kafka-wid.conf /etc/supervisord/
 
 COPY --from=docs_image /home/docs/ /home/docs/
+
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/kafka-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/kafka-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
