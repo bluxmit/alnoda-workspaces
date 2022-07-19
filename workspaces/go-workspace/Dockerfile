@@ -1,11 +1,15 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 ARG ruby_global_version=3.1.2
 
-FROM ${docker_registry}/codeserver-workspace:${image_tag}
+FROM ${docker_registry}/theia-workspace:${image_tag}
 USER root
 
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/go-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/go-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 RUN apt-get -y update \
     && echo "------------------------------------------------------ go " \

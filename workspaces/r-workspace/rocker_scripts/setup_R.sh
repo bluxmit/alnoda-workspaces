@@ -89,7 +89,7 @@ rm -rf /var/lib/apt/lists/*
 # Check the R info
 echo -e "Check the littler info...\n"
 
-r --version
+R --version
 
 echo -e "Check the R info...\n"
 
