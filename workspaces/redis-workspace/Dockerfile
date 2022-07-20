@@ -35,7 +35,6 @@ RUN yarn --pure-lockfile && \
     yarn autoclean --force && \
     yarn cache clean
 
-
 ################################################################################ IMAGE
 
 FROM ${MKDOCS_COPY_IMAGE} as docs_image
@@ -58,6 +57,10 @@ COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 COPY ./mkdocs/helpers.py /home/docs/macros
 COPY ./mkdocs/Redis-commander.png /home/docs/docs/assets/home/
 COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/redis-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/redis-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
@@ -67,11 +70,6 @@ ENV SHELL=/bin/bash \
     NVM_DIR=/home/abc/.nvm
 
 RUN apt-get -y update \
-    # && echo "------------------------------------------------------ utils" \
-    # && rm -rf /home/abc/utils || true \
-    # && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    # && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    # && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ local redis" \
     && apt-get -y install redis-server \
     && echo "------------------------------------------------------ redis tools" \

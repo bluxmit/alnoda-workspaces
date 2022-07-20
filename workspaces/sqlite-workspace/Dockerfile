@@ -1,15 +1,22 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=18.04-1.0
+ARG image_tag=3.0
 
-FROM ${docker_registry}/workspace-in-docker:${image_tag}
+FROM ${docker_registry}/theia-workspace:${image_tag}
 USER roots
 
 USER root
 
 COPY supervisord-sqlite.conf /etc/supervisord/
 
-COPY mkdocs /home/docs
-COPY docs/getting-started.md /home/docs/docs/getting-started.md
+# Customize mkdocs
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/img/* /home/docs/docs/assets/
+COPY ./mkdocs/helpers.py /home/docs/macros 
+COPY ./mkdocs/sqlite-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/sqlite-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 # apt-get install -y sqlite3 \
 
@@ -31,12 +38,6 @@ RUN echo "------------------------------------------------------ sqlite3" \
     && make install \
     && rm /tmp/sqlite-autoconf-3350400.tar.gz \
     && rm -rf /tmp/sqlite-autoconf-3350400 \
-    && echo "------------------------------------------------------ nocodb" \
-    && cd /; mkdir /home/nocodb/ \
-    && git clone https://github.com/nocodb/nocodb-seed /home/nocodb/ \
-    && cd /home/nocodb && nodeenv --node=12.18.3 --npm=6.0.0 env \
-    && cd /home/nocodb && . env/bin/activate && npm install \
-    && rm -rf /home/nocodb/.git \
     && echo "------------------------------------------------------ cli" \
     && pip install litecli==1.7.0 \
     && echo "------------------------------------------------------ rclone" \
@@ -77,14 +78,11 @@ RUN echo "------------------------------------------------------ sqlite3" \
     && chown -R abc /opt/dbdesigner \
     && mkdir /var/log/dbdesigner && chown -R abc /var/log/dbdesigner \
     && mkdir /var/log/sqlite-web && chown -R abc /var/log/sqlite-web \
-    && chown -R abc /home/nocodb \
-    && mkdir /var/log/nocodb && chown -R abc /var/log/nocodb \
     && echo "export PAGER='pspg -s 4 --no-mouse'" >> /home/abc/.zshrc  \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
 
 COPY dbdesigner/startUp.js /opt/dbdesigner/dist/startUp.js 
-
 
 ENV SQLITE_VIEWER_URL=http://localhost:8022/sqlite-viewer/ \
     SQLITE_WEB_GUI_URL=http://localhost:8022/web-gui-sqlite/ \

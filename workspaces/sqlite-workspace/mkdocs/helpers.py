@@ -4,19 +4,17 @@ Include this  {{ macros_info() }} in any page to get complete macro info
 """
 import os
 
+
 port_increments = {
     "DOCS_URL": 0,
     "FILEBROWSER_URL": 1,
-    "STATICFS_URL": 2,
-    "CRONICLE_URL": 3,
     "UNGIT_URL": 4,
     "IDE_URL": 5,
     "TERMINAL_URL": 6,
-    "MC_URL": 7,
-    "HTOP_URL": 8,
     "DBDESIGNER_URL": 9,
-    "NOCODB_URL": 10,
-    "SQLITE_WEB_NOCODB": 11,
+    "PORT_8038": 18,
+    "PORT_8039": 19,
+    "PORT_8040": 20,
     "SQLITE_WEB_MAIN_URL": 12,
     "SQLITE_WEB_EXAMPLE_URL": 13
     }
