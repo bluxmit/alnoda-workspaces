@@ -2,8 +2,6 @@ ARG docker_registry=docker.io/alnoda
 ARG image_tag=3.0
 
 FROM ${docker_registry}/theia-workspace:${image_tag}
-USER roots
-
 USER root
 
 COPY supervisord-sqlite.conf /etc/supervisord/

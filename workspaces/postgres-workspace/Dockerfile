@@ -45,9 +45,9 @@ FROM ${DEPLOY_IMAGE}
 USER root
 
 RUN apt-get update \
-    && mkdir -p -m 777 /opt/theia \
+    && mkdir -p /opt/theia \
     && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
-    && mkdir -p -m 777 /home/project \
+    && mkdir -p /home/project \
     && apt-get install -y libsecret-1-dev
 
 COPY --from=theia-builder /opt/theia /opt/theia
@@ -188,7 +188,7 @@ RUN echo "------------------------------------------------------ postgres" \
     && mkdir /var/log/postgres && chown -R abc /var/log/postgres \
     && chown -R abc /var/log/postgresql \
     && mkdir /var/postgres && chown -R abc /var/postgres \
-    && chmod 777 /var/run/postgresql \
+    && chown -R abc /var/run/postgresql \
     && chown -R abc /opt/dbdesigner \
     && chown -R abc /opt/pev2 \
     && mkdir /var/log/dbdesigner && chown -R abc /var/log/dbdesigner \

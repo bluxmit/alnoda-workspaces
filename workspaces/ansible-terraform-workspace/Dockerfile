@@ -45,7 +45,7 @@ COPY ./examples/ /home/examples/
 
 # Delete previous Theia & set up new 
 RUN rm -rf /opt/theia \
-    && mkdir -p -m 777 /opt/theia \
+    && mkdir -p /opt/theia \
     && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
     && pip install -r /home/abc/installed-python-packages/infra-requirements.txt \
     && python3 -m pip install "ara[server]"

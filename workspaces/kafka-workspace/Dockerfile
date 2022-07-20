@@ -45,9 +45,9 @@ FROM ${DEPLOY_IMAGE}
 
 USER root
 
-RUN mkdir -p -m 777 /opt/theia \
+RUN mkdir -p /opt/theia \
     && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
-    && mkdir -p -m 777 /home/project \
+    && mkdir -p /home/project \
     && apt-get install -y libsecret-1-dev \
     && rm -rf /home/docs
 
@@ -114,6 +114,7 @@ RUN echo "------------------------------------------------------ java" \
     # && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ user" \
     && chown -R abc /opt/theia \
+    && chown -R abc /home/project \
     && mkdir -p /var/log/theia && chown -R abc /var/log/theia \
     && mkdir -p /var/log/zookeeper/ && chown -R abc /var/log/zookeeper/ \
     && mkdir -p /var/log/kafka && chown -R abc /var/log/kafka \
