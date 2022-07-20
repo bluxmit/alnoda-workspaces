@@ -58,46 +58,22 @@
 {% 
     set tools = [
         {
-            "env": "IDE_URL",
-            "name": "IDE",
-            "image": "assets/home/IDE.jpg",
-            "description": "Browser-based version of Visual Studio Code. Develop in any language, install hundreeds of extensions"
+            "env": "CRONICLE_URL",
+            "name": "Cronicle",
+            "image": "Cronicle.jpg",
+            "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
         },
         {
-            "env": "TERMINAL_URL",
-            "name": "Terminal",
-            "image": "assets/home/Terminal.png",
-            "description": "Full-fledged browser-based terminal with Z-shell"
+            "env": "MC_URL",
+            "name": "M.Commander",
+            "image": "MC.jpg",
+            "description": "Feature rich visual file manager with internal text viewer and editor" 
         },
         {
-            "env": "FILEBROWSER_URL",
-            "name": "File Browser",
-            "image": "assets/home/Filebrowser.png",
-            "description": "Browse, upload and download files and folders to and from the Workspace"
-        },
-        {
-            "env": "JUPYTER_NOTEBOOK_URL",
-            "name": "Jupyter Notebooks",
-            "image": "assets/home/Jupyter.png",
-            "description": "Classic notebook experience. Great for data exploration, analysis and visualisation."
-        },
-        {
-            "env": "JUPYTER_LAB_URL",
-            "name": "Jupyter Lab",
-            "image": "assets/home/Jupyterlab.png",
-            "description": "Notebook development environment. Great for complex notebook projects"
-        },
-        {
-            "env": "DTALE_URL",
-            "name": "D-Tale",
-            "image": "assets/home/dtale.png",
-            "description": "Comprehensive visual exploration, analysis and discovery from dataset files."
-        },
-        {
-            "env": "LUIGI_URL",
-            "name": "Luigi",
-            "image": "assets/home/luigi.png",
-            "description": "Luigi helps you build complex pipelines of batch jobs in Python"
+            "env": "HTOP_URL",
+            "name": "Process monitor",
+            "image": "Htop.jpg",
+            "description": "Monitor running process and resource utilization"
         }
         ] 
 %}

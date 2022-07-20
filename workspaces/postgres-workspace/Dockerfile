@@ -56,6 +56,10 @@ COPY supervisord-postgres.conf /etc/supervisord/
 
 COPY --from=docs_image /home/docs/ /home/docs/
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/postgres-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/postgres-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 COPY schemaspy/schemaspy.sh /opt/schemaspy/schemaspy.sh
 

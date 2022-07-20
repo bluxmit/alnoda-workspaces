@@ -64,13 +64,6 @@
             "description": "Browse, upload and download files and folders to and from the Workspace"
         },
         {
-            "env": "NBVIEWER_URL",
-            "subpath": "localfile/",
-            "name": "Notebook viewer",
-            "image": "nbviewer.png",
-            "description": "Display notebooks from folder <b>/home/project/nbviewer</b>"
-        },
-        {
             "env": "VOILA_URL",
             "name": "Voila",
             "image": "voila.png",

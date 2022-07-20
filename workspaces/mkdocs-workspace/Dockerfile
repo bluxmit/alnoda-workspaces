@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 FROM ${docker_registry}/ide-workspace:${image_tag}
 
@@ -10,15 +10,18 @@ COPY settings.json /home/abc/.theia/settings.json
 # More dependencies for mkdocs and markdown
 COPY mkdocs-requirements.txt /home/abc/installed-python-packages
 
+COPY ./examples/ /home/examples/
+
 # Customize mkdocs
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 COPY ./mkdocs/README.md /home/docs/docs/
 COPY ./mkdocs/about.md /home/docs/docs/
 COPY ./mkdocs/IDE.jpg /home/docs/docs/assets/home/
 COPY ./mkdocs/Magicspace-web.png /home/docs/docs/assets/home/
-COPY ./mkdocs/showcase.md /home/docs/docs/showcase.md
 COPY ./mkdocs/helpers.py /home/docs/macros 
-COPY ./examples/ /home/examples/
+COPY ./mkdocs/alnoda-dark.svg /home/docs/docs/assets/
+COPY ./mkdocs/alnoda-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 RUN apt-get -y update \
 	&& echo "-------------------------------------------- weasyprint" \
@@ -41,4 +44,3 @@ USER abc
 
 # Custom docs for this workspace
 COPY mkdocs /home/docs
-COPY README.md /home/docs/docs/get-started.md

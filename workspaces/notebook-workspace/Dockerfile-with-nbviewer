@@ -33,6 +33,35 @@ RUN yarn --pure-lockfile && \
     yarn autoclean --force && \
     yarn cache clean
 
+################################################################################ BUILD NBVIEWER
+
+FROM python:3.8-buster as nbviewerbuilder
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
+RUN apt-get update \
+ && apt-get install -yq --no-install-recommends \
+    ca-certificates \
+    libcurl4-gnutls-dev \
+    git \
+    nodejs \
+    npm
+
+RUN apt-get install -y libmemcached-dev zlib1g-dev
+
+# Python requirements
+COPY nbviewer/requirements-dev.txt /srv/nbviewer/
+COPY nbviewer/requirements.txt /srv/nbviewer/
+RUN python3 -mpip install -r /srv/nbviewer/requirements-dev.txt 
+RUN python3 -mpip install -r /srv/nbviewer/requirements.txt
+
+WORKDIR /srv/nbviewer
+
+# Copy source tree in
+COPY nbviewer /srv/nbviewer
+RUN python3 setup.py build && \
+    python3 -mpip wheel -vv . -w /wheels
+
 ################################################################################ IMAGE
 
 FROM ${DEPLOY_IMAGE}
@@ -48,10 +77,11 @@ RUN apt-get update \
 
 COPY --from=theia-builder /opt/theia /opt/theia
 
-# Programs to start
+COPY --from=nbviewerbuilder /wheels /wheels
+# To change the number of threads use env var NBVIEWER_THREADS
+ENV LANG=C.UTF-8 NBVIEWER_THREADS=2
+
 COPY supervisord-notebooks.conf /etc/supervisord/
-# Override - remove Ungit to reduce resource consumption
-COPY supervisord-workspace-base.conf /etc/supervisord/
 
 COPY notebooks-requirements.txt /home/abc/installed-python-packages
 COPY jupyter-requirements.txt /home/abc/installed-python-packages
@@ -69,12 +99,22 @@ COPY ./mkdocs/present.md /home/docs/docs/pages/present.md
 COPY ./mkdocs/present /home/docs/docs/pages/present
 COPY ./mkdocs/admin.md /home/docs/docs/pages/admin.md
 COPY ./mkdocs/admin /home/docs/docs/pages/admin
+
 COPY ./mkdocs/jupyter-circle.svg /home/docs/docs/assets/
 COPY ./mkdocs/jupyter-circle-white.svg /home/docs/docs/assets/
 COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
 COPY ./mkdocs/about.md /home/docs/docs/about.md
 
-RUN echo "------------------------------------------------------ system nodejs-18" \
+RUN echo "------------------------------------------------------ Nbviewer" \
+    && apt-get -y update \
+    && apt-get install -yq --no-install-recommends ca-certificates libcurl4 \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+    && mkdir /opt/nbviewer \
+    && cd /opt/nbviewer && python3 -m venv venv && . venv/bin/activate \
+    && pip install --no-cache /wheels/* && deactivate \
+    && rm -rf /wheels \ 
+    && mkdir -p /home/project/nbviewer \
+    && echo "------------------------------------------------------ system nodejs-18" \
     && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - \
     && apt-get install -y nodejs \
     && npm install --global yarn \
@@ -91,6 +131,8 @@ RUN echo "------------------------------------------------------ system nodejs-1
     && echo "------------------------------------------------------ user" \
     && mkdir -p /usr/local/share/jupyter && chown -R abc /usr/local/share/jupyter \
     && chown -R abc /opt/theia \
+    && chown -R abc /opt/nbviewer \
+    && chown -R abc /home/project/nbviewer \
     && chown -R abc /etc/service/luigid/ \
     && chown -R abc /var/log/jupyter \
     && chown -R abc /var/log/luigi \

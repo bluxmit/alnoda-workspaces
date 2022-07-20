@@ -61,7 +61,6 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
     - **Job scheduler:** cron
     - **Terminal multiplexer:** tmux 
 
-
 ## Docs
 
 See our guides
