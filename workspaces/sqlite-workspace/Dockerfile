@@ -1,7 +1,7 @@
 ARG docker_registry=docker.io/alnoda
 ARG image_tag=3.0
 
-FROM ${docker_registry}/theia-workspace:${image_tag}
+FROM ${docker_registry}/ide-workspace:${image_tag}
 USER root
 
 COPY supervisord-sqlite.conf /etc/supervisord/
@@ -9,19 +9,19 @@ COPY supervisord-sqlite.conf /etc/supervisord/
 # Customize mkdocs
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
 COPY ./mkdocs/README.md /home/docs/docs/README.md
-COPY ./mkdocs/img/* /home/docs/docs/assets/
+COPY ./mkdocs/img/* /home/docs/docs/assets/home/
 COPY ./mkdocs/helpers.py /home/docs/macros 
 COPY ./mkdocs/sqlite-circle.svg /home/docs/docs/assets/
 COPY ./mkdocs/sqlite-circle-white.svg /home/docs/docs/assets/
 COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
 COPY ./mkdocs/about.md /home/docs/docs/about.md
-
-# apt-get install -y sqlite3 \
+COPY ./mkdocs/admin.md /home/docs/docs/pages/admin.md
+COPY ./mkdocs/admin /home/docs/docs/pages/admin
 
 RUN echo "------------------------------------------------------ sqlite3" \
-    && cd /tmp && wget https://sqlite.org/2021/sqlite-autoconf-3350400.tar.gz \
-    && tar zxvf /tmp/sqlite-autoconf-3350400.tar.gz \
-    && cd /tmp/sqlite-autoconf-3350400 \
+    && cd /opt && wget https://sqlite.org/2021/sqlite-autoconf-3350400.tar.gz \
+    && tar zxvf /opt/sqlite-autoconf-3350400.tar.gz \
+    && cd /opt/sqlite-autoconf-3350400 \
     && ./configure --prefix=/usr     \
             --disable-static  \
             --enable-fts5     \
@@ -34,10 +34,9 @@ RUN echo "------------------------------------------------------ sqlite3" \
             -DSQLITE_ENABLE_FTS3_TOKENIZER=1" \
     && make \
     && make install \
-    && rm /tmp/sqlite-autoconf-3350400.tar.gz \
-    && rm -rf /tmp/sqlite-autoconf-3350400 \
+    && rm /opt/sqlite-autoconf-3350400.tar.gz \
     && echo "------------------------------------------------------ cli" \
-    && pip install litecli==1.7.0 \
+    && pip install litecli==1.9.0 \
     && echo "------------------------------------------------------ rclone" \
     && curl https://rclone.org/install.sh | bash \
     && echo "------------------------------------------------------ pspg" \

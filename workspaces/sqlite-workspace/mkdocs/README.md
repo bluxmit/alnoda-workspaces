@@ -117,6 +117,7 @@
             "image": "assets/home/Ungit.jpg",
             "description": "Manage Git repositories and work flow using beautiful UI"
         }
+    ]
 %}
 
 

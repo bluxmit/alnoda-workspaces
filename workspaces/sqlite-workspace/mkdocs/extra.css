@@ -1,4 +1,4 @@
-[data-md-color-scheme="sqite"] {
+[data-md-color-scheme="sqlite"] {
   --md-primary-fg-color:        #044A64;
   --md-accent-fg-color:         #0482C9;
 
@@ -6,7 +6,7 @@
   --md-default-bg-color:        #F5F7F7;
 }
 
-[data-md-color-scheme="sqite-dark"] {
+[data-md-color-scheme="sqlite-dark"] {
   --md-primary-fg-color:        #0482C9;
   --md-accent-fg-color:         #19758F;
   

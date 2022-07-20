@@ -5,6 +5,7 @@
 nav:
   - Home: README.md
   - My apps: pages/my-apps.md
+  - Admin: pages/admin.md
   - About: about.md
   - Docs: https://docs.alnoda.org/sqlite-workspace/
 
