@@ -82,34 +82,10 @@
             "description": "Browse, upload and download files and folders to and from the Workspace"
         },
         {
-            "env": "CRONICLE_URL",
-            "name": "Cronicle",
-            "image": "assets/home/Cronicle.jpg",
-            "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
-        },
-        {
             "env": "UNGIT_URL",
             "name": "Ungit",
             "image": "assets/home/Ungit.jpg",
             "description": "Manage Git repositories and work flow using beautiful UI"
-        },
-        {
-            "env": "STATICFS_URL",
-            "name": "Static File Server",
-            "image": "assets/home/Static-server.png",
-            "description": "Serve any static websites like a breeze"
-        },
-        {
-            "env": "MC_URL",
-            "name": "M.Commander",
-            "image": "assets/home/MC.jpg",
-            "description": "Feature rich visual file manager with internal text viewer and editor" 
-        },
-        {
-            "env": "HTOP_URL",
-            "name": "Process monitor",
-            "image": "assets/home/Htop.jpg",
-            "description": "Monitor running process and resource utilization"
         }
         ] 
 %}
