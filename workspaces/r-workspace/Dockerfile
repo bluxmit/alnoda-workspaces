@@ -1,15 +1,20 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 FROM ${docker_registry}/base-workspace:${image_tag}
 USER root
 
 COPY supervisord-rstudio.conf /etc/supervisord/
+COPY rocker_scripts /rocker_scripts
 
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
 COPY ./mkdocs/helpers.py /home/docs/macros
 COPY ./mkdocs/RStudio.png /home/docs/docs/assets/home/
 COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/r-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/r-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 ### R
 ENV R_VERSION=4.2.0 \
@@ -26,18 +31,19 @@ ENV R_VERSION=4.2.0 \
 ENV PATH=/usr/local/bin/:$PATH
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH
 
-RUN cd /tmp && git clone https://github.com/rocker-org/rocker-versioned2.git \
-    && mv /tmp/rocker-versioned2/scripts /rocker_scripts \
+RUN echo "------------------------------------------------------ R & R-Studio" \
+    && find /rocker_scripts/ -type f -iname "*.sh" -exec chmod +x {} \; \
     && bash /rocker_scripts/install_R_source.sh \
     && bash /rocker_scripts/setup_R.sh \
     && mkdir /var/log/rstudio \
     && bash /rocker_scripts/install_rstudio.sh \
-    && rstudio-server stop || true \
+    && rstudio-server stop \
+    && rm -rf /rocker_scripts \
     && echo "------------------------------------------------------ user" \
     && chown -R abc /etc/rstudio \
     && chown -R abc /usr/lib/rstudio-server \
     && chown -R abc /var/lib/rstudio-server \
-    && chown -R abc /var/log/rstudio \ 
+    && chown -R abc /var/log/rstudio \
     && chown -R abc /usr/local/lib/R \
     && mkdir /home/abc/.rserver && chown -R abc /home/abc/.rserver \
     && find /home -type d | xargs -I{} chown -R abc {} \
@@ -45,7 +51,7 @@ RUN cd /tmp && git clone https://github.com/rocker-org/rocker-versioned2.git \
 
 USER abc
 
-COPY rstudio/database.conf /home/abc/.rserver
+COPY rstudio/database.conf /home/abc/.rserver/
 ENV USER=abc
 
 RUN echo "------------------------------------------------------ some cleaning because Rstudio workdir is /home/abc/" \

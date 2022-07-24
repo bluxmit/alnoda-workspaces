@@ -7,13 +7,9 @@ import os
 port_increments = {
     "DOCS_URL": 0,
     "FILEBROWSER_URL": 1,
-    "STATICFS_URL": 2,
-    "CRONICLE_URL": 3,
     "UNGIT_URL": 4,
     "IDE_URL": 5,
     "TERMINAL_URL": 6,
-    "MC_URL": 7,
-    "HTOP_URL": 8,
     "STREAMLIT_URL": 9,
     "PORT_8038": 18,
     "PORT_8039": 19,

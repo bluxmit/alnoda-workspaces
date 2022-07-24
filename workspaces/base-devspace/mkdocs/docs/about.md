@@ -1,0 +1,1 @@
+This workspace - is a template for other coding workspaces.

@@ -1,0 +1,1 @@
+Containerized workspace that helps to develop SQLite databases.

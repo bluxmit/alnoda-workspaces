@@ -1,0 +1,20 @@
+[data-md-color-scheme="terraform"] {
+  --md-primary-fg-color:        #241B2F;
+  --md-primary-fg-color--light: #7747A7;
+  --md-primary-fg-color--dark:  #7747A7;
+  --md-accent-fg-color:         #5C41E2;
+
+  --md-default-bg-color:        #FFFFFF;
+  --md-typeset-a-color:         #604270;
+}
+
+[data-md-color-scheme="terraform-dark"] {
+  --md-primary-fg-color:        #7747A7;
+  --md-accent-fg-color:         #DF736A;
+  
+  --md-default-bg-color:        #171520;
+  --md-default-fg-color--light: #604270;
+  --md-typeset-color:           #FFFFFF;
+  --md-typeset-a-color:         #83698E;
+}
+

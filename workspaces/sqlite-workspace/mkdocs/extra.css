@@ -1,0 +1,18 @@
+[data-md-color-scheme="sqlite"] {
+  --md-primary-fg-color:        #044A64;
+  --md-accent-fg-color:         #0482C9;
+
+  --md-default-fg-color--light: #003B5C;
+  --md-default-bg-color:        #F5F7F7;
+}
+
+[data-md-color-scheme="sqlite-dark"] {
+  --md-primary-fg-color:        #0482C9;
+  --md-accent-fg-color:         #19758F;
+  
+  --md-default-bg-color:        #21252B;
+  --md-default-fg-color--light: #0482C9;
+  --md-typeset-color:           #9DA5B4;
+  --md-typeset-a-color:         #9DA5B4;
+}
+

@@ -37,7 +37,7 @@ RUN apt-get -y update \
 	&& cd /opt/ungit && . env/bin/activate && npm install -g ungit@1.5.9 \
     && echo "------------------------------------------------------ static file server" \
 	&& mkdir -p /opt/serve \
-	&& cd /opt/serve && nodeenv --node=12.18.3 --npm=6.0.0 env \
+	&& cd /opt/serve && nodeenv --node=16.14.1 --npm=6.0.0 env \
 	&& cd /opt/serve && . env/bin/activate &&  npm install -g serve \
     && echo "------------------------------------------------------ mkdocs" \
 	&& pip install -r /home/abc/installed-python-packages/mkdocs-requirements.txt \
@@ -55,6 +55,8 @@ RUN apt-get -y update \
 	&& mkdir -p /var/log/static-file-server && chown -R abc /var/log/static-file-server \
 	&& mkdir -p /var/log/mkdocs && chown -R abc /var/log/mkdocs \
     && chown -R abc /home/abc/utils \
-    && chown -R abc /home/abc/installed-python-packages
+    && chown -R abc /home/abc/installed-python-packages \
+    && find /home -type d | xargs -I{} chown -R abc {} \
+    && find /home -type f | xargs -I{} chown abc {} 
     
 USER abc

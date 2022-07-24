@@ -1,5 +1,5 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -15,6 +15,11 @@ COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 COPY ./mkdocs/img/* /home/docs/docs/assets/home/
 COPY ./mkdocs/helpers.py /home/docs/macros
 COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/k8s-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/k8s-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
+
 
 RUN apt-get -y update \
     && echo "------------------------------------------------------ prep" \

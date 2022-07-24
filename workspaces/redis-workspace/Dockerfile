@@ -1,6 +1,6 @@
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -35,7 +35,6 @@ RUN yarn --pure-lockfile && \
     yarn autoclean --force && \
     yarn cache clean
 
-
 ################################################################################ IMAGE
 
 FROM ${MKDOCS_COPY_IMAGE} as docs_image
@@ -43,9 +42,9 @@ FROM ${DEPLOY_IMAGE}
 
 USER root
 
-RUN mkdir -p -m 777 /opt/theia \
+RUN mkdir -p /opt/theia \
     && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
-    && mkdir -p -m 777 /home/project \
+    && mkdir -p /home/project \
     && apt-get install -y libsecret-1-dev \
     && rm -rf /home/docs
 
@@ -58,6 +57,10 @@ COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 COPY ./mkdocs/helpers.py /home/docs/macros
 COPY ./mkdocs/Redis-commander.png /home/docs/docs/assets/home/
 COPY ./mkdocs/README.md /home/docs/docs/README.md
+COPY ./mkdocs/redis-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/redis-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
@@ -67,11 +70,6 @@ ENV SHELL=/bin/bash \
     NVM_DIR=/home/abc/.nvm
 
 RUN apt-get -y update \
-    # && echo "------------------------------------------------------ utils" \
-    # && rm -rf /home/abc/utils || true \
-    # && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    # && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    # && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ local redis" \
     && apt-get -y install redis-server \
     && echo "------------------------------------------------------ redis tools" \
@@ -89,7 +87,7 @@ RUN apt-get -y update \
     && mv /tmp/redis-tui-linux /usr/bin/redis-tui \
     && rm -rf /tmp/redis-tui-linux \
     && echo "------------------------------------------------------ redis-commander" \
-    && mkdir -p -m 777 /opt/redis-commander \
+    && mkdir -p /opt/redis-commander \
     && cd /opt/redis-commander && nodeenv --node=12.18.3 env && . env/bin/activate \
     && npm install -g redis-commander@0.7.2 \
     && echo "------------------------------------------------------ user" \
@@ -97,7 +95,7 @@ RUN apt-get -y update \
     && mkdir -p /var/log/theia && chown -R abc /var/log/theia \
     && mkdir -p /var/log/redis && chown -R abc /var/log/redis \
     && mkdir -p /opt/redis && chown -R abc /opt/redis \
-    && chmod 777 /var/lib/redis \
+    && chown -R abc /var/lib/redis \
     && mkdir -p /home/redis-data && chown -R abc /home/redis-data \
     && chown -R abc /opt/redis-commander \
     && mkdir -p /var/log/redis-commander && chown -R abc /var/log/redis-commander \

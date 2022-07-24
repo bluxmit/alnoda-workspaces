@@ -3,8 +3,7 @@
 </p>   
 
 # Base-workspace
-Containerized Linux environment for running jobs on schedule with browser-based scheduler, terminal and file manager. 
-You can host on your favourite Rasberry Pi. 
+Containerized environment for running jobs on schedule with browser-based scheduler, terminal and file manager. 
 
 ## Start
 
@@ -29,12 +28,13 @@ open [localhost:8020](http://localhost:8020) in browser.
     - Python 3, Pip 
     - Node/nodeenv
     - curl, wget, telnet, jq
-    - **Git:** git, git-flow, lazygit 
-    - **File browsers:** mc, xplr
+    - **Git:** git, git-flow 
+    - **File browsers:** mc
     - **Text editors:** nano, vim, mcedit
     - **System monitors:** ncdu, htop, glances, vizex
     - **Process Control:** supervisord
     - **Job scheduler:** cron
+    - **Terminal multiplexer:** tmux 
 
 ## Why this image
 

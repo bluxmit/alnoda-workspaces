@@ -4,16 +4,18 @@
 
 nav:
   - Home: README.md
-  - Get started: getting-started.md
-
+  - My apps: pages/my-apps.md
+  - Admin: pages/admin.md
+  - About: about.md
+  - Docs: https://docs.alnoda.org/sqlite-workspace/
 
 # ===========================================================
 # CONFIGURATION
 # ===========================================================
 
-site_name: My Workspace
+site_name: SQLite workspace
 repo_url: https://github.com/bluxmit/alnoda-workspaces
-site_url: https://alnoda.org
+site_url: https://docs.alnoda.org
 edit_uri: ""
 
 # ===========================================================
@@ -22,48 +24,40 @@ edit_uri: ""
 
 theme:
   name: 'material'
-  favicon: 'assets/favicon.ico'
-  logo: 'assets/Alnoda-logo.svg'
+  favicon: 'assets/sqlite-circle.svg'
+  logo: 'assets/sqlite-circle-white.svg'
   custom_dir: overrides
+  font:
+    text: Nunito
   icon:
-    repo: fontawesome/brands/git-alt
+    repo: fontawesome/brands/github
   features:
     - navigation.instant
   palette:
-    - scheme: default
+    - scheme: sqlite
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to light mode
-      primary: red  
-      accent: deep orange
-    - scheme: slate
-      toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to dark mode
-      primary: deep orange
-      accent: red
+    - scheme: sqlite-dark
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode 
 
 extra:
   # Link to open when your logo is clicked
-  homepage: https://alnoda.org
-  host_url: http://localhost
+  homepage: https://docs.alnoda.org
+  host_url: http://docs.alnoda.org
 
 plugins:
-  - search
   # Enable Macros and jinja2 templates
   - macros:
       module_name: macros/helpers
 
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
-
-
-
-
-          
- 
-
 
 

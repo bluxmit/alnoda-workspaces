@@ -26,11 +26,12 @@ docker exec -it --user=root space-1 /bin/zsh
     - Node/nodeenv
     - curl, wget, telnet, jq
     - **Git:** git, git-flow, lazygit 
-    - **File browsers:** mc, xplr
+    - **File browsers:** mc
     - **Text editors:** nano, vim, mcedit
     - **System monitors:** ncdu, htop, glances, vizex
     - **Process Control:** supervisord
     - **Job scheduler:** cron
+    - **Terminal multiplexer:** tmux 
 
 ## Why this image
 

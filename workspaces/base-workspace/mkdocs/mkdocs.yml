@@ -5,8 +5,8 @@
 nav:
   - Home: README.md
   - My apps: pages/my-apps.md
+  - About: about.md
   - Docs: https://docs.alnoda.org/base-workspace/
-
 
 # ===========================================================
 # CONFIGURATION
@@ -23,26 +23,22 @@ edit_uri: ""
 
 theme:
   name: 'material'
-  favicon: 'assets/favicon.ico'
-  logo: 'assets/Alnoda-logo.svg'
+  favicon: 'assets/laptop-circle.svg'
+  logo: 'assets/laptop-circle-white.svg'
   custom_dir: overrides
   icon:
-    repo: fontawesome/brands/git-alt
+    repo: fontawesome/brands/github
   features:
     - navigation.instant
   palette:
-    - scheme: default
+    - scheme: workspace
       toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to light mode
-      primary: brown  
-      accent: deep orange
-    - scheme: slate
-      toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to dark mode
-      primary: orange
-      accent: red
+    - scheme: workspace-dark
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode 
 
 extra:
   # Link to open when your logo is clicked
@@ -50,21 +46,14 @@ extra:
   host_url: http://docs.alnoda.org
 
 plugins:
-  - search
   # Enable Macros and jinja2 templates
   - macros:
       module_name: macros/helpers
 
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
-
-
-
-
-          
- 
-
-
 

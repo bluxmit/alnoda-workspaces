@@ -1,9 +1,10 @@
 <p align="center">
-  <img src="../../img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+  <img src="./img/kafka-circle.svg" alt="Kafka logo" width="150">
 </p>  
 
 # Kafka workspace
-Single-node Kafka cluster together with several Kafka CLI tools in containerized dev/admin environment. 
+
+Containerized environment to interact, manage and administer Kafka cluster.
 
 <p align="center">
   <img src="img/kafka-wid-collage.png" alt="Collage" width="750">
@@ -40,7 +41,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [kt](https://github.com/fgeller/kt) - Kafka tool that likes JSON.
 - [kcli](https://github.com/cswank/kcli) - Kafka read only command line browser.
 
-**Dev tools:**
+**Tools:**
 
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
 VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.  
@@ -53,20 +54,18 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
 - [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
 - [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
 - Quicklaunch UI with getting started tutorial
-
-Image is built from **Ubuntu 20.4** with the additional CLI apps
-
-- [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-- Python 3, Pip 
-- Node/nodeenv
-- curl, wget, telnet, jq
-- **Git:** git, git-flow, lazygit 
-- **File browsers:** mc, xplr
-- **Text editors:** nano, vim, mcedit
-- **System monitors:** ncdu, htop, glances, vizex
-- **Process Control:** supervisord
-- **Job scheduler:** cron
-
+- **Ubuntu 20.4** with the following CLI apps
+    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
+    - Python 3, Pip 
+    - Node/nodeenv
+    - curl, wget, telnet, jq
+    - **Git:** git, git-flow 
+    - **File browsers:** mc, xplr
+    - **Text editors:** nano, vim, mcedit
+    - **System monitors:** ncdu, htop, glances, vizex
+    - **Process Control:** supervisord
+    - **Job scheduler:** cron
+    - **Terminal multiplexer:** tmux 
 
 ## Docs
 

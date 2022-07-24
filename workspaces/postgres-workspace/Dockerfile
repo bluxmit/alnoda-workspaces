@@ -1,6 +1,6 @@
 
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2
+ARG image_tag=3.0
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
@@ -45,9 +45,9 @@ FROM ${DEPLOY_IMAGE}
 USER root
 
 RUN apt-get update \
-    && mkdir -p -m 777 /opt/theia \
+    && mkdir -p /opt/theia \
     && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
-    && mkdir -p -m 777 /home/project \
+    && mkdir -p /home/project \
     && apt-get install -y libsecret-1-dev
 
 COPY --from=theia-builder /opt/theia /opt/theia
@@ -56,6 +56,10 @@ COPY supervisord-postgres.conf /etc/supervisord/
 
 COPY --from=docs_image /home/docs/ /home/docs/
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/postgres-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/postgres-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 COPY schemaspy/schemaspy.sh /opt/schemaspy/schemaspy.sh
 
@@ -184,7 +188,7 @@ RUN echo "------------------------------------------------------ postgres" \
     && mkdir /var/log/postgres && chown -R abc /var/log/postgres \
     && chown -R abc /var/log/postgresql \
     && mkdir /var/postgres && chown -R abc /var/postgres \
-    && chmod 777 /var/run/postgresql \
+    && chown -R abc /var/run/postgresql \
     && chown -R abc /opt/dbdesigner \
     && chown -R abc /opt/pev2 \
     && mkdir /var/log/dbdesigner && chown -R abc /var/log/dbdesigner \

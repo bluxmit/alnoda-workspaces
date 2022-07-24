@@ -1,9 +1,9 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2-3.8
+ARG image_tag=3.0-3.8
 
 ## Images used:
 ARG BUILD_IMAGE=node:12.18.3
-ARG DEPLOY_IMAGE=${docker_registry}/python-workspace:${image_tag}
+ARG DEPLOY_IMAGE=${docker_registry}/python-automate-workspace:${image_tag}
 
 ################################################################################ BUILD THEIA
 
@@ -33,35 +33,6 @@ RUN yarn --pure-lockfile && \
     yarn autoclean --force && \
     yarn cache clean
 
-################################################################################ BUILD NBVIEWER
-
-FROM python:3.8-buster as nbviewerbuilder
-
-ENV DEBIAN_FRONTEND=noninteractive
-ENV LANG=C.UTF-8
-RUN apt-get update \
- && apt-get install -yq --no-install-recommends \
-    ca-certificates \
-    libcurl4-gnutls-dev \
-    git \
-    nodejs \
-    npm
-
-RUN apt-get install -y libmemcached-dev zlib1g-dev
-
-# Python requirements
-COPY nbviewer/requirements-dev.txt /srv/nbviewer/
-COPY nbviewer/requirements.txt /srv/nbviewer/
-RUN python3 -mpip install -r /srv/nbviewer/requirements-dev.txt 
-RUN python3 -mpip install -r /srv/nbviewer/requirements.txt
-
-WORKDIR /srv/nbviewer
-
-# Copy source tree in
-COPY nbviewer /srv/nbviewer
-RUN python3 setup.py build && \
-    python3 -mpip wheel -vv . -w /wheels
-
 ################################################################################ IMAGE
 
 FROM ${DEPLOY_IMAGE}
@@ -70,18 +41,17 @@ USER root
 
 RUN apt-get update \
     && rm -rf /opt/theia \
-    && mkdir -p -m 777 /opt/theia \
+    && mkdir -p /opt/theia \
     && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
-    && mkdir -p -m 777 /home/project \
+    && mkdir -p /home/project \
     && apt-get install -y libsecret-1-dev
 
 COPY --from=theia-builder /opt/theia /opt/theia
 
-COPY --from=nbviewerbuilder /wheels /wheels
-# To change the number of threads use env var NBVIEWER_THREADS
-ENV LANG=C.UTF-8 NBVIEWER_THREADS=2
-
+# Programs to start
 COPY supervisord-notebooks.conf /etc/supervisord/
+# Override - remove Ungit to reduce resource consumption
+COPY supervisord-workspace-base.conf /etc/supervisord/
 
 COPY notebooks-requirements.txt /home/abc/installed-python-packages
 COPY jupyter-requirements.txt /home/abc/installed-python-packages
@@ -89,24 +59,22 @@ COPY luigi/ /home/abc/luigi/
 COPY examples/ /home/examples/
 COPY tutorials/ /home/project/tutorials/
 
+COPY settings.json /home/abc/.theia/settings.json
+
 COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
 COPY ./mkdocs/img/* /home/docs/docs/assets/home/
 COPY ./mkdocs/helpers.py /home/docs/macros
 COPY ./mkdocs/README.md /home/docs/docs/README.md
-COPY ./mkdocs/results.md /home/docs/docs/pages/results.md
-COPY ./mkdocs/results /home/docs/docs/pages/results
-COPY settings.json /home/abc/.theia/settings.json
+COPY ./mkdocs/present.md /home/docs/docs/pages/present.md
+COPY ./mkdocs/present /home/docs/docs/pages/present
+COPY ./mkdocs/admin.md /home/docs/docs/pages/admin.md
+COPY ./mkdocs/admin /home/docs/docs/pages/admin
+COPY ./mkdocs/jupyter-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/jupyter-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
-RUN echo "------------------------------------------------------ Nbviewer" \
-    && apt-get -y update \
-    && apt-get install -yq --no-install-recommends ca-certificates libcurl4 \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* \
-    && mkdir /opt/nbviewer \
-    && cd /opt/nbviewer && python3 -m venv venv && . venv/bin/activate \
-    && pip install --no-cache /wheels/* && deactivate \
-    && rm -rf /wheels \ 
-    && mkdir -p /home/project/nbviewer \
-    && echo "------------------------------------------------------ system nodejs-18" \
+RUN echo "------------------------------------------------------ system nodejs-18" \
     && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - \
     && apt-get install -y nodejs \
     && npm install --global yarn \
@@ -123,12 +91,10 @@ RUN echo "------------------------------------------------------ Nbviewer" \
     && echo "------------------------------------------------------ user" \
     && mkdir -p /usr/local/share/jupyter && chown -R abc /usr/local/share/jupyter \
     && chown -R abc /opt/theia \
-    && chown -R abc /opt/nbviewer \
-    && chown -R abc /home/project/nbviewer \
     && chown -R abc /etc/service/luigid/ \
     && chown -R abc /var/log/jupyter \
     && chown -R abc /var/log/luigi \
-    && mkdir /usr/etc && chmod -R 777 /usr/etc \
+    && mkdir /usr/etc && chown -R abc /usr/etc \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
 

@@ -1,0 +1,90 @@
+# ===========================================================
+# NAVIGATION
+# ===========================================================
+
+nav:
+  - Home: index.md
+
+
+# ===========================================================
+# CONFIGURATION
+# ===========================================================
+
+site_name: MkDocs Showcase
+edit_uri: ""
+
+# ===========================================================
+# APPEARANCE
+# ===========================================================
+
+theme:
+  name: 'material'
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - search.suggest
+  palette:
+    - scheme: default
+      primary: indigo  
+      accent: blue
+
+extra:
+  # Link to open when your logo is clicked
+  homepage: https://alnoda.org
+  host_url: http://localhost
+
+plugins:
+  - search
+  - include-markdown
+  # Enable Macros and jinja2 templates
+  - awesome-pages
+  # mermaid2 diagrams: https://mermaid-js.github.io/mermaid/#/
+  - mermaid2:
+      arguments:
+        theme: forest   # default, forest, dark, neutral, base
+        themeCSS: ".er.entityLabel{fill: black;} .messageLine0{stroke: orange;} .messageLine1{stroke: orange;} #arrowhead{fill: orange;} .messageText{fill: black; stroke: black}" 
+
+
+markdown_extensions:
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.superfences:
+      # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.tabbed
+  - abbr
+  - pymdownx.snippets
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.escapeall
+  - pymdownx.smartsymbols
+  - pymdownx.tilde:
+      smart_delete: true
+  - footnotes
+
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid/dist/mermaid.min.js
+
+          
+ 
+
+
+

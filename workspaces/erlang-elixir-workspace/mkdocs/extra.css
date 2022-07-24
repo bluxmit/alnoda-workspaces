@@ -1,0 +1,20 @@
+[data-md-color-scheme="elixir"] {
+  --md-primary-fg-color:        #604270;
+  --md-primary-fg-color--light: #c9af06;
+  --md-primary-fg-color--dark:  #604270;
+  --md-accent-fg-color:         #07B6AB;
+
+  --md-default-bg-color:        #FFFFFF;
+  --md-typeset-a-color:         #604270;
+}
+
+[data-md-color-scheme="elixir-dark"] {
+  --md-primary-fg-color:        #83698E;
+  --md-accent-fg-color:         #07B6AB;
+  
+  --md-default-bg-color:        #232834;
+  --md-default-fg-color--light: #604270;
+  --md-typeset-color:           #FFFFFF;
+  --md-typeset-a-color:         #83698E;
+}
+

@@ -94,53 +94,10 @@
             "description": "Comprehensive visual exploration, analysis and discovery from dataset files."
         },
         {
-            "env": "NBVIEWER_URL",
-            "subpath": "localfile/",
-            "name": "Notebook viewer",
-            "image": "assets/home/nbviewer.png",
-            "description": "Display notebooks from folder <b>/home/project/nbviewer</b>"
-        },
-        {
-            "env": "VOILA_URL",
-            "name": "Voila",
-            "image": "assets/home/voila.png",
-            "description": "Render live Jupyter notebooks with interactive widgets from folder <b>/home/project/voila</b>"
-        },
-        {
             "env": "LUIGI_URL",
             "name": "Luigi",
             "image": "assets/home/luigi.png",
             "description": "Luigi helps you build complex pipelines of batch jobs in Python"
-        },
-        {
-            "env": "CRONICLE_URL",
-            "name": "Cronicle",
-            "image": "assets/home/Cronicle.jpg",
-            "description": "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
-        },
-        {
-            "env": "UNGIT_URL",
-            "name": "Ungit",
-            "image": "assets/home/Ungit.jpg",
-            "description": "Manage Git repositories and work flow using beautiful UI"
-        },
-        {
-            "env": "STATICFS_URL",
-            "name": "Static File Server",
-            "image": "assets/home/Static-server.png",
-            "description": "Serve any static websites like a breeze"
-        },
-        {
-            "env": "MC_URL",
-            "name": "M.Commander",
-            "image": "assets/home/MC.jpg",
-            "description": "Feature rich visual file manager with internal text viewer and editor" 
-        },
-        {
-            "env": "HTOP_URL",
-            "name": "Process monitor",
-            "image": "assets/home/Htop.jpg",
-            "description": "Monitor running process and resource utilization"
         }
         ] 
 %}

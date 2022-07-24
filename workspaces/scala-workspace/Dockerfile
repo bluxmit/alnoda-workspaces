@@ -1,10 +1,14 @@
 ARG docker_registry=docker.io/alnoda
-ARG image_tag=2.2-17
+ARG image_tag=3.0-17
 
 FROM ${docker_registry}/java-workspace:${image_tag}
 USER root
 
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml
+COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
+COPY ./mkdocs/scala-circle.svg /home/docs/docs/assets/
+COPY ./mkdocs/scala-circle-white.svg /home/docs/docs/assets/
+COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
+COPY ./mkdocs/about.md /home/docs/docs/about.md
 
 RUN echo "------------------------------------------------------ coursier" \
     && cd /tmp && curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs \

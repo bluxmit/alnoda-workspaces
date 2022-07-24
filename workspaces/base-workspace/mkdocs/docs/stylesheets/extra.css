@@ -1,0 +1,21 @@
+[data-md-color-scheme="workspace"] {
+  --md-primary-fg-color:        #2A2D2E;
+  --md-primary-fg-color--light: #2A2D2E;
+  --md-primary-fg-color--dark:  #2A2D2E;
+  --md-accent-fg-color:         #E77260;
+
+  --md-default-bg-color:        #E9EAE6;
+}
+
+[data-md-color-scheme="workspace-dark"] {
+  --md-primary-fg-color:        #3C3C3C;
+  --md-primary-fg-color--light: #3C3C3C;
+  --md-primary-fg-color--dark:  #3C3C3C;
+  --md-accent-fg-color:         #E77260;
+  
+  --md-default-bg-color:        #1E1E1E;
+  --md-default-fg-color--light: #9CDCFE;
+  --md-typeset-color:           #9CDCFE;
+  --md-typeset-a-color:         #9CDCFE;
+}
+
