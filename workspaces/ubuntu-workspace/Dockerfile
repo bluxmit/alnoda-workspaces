@@ -6,7 +6,7 @@ COPY zsh-in-docker.sh /tmp/zsh-in-docker.sh
 
 # Systemctl within Docker and Python 3.9
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \ 
-    && echo "------------------------------------------------------ Common stuff" \
+    && echo "------------------------------------------------------ Common" \
     && apt-get install -y sudo curl wget telnet jq \
     && apt-get install -y software-properties-common \
     && apt-get install -y zip gzip tar \
@@ -26,7 +26,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && pip install --upgrade setuptools \
     && pip install --upgrade distlib \
     && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
-    && echo "------------------------------------------------------ Allow users some priviledged actions" \
+    &&  apt-get install -y python-is-python3 \
+    && echo "------------------------------------------------------ Allow users to install packages with apt" \
     && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
     && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
     && echo "------------------------------------------------------ GIT" \
@@ -153,6 +154,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && rm -rf /home/abc/.oh-my-zsh/custom/themes/spaceship-zsh-theme/.git 
 
 USER abc
+
+RUN echo "------------------------------------------------------ Pipx" \
+    && python3 -m pip install --user pipx \
+    && python3 -m pipx ensurepath 
 
 ENV PATH="/home/abc/.local/bin:${PATH}"
 
