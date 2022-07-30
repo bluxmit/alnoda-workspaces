@@ -7,10 +7,6 @@
 Containerized environment which helps to develop complex and awesome-looking documentation websites.  
 Create docs from all your GitHub, GitLab and Bitbucket repositories, automate periodic builds.    
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/mkdocs-magicspace/img/mkdocs-collage.png" alt="Collage" width="750">
-</p>
-
 ## Why 
 
 - If want a ready tool to develop beautiful doccumentation websites.
@@ -74,7 +70,7 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
     - Node/nodeenv
     - curl, wget, telnet, jq
     - **Git:** git, git-flow 
-    - **File browsers:** mc, xplr
+    - **File browsers:** mc
     - **Text editors:** nano, vim, mcedit
     - **System monitors:** ncdu, htop, glances, vizex
     - **Process Control:** supervisord

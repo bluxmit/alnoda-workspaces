@@ -3,7 +3,7 @@
 </p>  
 
 # IDE-workspace
-General-purpose, fully isolated contaierized development environment. 
+General-purpose, fully isolated containerized development environment. 
 Includes code editor, terminal, filebrowser, git manager, static file server and job scheduler. 
 
 <p align="center">
@@ -42,7 +42,7 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
     - Node/nodeenv
     - curl, wget, telnet, jq
     - **Git:** git, git-flow 
-    - **File browsers:** mc, xplr
+    - **File browsers:** mc
     - **Text editors:** nano, vim, mcedit
     - **System monitors:** ncdu, htop, glances, vizex
     - **Process Control:** supervisord

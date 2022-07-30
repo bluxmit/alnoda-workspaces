@@ -4,7 +4,7 @@
 
 # Python-automate workspace 
 
-Containerized development and execution environment for the projects where Python is used to automate various tasks. 
+Containerized development and execution environment to automate various tasks with Python. 
 Includes Python, python tooling, browser-based IDE, file browser, git manager, visual job scheduler, static server.
 
 <p align="center">
@@ -62,7 +62,7 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
     - Node/nodeenv
     - curl, wget, telnet, jq
     - **Git:** git, git-flow 
-    - **File browsers:** mc, xplr
+    - **File browsers:** mc
     - **Text editors:** nano, vim, mcedit
     - **System monitors:** ncdu, htop, glances, vizex
     - **Process Control:** supervisord

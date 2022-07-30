@@ -63,7 +63,7 @@ VS-Code extensions and works in browser. This means it can run inside a docker c
     - Node/nodeenv
     - curl, wget, telnet, jq
     - **Git:** git, git-flow 
-    - **File browsers:** mc, xplr
+    - **File browsers:** mc
     - **Text editors:** nano, vim, mcedit
     - **System monitors:** ncdu, htop, glances, vizex
     - **Process Control:** supervisord

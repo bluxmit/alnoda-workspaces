@@ -4,8 +4,7 @@
 
 # SQLite Workspace
 
-Containerized workspace that helps to develop SQLite databases.
-
+Containerized workspace which helps to develop SQLite databases.
 
 ## Why this images
 

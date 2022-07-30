@@ -4,7 +4,7 @@
 
 # PHP workspace 
 
-Containerized isolated development environment for PHP coding.  
+Containerized isolated development environment for PHP programming language.  
 Includes PHP, Composer, code editor, terminal, filebrowser and git manager. 
 
 ## Why this images
