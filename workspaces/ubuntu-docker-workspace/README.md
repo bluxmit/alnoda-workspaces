@@ -3,8 +3,8 @@
 </p>  
 
 # Ubuntu docker workspace
-Containerized Linux terminal environment. Essentially Ubuntu 20.04 docker image extended with typical console apps, such as Git, 
-file browsers and system monitors. Has docker in docker.
+
+Containerized Linux terminal environment with docker in docker.
 
 Start
 

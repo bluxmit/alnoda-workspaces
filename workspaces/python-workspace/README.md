@@ -4,7 +4,7 @@
 
 # Python workspace 
 
-Containerized isolated development environment for Python.  
+Containerized isolated development environment for Python programming language.  
 
 ## Why this images
 

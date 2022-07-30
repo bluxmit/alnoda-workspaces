@@ -5,7 +5,6 @@
 # Theia workspace
 
 General-purpose containerized isolated development environment.  
-Includes code editor, terminal, filebrowser and git manager. 
 
 ## Why this images
 

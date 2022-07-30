@@ -3,7 +3,7 @@
 </p>  
 
 # IDE-workspace
-General-purpose, fully isolated contaierized development environment. 
+General-purpose, fully isolated containerized development environment. 
 Includes code editor, terminal, filebrowser, git manager, static file server and job scheduler. 
 
 <p align="center">

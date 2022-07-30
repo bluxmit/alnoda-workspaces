@@ -6,7 +6,6 @@
 
 Containerized isolated development environment for [Streamlit](https://streamlit.io/) and Python.  
 
-
 ## Why this images
 
 1. If you need self-hosted environment for Streamlit app development.

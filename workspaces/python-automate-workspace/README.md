@@ -4,7 +4,7 @@
 
 # Python-automate workspace 
 
-Containerized development and execution environment for the projects where Python is used to automate various tasks. 
+Containerized development and execution environment to automate various tasks with Python. 
 Includes Python, python tooling, browser-based IDE, file browser, git manager, visual job scheduler, static server.
 
 <p align="center">

@@ -2,7 +2,6 @@
   <img src="./img/k8s-circle.svg" alt="Kubernetes logo" width="150">
 </p>  
 
-
 # Kubespray Workspace
 
 Containerized development, execution and admin environment for Kubernetes, Ansible and Terraform.  
@@ -13,7 +12,6 @@ Administer and schedule maintenance tasks.
 <p align="center">
   <img src="img/kubespray-wid-collage.png" alt="Collage" width="750">
 </p>
-
 
 ## Why this images
 
@@ -105,7 +103,4 @@ See our guides
 - [**getting started - Kubernetes**](https://docs.alnoda.org/kubespray-workspace/tutorial/)
 - [**getting started - Ansible**](https://docs.alnoda.org/ansible-terraform-workspace/ansible-tools/)
 - [**getting started - Terraform**](https://docs.alnoda.org/ansible-terraform-workspace/terraform-tools/)
-
-## Demo 
-
 
