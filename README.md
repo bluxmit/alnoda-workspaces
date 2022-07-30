@@ -13,16 +13,8 @@ Containerized development, admin and professional environments.
 
 Workspaces consist of
 
-- toolsets selected for specific tasks, such as software development, database administration or data exploration
-- browser based aplications that enable cloud development, such as IDE, file manager, job scheduler
-
-<div align="center" style="font-style: italic;">
-    Demo: Ansible-Terraform workspace
-</div>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/ansible-terraform-workspace/img/ansible-terraform-wid.gif" alt="Htop" width="900">
-</p>
+- toolsets selected for specific tasks, such as software development, database administration or data exploration.
+- browser based aplications that enable cloud development, such as IDE, file manager, job scheduler.
 
 ## Docs
 
