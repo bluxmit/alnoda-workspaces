@@ -1,0 +1,33 @@
+---
+# mandatory
+name: Go workspace
+doc_url: https://docs.alnoda.org/workspaces/go-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Go (golang) workspace
+  Portable containerized isolated development environment for Go programming language.
+
+# UI icons
+logo: go-circle-white.svg
+favicon: go-circle.svg
+
+# Homepage UI appearance
+styles:
+  font: Open Sans # chose any from https://fonts.google.com/
+  colors:
+    light:
+      primary: "#007D9C"
+      accent: "#c9af06"
+      title: "#007D9C"
+      subtitle: "#c9af06"
+      background: "#FFFFFF"
+    dark:
+      primary: "#007D9C"
+      accent: "#c9af06"
+      background: "#010d14"
+      title: "#79D4FD"
+      subtitle: "#c9af06"
+      text: "#FFFFFF"
+  common_colors:
+    nav: "#eab676"

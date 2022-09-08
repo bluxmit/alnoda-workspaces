@@ -1,9 +1,9 @@
 {
-  "port": 8021,
+  "port": 8023,
   "baseURL": "",
   "address": "0.0.0.0",
   "log": "stdout",
-  "database": "/opt/filebrowser/database.db",
+  "database": "/home/abc/apps/filebrowser/database.db",
   "root": "/home",
   "allowEdit": true,
   "allowNew": true,

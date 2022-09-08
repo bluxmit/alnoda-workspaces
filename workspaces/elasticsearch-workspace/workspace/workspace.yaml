@@ -1,0 +1,31 @@
+---
+# mandatory
+name: Elasticsearch workspace
+doc_url: https://docs.alnoda.org/workspaces/elasticsearch-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Code-server workspace
+  Browser-based containerized environment to interact, 
+  manage and administer Opensearch and Elasticsearch clusters.
+
+# UI icons
+logo: osearch-circle-white.svg
+favicon: osearch-circle.svg
+
+# (Homepage UI appearance)
+styles:
+  font: Ruda
+  colors:
+    light:
+      primary: "#003B5C"
+      accent: "#00A3E0"
+      subtitle: "#003B5C"
+      background: "#F5F7F7"
+    dark:
+      primary: "#176655"
+      accent: "#FEC514"
+      background: "#343741"
+      title: "#9CDCFE"
+      subtitle: "#9CDCFE"
+      text: "#9CDCFE"

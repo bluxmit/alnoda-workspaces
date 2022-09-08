@@ -1,5 +1,6 @@
 {
     "terminal.integrated.shell.linux": "/bin/zsh",
     "workbench.colorTheme": "Atomize",
-    "git-graph.maxDepthOfRepoSearch": 3
+    "git-graph.maxDepthOfRepoSearch": 3,
+    "workbench.iconTheme": "deepdark-material-icons"
 }

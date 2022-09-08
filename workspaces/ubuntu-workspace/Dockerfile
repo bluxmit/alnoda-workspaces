@@ -4,7 +4,6 @@ COPY unified-supervisord.conf supervisord.conf /etc/supervisord/
 COPY mc.ini /home/abc/.config/mc/ini
 COPY zsh-in-docker.sh /tmp/zsh-in-docker.sh
 
-# Systemctl within Docker and Python 3.9
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \ 
     && echo "------------------------------------------------------ Common" \
     && apt-get install -y sudo curl wget telnet jq \
@@ -15,18 +14,20 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && chown -R abc /home \
     && mkdir -p /home/abc \
     && chown -R abc /home/abc \
+    && echo "------------------------------------------------------ Nix folder" \
+    && mkdir -m 0755 /nix && chown abc /nix \
     && echo "------------------------------------------------------ docker systemctl replacement" \
     && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl  \
     && chown -R abc /usr/local/bin/systemctl \ 
     && echo "------------------------------------------------------ Python" \
     && apt-get install -y python3-distutils \
     && apt-get install -y python3-pip \
-    && apt-get install -y python3-venv \
     && pip install --upgrade pip \
     && pip install --upgrade setuptools \
     && pip install --upgrade distlib \
-    && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 \
     &&  apt-get install -y python-is-python3 \
+    && mkdir -p /usr/bin/pip3.8 \
+    && chown abc /usr/bin/pip3.8 \
     && echo "------------------------------------------------------ Allow users to install packages with apt" \
     && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
     && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
@@ -38,6 +39,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && mv /tmp/lazygit/lazygit /usr/bin/ \
     && rm /tmp/lazygit_0.34_Linux_x86_64.tar.gz \
     && rm -rf /tmp/lazygit \
+    && echo 'alias lg="lazygit"' >> /home/abc/.zshrc \
     && echo "------------------------------------------------------ Nodeenv" \
     && pip install nodeenv \
     && apt-get install -y yarn \
@@ -123,15 +125,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && pip install glances==3.2.5 \
     && pip install vizex==2.1.0 \
     && echo "------------------------------------------------------ Web-based terminal" \
-    && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64 \
+    && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.7.1/ttyd.x86_64 \
     && mv ttyd.x86_64 /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd \
-    && echo "------------------------------------------------------ utils" \
-    && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    && rm -rf /tmp/alnoda-workspaces \
     && echo "------------------------------------------------------ User" \
+    && chown abc /etc/timezone \
     && chown abc /home/project \
+    && mkdir -p /home/abc/bin \ 
+    && chown abc /home/abc/bin \
     && mkdir -p /home/abc/.local/bin \ 
     && chown abc /home/abc/.local && chown abc /home/abc/.local/bin \
     && chown abc /home/abc/.local && chown abc /home/abc/.local/bin  \
@@ -155,11 +156,24 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
 
 USER abc
 
-RUN echo "------------------------------------------------------ Pipx" \
+RUN echo "------------------------------------------------------ Nix" \
+    && curl -L https://nixos.org/nix/install > /tmp/nix.sh \
+    && chmod +x /tmp/nix.sh \
+    && sh /tmp/nix.sh --no-daemon  \
+    && rm /tmp/nix.sh \
+    && echo "------------------------------------------------------ Pipx" \
+    && sudo apt-get -y install python3.8-venv \
     && python3 -m pip install --user pipx \
     && python3 -m pipx ensurepath 
 
+ENV PATH="/home/abc/bin:${PATH}"
 ENV PATH="/home/abc/.local/bin:${PATH}"
+ENV PATH="/home/abc/.nix-profile/bin:${PATH}"
+
+RUN echo "------------------------------------------------------ after PATH updates" \
+    && pipx install rich-cli \
+    && echo 'alias p="rich"' >> /home/abc/.zshrc \
+    && nix-env -iA cachix -f https://cachix.org/api/v1/install
 
 ###### ENTRY
 

@@ -1,42 +1,30 @@
-ARG docker_registry=docker.io/alnoda
-ARG image_tag=3.0
+FROM alnoda/theia-workspace:4.0
 
-FROM ${docker_registry}/theia-workspace:${image_tag}
-USER root
-
-COPY examples/example /home/abc/example
-
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
-COPY ./mkdocs/java-circle.svg /home/docs/docs/assets/
-COPY ./mkdocs/java-circle-white.svg /home/docs/docs/assets/
-COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
-COPY ./mkdocs/about.md /home/docs/docs/about.md
-
-RUN apt-get -y update \
+RUN sudo apt-get -y update \
     && echo "------------------------------------------------------ java 8" \
     && sudo apt-get install -y openjdk-8-jre \
-    && apt-get install -y openjdk-8-jdk \
+    && sudo apt-get install -y openjdk-8-jdk \
     && echo "------------------------------------------------------ maven" \
-    && wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz -P /tmp \
-    && tar xf /tmp/apache-maven-3.8.6-bin.tar.gz \
-    && mv apache-maven-3.8.6 /opt/maven \
+    && cd /tmp && wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz -P /tmp \
+    && tar -xzf /tmp/apache-maven-3.8.6-bin.tar.gz \
+    && mv apache-maven-3.8.6 /home/abc/maven \
     && rm /tmp/apache-maven-3.8.6-bin.tar.gz \
     && echo "------------------------------------------------------ gradle" \
     && wget https://services.gradle.org/distributions/gradle-7.4.2-bin.zip -P /tmp \
-    && unzip -d /opt/gradle /tmp/gradle-7.4.2-bin.zip \
-    && rm /tmp/gradle-7.4.2-bin.zip \
-    && find /home -type d | xargs -I{} chown -R abc {} \
-    && find /home -type f | xargs -I{} chown abc {} 
-    
+    && unzip -d /home/abc/gradle /tmp/gradle-7.4.2-bin.zip \
+    && rm /tmp/gradle-7.4.2-bin.zip 
+
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
-    M2_HOME=/opt/maven \
-    MAVEN_HOME=/opt/maven \
-    PATH="/opt/maven/bin:${PATH}" 
+    M2_HOME=/home/abc/maven \
+    MAVEN_HOME=/home/abc/maven \
+    PATH="/home/abc/maven/bin:${PATH}" 
 
-ENV GRADLE_HOME=/opt/gradle/gradle-7.4.2 \
-    PATH="/opt/gradle/gradle-7.4.2/bin:${PATH}"
+ENV GRADLE_HOME=/home/abc/gradle/gradle-7.4.2 \
+    PATH="/home/abc/gradle/gradle-7.4.2/bin:${PATH}"
 
-USER abc
+# Copy example into the workspace
+COPY --chown=abc:abc example /home/abc/example
 
-
-
+# Build Alnoda workspace
+COPY --chown=abc:abc workspace /tmp/workspace
+RUN pipx uninstall alnoda-wrk; pipx install alnoda-wrk; alnoda-wrk build /tmp/workspace && rm -rf /tmp/workspace

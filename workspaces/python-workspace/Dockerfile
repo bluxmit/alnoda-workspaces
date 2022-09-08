@@ -1,30 +1,22 @@
-ARG docker_registry=docker.io/alnoda
-ARG image_tag=3.0
+FROM alnoda/theia-workspace:4.0
 
-FROM ${docker_registry}/theia-workspace:${image_tag}
-USER root
+# Install globally common packages 
+COPY --chown=abc:abc python-requirements.txt /home/abc/python-requirements/
+RUN pip install -r /home/abc/python-requirements/python-requirements.txt 
 
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
-COPY ./mkdocs/python-circle.svg /home/docs/docs/assets/
-COPY ./mkdocs/python-circle-white.svg /home/docs/docs/assets/
-COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
-COPY ./mkdocs/about.md /home/docs/docs/about.md
+# Poetry: before installation
+ENV LANG=C.UTF-8
+RUN sudo apt-get -y update \
+    && sudo apt-get install -y language-pack-en \
+    && pip install -U keyrings.alt 
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+# Add poetry to the $PATH
+ENV PATH="$HOME/.poetry/bin:${PATH}"
 
+# Set another color theme for IDE
 COPY settings.json /home/abc/.theia/settings.json
 
-COPY python-requirements.txt /home/abc/installed-python-packages
-
-RUN echo "------------------------------------------------------ Packages, Pipx " \
-    && pip install -r /home/abc/installed-python-packages/python-requirements.txt \
-    && python3 -m pip install --user pipx \
-    && echo "------------------------------------------------------ user" \
-    && find /home -type d | xargs -I{} chown -R abc {} \
-    && find /home -type f | xargs -I{} chown abc {} 
-
-USER abc
-
-
-
-
-
-
+# Build Alnoda workspace
+COPY --chown=abc:abc workspace /tmp/workspace
+RUN pipx uninstall alnoda-wrk; pipx install alnoda-wrk; alnoda-wrk build /tmp/workspace && rm -rf /tmp/workspace

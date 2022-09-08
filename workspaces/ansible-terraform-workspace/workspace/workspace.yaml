@@ -1,0 +1,72 @@
+---
+# mandatory
+name: Ansible-Terraform workspace
+doc_url: https://docs.alnoda.org/workspaces/ansible-terraform-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Base devspace
+  Containerized development, execution and admin environment for Ansible and Terraform. 
+  Create, provision, visualize and manage infrastructures, schedule maintenance tasks.
+
+# UI icons
+logo: terraform-circle-white.svg
+favicon: terraform-circle.svg
+
+# optional:
+# (Quickstart UI appearance)
+styles:
+  font: PT Sans  # chose any from https://fonts.google.com/
+  colors:
+    light:
+      primary: "#241B2F"
+      accent: "#5C41E2"
+      background: "#FFFFFF"
+      title: "#604270"
+      subtitle: "#7747A7"
+    dark:
+      primary: "#7747A7"
+      accent: "#DF736A"
+      background: "#171520"
+      title: "#83698E"
+      text: "#FFFFFF"
+      subtitle: "#604270"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#eab676"
+
+# optional:
+# (tools to add to the Quickstart UI)
+pages:
+  home:
+    - name: Ansible Ara
+      port: 8032 
+      path: /
+      title: Ansible Ara
+      description: "Monitor for all Ansible plays"
+      image: ara.png
+    - name: Terraform Rover
+      port: 8034 
+      title: Terraform Rover
+      description: "Not started! Start manually with your Terraform project dir, i.e.  <b>cd /home/examples/terraform-scaleway/; terraform init; rover --workingDir /home/examples/terraform-scaleway/</b>"
+      image: terraform-rover.png
+    - name: Blast Radius
+      port: 8033 
+      title: Blast Radius
+      description: "Not started! Start manually with your Terraform project dir, i.e.  <b>cd /home/examples/terraform-scaleway; terraform init; blast-radius --serve --port 8033</b>"
+      image: blast-radius.png
+    - name: Cronicle
+      port: 8029 
+      path: /
+      title: Cronicle
+      description: "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
+      image: cronicle.jpg
+
+# optional:
+# (applications and services to launch every time workspace starts)
+start:
+  - name: Ansible Ara
+    cmd: ara-manage runserver 0.0.0.0:8032
+  - name: Port-forwarding for Rover
+    cmd: socat tcp-listen:8034,reuseaddr,fork tcp:localhost:9000
+  

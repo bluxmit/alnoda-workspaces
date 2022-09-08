@@ -1,30 +1,15 @@
-
-ARG docker_registry=docker.io/alnoda
-ARG image_tag=3.0
-
-## Images used:
-ARG BUILD_IMAGE=node:12.18.3
-ARG DEPLOY_IMAGE=${docker_registry}/base-devspace:${image_tag}
-
-
-################################################################################ BUILD 
-
-ARG THEIA_VERSION=1.15.0
-#ARG THEIA_VERSION=latest
-#ARG THEIA_VERSION=next
+ARG BUILD_IMAGE=node:16.17.0
+ARG MAIN_IMAGE=alnoda/base-devspace:4.0
+################################################################################ BUILD THEIA
 FROM ${BUILD_IMAGE} 
-
-ARG THEIA_VERSION
-
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y apt-utils \
     && apt-get install -y git \
     && apt-get install -y libsecret-1-dev \
     && mkdir /opt/theia
-
 WORKDIR /opt/theia
-ADD ${THEIA_VERSION}.package.json ./package.json
+ADD theia_package.json ./package.json
 ARG GITHUB_TOKEN
 RUN yarn --pure-lockfile && \
     NODE_OPTIONS="--max_old_space_size=4096" yarn theia build && \
@@ -36,43 +21,24 @@ RUN yarn --pure-lockfile && \
     echo *.spec.* >> .yarnclean && \
     yarn autoclean --force && \
     yarn cache clean
+################################################################################ WORKSPACE IMAGE
+FROM ${MAIN_IMAGE} 
 
-
-################################################################################ IMAGE
-
-FROM ${DEPLOY_IMAGE} 
-
-USER root
-
-RUN mkdir /opt/theia \
-    && cd /opt/theia && nodeenv --node=12.18.3 env && . env/bin/activate \
-    && apt-get install -y libsecret-1-dev 
-
-COPY --from=0 /opt/theia /opt/theia
-COPY settings.json /home/abc/.theia/settings.json
-COPY supervisord-theia.conf /etc/supervisord/
-
-COPY ./mkdocs/ /home/docs/
-
+# Theia prep: create folder, node env and install deps
+ENV THEIA_DIR="/home/abc/apps/theia"
+RUN mkdir "$THEIA_DIR" \
+    && cd $THEIA_DIR && nodeenv --node=16.17.0 env && . env/bin/activate \
+    && sudo apt-get install -y libsecret-1-dev 
+# Copy built Theia from the build image
+COPY --from=0 --chown=abc:abc /opt/theia $THEIA_DIR
+# Copy Theia settings
+COPY --chown=abc:abc theia_settings.json /home/abc/.theia/settings.json
+# Set env vars that Theia will use
 ENV SHELL=/bin/bash \
-    THEIA_DEFAULT_PLUGINS=local-dir:/opt/theia/plugins \ 
+    THEIA_DEFAULT_PLUGINS=local-dir:${THEIA_DIR}/plugins \ 
     USE_LOCAL_GIT=true \
-    HOME=/home/abc \
-    PATH="/home/abc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    NVM_DIR=/home/abc/.nvm
+    NVM_DIR=/home/abc/.nvm 
 
-RUN echo "------------------------------------------------------ utils" \
-    && rm -rf /home/abc/utils || true \
-    && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    && rm -rf /tmp/alnoda-workspaces \
-    && echo "------------------------------------------------------ user" \
-    && chown -R abc /opt/theia \
-    && mkdir -p /var/log/theia && chown -R abc /var/log/theia \
-    && chown -R abc /home/docs \
-    && chown -R abc /home/abc/utils \
-    && chown -R abc /home/abc/installed-python-packages \
-    && find /home -type d | xargs -I{} chown -R abc {} \
-    && find /home -type f | xargs -I{} chown abc {} 
-    
-USER abc
+# Build Alnoda workspace
+COPY --chown=abc:abc workspace /tmp/workspace
+RUN pipx uninstall alnoda-wrk; pipx install alnoda-wrk; alnoda-wrk build /tmp/workspace && rm -rf /tmp/workspace

@@ -1,0 +1,31 @@
+---
+# mandatory
+name: Erlang-elixir workspace
+doc_url: https://docs.alnoda.org/workspaces/erlang-elixir-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Erlang & Elixir workspace
+  Browser-based portable and containerized development environment for Erlang and Elixir projects.
+
+# UI icons
+logo: elixir-circle-white.svg
+favicon: elixir-circle.svg
+
+# (Homepage UI appearance)
+styles:
+  font: PT Sans
+  colors:
+    light:
+      primary: "#604270"
+      accent: "#07B6AB"
+      subtitle: "#c9af06"
+      background: "#FFFFFF"
+      text: "#604270"
+    dark:
+      primary: "#83698E"
+      accent: "#07B6AB"
+      background: "#232834"
+      title: "#83698E"
+      subtitle: "#604270"
+      text: "#FFFFFF"

@@ -74,6 +74,9 @@ mkdocs-table-reader-plugin==1.1.0
 # https://github.com/soulless-viewer/mkdocs-video
 mkdocs-video==1.3.0 
 
+# https://pypi.org/project/mdx-include/
+mdx-include==1.4.2 
+
 # https://github.com/danielfrg/mkdocs-jupyter
 # mkdocs-jupyter==0.17.3
 
@@ -88,3 +91,4 @@ mkdocs-video==1.3.0
 
 # https://github.com/mondeja/mkdocs-mdpo-plugin
 # mkdocs-mdpo-plugin==0.0.14 
+

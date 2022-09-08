@@ -1,0 +1,34 @@
+---
+# mandatory
+name: Python workspace
+doc_url: https://docs.alnoda.org/workspaces/python-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Python workspace
+  Containerized isolated development environment for Python projects. 
+
+# UI icons
+logo: python-circle-white.svg
+favicon: python-circle.svg
+
+# Homepage UI appearance
+styles:
+  font: Source Sans Pro
+  colors:
+    light:
+      primary: "#1E415E"
+      accent: "#ffda21"
+      title: "#007D9C"
+      subtitle: "#1E415E"
+      background: "#F0F5FA"
+    dark:
+      primary: "#316999"
+      accent: "#ffda21"
+      background: "#1E2933"
+      title: "#4495db"
+      subtitle: "#4495db"
+      text: "#4495db"
+  common_colors:
+    nav: "#eab676"
+

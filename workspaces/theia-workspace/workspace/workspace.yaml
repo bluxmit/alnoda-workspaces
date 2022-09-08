@@ -1,0 +1,20 @@
+---
+# mandatory
+name: Theia workspace
+doc_url: https://docs.alnoda.org/workspaces/theia-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Theia workspace
+  General-purpose portable containerized development environment
+
+# UI icons
+logo: theia-circle-white.svg
+favicon: theia-circle.svg
+
+# add applications and services to the start command
+start:
+  - name: Theia
+    folder: $THEIA_DIR
+    cmd: . env/bin/activate && node $THEIA_DIR/src-gen/backend/main.js --hostname=0.0.0.0 --port=8021 /home 
+ 

@@ -16,9 +16,9 @@ fi
 export SHELL=/bin/zsh 
 
 code-server \
-    --bind-addr 0.0.0.0:8025 \
-    --user-data-dir /opt/vscode/data \
-    --extensions-dir /opt/vscode/extensions \
+    --bind-addr 0.0.0.0:8021 \
+    --user-data-dir $VSCODE_CONFIG_DIR/data \
+    --extensions-dir $VSCODE_CONFIG_DIR/extensions \
     --disable-telemetry \
     --auth "${AUTH}" \
     "${PROXY_DOMAIN_ARG}" \

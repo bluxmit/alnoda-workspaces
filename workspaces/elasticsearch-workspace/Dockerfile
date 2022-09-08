@@ -1,47 +1,31 @@
+FROM alnoda/extended-workspace:4.0
 
-ARG docker_registry=docker.io/alnoda
-ARG image_tag=3.0
-
-FROM ${docker_registry}/ide-workspace:${image_tag}
+# Install Node and elasticdump as root
 USER root
+RUN echo "------------------------------------------------------ nodejs-18" \
+    && curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash - \
+    && sudo apt-get install -y nodejs \
+    && npm install -g npm@8.7.0 \
+    && echo "------------------------------------------------------ elasticsearch-dump" \
+    && npm install elasticdump@6.88.0 -g 
 
-COPY settings.json /home/abc/.theia/settings.json
-
-COPY ./mkdocs/mkdocs.yml /home/docs/mkdocs.yml 
-COPY ./mkdocs/osearch-circle.svg /home/docs/docs/assets/
-COPY ./mkdocs/osearch-circle-white.svg /home/docs/docs/assets/
-COPY ./mkdocs/extra.css /home/docs/docs/stylesheets/
-COPY ./mkdocs/about.md /home/docs/docs/about.md
-
-RUN apt-get -y update \
-    # && echo "------------------------------------------------------ utils" \
-    # && rm -rf /home/abc/utils || true \
-    # && git clone https://github.com/bluxmit/alnoda-workspaces /tmp/alnoda-workspaces \
-    # && mv /tmp/alnoda-workspaces/utils /home/abc/ \
-    # && rm -rf /tmp/alnoda-workspaces \
-    && echo "------------------------------------------------------ nodejs-17" \
-    && curl -fsSL https://deb.nodesource.com/setup_17.x | bash - \
-    && apt-get install -y nodejs \
+# Switch back to abc user and continue
+USER abc
+RUN sudo apt-get -y update \
     && echo "------------------------------------------------------ esbulk" \
     && cd /tmp && wget https://github.com/miku/esbulk/releases/download/v0.7.5/esbulk_0.7.5_amd64.deb \
-    && apt install /tmp/esbulk_0.7.5_amd64.deb \
+    && sudo apt-get install /tmp/esbulk_0.7.5_amd64.deb \
     && rm /tmp/esbulk_0.7.5_amd64.deb \
-    && echo "------------------------------------------------------ elasticsearch-dump" \
-    && npm install -g elasticdump@6.79.3 \
     && echo "------------------------------------------------------ vulkanizer" \
     && cd /tmp && wget https://github.com/github/vulcanizer/releases/download/v0.8.0/vulcanizer_0.8.0_Linux_i386.tar.gz \
     && tar -xzf /tmp/vulcanizer_0.8.0_Linux_i386.tar.gz \
     && chmod +x /tmp/vulcanizer \
-    && mv /tmp/vulcanizer /usr/bin/vulcanizer \
-    && rm /tmp/vulcanizer_0.8.0_Linux_i386.tar.gz \
-    && echo "------------------------------------------------------ user" \
-    && chown -R abc /home/docs \
-    && chown -R abc /home/abc/utils \
-    && chown -R abc /home/abc/installed-python-packages \
-    && find /home -type d | xargs -I{} chown -R abc {} \
-    && find /home -type f | xargs -I{} chown abc {} 
+    && mv /tmp/vulcanizer /home/abc/.local/bin/vulcanizer \
+    && rm /tmp/vulcanizer_0.8.0_Linux_i386.tar.gz 
     
-USER abc
+# Copy new theia configuration (set another default theme)
+COPY --chown=abc:abc settings.json /home/abc/.theia/settings.json
 
-
-
+# Build Alnoda workspace
+COPY --chown=abc:abc workspace /tmp/workspace
+RUN pipx uninstall alnoda-wrk; pipx install alnoda-wrk; alnoda-wrk build /tmp/workspace && rm -rf /tmp/workspace

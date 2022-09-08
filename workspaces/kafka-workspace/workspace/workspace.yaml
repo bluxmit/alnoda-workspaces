@@ -1,0 +1,37 @@
+---
+# mandatory
+name: Kafka Workspace
+doc_url: https://docs.alnoda.org/workspaces/kafka-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Kafka workspace
+  Browser-based portable and containerized environment to interact, manage and administer Kafka clusters.
+
+# UI icons
+logo: kafka-circle-white.svg
+favicon: kafka-circle.svg
+
+# (Homepage UI appearance)
+styles:
+  font: Ruda
+  colors:
+    light:
+      primary: "#252525"
+      accent: "#19758F"
+      subtitle: "#003B5C"
+      background: "#F5F7F7"
+    dark:
+      primary: "#252525"
+      accent: "#19758F"
+      background: "#343741"
+      title: "#9CDCFE"
+      subtitle: "#9CDCFE"
+      text: "#9CDCFE"
+
+start:
+  - name: Zookeeper
+    cmd: /home/abc/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
+  - name: Kafka
+    cmd: /home/abc/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+

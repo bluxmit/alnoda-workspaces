@@ -1,0 +1,32 @@
+---
+# mandatory
+name: Java workspace
+doc_url: https://docs.alnoda.org/workspaces/java-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Java workspace
+  Containerized isolated development environment for Java programming language.
+
+# UI icons
+logo: java-circle-white.svg
+favicon: java-circle.svg
+
+# Homepage UI appearance
+styles:
+  font: Bai Jamjuree 
+  colors:
+    light:
+      primary: "#2585C2"
+      accent: "#2585C2"
+      title: "#E61F24"
+      subtitle: "#9B1C16"
+    dark:
+      primary: "#507E9C"
+      accent: "#F09114"
+      background: "#111B27"
+      title: "#BAAD69"
+      subtitle: "#BAAD69"
+      text: "#BAAD69"
+  common_colors:
+    nav: "#eab676"

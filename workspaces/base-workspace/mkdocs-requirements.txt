@@ -1,4 +1,0 @@
-mkdocs-material==8.2.14 
-mkdocs-material-extensions==1.0.3 
-mkdocs-macros-plugin==0.7.0
-mkdocs-multirepo-plugin==0.3.5
