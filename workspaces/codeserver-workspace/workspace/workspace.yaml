@@ -6,30 +6,25 @@ author: bluxmit
 version: 4.0
 description: |
   # Code-server workspace
-  General-purpose portable containerized browser-based development environment.  
+  Browser-based portable and containerized general-purpose development environment.  
   Includes code editor, terminal, file browser and git manager. 
 
-# UI icons
-logo: vscode-circle-white.svg
-favicon: vscode-circle.svg
+tags: web-ide, codeserver
 
-# (Homepage UI appearance)
+# UI icons
+logo: codeserver-circle-white.svg
+favicon: codeserver-circle.svg
+
 styles:
   colors:
     light:
-      primary: "#271647"
-      accent: "#44DA88"
-      subtitle: "#271647"
+      code_text: "#EAB676"
+      code_background: "#252525"
     dark:
-      primary: "#2b3ac4"
-      accent: "#44DA88"
-      background: "#2E303E"
-      title: "#E9EBFC"
-      subtitle: "#E9EBFC"
-      text: "#E9EBFC"
+      code_text: "#EAB676"
+      code_background: "#3C3C3C"
 
 # add applications and services to the start command
 start:
   - name: Code-server
-    folder: $CODESERVER_DIR
-    cmd: . env/bin/activate; bash code-server-run.sh 
+    cmd: code-server --bind-addr 0.0.0.0:8021 --auth "none" --disable-telemetry /home

@@ -1,4 +1,4 @@
-ARG BUILD_IMAGE=node:12.18.3
+ARG BUILD_IMAGE=node:16.17.0
 ARG MAIN_IMAGE=alnoda/java-workspace:4.0-17
 ################################################################################ BUILD THEIA
 FROM ${BUILD_IMAGE} 
@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get install -y libsecret-1-dev \
     && mkdir /opt/theia
 WORKDIR /opt/theia
-ADD theia_package.json ./package.json
+ADD elixir_theia_package.json ./package.json
 ARG GITHUB_TOKEN
 RUN yarn --pure-lockfile && \
     NODE_OPTIONS="--max_old_space_size=4096" yarn theia build && \
@@ -29,7 +29,7 @@ FROM ${MAIN_IMAGE}
 ENV THEIA_DIR="/home/abc/apps/theia"
 RUN rm -rf $THEIA_DIR \
     && mkdir "$THEIA_DIR" \
-    && cd $THEIA_DIR && nodeenv --node=12.18.3 env && . env/bin/activate 
+    && cd $THEIA_DIR && nodeenv --node=16.17.0 env && . env/bin/activate 
 # Copy built Theia from the build image
 COPY --from=0 --chown=abc:abc /opt/theia $THEIA_DIR
 

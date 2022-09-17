@@ -1,6 +1,6 @@
 {
     "terminal.integrated.shell.linux": "/bin/zsh",
-    "workbench.colorTheme": "Ayu Mirage Bordered",
+    "workbench.colorTheme": "SynthWave '84",
     "git-graph.maxDepthOfRepoSearch": 3,
     "workbench.iconTheme": "vs-seti"
 }

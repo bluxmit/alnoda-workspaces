@@ -1,4 +1,4 @@
-FROM alnoda/ubuntu-workspace:20.04-4.0
+FROM alnoda/ubuntu-workspace:4.0-20.04
 
 # Make image Alnoda-compatible - add dir for logs
 USER root
@@ -9,7 +9,6 @@ USER abc
 
 # Install workspace tools and applications
 RUN sudo apt-get -y update \
-    && mkdir /home/abc/apps \
     && sudo apt-get install -y socat \
     && echo "------------------------------------------------------ install filebrowser" \
 	&& cd /tmp && wget https://github.com/filebrowser/filebrowser/releases/download/v2.21.1/linux-amd64-filebrowser.tar.gz \
@@ -32,6 +31,6 @@ COPY --chown=abc:abc filebrowser.json /home/abc/apps/filebrowser/.filebrowser.js
 # Build Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace
 RUN echo "------------------------------------------------------ build workspace" \
-    && pipx install alnoda-wrk \
+    && pipx install alnoda-wrk==0.2.17 \
     && alnoda-wrk build /tmp/workspace \ 
     && rm -rf /tmp/workspace

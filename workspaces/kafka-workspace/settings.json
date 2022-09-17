@@ -1,5 +1,4 @@
 {
-    "terminal.integrated.shell.linux": "/bin/zsh",
-    "workbench.colorTheme": "Search Lights Italic",
+    "workbench.colorTheme": "Desert Lights",
     "git-graph.maxDepthOfRepoSearch": 3
 }

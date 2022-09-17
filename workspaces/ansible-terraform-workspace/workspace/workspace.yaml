@@ -9,6 +9,8 @@ description: |
   Containerized development, execution and admin environment for Ansible and Terraform. 
   Create, provision, visualize and manage infrastructures, schedule maintenance tasks.
 
+tags: terraform, ansible, infra-visualisation, playbook-monitoring
+
 # UI icons
 logo: terraform-circle-white.svg
 favicon: terraform-circle.svg
@@ -23,14 +25,12 @@ styles:
       accent: "#5C41E2"
       background: "#FFFFFF"
       title: "#604270"
-      subtitle: "#7747A7"
     dark:
       primary: "#7747A7"
       accent: "#DF736A"
       background: "#171520"
       title: "#83698E"
       text: "#FFFFFF"
-      subtitle: "#604270"
   common_colors:
     header: "#FFFFFF"
     nav: "#eab676"

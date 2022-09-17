@@ -1,20 +1,51 @@
 FROM alnoda/base-devspace:4.0
 
 # Set environmental variables for Code-server
-ENV CODESERVER_DIR="/home/abc/apps/code-server"
-ENV VSCODE_CONFIG_DIR="/home/abc/.config/vscode"
+ARG CODESERVER_VERSION="4.7.0"
 
-# Install Code-server and create folders for data & extensions
+# Install Code-server 
 RUN echo "------------------------------------------------------ code-server" \
-	&& sudo apt-get install -y build-essential pkg-config \
-    && mkdir -p "$CODESERVER_DIR" \
-	&& cd $CODESERVER_DIR && nodeenv --node=16.15.0 --npm=1.0.10 env \
-	&& cd $CODESERVER_DIR && . env/bin/activate &&  npm install -g yarn && yarn global add code-server@4.4.0 \
-	&& mkdir -p $VSCODE_CONFIG_DIR/data \
-	&& mkdir -p $VSCODE_CONFIG_DIR/extensions 
+	&& cd \tmp \
+    && curl -fOL https://github.com/coder/code-server/releases/download/v$CODESERVER_VERSION/code-server_${CODESERVER_VERSION}_amd64.deb \
+    && sudo dpkg -i code-server_${CODESERVER_VERSION}_amd64.deb \
+    && rm /tmp/code-server_${CODESERVER_VERSION}_amd64.deb 
 
-# Copy Code-server startup script
-COPY --chown=abc:abc code-server-run.sh $CODESERVER_DIR/code-server-run.sh
+# Install codeserver extensions 
+RUN echo "------------------------------------------------------ common extensions" \
+    && code-server --install-extension  mhutchie.git-graph \
+    && code-server --install-extension  redhat.vscode-yaml \
+    && code-server --install-extension  redhat.vscode-xml \
+    && code-server --install-extension  mechatroner.rainbow-csv \
+    && code-server --install-extension  formulahendry.auto-close-tag \
+    && code-server --install-extension  anteprimorac.html-end-tag-labels \
+    && code-server --install-extension  abusaidm.html-snippets \
+    && code-server --install-extension  sndst00m.vscode-native-svg-preview \
+    && code-server --install-extension  pranaygp.vscode-css-peek \
+    && code-server --install-extension  anseki.vscode-color \
+    && echo "------------------------------------------------------ themes" \
+    && code-server --install-extension  armandphilippot.coldark \
+    && code-server --install-extension  RobbOwen.synthwave-vscode \
+    && code-server --install-extension  nadim-vscode.infinity-dark-theme \
+    && code-server --install-extension  emroussel.atomize-atom-one-dark-theme \
+    && code-server --install-extension  teabyii.ayu \
+    && code-server --install-extension  wesbos.theme-cobalt2 \
+    && code-server --install-extension  github.github-vscode-theme \
+    && code-server --install-extension  armandphilippot.coldark \
+    && code-server --install-extension  radiolevity.search-lights \
+    && code-server --install-extension  vladeeg.vscode-theme-vlight \
+    && code-server --install-extension  akamud.vscode-theme-onelight \
+    && code-server --install-extension  akamud.vscode-theme-onedark \
+    && code-server --install-extension  rubjo.ultimate-dark-neo \
+    && code-server --install-extension  sainnhe.edge \
+    && echo "------------------------------------------------------ icons" \
+    && code-server --install-extension  emroussel.atom-icons \
+    && code-server --install-extension  laurenttreguier.vscode-simple-icons 
+
+# Set default codeserver terminal
+ENV SHELL=/bin/zsh
+
+# Set default codeserver theme
+COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json
 
 # Build Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace

@@ -1,6 +1,4 @@
 {
-    "terminal.integrated.shell.linux": "/bin/zsh",
-    "workbench.colorTheme": "Atomize",
-    "git-graph.maxDepthOfRepoSearch": 3,
-    "workbench.iconTheme": "deepdark-material-icons"
+    "workbench.colorTheme": "Ayu Mirage Bordered",
+    "git-graph.maxDepthOfRepoSearch": 3
 }

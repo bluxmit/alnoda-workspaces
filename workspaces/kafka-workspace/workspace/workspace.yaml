@@ -8,6 +8,8 @@ description: |
   # Kafka workspace
   Browser-based portable and containerized environment to interact, manage and administer Kafka clusters.
 
+tags: kafka, kafka-cli
+
 # UI icons
 logo: kafka-circle-white.svg
 favicon: kafka-circle.svg
@@ -19,15 +21,15 @@ styles:
     light:
       primary: "#252525"
       accent: "#19758F"
-      subtitle: "#003B5C"
       background: "#F5F7F7"
     dark:
       primary: "#252525"
       accent: "#19758F"
       background: "#343741"
       title: "#9CDCFE"
-      subtitle: "#9CDCFE"
       text: "#9CDCFE"
+      code_text: "#000000"
+      code_background: "#F0F0F0"
 
 start:
   - name: Zookeeper

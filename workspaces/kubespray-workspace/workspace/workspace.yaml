@@ -1,0 +1,54 @@
+---
+# mandatory
+name: Kubespray Workspace
+doc_url: https://docs.alnoda.org/workspaces/kubespray-workspace/
+author: bluxmit
+version: 4.0
+description: |
+  # Kubespray workspace
+  Browser-based portable and containerized environment for Kubernetes, Ansible and Terraform.  
+  Create, provision, visualize and manage infrastructures.  
+  Deploy and develop Kubernetes clusters.  
+  Administer and schedule maintenance tasks.  
+
+tags: kubespray, kubectl, k9s, helm, octant, krew
+
+# UI icons
+logo: k8s-circle-white.svg
+favicon: k8s-circle.svg
+
+# (Homepage UI appearance)
+styles:
+  font: Ubuntu
+  colors:
+    light:
+      primary: "#0B0438"
+      accent: "#B8610B"
+      subtitle: "#7747A7"
+      background: "#F0F0F0"
+      title: "#303030"
+      code_text: "#FFFFFF"
+      code_background: "#0B0438"
+    dark:
+      primary: "#4B0BB8"
+      accent: "#B8610B"
+      background: "#00031C"
+      title: "#E3EAF2"
+      subtitle: "#E3EAF2"
+      text: "#E3EAF2"
+      code_text: "#000000"
+      code_background: "#F0F0F0"
+
+pages:
+  home:
+    - name: Octannt
+      port: 8035 
+      path: /
+      title: Octant
+      description: "Understand better the complexity of Kubernetes clusters"
+      image: octant.png
+
+start:
+  - name: Octant
+    cmd: octant
+

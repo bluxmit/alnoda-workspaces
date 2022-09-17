@@ -1,1 +1,0 @@
-Containerized isolated development environment for Javascript and Node.js

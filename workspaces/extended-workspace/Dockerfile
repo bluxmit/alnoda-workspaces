@@ -1,4 +1,4 @@
-FROM alnoda/theia-workspace:4.0
+FROM alnoda/codeserver-workspace:4.0
 
 # Set env variables for Cronicle and Static file server
 ENV CRONICLE_VERSION="v0.9.10" \

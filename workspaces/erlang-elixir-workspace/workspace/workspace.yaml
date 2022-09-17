@@ -8,6 +8,8 @@ description: |
   # Erlang & Elixir workspace
   Browser-based portable and containerized development environment for Erlang and Elixir projects.
 
+tags: erlang, elixir, kerl, kiex
+
 # UI icons
 logo: elixir-circle-white.svg
 favicon: elixir-circle.svg
@@ -29,3 +31,5 @@ styles:
       title: "#83698E"
       subtitle: "#604270"
       text: "#FFFFFF"
+      code_text: "#000000"
+      code_background: "#F0F0F0"

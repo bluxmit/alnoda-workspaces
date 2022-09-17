@@ -1,21 +1,28 @@
 FROM alnoda/codeserver-workspace:4.0
 
+USER root
+RUN sudo apt-get -y update \
+    && echo "------------------------------------------------------ system nodejs-18" \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && sudo apt-get install -y nodejs \
+    && npm install --global yarn \
+    && echo "------------------------------------------------------ user" \
+    && chown abc /usr/lib/node_modules \
+    && find /usr/lib/node_modules -type f | xargs -I{} chown abc {} 
+USER abc
+
 RUN echo "------------------------------------------------------ nvm" \
     && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
     && echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"' >> /home/abc/.zshrc \
-    && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /home/abc/.zshrc 
+    && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /home/abc/.zshrc
 
-ENV NVM_DIR="/home/abc/.nvm" \
-    NODE_VERSION="18.9.0"
-
-RUN echo "------------------------------------------------------ node, npm" \
-    && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
-
-# ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-# ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+# Create node environment & install Static file server 
+ENV STATIC_FILESERVER_DIR="/home/abc/apps/static-file-server"
+RUN echo "------------------------------------------------------ Static file server" \
+    && mkdir /home/static-server \
+	&& mkdir -p $STATIC_FILESERVER_DIR \
+	&& cd $STATIC_FILESERVER_DIR && nodeenv --node=16.17.0 --npm=6.0.0 env \
+	&& cd $STATIC_FILESERVER_DIR && . env/bin/activate &&  npm install -g serve@14.0.1 
 
 # Install additional codeserver extensions 
 RUN echo "------------------------------------------------------ extensions" \

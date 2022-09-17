@@ -6,7 +6,9 @@ author: bluxmit
 version: 4.0
 description: |
   # Go (golang) workspace
-  Portable containerized isolated development environment for Go programming language.
+  Browser-based portable containerized and completely isolated development environment for Go programming language projects.
+
+tags: go
 
 # UI icons
 logo: go-circle-white.svg
@@ -20,14 +22,12 @@ styles:
       primary: "#007D9C"
       accent: "#c9af06"
       title: "#007D9C"
-      subtitle: "#c9af06"
       background: "#FFFFFF"
     dark:
       primary: "#007D9C"
       accent: "#c9af06"
       background: "#010d14"
       title: "#79D4FD"
-      subtitle: "#c9af06"
       text: "#FFFFFF"
   common_colors:
     nav: "#eab676"

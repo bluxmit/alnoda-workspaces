@@ -14,6 +14,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && chown -R abc /home \
     && mkdir -p /home/abc \
     && chown -R abc /home/abc \
+    && mkdir -p /home/abc/apps \
+    && chown -R abc /home/abc/apps \
     && echo "------------------------------------------------------ Nix folder" \
     && mkdir -m 0755 /nix && chown abc /nix \
     && echo "------------------------------------------------------ docker systemctl replacement" \
@@ -31,6 +33,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "------------------------------------------------------ Allow users to install packages with apt" \
     && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
     && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
+    && chown abc /etc/apt/sources.list.d \
     && echo "------------------------------------------------------ GIT" \
     && apt-get install -y git git-flow \
     && wget -P /tmp https://github.com/jesseduffield/lazygit/releases/download/v0.34/lazygit_0.34_Linux_x86_64.tar.gz \
@@ -39,10 +42,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && mv /tmp/lazygit/lazygit /usr/bin/ \
     && rm /tmp/lazygit_0.34_Linux_x86_64.tar.gz \
     && rm -rf /tmp/lazygit \
-    && echo 'alias lg="lazygit"' >> /home/abc/.zshrc \
     && echo "------------------------------------------------------ Nodeenv" \
     && pip install nodeenv \
     && apt-get install -y yarn \
+    && echo "------------------------------------------------------ Node env with pm2" \
+    && mkdir -p /home/abc/apps/node \
+    && chown -R abc /home/abc/apps/ \
+    && cd /home/abc/apps/node && nodeenv --node=18.9.0 env \
+    && cd /home/abc/apps/node && . env/bin/activate && npm install -g pm2@5.2.0 \
     && echo "------------------------------------------------------ Cron" \
     && apt-get install -y cron \
     && mkdir -p /var/log/supervisord/ \
@@ -141,6 +148,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "------------------------------------------------------ Aliases" \
     && echo 'alias python="python3"' >> /root/.zshrc \
     && echo 'alias python="python3"' >> /home/abc/.zshrc \
+    && echo 'alias pm2="cd /home/abc/apps/node && . env/bin/activate && pm2"' >> /home/abc/.zshrc \
+    && echo 'alias lg="lazygit"' >> /home/abc/.zshrc \
     && echo "------------------------------------------------------ Clean" \
     && apt-get -y autoremove \
     && apt-get -y clean \

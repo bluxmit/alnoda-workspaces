@@ -123,6 +123,13 @@
         "technicolor-creamsicle.deepdark-material": "https://open-vsx.org/api/technicolor-creamsicle/deepdark-material/3.3.0/file/technicolor-creamsicle.deepdark-material-3.3.0.vsix",
         "rubjo.ultimate-dark-neo": "https://open-vsx.org/api/rubjo/ultimate-dark-neo/0.1.0/file/rubjo.ultimate-dark-neo-0.1.0.vsix",
         "sainnhe.edge": "https://open-vsx.org/api/sainnhe/edge/0.1.8/file/sainnhe.edge-0.1.8.vsix",
-        "robbowen.synthwave-vscode": "https://open-vsx.org/api/RobbOwen/synthwave-vscode/0.1.14/file/RobbOwen.synthwave-vscode-0.1.14.vsix"
+        "robbowen.synthwave-vscode": "https://open-vsx.org/api/RobbOwen/synthwave-vscode/0.1.14/file/RobbOwen.synthwave-vscode-0.1.14.vsix",
+
+        "4ops.terraform": "https://open-vsx.org/api/hashicorp/terraform/2.20.0/file/hashicorp.terraform-2.20.0.vsix",
+        "samuelcolvin.jinjahtml": "https://open-vsx.org/api/samuelcolvin/jinjahtml/0.18.0/file/samuelcolvin.jinjahtml-0.18.0.vsix",
+
+        "ms-kubernetes-tools.vscode-kubernetes-tools": "https://open-vsx.org/api/ms-kubernetes-tools/vscode-kubernetes-tools/1.3.10/file/ms-kubernetes-tools.vscode-kubernetes-tools-1.3.10.vsix",
+        "ipedrazas.kubernetes-snippets": "https://open-vsx.org/api/ipedrazas/kubernetes-snippets/0.1.9/file/ipedrazas.kubernetes-snippets-0.1.9.vsix",
+        "tumido.crd-snippets": "https://open-vsx.org/api/tumido/crd-snippets/1.1.0/file/tumido.crd-snippets-1.1.0.vsix"
     }
 }

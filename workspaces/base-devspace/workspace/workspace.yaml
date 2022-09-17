@@ -8,6 +8,8 @@ description: |
   # Base devspace
   Basis for other workspaces. This workspace has UI, but does not have code editor (or IDE) up & running. 
 
+tags: workspace-ui, filebrowser, ungit
+
 # optional:
 # (Quickstart UI appearance)
 styles:
@@ -23,7 +25,6 @@ styles:
       background: "#1E1E1E"
       title: "#9CDCFE"
       text: "#9CDCFE"
-      subtitle: "#eab676"
   common_colors:
     header: "#FFFFFF"
     nav: "#eab676"

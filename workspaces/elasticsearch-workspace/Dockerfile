@@ -8,9 +8,9 @@ RUN echo "------------------------------------------------------ nodejs-18" \
     && npm install -g npm@8.7.0 \
     && echo "------------------------------------------------------ elasticsearch-dump" \
     && npm install elasticdump@6.88.0 -g 
-
 # Switch back to abc user and continue
 USER abc
+
 RUN sudo apt-get -y update \
     && echo "------------------------------------------------------ esbulk" \
     && cd /tmp && wget https://github.com/miku/esbulk/releases/download/v0.7.5/esbulk_0.7.5_amd64.deb \
@@ -23,8 +23,8 @@ RUN sudo apt-get -y update \
     && mv /tmp/vulcanizer /home/abc/.local/bin/vulcanizer \
     && rm /tmp/vulcanizer_0.8.0_Linux_i386.tar.gz 
     
-# Copy new theia configuration (set another default theme)
-COPY --chown=abc:abc settings.json /home/abc/.theia/settings.json
+# Change default codeserver theme
+COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json
 
 # Build Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace

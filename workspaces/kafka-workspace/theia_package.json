@@ -123,6 +123,8 @@
         "technicolor-creamsicle.deepdark-material": "https://open-vsx.org/api/technicolor-creamsicle/deepdark-material/3.3.0/file/technicolor-creamsicle.deepdark-material-3.3.0.vsix",
         "rubjo.ultimate-dark-neo": "https://open-vsx.org/api/rubjo/ultimate-dark-neo/0.1.0/file/rubjo.ultimate-dark-neo-0.1.0.vsix",
         "sainnhe.edge": "https://open-vsx.org/api/sainnhe/edge/0.1.8/file/sainnhe.edge-0.1.8.vsix",
-        "robbowen.synthwave-vscode": "https://open-vsx.org/api/RobbOwen/synthwave-vscode/0.1.14/file/RobbOwen.synthwave-vscode-0.1.14.vsix"
+        "robbowen.synthwave-vscode": "https://open-vsx.org/api/RobbOwen/synthwave-vscode/0.1.14/file/RobbOwen.synthwave-vscode-0.1.14.vsix",
+
+        "jeppeandersen.vscode-kafka": "https://open-vsx.org/api/jeppeandersen/vscode-kafka/0.15.0/file/jeppeandersen.vscode-kafka-0.15.0.vsix"
     }
 }

@@ -1,30 +1,6 @@
-ARG BUILD_IMAGE=node:16.17.0
-ARG MAIN_IMAGE=alnoda/extended-workspace:4.0
-################################################################################ BUILD THEIA
-FROM ${BUILD_IMAGE} 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y apt-utils \
-    && apt-get install -y git \
-    && apt-get install -y libsecret-1-dev \
-    && mkdir /opt/theia
-WORKDIR /opt/theia
-ADD theia_package.json ./package.json
-ARG GITHUB_TOKEN
-RUN yarn --pure-lockfile && \
-    NODE_OPTIONS="--max_old_space_size=4096" yarn theia build && \
-    yarn theia download:plugins && \
-    yarn --production && \
-    yarn autoclean --init && \
-    echo *.ts >> .yarnclean && \
-    echo *.ts.map >> .yarnclean && \
-    echo *.spec.* >> .yarnclean && \
-    yarn autoclean --force && \
-    yarn cache clean
-################################################################################ WORKSPACE IMAGE
-FROM ${MAIN_IMAGE} 
+FROM alnoda/extended-workspace:4.0
 
-# Actions for which root escalation is reuired
+# Actions for which root escalation is needed
 USER root
 # Fix issue with timezone for Ara
 RUN echo "UTC" > /etc/timezone
@@ -33,19 +9,9 @@ RUN echo "------------------------------------------------------ terraform" \
     && cd /tmp && wget https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zip \
     && unzip terraform_1.2.8_linux_amd64.zip  -d /usr/local/bin \
     && rm /tmp/terraform_1.2.8_linux_amd64.zip 
+
+# Continue as usual non-root user
 USER abc
-
-# Replace Theia with the new build, which includes additional pre-installed extensions
-# To do this, the existing Theia folder will be deleted, and new copied from the build stage
-ENV THEIA_DIR="/home/abc/apps/theia"
-RUN rm -rf $THEIA_DIR \
-    && mkdir "$THEIA_DIR" \
-    && cd $THEIA_DIR && nodeenv --node=16.17.0 env && . env/bin/activate \
-# Copy built Theia from the build image
-COPY --from=0 --chown=abc:abc /opt/theia $THEIA_DIR
-# Copy new Theia settings to set another theme for the code editor
-COPY --chown=abc:abc theia_settings.json /home/abc/.theia/settings.json
-
 # Ansible apps & tools
 RUN sudo apt-get update \
     && echo "------------------------------------------------------ ansible" \
@@ -109,15 +75,21 @@ RUN echo "------------------------------------------------------ blast-radius" \
     && mv /tmp/rover/rover /home/abc/.local/bin/rover \
     && rm -rf /tmp/rover
 
-# # Rover configuration
-# ENV TERRAFORM_ROVER="http://localhost:9000" 
-
 # Copy Ansible & Terraform report scripts
 COPY --chown=abc:abc extra/ansible-report.sh /home/abc/.local/bin/
 COPY --chown=abc:abc extra/terraform-report.sh /home/abc/.local/bin/
 
 # Copy Ansible & Terraform examples
 COPY --chown=abc:abc ./examples/ /home/examples/
+
+# Install additional codeserver extensions 
+RUN echo "------------------------------------------------------ extensions" \
+    && code-server --install-extension  hashicorp.terraform \
+    && code-server --install-extension  redhat.ansible \
+    && code-server --install-extension  samuelcolvin.jinjahtml 
+
+# Change default codeserver theme
+COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json
 
 # Build Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace

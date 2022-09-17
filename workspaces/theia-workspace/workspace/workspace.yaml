@@ -8,6 +8,8 @@ description: |
   # Theia workspace
   General-purpose portable containerized development environment
 
+tags: web-ide, theia
+
 # UI icons
 logo: theia-circle-white.svg
 favicon: theia-circle.svg
