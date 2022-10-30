@@ -54,6 +54,7 @@ RUN echo "------------------------------------------------------ blast-radius" \
     && echo "------------------------------------------------------ tflint" \
     && cd /tmp && wget https://github.com/terraform-linters/tflint/releases/download/v0.39.3/tflint_linux_amd64.zip \
     && unzip /tmp/tflint_linux_amd64.zip -d /home/abc/.local/bin \
+    && rm /tmp/tflint_linux_amd64.zip \
     && echo "------------------------------------------------------ tfsec" \
     && cd /tmp && curl -Lo /tmp/tfsec https://github.com/aquasecurity/tfsec/releases/download/v1.27.5/tfsec-checkgen-linux-amd64 \
     && chmod +x /tmp/tfsec \

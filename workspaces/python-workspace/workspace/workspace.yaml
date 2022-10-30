@@ -8,7 +8,7 @@ description: |
   # Python workspace
   Containerized isolated development environment for Python projects. 
 
-tags: python, pip, ipython, poetry, pylint, pytest
+tags: python, pip, ipython, poetry, pyenv, pylint, pytest
 
 # UI icons
 logo: python-circle-white.svg

@@ -1,0 +1,108 @@
+---
+# mandatory
+name: Neovim workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/neovim-workspace/README.md
+author: bluxmit
+version: 4.0
+repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/neovim-workspace
+description: |
+  Workspace with hyperextensible Vim-based text editor
+
+styles:
+  colors:
+    light:
+      code_text: "#282A36"
+      code_background: "#252525"
+    dark:
+      code_text: "#EAB676"
+      code_background: "#3C3C3C"
+
+styles:
+  font: Roboto  # chose any from https://fonts.google.com/
+  colors:
+    light:
+      primary: "#282A36"
+      accent: "#FF79C6"
+      background: "#F5F7F7"
+    dark:
+      primary: "#424450"
+      accent: "#45C368"
+      background: "#282A36"
+      title: "#F1FA8C"
+      text: "#D368A8"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#eab676"
+
+
+pages:
+  home:
+    - name: Editor
+      port: 8021 
+      path: /
+      title: Code editor
+      description: "Vim-based code editor - Neovim"
+      image: neovim.jpg
+    - name: M.Commander
+      port: 8025 
+      title: M.Commander
+      description: Feature rich visual file manager with internal text viewer and editor
+      image: mc.jpg
+
+start:
+  - name: Neovim
+    folder: /home/
+    cmd: ttyd -p 8021 /bin/zsh -c 'cd /home/abc/apps/nvim-nodeenv && . env/bin/activate && cd /home && nvim' 
+
+
+cheatsheet:
+  Neoim: 
+    - cmd: i
+      description: enter insert mode, allows editing file
+    - cmd: Esc
+      description: exit insert mode, enter visual (command) mode
+    - cmd: mouse double click
+      description: toggle between insert/visual modes
+    - cmd: y
+      description: copy (yank) selected text
+    - cmd: p
+      description: paste copied (yank) text
+    - cmd: d
+      description: delete selected lines
+    - cmd: :te
+      description: open terminal
+    - cmd: u
+      description: undo all changes in the last insert mode 
+    - cmd: 2u
+      description: undo all changes done in 2 last insert modes 
+    - cmd: Ctrl + r
+      description: redo (undone changes)
+    - cmd: :w
+      description: save file changes
+    - cmd: :wq
+      description: save and exit
+    - cmd: :q
+      description: close
+    - cmd: :q!
+      description: trash all changes
+    - cmd: m
+      description: create/delete files and folders (if focused on file tree)
+    - cmd: u
+      description: set filetree to one level above (if focused on file tree)
+    - cmd: t
+      description: open the selected file in a new fullscreen tab (if focused on file tree)
+    - cmd: i
+      description: open the selected file in a horizontal split window (if focused on file tree)
+    - cmd: s
+      description: open the selected file in a vertical split window (if focused on file tree)
+    - cmd: I (Shift + i)
+      description: show hidden files (if focused on file tree)
+    - cmd: :G
+      description: manage Git repository
+
+links:
+  Developer help:
+    - url: "https://spacevim.org/"
+      name: "SpaceVim"
+      description: "SpaceVim community website"
+    

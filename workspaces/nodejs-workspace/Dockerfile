@@ -14,15 +14,13 @@ RUN echo "------------------------------------------------------ node, npm" \
     && nvm alias default $NODE_VERSION \
     && nvm use default
 
-# ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-# ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
-
 # Install additional codeserver extensions 
 RUN echo "------------------------------------------------------ extensions" \
     && code-server --install-extension  bradlc.vscode-tailwindcss \
     && code-server --install-extension  anseki.vscode-color \
     && code-server --install-extension  christian-kohler.npm-intellisense \
     && code-server --install-extension  xabikos.JavaScriptSnippets \
+    && code-server --install-extension  dbaeumer.vscode-eslint \
     && code-server --install-extension  kumar-harsh.graphql-for-vscode
 
 # Change default codeserver theme

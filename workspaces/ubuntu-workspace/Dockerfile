@@ -6,7 +6,7 @@ COPY zsh-in-docker.sh /tmp/zsh-in-docker.sh
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \ 
     && echo "------------------------------------------------------ Common" \
-    && apt-get install -y sudo curl wget telnet jq \
+    && apt-get install -y sudo curl wget telnet jq dnsutils \
     && apt-get install -y software-properties-common \
     && apt-get install -y zip gzip tar \
     && echo "------------------------------------------------------ User" \
@@ -16,8 +16,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && chown -R abc /home/abc \
     && mkdir -p /home/abc/apps \
     && chown -R abc /home/abc/apps \
-    && echo "------------------------------------------------------ Nix folder" \
-    && mkdir -m 0755 /nix && chown abc /nix \
+    && echo "------------------------------------------------------ Nix folder and conf" \
+    && mkdir -m 0750 /nix && chown abc /nix \
     && echo "------------------------------------------------------ docker systemctl replacement" \
     && wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl  \
     && chown -R abc /usr/local/bin/systemctl \ 
@@ -34,6 +34,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
     && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
     && chown abc /etc/apt/sources.list.d \
+    && chown abc /etc/apt/trusted.gpg.d \
     && echo "------------------------------------------------------ GIT" \
     && apt-get install -y git git-flow \
     && wget -P /tmp https://github.com/jesseduffield/lazygit/releases/download/v0.34/lazygit_0.34_Linux_x86_64.tar.gz \
@@ -123,6 +124,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && printf '%s\n%s\n' "export ZSH_DISABLE_COMPFIX=true" "$(cat /home/abc/.zshrc)" > /home/abc/.zshrc \
     && echo "------------------------------------------------------ Code editors" \
     && apt-get install -y nano vim \
+    && apt-get install -y tilde \
     && echo "------------------------------------------------------ File browsers: MC" \
     && apt-get install -y mc \
     && echo "------------------------------------------------------ multitasking in a terminal " \
@@ -130,7 +132,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "------------------------------------------------------ Sys monitoring: Glances, Vizex" \
     && apt-get install -y ncdu htop \
     && pip install glances==3.2.5 \
-    && pip install vizex==2.1.0 \
     && echo "------------------------------------------------------ Web-based terminal" \
     && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.7.1/ttyd.x86_64 \
     && mv ttyd.x86_64 /usr/bin/ttyd \
@@ -165,7 +166,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
 
 USER abc
 
-RUN echo "------------------------------------------------------ Nix" \
+RUN git config --global credential.helper cache \
+    && echo "------------------------------------------------------ Nix" \
     && curl -L https://nixos.org/nix/install > /tmp/nix.sh \
     && chmod +x /tmp/nix.sh \
     && sh /tmp/nix.sh --no-daemon  \
@@ -182,7 +184,7 @@ ENV PATH="/home/abc/.nix-profile/bin:${PATH}"
 RUN echo "------------------------------------------------------ after PATH updates" \
     && pipx install rich-cli \
     && echo 'alias p="rich"' >> /home/abc/.zshrc \
-    && nix-env -iA cachix -f https://cachix.org/api/v1/install
+    && nix-env -iA cachix -f https://cachix.org/api/v1/install    
 
 ###### ENTRY
 

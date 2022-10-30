@@ -31,6 +31,10 @@ RUN echo "------------------------------------------------------ extensions" \
     && code-server --install-extension  christian-kohler.npm-intellisense \
     && code-server --install-extension  xabikos.JavaScriptSnippets \
     && code-server --install-extension  kumar-harsh.graphql-for-vscode
+    wix.vscode-import-cost
+    vscode.typescript-language-features
+    christian-kohler.path-intellisense
+    rangav.vscode-thunder-client
 
 # Change default codeserver theme
 COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json

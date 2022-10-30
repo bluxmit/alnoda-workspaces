@@ -24,6 +24,15 @@ styles:
       code_text: "#EAB676"
       code_background: "#3C3C3C"
 
+pages:
+  home:
+    - name: IDE
+      port: 8021 
+      path: /
+      title: IDE
+      description: "Browser-based version of Visual Studio. Develop in any language, install hundreeds of extensions"
+      image: IDE.jpg
+
 # add applications and services to the start command
 start:
   - name: Code-server

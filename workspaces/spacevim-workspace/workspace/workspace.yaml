@@ -1,0 +1,81 @@
+---
+# mandatory
+name: SpaceVim workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/spacevim-workspace/README.md
+author: bluxmit
+version: 4.0
+repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/spacevim-workspace
+description: |
+  Workspace with browser-based SpaceVim IDE 
+
+styles:
+  colors:
+    light:
+      code_text: "#EAB676"
+      code_background: "#252525"
+    dark:
+      code_text: "#EAB676"
+      code_background: "#3C3C3C"
+
+pages:
+  home:
+    - name: IDE
+      port: 8021 
+      path: /
+      title: IDE
+      description: "Browser-based full-featured SpaceVim IDE"
+      image: spacevim.jpg
+
+start:
+  - name: SpaceVim
+    folder: /home/
+    cmd: ttyd -p 8021 /bin/zsh -c 'nvim' 
+
+
+cheatsheet:
+  SpaceVim: 
+    - cmd: i
+      description: enter insert mode, allows editing file
+    - cmd: Esc
+      description: exit insert mode, enter command mode
+    - cmd: y
+      description: copy (yank) selected text
+    - cmd: p
+      description: paste copied (yank) text
+    - cmd: d
+      description: delete selected lines
+    - cmd: u
+      description: undo all changes in the last insert mode 
+    - cmd: 2u
+      description: undo all changes done in 2 last insert modes 
+    - cmd: Ctrl + r
+      description: redo (undone changes)
+    - cmd: Space
+      description: menu to manage files, windows, togglers, options and more 
+    - cmd: s
+      description: manage tabs, screens 
+    - cmd: g
+      description: editor and navigation menu
+    - cmd: /
+      description: search in file 
+    - cmd: :w
+      description: save file changes
+    - cmd: :wq
+      description: save and exit
+    - cmd: :q!
+      description: trash all changes
+    - cmd: .
+      description: show hidden files (if focused on file tree)
+    - cmd: N
+      description: create new folder or file (if focused on file tree)
+    - cmd: r
+      description: rename folder or file (if focused on file tree)
+    - cmd: d
+      description: delete folder or file (if focused on file tree)
+
+links:
+  Developer help:
+    - url: "https://spacevim.org/"
+      name: "SpaceVim"
+      description: "SpaceVim community website"
+    

@@ -1,4 +1,4 @@
-FROM lnoda/ansible-terraform-workspace:4.0
+FROM alnoda/ansible-terraform-workspace:4.0
 
 RUN sudo apt-get -y update \
     && echo "------------------------------------------------------ Kubectl" \
@@ -32,6 +32,9 @@ RUN echo "------------------------------------------------------ kubespray" \
     && pip install -r /home/project/kubespray/requirements-2.12.txt \
     && echo "------------------------------------------------------ Kube-shell" \
     && pipx install kube-shell \
+    && echo "------------------------------------------------------ Kubescape" \
+    && chmod 0750 /home/abc/.nix-profile/bin/ \
+    && curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash \
     && echo "------------------------------------------------------ Krew" \
     && mkdir /tmp/krew \
     && cd /tmp/krew && wget https://github.com/kubernetes-sigs/krew/releases/download/v0.4.3/krew-linux_amd64.tar.gz \
@@ -43,6 +46,9 @@ RUN echo "------------------------------------------------------ kubespray" \
     && cd /home/abc && wget https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases \
     && echo '[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases' >> /home/abc/.zshrc \
     && mkdir -p /home/abc/.ssh
+
+
+# https://github.com/bloodorangeio/octant-helm
 
 ENV OCTANT_DISABLE_OPEN_BROWSER=1 \ 
     OCTANT_LISTENER_ADDR=0.0.0.0:8035

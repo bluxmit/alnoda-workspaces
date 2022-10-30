@@ -1,37 +1,4 @@
-ARG BUILD_IMAGE=node:16.17.0
-ARG MAIN_IMAGE=alnoda/java-workspace:4.0-17
-################################################################################ BUILD THEIA
-FROM ${BUILD_IMAGE} 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y apt-utils \
-    && apt-get install -y git \
-    && apt-get install -y libsecret-1-dev \
-    && mkdir /opt/theia
-WORKDIR /opt/theia
-ADD elixir_theia_package.json ./package.json
-ARG GITHUB_TOKEN
-RUN yarn --pure-lockfile && \
-    NODE_OPTIONS="--max_old_space_size=4096" yarn theia build && \
-    yarn theia download:plugins && \
-    yarn --production && \
-    yarn autoclean --init && \
-    echo *.ts >> .yarnclean && \
-    echo *.ts.map >> .yarnclean && \
-    echo *.spec.* >> .yarnclean && \
-    yarn autoclean --force && \
-    yarn cache clean
-################################################################################ WORKSPACE IMAGE
-FROM ${MAIN_IMAGE} 
-
-# Replace Theia with the new build, which includes additional pre-installed extensions
-# To do this, the existing Theia folder will be deleted, and new copied from the build stage
-ENV THEIA_DIR="/home/abc/apps/theia"
-RUN rm -rf $THEIA_DIR \
-    && mkdir "$THEIA_DIR" \
-    && cd $THEIA_DIR && nodeenv --node=16.17.0 env && . env/bin/activate 
-# Copy built Theia from the build image
-COPY --from=0 --chown=abc:abc /opt/theia $THEIA_DIR
+FROM alnoda/java-workspace:4.0-17
 
 RUN sudo apt-get -y update \
     && echo "------------------------------------------------------ Erlang requirements" \
@@ -54,6 +21,16 @@ RUN echo "------------------------------------------------------ Erlang/OTP (use
 ENV PATH="$PATH:/home/abc/erlang/25.0/bin"
 ENV PATH="$PATH:/home/abc/.kiex/bin"
 ENV PATH="$PATH:/home/abc/.kiex/elixirs/elixir-1.13.4/bin"
+
+# Install codeserver extensions 
+RUN echo "------------------------------------------------------ common extensions" \
+    && code-server --install-extension  erlang-ls.erlang-ls \
+    && code-server --install-extension  elixir-lsp.elixir-ls \
+    && code-server --install-extension  pantajoe.vscode-elixir-credo \
+    && code-server --install-extension  lakshitsomani.best-themes-redefined 
+
+# Set default codeserver theme
+COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json
 
 # Build Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace

@@ -10,6 +10,7 @@ USER abc
 # Install workspace tools and applications
 RUN sudo apt-get -y update \
     && sudo apt-get install -y socat \
+    && sudo apt-get install -y s3fs \
     && echo "------------------------------------------------------ install filebrowser" \
 	&& cd /tmp && wget https://github.com/filebrowser/filebrowser/releases/download/v2.21.1/linux-amd64-filebrowser.tar.gz \
     && mkdir /tmp/filebrowser \
@@ -19,11 +20,12 @@ RUN sudo apt-get -y update \
     && mv /tmp/filebrowser/filebrowser /home/abc/apps/filebrowser/ \
     && rm -rf /tmp/filebrowser \
     && rm /tmp/linux-amd64-filebrowser.tar.gz \
-    && echo "------------------------------------------------------ install ungit" \
-	&& sudo apt-get install -y ssh net-tools --no-install-recommends \
-	&& mkdir -p /home/abc/apps/ungit \
-	&& cd /home/abc/apps/ungit && nodeenv --node=12.18.3 --npm=6.0.0 env \
-	&& cd /home/abc/apps/ungit && . env/bin/activate && npm install -g ungit@1.5.9 
+    && echo "------------------------------------------------------ install frp" \
+    && cd /tmp && wget https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_amd64.tar.gz \
+    && tar xvf /tmp/frp_0.44.0_linux_amd64.tar.gz \
+    && mv /tmp/frp_0.44.0_linux_amd64 /home/abc/apps/frp \
+    && rm /tmp/frp_0.44.0_linux_amd64.tar.gz \
+    && sudo apt-get install -y timelimit
 
 # Copy Filebrowser config (it changes filebrowser standard port and host)
 COPY --chown=abc:abc filebrowser.json /home/abc/apps/filebrowser/.filebrowser.json
@@ -31,6 +33,6 @@ COPY --chown=abc:abc filebrowser.json /home/abc/apps/filebrowser/.filebrowser.js
 # Build Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace
 RUN echo "------------------------------------------------------ build workspace" \
-    && pipx install alnoda-wrk==0.2.17 \
+    && pipx install alnoda-wrk==0.2.23 \
     && alnoda-wrk build /tmp/workspace \ 
     && rm -rf /tmp/workspace

@@ -24,7 +24,6 @@ styles:
     light:
       primary: "#0B0438"
       accent: "#B8610B"
-      subtitle: "#7747A7"
       background: "#F0F0F0"
       title: "#303030"
       code_text: "#FFFFFF"
@@ -34,7 +33,6 @@ styles:
       accent: "#B8610B"
       background: "#00031C"
       title: "#E3EAF2"
-      subtitle: "#E3EAF2"
       text: "#E3EAF2"
       code_text: "#000000"
       code_background: "#F0F0F0"

@@ -23,6 +23,10 @@ RUN sudo apt-get -y update \
     && mv /tmp/vulcanizer /home/abc/.local/bin/vulcanizer \
     && rm /tmp/vulcanizer_0.8.0_Linux_i386.tar.gz 
     
+# Install codeserver extensions 
+RUN echo "------------------------------------------------------ common extensions" \
+    && code-server --install-extension  ria.elastic
+
 # Change default codeserver theme
 COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json
 

@@ -27,6 +27,11 @@ RUN echo "------------------------------------------------------ PHP " \
     && find /home -type d | xargs -I{} chown -R abc {} \
     && find /home -type f | xargs -I{} chown abc {} 
 
+
+
+pwarchol.vscode-php-file-link
+rangav.vscode-thunder-client
+
 USER abc
 
 

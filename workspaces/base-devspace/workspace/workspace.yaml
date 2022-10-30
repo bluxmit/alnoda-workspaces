@@ -4,11 +4,12 @@ name: Base devspace
 doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-devspace/README.md
 author: bluxmit
 version: 4.0
+repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/base-devspace
 description: |
   # Base devspace
   Basis for other workspaces. This workspace has UI, but does not have code editor (or IDE) up & running. 
 
-tags: workspace-ui, filebrowser, ungit
+tags: workspace-ui, filebrowser, ungit, ngrok
 
 # optional:
 # (Quickstart UI appearance)
@@ -39,18 +40,18 @@ pages:
       title: Terminal
       description: "Full-fledged WEB-based Command Line Interface"
       image: terminal.png
-    - name: Workspace settings
-      port: 8025 
-      title: Workspace settings
-      description: "Configure workspace appearance. Start new applicatios and services"
+    - name: Workspace admin
+      port: 8024 
+      title: Workspace admin
+      description: "Configure workspace. Start new applicatios and services. Share workspace."
       image: alnoda-admin.png
     - name: M.Commander
-      port: 8026 
+      port: 8025 
       title: M.Commander
       description: Feature rich visual file manager with internal text viewer and editor
       image: mc.jpg
     - name: Htop
-      port: 8027 
+      port: 8026 
       title: Process monitor
       description: Monitor running process and resource utilization
       image: htop.jpg
@@ -63,23 +64,21 @@ start:
     cmd: mkdocs serve -a 0.0.0.0:8020
   - name: File Browser
     cmd: /home/abc/apps/filebrowser/filebrowser -c /home/abc/apps/filebrowser/.filebrowser.json
-  - name: Ungit
-    folder: $HOME/apps/ungit
-    cmd: . env/bin/activate; ungit --port=8024 --ungitBindIp=0.0.0.0 --launchBrowser=false --autoFetch=false --bugtracking=false --authentication=false 
   - name: Admin
     env_vars: 
       - name: TERM
         value: xterm
-    cmd: ttyd -p 8025 /bin/zsh -c 'alnoda-wrk admin' 
+    cmd: ttyd -p 8024 /bin/zsh -c 'alnoda-wrk admin' 
   - name: MC
     env_vars: 
       - name: TERM
         value: xterm
       - name: EDITOR
         value: mcedit
-    cmd: ttyd -p 8026 /bin/zsh -c '/usr/bin/mc' 
+    cmd: ttyd -p 8025 /bin/zsh -c '/usr/bin/mc' 
   - name: Htop
     env_vars: 
       - name: TERM
         value: xterm
-    cmd: ttyd -p 8027 /bin/zsh -c '/usr/bin/htop' 
+    cmd: ttyd -p 8026 /bin/zsh -c '/usr/bin/htop' 
+    

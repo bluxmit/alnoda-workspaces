@@ -2,6 +2,8 @@
     "workbench.colorTheme": "Alabaster",
     "git-graph.maxDepthOfRepoSearch": 3,
     "gopls": {
-        "experimentalWorkspaceModule": true
-    }
+        "experimentalWorkspaceModule": true,
+        "ui.semanticTokens": true 
+    },
+    "go.formatTool": "goreturns"
 }
