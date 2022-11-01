@@ -8,13 +8,17 @@ repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/ne
 description: |
   Workspace with hyperextensible Vim-based text editor
 
+logo: vim-circle-white.svg
+favicon: vim-circle.svg
+
 styles:
-  font: Roboto  
+  font: JetBrains Mono  
   colors:
     light:
       primary: "#282A36"
-      accent: "#FF79C6"
+      accent: "#EB71B9"
       background: "#F5F7F7"
+      title: "#005F87"
       code_text: "#EAB676"
       code_background: "#252525"
       code_text: "#282A36"
@@ -24,7 +28,7 @@ styles:
       accent: "#45C368"
       background: "#282A36"
       title: "#F1FA8C"
-      text: "#D368A8"
+      text: "#BD93F9"
       code_text: "#282A36"
       code_background: "#eab676"
   common_colors:
@@ -104,7 +108,7 @@ cheatsheet:
 
 links:
   Developer help:
-    - url: "https://spacevim.org/"
-      name: "SpaceVim"
-      description: "SpaceVim community website"
+    - url: "https://neovim.io/"
+      name: "Neovim"
+      description: "hyperextensible Vim-based text editor"
     

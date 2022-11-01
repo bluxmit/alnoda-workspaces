@@ -16,6 +16,7 @@ syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
+set colorcolumn=""
 set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 " set spell                 " enable spell check (may need to download language package)
@@ -44,10 +45,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'ntk148v/auto-pairs'
 " Multiple cursors plugin for vim/neovim
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" Tabs
+Plug 'romgrk/barbar.nvim'
 
-" Plug 'ap/vim-buftabline'  "show buffers
+"List ends here. Plugins become visible to Vim after this call.
 
-" List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 " Start NERDTree when Vim is started without file arguments.
@@ -203,3 +205,15 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" In your init.lua or init.vim
+set termguicolors
+lua << EOF
+require('bufferline').setup({
+    icons = false,
+    icon_separator_active = '▎',
+    icon_separator_inactive = '▎',
+    icon_close_tab = 'x',
+    icon_close_tab_modified = '●',
+})
+EOF
