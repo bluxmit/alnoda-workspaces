@@ -8,14 +8,29 @@ repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/sp
 description: |
   Workspace with browser-based SpaceVim IDE 
 
+logo: vim-circle-white.svg
+favicon: vim-circle.svg
+
 styles:
+  font: Anonymous Pro  
   colors:
     light:
-      code_text: "#EAB676"
-      code_background: "#252525"
+      primary: "#282828"
+      accent: "#729665"
+      background: "#d6d3ce"
+      code_text: "#282828"
+      code_background: "#729665"
     dark:
-      code_text: "#EAB676"
-      code_background: "#3C3C3C"
+      primary: "#504945"
+      accent: "#B8BB26"
+      background: "#282828"
+      title: "#F1FA8C"
+      text: "#EBDBB2"
+      code_text: "#282828"
+      code_background: "#F97D18"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#F97D18"
 
 pages:
   home:
@@ -25,11 +40,16 @@ pages:
       title: IDE
       description: "Browser-based full-featured SpaceVim IDE"
       image: spacevim.jpg
+    - name: M.Commander
+      port: 8025 
+      title: M.Commander
+      description: Feature rich visual file manager with internal text viewer and editor
+      image: mc.jpg
 
 start:
   - name: SpaceVim
     folder: /home/
-    cmd: ttyd -p 8021 /bin/zsh -c 'nvim' 
+    cmd: ttyd -p 8021 -P 15 /bin/zsh -c 'nvim' 
 
 
 cheatsheet:
@@ -52,26 +72,38 @@ cheatsheet:
       description: redo (undone changes)
     - cmd: Space
       description: menu to manage files, windows, togglers, options and more 
+    - cmd: Space + b + d
+      description: close current tab 
     - cmd: s
       description: manage tabs, screens 
     - cmd: g
       description: editor and navigation menu
     - cmd: /
       description: search in file 
+    - cmd: n
+      description: find next (when searching)
+    - cmd: N
+      description: find previous (when searching)
     - cmd: :w
       description: save file changes
     - cmd: :wq
       description: save and exit
     - cmd: :q!
       description: trash all changes
+    - cmd: r
+      description: refresh file tree folders (if focused on file tree folder)
     - cmd: .
       description: show hidden files (if focused on file tree)
     - cmd: N
       description: create new folder or file (if focused on file tree)
-    - cmd: r
-      description: rename folder or file (if focused on file tree)
+    - cmd: m
+      description: manage (rename, delete, copy, move) folder or file (if focused on file tree)
     - cmd: d
       description: delete folder or file (if focused on file tree)
+    - cmd: i
+      description: open the selected file in a horizontal split window (if focused on file tree)
+    - cmd: s
+      description: open the selected file in a vertical split window (if focused on file tree)
 
 links:
   Developer help:

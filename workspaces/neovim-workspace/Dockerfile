@@ -11,6 +11,7 @@ RUN echo "------------------------------------------------------ nvim" \
 
 COPY --chown=abc:abc init.vim /home/abc/.config/nvim/init.vim 
 ENV PATH="$PATH:/home/abc/apps/nvim/bin"
+ENV EDITOR="cd /home/abc/apps/nvim-nodeenv && . env/bin/activate && nvim"
 
 RUN echo "------------------------------------------------------ create node environment" \
     && mkdir /home/abc/apps/nvim-nodeenv \
@@ -27,8 +28,3 @@ RUN echo "------------------------------------------------------ build workspace
     && pipx install alnoda-wrk \
     && alnoda-wrk build /tmp/workspace \ 
     && rm -rf /tmp/workspace
-
-
-# https://github.com/AstroNvim/AstroNvim
-# https://www.lunarvim.org/docs/installation
-# https://neovimcraft.com/

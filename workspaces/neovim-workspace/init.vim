@@ -45,6 +45,8 @@ Plug 'ntk148v/auto-pairs'
 " Multiple cursors plugin for vim/neovim
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+" Plug 'ap/vim-buftabline'  "show buffers
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 

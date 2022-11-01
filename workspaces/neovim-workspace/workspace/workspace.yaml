@@ -9,39 +9,35 @@ description: |
   Workspace with hyperextensible Vim-based text editor
 
 styles:
-  colors:
-    light:
-      code_text: "#282A36"
-      code_background: "#252525"
-    dark:
-      code_text: "#EAB676"
-      code_background: "#3C3C3C"
-
-styles:
-  font: Roboto  # chose any from https://fonts.google.com/
+  font: Roboto  
   colors:
     light:
       primary: "#282A36"
       accent: "#FF79C6"
       background: "#F5F7F7"
+      code_text: "#EAB676"
+      code_background: "#252525"
+      code_text: "#282A36"
+      code_background: "#eab676"
     dark:
       primary: "#424450"
       accent: "#45C368"
       background: "#282A36"
       title: "#F1FA8C"
       text: "#D368A8"
+      code_text: "#282A36"
+      code_background: "#eab676"
   common_colors:
     header: "#FFFFFF"
     nav: "#eab676"
 
-
 pages:
   home:
-    - name: Editor
+    - name: IDE
       port: 8021 
       path: /
-      title: Code editor
-      description: "Vim-based code editor - Neovim"
+      title: IDE
+      description: "Browser-based Neovim IDE"
       image: neovim.jpg
     - name: M.Commander
       port: 8025 
@@ -52,7 +48,7 @@ pages:
 start:
   - name: Neovim
     folder: /home/
-    cmd: ttyd -p 8021 /bin/zsh -c 'cd /home/abc/apps/nvim-nodeenv && . env/bin/activate && cd /home && nvim' 
+    cmd: ttyd -p 8021 -P 15 /bin/zsh -c 'cd /home/abc/apps/nvim-nodeenv && . env/bin/activate && cd /home && nvim' 
 
 
 cheatsheet:
@@ -77,6 +73,12 @@ cheatsheet:
       description: undo all changes done in 2 last insert modes 
     - cmd: Ctrl + r
       description: redo (undone changes)
+    - cmd: /
+      description: search in file 
+    - cmd: n
+      description: find next (when searching)
+    - cmd: N
+      description: find previous (when searching)
     - cmd: :w
       description: save file changes
     - cmd: :wq
@@ -86,7 +88,7 @@ cheatsheet:
     - cmd: :q!
       description: trash all changes
     - cmd: m
-      description: create/delete files and folders (if focused on file tree)
+      description: create/delete/copy/move files and folders (if focused on file tree)
     - cmd: u
       description: set filetree to one level above (if focused on file tree)
     - cmd: t

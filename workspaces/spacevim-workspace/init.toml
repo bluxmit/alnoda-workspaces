@@ -13,7 +13,7 @@
     statusline_iseparator = "arrow"
     buffer_index_type = 4
     enable_tabline_filetype_icon = false
-    enable_statusline_mode = false
+    enable_statusline_mode = true
     filetree_direction = "left"
     guifont = ""
     relativenumber = false

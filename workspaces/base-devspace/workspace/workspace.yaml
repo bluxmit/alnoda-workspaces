@@ -68,14 +68,14 @@ start:
     env_vars: 
       - name: TERM
         value: xterm
-    cmd: ttyd -p 8024 /bin/zsh -c 'alnoda-wrk admin' 
+    cmd: ttyd -p 8024 -P 15 /bin/zsh -c 'alnoda-wrk admin' 
   - name: MC
     env_vars: 
       - name: TERM
         value: xterm
       - name: EDITOR
         value: mcedit
-    cmd: ttyd -p 8025 /bin/zsh -c '/usr/bin/mc' 
+    cmd: ttyd -p 8025 -P 15 /bin/zsh -c '/usr/bin/mc' 
   - name: Htop
     env_vars: 
       - name: TERM

@@ -4,7 +4,6 @@ RUN echo "------------------------------------------------------ nvim" \
     && cd /tmp && wget https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz \
     && tar -xzf nvim-linux64.tar.gz \
     && mv /tmp/nvim-linux64 /home/abc/apps/nvim \
-    && python -m pip install pynvim \
     && echo "------------------------------------------------------ spacevim" \
     && curl -sLf https://spacevim.org/install.sh | bash \
     && pip install --user pynvim  \
