@@ -1,0 +1,75 @@
+---
+# mandatory
+name: Emacs workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/emacs-workspace/README.md
+author: bluxmit
+version: 4.0
+repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/emacs-workspace
+description: |
+  Workspace with hyperextensible Emacs-based text editor
+
+tags: web-ide, emacs
+
+logo: emacs-circle-white.svg
+favicon: emacs-circle.svg
+
+styles:
+  font: JetBrains Mono  
+  colors:
+    light:
+      primary: "#282A36"
+      accent: "#EB71B9"
+      background: "#F5F7F7"
+      title: "#005F87"
+      code_text: "#EAB676"
+      code_background: "#252525"
+      code_text: "#282A36"
+      code_background: "#eab676"
+    dark:
+      primary: "#424450"
+      accent: "#45C368"
+      background: "#282A36"
+      title: "#F1FA8C"
+      text: "#BD93F9"
+      code_text: "#282A36"
+      code_background: "#eab676"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#eab676"
+
+pages:
+  home:
+    - name: IDE
+      port: 8021 
+      path: /
+      title: IDE
+      description: "Browser-based Emacs IDE"
+      image: emacs.png
+    - name: M.Commander
+      port: 8025 
+      title: M.Commander
+      description: Feature rich visual file manager with internal text viewer and editor
+      image: mc.jpg
+
+start:
+  - name: Emacs
+    folder: /home/
+    cmd: ttyd -p 8021 -P 15 /bin/zsh -c 'TERM=xterm-256color COLORTERM=truecolor emacs' 
+
+
+cheatsheet:
+  Emacs: 
+    - cmd: Esc-x (or Meta-x) 
+      description: run any Emacs command by its extended (i.e., full) name
+    - cmd: Esc-x package-list-packages
+      description: Show list of available Emacs packages
+
+links:
+  Developer help:
+    - url: "https://elpa.gnu.org/packages/"
+      name: "ELPA"
+      description: "GNU ELPA Packages"
+    - url: "https://melpa.org/"
+      name: "MELPA"
+      description: "Milkypostman’s Emacs Lisp Package Archive"
+    

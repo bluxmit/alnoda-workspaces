@@ -8,6 +8,8 @@ repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/ne
 description: |
   Workspace with hyperextensible Vim-based text editor
 
+tags: web-ide, vim, neovim
+
 logo: vim-circle-white.svg
 favicon: vim-circle.svg
 
