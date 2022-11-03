@@ -3,9 +3,6 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-
 (add-to-list 'package-archives 
               '("melpa" . "https://melpa.org/packages/") t)
 
@@ -14,9 +11,9 @@
 
 ; list the packages you want
 (setq package-list
-    '(python-environment deferred epc 
-        flycheck ctable jedi concurrent company cyberpunk-theme elpy 
-        yasnippet pyvenv highlight-indentation find-file-in-project 
+    '(neotree dired-sidebar deferred epc 
+        flycheck ctable concurrent company cyberpunk-theme 
+        yasnippet highlight-indentation find-file-in-project 
         sql-indent sql exec-path-from-shell iedit
         auto-complete popup let-alist magit git-rebase-mode 
         git-commit-mode minimap popup))

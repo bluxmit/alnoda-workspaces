@@ -21,8 +21,6 @@ styles:
       accent: "#EB71B9"
       background: "#F5F7F7"
       title: "#005F87"
-      code_text: "#EAB676"
-      code_background: "#252525"
       code_text: "#282A36"
       code_background: "#eab676"
     dark:

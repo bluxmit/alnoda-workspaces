@@ -14,25 +14,24 @@ logo: emacs-circle-white.svg
 favicon: emacs-circle.svg
 
 styles:
-  font: JetBrains Mono  
+  font: Noto Sans Mono
   colors:
     light:
-      primary: "#282A36"
-      accent: "#EB71B9"
+      primary: "#2E3440"
+      accent: "#909C63"
       background: "#F5F7F7"
-      title: "#005F87"
-      code_text: "#EAB676"
-      code_background: "#252525"
-      code_text: "#282A36"
-      code_background: "#eab676"
+      title: "#86BFCE"
+      text: "#2E3440"
+      code_text: "#86BFCE"
+      code_background: "#2E3440"
     dark:
-      primary: "#424450"
-      accent: "#45C368"
-      background: "#282A36"
-      title: "#F1FA8C"
-      text: "#BD93F9"
-      code_text: "#282A36"
-      code_background: "#eab676"
+      primary: "#4C566A"
+      accent: "#E6866C"
+      background: "#2E3440"
+      title: "#909C63"
+      text: "#86BFCE"
+      code_text: "#2E3440"
+      code_background: "#86BFCE"
   common_colors:
     header: "#FFFFFF"
     nav: "#eab676"
@@ -44,7 +43,7 @@ pages:
       path: /
       title: IDE
       description: "Browser-based Emacs IDE"
-      image: emacs.png
+      image: emacs.jpg
     - name: M.Commander
       port: 8025 
       title: M.Commander
@@ -61,8 +60,24 @@ cheatsheet:
   Emacs: 
     - cmd: Esc-x (or Meta-x) 
       description: run any Emacs command by its extended (i.e., full) name
+    - cmd: Ctrl-x Ctrl-s
+      description: save changes 
+    - cmd: Ctrl-x Ctrl-f
+      description: open file (or create new)
+    - cmd: Ctrl-x u
+      description: undo last change
+    - cmd: Esc-x shell
+      description: open terminal in Emacs window
     - cmd: Esc-x package-list-packages
-      description: Show list of available Emacs packages
+      description: show list of available Emacs packages
+    - cmd: Esc-x package-list-packages
+      description: show list of available Emacs packages
+    - cmd: Esc-x neotree-show
+      description: show neotree file tree
+    - cmd: Esc-x dired-sidebar-toggle-sidebar
+      description: show dired file tree
+    - cmd: Esc Esc
+      description: close split screen (or file tree)
 
 links:
   Developer help:
