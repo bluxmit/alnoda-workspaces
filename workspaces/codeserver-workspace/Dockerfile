@@ -26,7 +26,7 @@ RUN echo "------------------------------------------------------ common extensio
     && code-server --install-extension  sndst00m.vscode-native-svg-preview \
     && code-server --install-extension  pranaygp.vscode-css-peek \
     && code-server --install-extension  anseki.vscode-color \
-    && echo "------------------------------------------------------ themes" \
+    && echo "------------------------------------------------------ color themes" \
     && code-server --install-extension  armandphilippot.coldark \
     && code-server --install-extension  RobbOwen.synthwave-vscode \
     && code-server --install-extension  nadim-vscode.infinity-dark-theme \

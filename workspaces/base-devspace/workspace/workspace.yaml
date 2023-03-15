@@ -3,11 +3,11 @@
 name: Base devspace
 doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/base-devspace/README.md
 author: bluxmit
-version: 4.0
+version: 1.0
+date: 15-03-2023
 repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/base-devspace
 description: |
-  # Base devspace
-  Basis for other workspaces. This workspace has UI, but does not have code editor (or IDE) up & running. 
+  This workspace has alnoda UI, alnoda-wrk, but does not iclude IDE. Select IDE from alnoda.org and install with a single command.
 
 tags: workspace-ui, filebrowser, ungit, ngrok
 

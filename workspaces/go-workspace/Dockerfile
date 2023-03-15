@@ -22,7 +22,6 @@ RUN echo "------------------------------------------------------ extensions" \
     && code-server --install-extension  tonsky.theme-alabaster \
     && code-server --install-extension  CoenraadS.bracket-pair-colorizer-2 
 
-
 # Change default codeserver theme
 COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json
 
