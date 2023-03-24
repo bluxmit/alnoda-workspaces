@@ -1,15 +1,11 @@
-FROM alnoda/base-devspace:4.0
+FROM alnoda/base-devspace:1.0
 
 # Set environmental variables for Code-server
 ARG CODESERVER_VERSION="4.7.0"
 
-USER root
-RUN echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
-USER abc
-
 # Install Code-server 
 RUN echo "------------------------------------------------------ code-server" \
-	&& cd \tmp \
+	&& cd /tmp \
     && curl -fOL https://github.com/coder/code-server/releases/download/v$CODESERVER_VERSION/code-server_${CODESERVER_VERSION}_amd64.deb \
     && sudo dpkg -i code-server_${CODESERVER_VERSION}_amd64.deb \
     && rm /tmp/code-server_${CODESERVER_VERSION}_amd64.deb 

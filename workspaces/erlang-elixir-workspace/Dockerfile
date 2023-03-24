@@ -1,5 +1,7 @@
 FROM alnoda/java-workspace:4.0-17
 
+https://github.com/livebook-dev/livebook
+
 RUN sudo apt-get -y update \
     && echo "------------------------------------------------------ Erlang requirements" \
     && sudo apt-get -y install build-essential autoconf libncurses5-dev openssl libssl-dev fop xsltproc unixodbc-dev \
