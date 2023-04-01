@@ -31,7 +31,7 @@ RUN echo "------------------------------------------------------ common extensio
     && code-server --install-extension  wesbos.theme-cobalt2 \
     && code-server --install-extension  github.github-vscode-theme \
     && code-server --install-extension  armandphilippot.coldark \
-    && code-server --install-extension  radiolevity.search-lights 
+    && code-server --install-extension  radiolevity.search-lights \
     && code-server --install-extension  vladeeg.vscode-theme-vlight \
     && code-server --install-extension  akamud.vscode-theme-onelight \
     && code-server --install-extension  akamud.vscode-theme-onedark \

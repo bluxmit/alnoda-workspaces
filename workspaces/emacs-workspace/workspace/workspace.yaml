@@ -70,10 +70,6 @@ cheatsheet:
       description: open terminal in Emacs window
     - cmd: Esc-x package-list-packages
       description: show list of available Emacs packages
-    - cmd: Esc-x package-list-packages
-      description: show list of available Emacs packages
-    - cmd: Esc-x neotree-show
-      description: show neotree file tree
     - cmd: Esc-x dired-sidebar-toggle-sidebar
       description: show dired file tree
     - cmd: Esc Esc

@@ -2,7 +2,7 @@ FROM alnoda/extended-workspace:4.0
 
 # Install Node and elasticdump as root
 USER root
-RUN echo "------------------------------------------------------ nodejs-18" \
+RUN echo "------------------------------------------------------ nodejs-17" \
     && curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash - \
     && sudo apt-get install -y nodejs \
     && npm install -g npm@8.7.0 \

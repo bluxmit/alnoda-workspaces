@@ -1,13 +1,13 @@
 ---
 # mandatory
-name: Base devspace
-doc_url: https://docs.alnoda.org/base-workspace/
+name: Alnoda workspace
+doc_url: https://docs.alnoda.org/
 author: bluxmit
 version: 1.0
 date: 15-03-2023
-repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/base-devspace
+repository: https://github.com/bluxmit/alnoda-workspaces
 description: |
-  This workspace has alnoda UI, alnoda-wrk, but does not include IDE. Select IDE from alnoda.org and install with a single command.
+  Contaierized extendable web-based developmennt environment
 
 tags: workspace-ui, filebrowser, ungit, ngrok
 
