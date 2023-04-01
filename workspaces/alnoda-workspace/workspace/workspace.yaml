@@ -7,7 +7,7 @@ version: 1.0
 date: 15-03-2023
 repository: https://github.com/bluxmit/alnoda-workspaces
 description: |
-  Contaierized extendable web-based developmennt environment
+  Hyperflexible isolated containerized development environment that is actually easy to use
 
 tags: workspace-ui, filebrowser, ungit, ngrok
 

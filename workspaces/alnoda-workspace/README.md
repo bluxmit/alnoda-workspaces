@@ -1,20 +1,22 @@
-# Base-devspace
+# Alnoda workspace
 
-Basis for other workspaces. This workspace does not have code editor or IDE up & running.  
-
-This workspace prepares basis for Alnoda workspaces.  
-It has [__alnoda-wrk__](https://pypi.org/project/alnoda-wrk/) installed, and workspace initialised.   
+Hyperflexible isolated containerized development environment that is actually easy to use
 
 ## Start
 
 ```
-docker run --name space-1 --user=root -d -p 8020-8040:8020-8040 alnoda/base-devspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/alnoda-workspace
 ```
 
 open [localhost:8020](http://localhost:8020) in browser. 
 
 ## Features
-
+- workspace UI:
+    - homepage
+    - app quicklaunch dashboard
+    - admin interface (configure workspace UI fonts, colors, name, version etc)
+    - project links, bookmarks, description
+- **alnoda-wrk** - CLI tool to install applications from [alnoda.org](https://alnoda.org/registry/)
 - [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
 - [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
 - [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
