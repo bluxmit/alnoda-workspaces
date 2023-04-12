@@ -32,7 +32,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && chown abc /usr/bin/pip3.8 \
     && echo "------------------------------------------------------ Allow users to install packages with apt" \
     && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
-    && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
+    && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/apt-key, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
     && chown abc /etc/apt/sources.list.d \
     && chown abc /etc/apt/trusted.gpg.d \
     && echo "------------------------------------------------------ GIT" \
@@ -46,11 +46,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "------------------------------------------------------ Nodeenv" \
     && pip install nodeenv \
     && apt-get install -y yarn \
-    && echo "------------------------------------------------------ Node env with pm2" \
-    && mkdir -p /home/abc/apps/node \
-    && chown -R abc /home/abc/apps/ \
-    && cd /home/abc/apps/node && nodeenv --node=18.9.0 env \
-    && cd /home/abc/apps/node && . env/bin/activate && npm install -g pm2@5.2.0 \
     && echo "------------------------------------------------------ Cron" \
     && apt-get install -y cron \
     && mkdir -p /var/log/supervisord/ \
@@ -149,7 +144,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "------------------------------------------------------ Aliases" \
     && echo 'alias python="python3"' >> /root/.zshrc \
     && echo 'alias python="python3"' >> /home/abc/.zshrc \
-    && echo 'alias pm2="cd /home/abc/apps/node && . env/bin/activate && pm2"' >> /home/abc/.zshrc \
     && echo 'alias lg="lazygit"' >> /home/abc/.zshrc \
     && echo "------------------------------------------------------ Clean" \
     && apt-get -y autoremove \

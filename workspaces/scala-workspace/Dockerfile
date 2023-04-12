@@ -24,7 +24,7 @@ ENV PATH="$PATH:/home/abc/.local/share/coursier/bin"
 USER abc
 
 RUN echo "------------------------------------------------------ coursier (user) " \
-    && cs setup
+    && cs setup --yes
 
 
 

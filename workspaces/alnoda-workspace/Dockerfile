@@ -33,6 +33,6 @@ COPY --chown=abc:abc filebrowser.json /home/abc/apps/filebrowser/.filebrowser.js
 # Build Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace
 RUN echo "------------------------------------------------------ build workspace" \
-    && pipx install alnoda-wrk==0.3.34 \
+    && pipx install alnoda-wrk==0.3.36 \
     && alnoda-wrk build /tmp/workspace \ 
     && rm -rf /tmp/workspace
