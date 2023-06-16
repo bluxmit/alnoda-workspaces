@@ -3,18 +3,19 @@
 name: Code-server workspace
 doc_url: https://docs.alnoda.org/workspaces/codeserver-workspace/
 author: bluxmit
-version: 4.0
+version: 5.0
+repository: https://github.com/bluxmit/alnoda-workspaces
 description: |
   # Code-server workspace
   Browser-based portable and containerized general-purpose development environment.  
-  Includes code editor, terminal, file browser and git manager. 
-
+  Includes code editor (code-server), terminal, file browser and git manager. 
 tags: web-ide, codeserver
 
 # UI icons
 logo: codeserver-circle-white.svg
 favicon: codeserver-circle.svg
 
+# Change styles
 styles:
   colors:
     light:
@@ -24,16 +25,3 @@ styles:
       code_text: "#EAB676"
       code_background: "#3C3C3C"
 
-pages:
-  home:
-    - name: IDE
-      port: 8021 
-      path: /
-      title: IDE
-      description: "Browser-based version of Visual Studio. Develop in any language, install hundreeds of extensions"
-      image: IDE.jpg
-
-# add applications and services to the start command
-start:
-  - name: Code-server
-    cmd: code-server --bind-addr 0.0.0.0:8021 --auth "none" --disable-telemetry /home

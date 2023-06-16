@@ -3,13 +3,13 @@
 name: Alnoda workspace
 doc_url: https://docs.alnoda.org/
 author: bluxmit
-version: 1.0
+version: 1.1
 date: 15-03-2023
 repository: https://github.com/bluxmit/alnoda-workspaces
 description: |
   Hyperflexible isolated containerized development environment that is actually easy to use
 
-tags: workspace-ui, filebrowser, ungit, ngrok
+tags: workspace-ui, filebrowser
 
 # optional:
 # (Quickstart UI appearance)
@@ -45,16 +45,7 @@ pages:
       title: Workspace admin
       description: "Configure workspace. Start new applicatios and services. Share workspace."
       image: alnoda-admin.png
-    - name: M.Commander
-      port: 8025 
-      title: M.Commander
-      description: Feature rich visual file manager with internal text viewer and editor
-      image: mc.jpg
-    - name: Htop
-      port: 8026 
-      title: Process monitor
-      description: Monitor running process and resource utilization
-      image: htop.jpg
+    
 
 # optional:
 # (applications and services to launch every time workspace starts)
@@ -69,16 +60,4 @@ start:
       - name: TERM
         value: xterm
     cmd: ttyd -p 8024 -P 15 /bin/zsh -c 'alnoda-wrk admin' 
-  - name: MC
-    env_vars: 
-      - name: TERM
-        value: xterm
-      - name: EDITOR
-        value: mcedit
-    cmd: ttyd -p 8025 -P 15 /bin/zsh -c '/usr/bin/mc' 
-  - name: Htop
-    env_vars: 
-      - name: TERM
-        value: xterm
-    cmd: ttyd -p 8026 /bin/zsh -c '/usr/bin/htop' 
     

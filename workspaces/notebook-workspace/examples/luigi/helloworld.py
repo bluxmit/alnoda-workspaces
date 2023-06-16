@@ -1,5 +1,5 @@
 # to run, execute in terminal
-#   python helloworld.py --local-scheduler HelloWorl
+#   python helloworld.py --local-scheduler HelloWorld
 
 import luigi
 

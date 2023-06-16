@@ -4,18 +4,24 @@ COPY unified-supervisord.conf supervisord.conf /etc/supervisord/
 COPY mc.ini /home/abc/.config/mc/ini
 COPY zsh-in-docker.sh /tmp/zsh-in-docker.sh
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \ 
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y update \ 
     && echo "------------------------------------------------------ Common" \
-    && apt-get install -y sudo curl wget telnet jq dnsutils \
+    && apt-get install -y sudo jq git \
+    && apt-get install -y curl wget telnet netcat dnsutils \
     && apt-get install -y software-properties-common \
     && apt-get install -y zip gzip tar \
+    && apt-get install -y gdebi-core \
+    && apt-get install -y acl \
+    && apt-get install -y psmisc \
     && echo "------------------------------------------------------ User" \
-    && useradd -u 8877 abc \
+    && useradd -u 8877 -p $(openssl passwd -1 abc) abc \
     && chown -R abc /home \
     && mkdir -p /home/abc \
     && chown -R abc /home/abc \
     && mkdir -p /home/abc/apps \
     && chown -R abc /home/abc/apps \
+    && setfacl -m u:abc:rwx /etc \
     && echo "------------------------------------------------------ Nix folder and conf" \
     && mkdir -m 0750 /nix && chown abc /nix \
     && echo "------------------------------------------------------ docker systemctl replacement" \
@@ -30,19 +36,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     &&  apt-get install -y python-is-python3 \
     && mkdir -p /usr/bin/pip3.8 \
     && chown abc /usr/bin/pip3.8 \
-    && echo "------------------------------------------------------ Allow users to install packages with apt" \
-    && echo "# Allow non-admin users to install packages" >> /etc/sudoers \
-    && echo "abc ALL = NOPASSWD : /usr/bin/apt, /usr/bin/apt-get, /usr/bin/apt-key, /usr/bin/aptitude, /usr/bin/add-apt-repository, /usr/local/bin/pip, /usr/local/bin/systemctl, /usr/bin/dpkg, /usr/sbin/dpkg-reconfigure" >> /etc/sudoers \
-    && chown abc /etc/apt/sources.list.d \
-    && chown abc /etc/apt/trusted.gpg.d \
-    && echo "------------------------------------------------------ GIT" \
-    && apt-get install -y git git-flow \
-    && wget -P /tmp https://github.com/jesseduffield/lazygit/releases/download/v0.34/lazygit_0.34_Linux_x86_64.tar.gz \
-    && mkdir /tmp/lazygit  && tar -xzf /tmp/lazygit_0.34_Linux_x86_64.tar.gz --directory /tmp/lazygit \
-    && chmod +x /tmp/lazygit/lazygit \
-    && mv /tmp/lazygit/lazygit /usr/bin/ \
-    && rm /tmp/lazygit_0.34_Linux_x86_64.tar.gz \
-    && rm -rf /tmp/lazygit \
+    && echo "------------------------------------------------------ Add abc user to sudo" \
+    && sudo usermod -a -G sudo abc \
+    && echo "abc ALL=(ALL) NOPASSWD: ALL " >> /etc/sudoers \
     && echo "------------------------------------------------------ Nodeenv" \
     && pip install nodeenv \
     && apt-get install -y yarn \
@@ -53,8 +49,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && chown -R abc /var/log \
     && chmod gu+rw /var/run \
     && chmod gu+s /usr/sbin/cron \
-    && echo "# Allow cron for user abc" >> /etc/sudoers \
-    && echo "abc ALL = NOPASSWD : /usr/sbin/cron " >> /etc/sudoers \
     && echo "------------------------------------------------------ Supervisor" \
     && apt-get remove -y cmdtest \
     && apt-get install -y supervisor \
@@ -124,9 +118,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && apt-get install -y mc \
     && echo "------------------------------------------------------ multitasking in a terminal " \
     && apt-get install -y tmux \
-    && echo "------------------------------------------------------ Sys monitoring: Glances, Vizex" \
+    && echo "------------------------------------------------------ Sys monitoring" \
     && apt-get install -y ncdu htop \
-    && pip install glances==3.2.5 \
     && echo "------------------------------------------------------ Web-based terminal" \
     && cd /tmp && wget https://github.com/tsl0922/ttyd/releases/download/1.7.1/ttyd.x86_64 \
     && mv ttyd.x86_64 /usr/bin/ttyd \
@@ -144,7 +137,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y update \
     && echo "------------------------------------------------------ Aliases" \
     && echo 'alias python="python3"' >> /root/.zshrc \
     && echo 'alias python="python3"' >> /home/abc/.zshrc \
-    && echo 'alias lg="lazygit"' >> /home/abc/.zshrc \
     && echo "------------------------------------------------------ Clean" \
     && apt-get -y autoremove \
     && apt-get -y clean \
@@ -175,10 +167,17 @@ ENV PATH="/home/abc/bin:${PATH}"
 ENV PATH="/home/abc/.local/bin:${PATH}"
 ENV PATH="/home/abc/.nix-profile/bin:${PATH}"
 
-RUN echo "------------------------------------------------------ after PATH updates" \
+RUN DEBIAN_FRONTEND=noninteractive \
+    && echo "------------------------------------------------------ after PATH updates" \
     && pipx install rich-cli \
     && echo 'alias p="rich"' >> /home/abc/.zshrc \
-    && nix-env -iA cachix -f https://cachix.org/api/v1/install    
+    && nix-env -iA cachix -f https://cachix.org/api/v1/install \
+    && echo "------------------------------------------------------ asdf" \
+    && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3 \
+    && rm -rf /home/abc/.asdf/.git \
+    && echo '. "$HOME/.asdf/asdf.sh"' >> ~/.zshrc \
+    && echo 'fpath=(${ASDF_DIR}/completions $fpath)' >> ~/.zshrc \
+    && echo 'autoload -Uz compinit && compinit' >> ~/.zshrc
 
 ###### ENTRY
 

@@ -10,5 +10,4 @@ __| |___) )  ) \__/ (    _| |__   \ \__/ /    _| |__
 EOF
 echo "Luigi: $(python -c 'import luigi; print(luigi.__meta__.__version__)')"
 echo "$(python -VV)"
-
 exec luigid --port 8032
