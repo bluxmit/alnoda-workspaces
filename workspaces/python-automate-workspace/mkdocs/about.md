@@ -1,2 +1,0 @@
-Containerized development and execution environment for the projects where Python is used to automate various tasks. 
-Includes Python, python tooling, browser-based IDE, file browser, git manager, visual job scheduler, static server.

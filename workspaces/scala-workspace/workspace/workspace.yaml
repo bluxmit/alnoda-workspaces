@@ -1,0 +1,38 @@
+---
+# mandatory
+name: R workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/scala-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
+author: bluxmit
+version: 5.0
+description: |
+  Portable containerized isolated development environment for Scala programming language projects.
+
+tags: scala, coursier, cs
+
+# UI icons
+logo: scala-circle-white.svg
+favicon: scala-circle.svg
+
+# Homepage UI appearance
+styles:
+  font: Cambay
+  colors:
+    light:
+      primary: "#133D46"
+      accent: "#5CC6E4"
+      title: "#DC322F" 
+      text: "5C7A81"
+      code_text: "#ffffff"
+      code_background: "#DC322F"
+    dark:
+      primary: "#15414C" 
+      accent: "#DC322F"
+      background: "#002B36"
+      title: "#5CC6E4"
+      text: "#5CC6E4"
+      code_text: "#DC322F"
+      code_background: "#000405"
+  common_colors:
+    header: "#ffffff"
+    nav: "#eab676"

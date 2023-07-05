@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./img/java-circle.svg" alt="Java logo" width="150">
-</p>   
-
 # Java workspace 
 
 Containerized isolated development environment for Java programming language.
@@ -14,43 +10,113 @@ Containerized isolated development environment for Java programming language.
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/java-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/java-workspace
 ```  
 
-and open [localhost:8020](http://localhost:8020) in browser.  
+open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
 - Java 
 - [Maven](https://maven.apache.org/)
 - [Gradle](https://gradle.org/)
-
-**Dev tools:**
-
-- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.
-- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
-- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
-- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
-- **Ubuntu 20.4** with the following CLI apps
-    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-    - Python 3, Pip 
-    - Node/nodeenv
-    - curl, wget, telnet, jq
-    - **Git:** git, git-flow, lazygit 
-    - **File browsers:** mc
-    - **Text editors:** nano, vim, mcedit
-    - **System monitors:** ncdu, htop, glances, vizex
-    - **Process Control:** supervisord
-    - **Job scheduler:** cron
-    - **Terminal multiplexer:** tmux 
+- [*Codeserver workspace features*](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/codeserver-workspace)
 
 
-## Docs
+## Hello world
 
-See our guides
+```
+java -version
+```
 
-- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
-- [**workspace tutorial**](https://docs.alnoda.org/java-workspace/tutorial/)
-- [**workspace docs**](https://docs.alnoda.org/java-workspace/)
-- [**project docs**](https://docs.alnoda.org/)
+Open IDE and create file `Main.java` with the following content
+
+```
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }
+}
+```
+
+Use terminal to compile and execute
+
+```
+cd /home/project
+javac Main.java
+java Main
+```
+
+## Maven
+
+Maven helps with:
+
+- Making the build process easy
+- Providing a uniform build system
+- Providing quality project information
+- Encouraging better development practices
+
+Check Maven version in terminal
+
+```
+mvn -v
+```
+
+Build Java code
+
+```
+cp -r /home/abc/example /home/project/example 
+cd /home/project/example
+mvn compile
+```
+
+This will run Maven, telling it to execute the compile goal. When it’s finished, you should find the compiled .class files in the target/classes directory.   
+
+Run the package goal
+
+```
+mvn package
+```
+
+To execute the JAR file run
+
+```
+java -jar target/gs-maven-0.1.0.jar
+```
+
+*(taken from https://spring.io/guides/gs/maven/)*  
+
+# Gradle
+
+Copy example project
+
+```
+cp -r /home/abc/example /home/project/example 
+cd /home/project/example
+```
+
+Check Gradle installation, run Gradle from the command-line
+
+```
+cd /home/project/example
+gradle
+```
+
+Initialize Gradle
+
+```
+gradle init
+```
+
+Now that Gradle is installed, see what it can do
+
+```
+gradle tasks
+```
+
+Build project with Gradle
+
+```
+gradle build
+```
+

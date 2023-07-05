@@ -1,14 +1,14 @@
 ---
 # mandatory
 name: Python workspace
-doc_url: https://docs.alnoda.org/workspaces/python-workspace/
+doc_url: https://docs.alnoda.org/
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Python workspace
-  Containerized isolated development environment for Python projects. 
+  Portable isolated containerized development environment for Python projects. 
 
-tags: python, pip, ipython, poetry, pyenv, pylint, pytest
+tags: python, pyenv, poetry
 
 # UI icons
 logo: python-circle-white.svg
@@ -23,6 +23,8 @@ styles:
       accent: "#e6c315"
       title: "#007D9C"
       background: "#F0F5FA"
+      code_text: "#FFFFFF"
+      code_background: "#007D9C"
     dark:
       primary: "#316999"
       accent: "#ffda21"
@@ -30,7 +32,8 @@ styles:
       title: "#4495db"
       text: "#4495db"
       code_text: "#000000"
-      code_background: "#F0F0F0"
+      code_background: "#ffda21"
   common_colors:
+    header: "#FFFFFF"
     nav: "#eab676"
 

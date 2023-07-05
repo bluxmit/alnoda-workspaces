@@ -1,0 +1,39 @@
+---
+# mandatory
+name: Rust workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/rust-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
+author: bluxmit
+version: 5.0
+description: |
+  Portable containerized isolated development environment for Rust programming language.
+
+tags: rust, cargo, rustup, rustc
+
+# UI icons
+logo: rust-white.svg
+favicon: rust.svg
+
+# Homepage UI appearance
+styles:
+  font: Source Code Pro
+  colors:
+    light:
+      primary: "#4A4A48"
+      accent: "#4A4A48"
+      title: "#6E4831"
+      text: "171616"
+      background: "#F0F5FA"
+      code_text: "#FFFFFF"
+      code_background: "#4A4A48"
+    dark:
+      primary: "#57331d"
+      accent: "#57331d"
+      background: "#1E1E1E"
+      title: "#ab6337"
+      text: "#9CDCFE"
+      code_text: "#4A4A48"
+      code_background: "#9CDCFE"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#eab676"

@@ -1,1 +1,0 @@
-Containerized environment to interact, manage and administer Redis.  

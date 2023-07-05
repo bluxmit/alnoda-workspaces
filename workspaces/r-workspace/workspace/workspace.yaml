@@ -1,0 +1,41 @@
+---
+# mandatory
+name: R workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/r-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
+author: bluxmit
+version: 5.0
+description: |
+  Portable containerized enviroments for R projects. Workspace has VSCode IDE, RStudio and Jupyterlab.
+
+tags: r, rstudio, jupyter, jupyter-r-kernel, radian
+
+# UI icons
+logo: r-circle-white.svg
+favicon: r-circle.svg
+
+# Homepage UI appearance
+styles:
+  font: PT Sans
+  colors:
+    light:
+      primary: "#1B5FAF"
+      accent: "#1B5FAF"
+      title: "#604270"
+      text: "1B5FAF"
+      background: "#F0F5FA"
+      code_text: "#FFFFFF"
+      code_background: "#1B5FAF"
+    dark:
+      primary: "#8492BA"
+      accent: "#8492BA"
+      background: "#303440"
+      title: "#E9EBFC"
+      text: "#E9EBFC"
+      code_text: "#FFFFFF"
+      code_background: "#1B5FAF"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#eab676"
+
+

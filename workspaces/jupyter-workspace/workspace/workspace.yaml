@@ -1,0 +1,40 @@
+---
+# mandatory
+name: Jupyter Workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/jupyter-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
+author: bluxmit
+version: 1.0
+description: |
+  Workspace equipped with Jupyterlab and has a suite of tools for utilizing Jupyter notebooks
+
+tags: jupyter-toolset
+
+# UI icons
+logo: jupyter-circle.svg
+favicon: jupyter-circle.svg
+
+# (Homepage UI appearance)
+styles:
+  font: Open Sans
+  colors:
+    light:
+      primary: "#F37726"
+      accent: "#F37726"
+      background: "#F5F7F7"
+      title: "#003B5C"
+      text: "#050505"
+      code_text: "#ffb98a"
+      code_background: "#003B5C"
+    dark:
+      primary: "#F37726"
+      accent: "#c7601a"
+      background: "#343741"
+      title: "#9CDCFE"
+      text: "#9CDCFE"
+      code_text: "#003B5C"
+      code_background: "#c7601a"
+  common_colors:
+    header: "#050505"
+    nav: "#eab676"
+

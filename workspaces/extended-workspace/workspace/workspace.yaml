@@ -1,13 +1,14 @@
 ---
 # mandatory
 name: Extended workspace
-doc_url: https://docs.alnoda.org/workspaces/extended-workspace/
+doc_url: https://docs.alnoda.org/
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Extended workspace
-  General-purpose portable containerized browser-based environment for code development and execution.  
-  Includes code editor, terminal, file browser, Git manager and visual jobs scheduler.
+  Versatile, containerized environment equipped with many tools including IDE, CLI utilities, desktop app, file manager, and job scheduler. 
+  It's ready for diverse projects including software development, DevOps, analytics, and data engineering.
+  
 
 tags: task-scheduler, static-file-server
 
@@ -30,31 +31,8 @@ styles:
       code_text: "#EAB676"
       code_background: "#3C3C3C"
   common_colors:
+    header: "#ffffff"
     nav: "#eab676"
 
-# Add Static file server to the Home page, and Cronicle to the Admin page
-# (tools to add to the Quickstart UI)
-pages:
-  home:
-    - name: Static file server
-      port: 8028 
-      path: /
-      title: Static File Server
-      description: "Serve any static websites like a breeze"
-      image: static-file-server.png
-  admin:
-    - name: Cronicle
-      port: 8029 
-      path: /
-      title: Cronicle
-      description: "Schedule jobs, manage schedules, observe and monitor executions (user/pass - admin/admin)"
-      image: cronicle.jpg
 
-# add applications and services to the start command
-start:
-  - name: Static file server
-    folder: $STATIC_FILESERVER_DIR
-    cmd: . env/bin/activate; serve -p 8028 /home/static-server
-  - name: Cronicle
-    folder: $CRONICLE_DIR
-    cmd: rm ./logs/cronicled.pid || true; . env/bin/activate; $CRONICLE_DIR/bin/control.sh setup; $CRONICLE_DIR/bin/control.sh start 
+

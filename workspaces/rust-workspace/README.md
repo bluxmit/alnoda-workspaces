@@ -1,57 +1,109 @@
-<p align="center">
-  <img src="./img/rust.svg" alt="Rust logo" width="150">
-</p>  
-
 # Rust workspace 
 
 Containerized isolated development environment for Rust programming language.
 
-<p align="center">
-  <img src="../codeserver-workspace/img/codeserver-collage-sm.jpg" alt="Collage" width="750">
-</p>
-
-## Why this images
-
-1. If you need self-hosted remote development environment.
-2. If you want to be one terminal command away from coding in Rust.
-
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/rust-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/rust-workspace
 ```  
 
-and open [localhost:8020](http://localhost:8020) in browser.  
+open [localhost:8020](http://localhost:8020) in browser.  
 
 ## Features
 
-- [Rust](https://www.rust-lang.org/) 
-- [Rustup](https://rustup.rs/)
+- [**Rust programming language**](https://www.rust-lang.org/) 
+- [**Cargo**](https://doc.rust-lang.org/cargo/) -s Rust package manager
+- [**Rustup**](https://rustup.rs/) - installer for the systems programming language Rust
+- [**Openvscode workspace features**](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/openvscode-workspace)
 
-**Dev tools:**
+## Hello world
 
-- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.
-- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
-- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
-- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
-- **Ubuntu 20.4** with the following CLI apps
-    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-    - Python 3, Pip 
-    - Node/nodeenv
-    - curl, wget, telnet, jq
-    - **Git:** git, git-flow, lazygit 
-    - **File browsers:** mc
-    - **Text editors:** nano, vim, mcedit
-    - **System monitors:** ncdu, htop, glances, vizex
-    - **Process Control:** supervisord
-    - **Job scheduler:** cron
-    - **Terminal multiplexer:** tmux 
+Check Rust version 
 
-## Docs
+```
+rustc --version
+```
 
-See our guides on 
+Create new project folder
 
-- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
-- [**workspace tutorial**](https://docs.alnoda.org/rust-workspace/tutorial/) 
-- [**project docs**](https://docs.alnoda.org/)
+```
+cargo new my_example
+cd my_example
+```
+
+The new project is created together, with hello-world app in `src` sub-folder
+
+```
+cat src/main.rs
+```
+
+Compile it
+
+```
+cargo build
+```
+
+And then run it
+
+```
+./target/debug/my_example
+```
+
+We can also compile and then run it, all in one step
+
+```
+cargo run
+```
+
+## Rustup
+
+[Rustup](https://rustup.rs/) - is a toolchain is a specific version of the collection of programs needed to compile a Rust application. 
+It includes, but is not limited to:
+
+- The compiler, rustc
+- The dependency manager and build tool, cargo
+- The documentation generator, rustdoc
+
+Rustup provides ways to install, remove, update, select and otherwise manage these toolchains and their associated pieces.
+
+Install specific version of Rust toolchain
+
+```
+rustup install 1.30.0
+```
+
+Show toolchains
+
+```
+rustup show
+```
+
+Change default toolchain
+
+```
+rustup default 1.30.0
+```
+
+
+## Project with dependencies
+
+[Cargo](https://doc.rust-lang.org/cargo/) is Rust package manager. It is a tool that allows Rust packages to declare their 
+various dependencies and ensure that you’ll always get a repeatable build.  
+
+Clone example repo 
+
+```
+git clone https://github.com/rdesarz/rust-http-server.git
+cd rust-http-server
+```
+
+Build and start the server 
+
+```
+cd example
+cargo run --package http-server --bin http-server 0.0.0.0:8026
+```
+
+You will see that before cargo builds the package, it installs all the dependencies from the file `Cargo.toml`. 
+Then you can open workspace UI "My app on port 8026" and add `/hello.html` to the URL path. 

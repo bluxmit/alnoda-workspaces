@@ -1,31 +1,72 @@
 <p align="center">
-  <img src="img/Alnoda-white.svg" alt="Alnoda logo" width="150">
+  <img src="img/Alnoda-red.svg" alt="Alnoda logo" width="100">
 </p> 
 
-Containerized development, admin and professional environments. 
+Open-source portable containerized browser-based development environments in Docker containers.
 
-## Why
+![img/wrk-demo.gif]
 
-1. You are building cloud development platform 
-2. You need to get started fast without building your own toolset
+How to make this: 
 
-## Workspace
+```
+FROM alnoda/alnoda-workspace:latest
 
-Workspaces consist of
+RUN wrk install openvscode
+RUN wrk install kodexplorer
+RUN wrk install cloud-commander
+RUN wrk install zellij-ui
+RUN wrk install mate-desktop
+RUN wrk install jupyterlab
+RUN wrk install r
+RUN wrk install rstudio
+RUN wrk install excalidraw
+RUN wrk install vvvebjs
+```
 
-- toolsets selected for specific tasks, such as software development, database administration or data exploration.
-- browser based aplications that enable cloud development, such as IDE, file manager, job scheduler.
+__*Create your own workspace choosing from hundreeds of applications in [Alnoda Hub](https://alnoda.org/)*__ 
+
+# Alternatively 
+
+Start workspace: 
+
+```
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/alnoda-workspace
+```
+
+open [localhost:8020](http://localhost:8020) in browser and then terminal
+
+Install applicaions: 
+
+```
+wrk install openvscode
+wrk install kodexplorer
+wrk install cloud-commander
+wrk install zellij-ui
+wrk install mate-desktop
+wrk install jupyterlab
+wrk install r
+wrk install rstudio
+wrk install excalidraw
+wrk install vvvebjs
+```
+
+Restart workspace:
+
+```
+wrk kill
+```
+
+Ready to begin? Have a look at the [__*Getting Started Guide*__](https://docs.alnoda.org/get-started/launch-workspace/).
 
 ## Docs
 
 Please visit our [**documentation website**](https://docs.alnoda.org)
 
-## Contribution
+## This repository
 
-Pull requests welcome.  
-If you feel you need to discuss first, create an issue.
+This repository houses a variety of workspaces with different selection of installed applications. These workspaces can serve as customized environments 
+for specific projects or serve as examples for reference.
 
-> If you like this project, please support it by simply putting a Github star and sharing with friends on Twitter.
 
 <p align="center">
   <img src="img/stand_with_ukraine.png" alt="Ukraine" width="250">

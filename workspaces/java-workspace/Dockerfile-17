@@ -1,19 +1,10 @@
-FROM alnoda/codeserver-workspace:4.0
+FROM alnoda/codeserver-workspace:5.0
 
-RUN sudo apt-get -y update \
-    && echo "------------------------------------------------------ java 17" \
-    && sudo apt-get install -y openjdk-17-jre \
-    && sudo apt-get install -y openjdk-17-jdk \
-    && echo "------------------------------------------------------ maven" \
-    && cd /tmp && wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz -P /tmp \
-    && tar xf /tmp/apache-maven-3.8.6-bin.tar.gz \
-    && mv apache-maven-3.8.6 /home/abc/maven \
-    && rm /tmp/apache-maven-3.8.6-bin.tar.gz \
-    && echo "------------------------------------------------------ gradle" \
-    && wget https://services.gradle.org/distributions/gradle-7.4.2-bin.zip -P /tmp \
-    && unzip -d /home/abc/gradle /tmp/gradle-7.4.2-bin.zip \
-    && rm /tmp/gradle-7.4.2-bin.zip 
-    
+RUN wrk install java==17
+RUN wrk install maven==3.8.8
+RUN wrk install gradle==7.4.2 
+
+# For convenience set environmental variables
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/ \
     M2_HOME=/home/abc/maven \
     MAVEN_HOME=/home/abc/maven \
@@ -24,9 +15,9 @@ ENV GRADLE_HOME=/home/abc/gradle/gradle-7.4.2 \
 
 # Install additional codeserver extensions 
 RUN echo "------------------------------------------------------ extensions" \
-    && code-server --install-extension  redhat.java \
-    && code-server --install-extension  vscjava.vscode-maven \
-    && code-server --install-extension  zerodind.familiar-java-themes
+    && code-server --install-extension redhat.java \
+    && code-server --install-extension vscjava.vscode-maven \
+    && code-server --install-extension zerodind.familiar-java-themes
 
 # Change default codeserver theme
 COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/settings.json
@@ -34,6 +25,6 @@ COPY --chown=abc:abc settings.json /home/abc/.local/share/code-server/User/setti
 # Copy example into the workspace
 COPY --chown=abc:abc example /home/abc/example
 
-# Build Alnoda workspace
+# Gonfigure Alnoda workspace
 COPY --chown=abc:abc workspace /tmp/workspace
-RUN pipx uninstall alnoda-wrk; pipx install alnoda-wrk; alnoda-wrk build /tmp/workspace && rm -rf /tmp/workspace
+RUN wrk build /tmp/workspace && rm -rf /tmp/workspace

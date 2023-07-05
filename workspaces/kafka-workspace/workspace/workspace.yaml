@@ -1,12 +1,12 @@
 ---
 # mandatory
 name: Kafka Workspace
-doc_url: https://docs.alnoda.org/workspaces/kafka-workspace/
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/kafka-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Kafka workspace
-  Browser-based portable and containerized environment to interact, manage and administer Kafka clusters.
+  Portable containerized workspace to interact with Kafka clusters.
 
 tags: kafka, kafka-cli
 
@@ -30,10 +30,9 @@ styles:
       text: "#9CDCFE"
       code_text: "#000000"
       code_background: "#F0F0F0"
+  common_colors:
+    header: "#ffffff"
+    nav: "#eab676"
 
-start:
-  - name: Zookeeper
-    cmd: /home/abc/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
-  - name: Kafka
-    cmd: /home/abc/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+
 

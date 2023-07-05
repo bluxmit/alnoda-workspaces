@@ -1,19 +1,19 @@
 ---
 # mandatory
 name: Mkdocs workspace
-doc_url: https://docs.alnoda.org/workspaces/mkdocs-workspace/
+doc_url: https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Mkdocs workspace
-  Browser-based portable and containerized solution to develop complex and awesome-looking documentation websites.  
-  Create docs from all your GitHub, GitLab and Bitbucket repositories, automate periodic builds.    
+  Workspace for MkDocs projects. Build good-looking documentation websites with extended Markdown.  
+  Create docs from all your GitHub, GitLab and Bitbucket repositories, automate periodic builds.
 
 tags: markdown, mkdocs, mkdocs-material, markdown extensions
 
 # UI icons
 logo: alnoda-white.svg
-favicon: alnoda-dark
+favicon: alnoda-dark.svg
 
 # (Homepage UI appearance)
 styles:
@@ -22,7 +22,6 @@ styles:
     light:
       primary: "#316CE6"
       accent: "#1040a1"
-      subtitle: "#7747A7"
       background: "#FFFFFF"
       title: "#303030"
     dark:
@@ -30,16 +29,5 @@ styles:
       accent: "#DF736A"
       background: "#232834"
       title: "#E3EAF2"
-      subtitle: "#E3EAF2"
       text: "#E3EAF2"
-
-pages:
-  home:
-    - name: Mkdocs server
-      port: 8035 
-      path: /
-      title: "MkDocs live server"
-      description: "Serve your MkDocs project with live reload. For example, <b>cd /home/examples/mkdocs-material; mkdocs serve -a 0.0.0.0:8030</b>"
-      image: mkdocs-server.png
-
 

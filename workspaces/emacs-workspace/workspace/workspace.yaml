@@ -1,14 +1,14 @@
 ---
 # mandatory
 name: Emacs workspace
-doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/emacs-workspace/README.md
+doc_url: https://docs.alnoda.org/
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
-repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/emacs-workspace
+version: 5.0
 description: |
   Workspace with hyperextensible Emacs-based text editor
 
-tags: web-ide, emacs
+tags: code editor, emacs
 
 logo: emacs-circle-white.svg
 favicon: emacs-circle.svg
@@ -35,27 +35,7 @@ styles:
   common_colors:
     header: "#FFFFFF"
     nav: "#eab676"
-
-pages:
-  home:
-    - name: IDE
-      port: 8021 
-      path: /
-      title: IDE
-      description: "Browser-based Emacs IDE"
-      image: emacs.jpg
-    - name: M.Commander
-      port: 8025 
-      title: M.Commander
-      description: Feature rich visual file manager with internal text viewer and editor
-      image: mc.jpg
-
-start:
-  - name: Emacs
-    folder: /home/
-    cmd: ttyd -p 8021 -P 15 /bin/zsh -c 'TERM=xterm-256color COLORTERM=truecolor emacs' 
-
-
+  
 cheatsheet:
   Emacs: 
     - cmd: Esc-x (or Meta-x) 
@@ -83,4 +63,3 @@ links:
     - url: "https://melpa.org/"
       name: "MELPA"
       description: "Milkypostman’s Emacs Lisp Package Archive"
-    

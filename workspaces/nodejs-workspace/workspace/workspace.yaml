@@ -1,12 +1,12 @@
 ---
 # mandatory
 name: Node.js workspace
-doc_url: https://docs.alnoda.org/workspaces/nodejs-workspace/
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/nodejs-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Node.js workspace
-  Browser-based portable and containerized development environment for Javascript and Node.js projects
+  Browser-based portable and containerized development environment for Javascript Node.js projects
 
 tags: javascript, nodejs, npm, yarn, nvm
 
@@ -30,4 +30,5 @@ styles:
       title: "#FFFFFF"
       text: "#FFFFFF"
   common_colors:
+    header: "#ffffff"
     nav: "#eab676"

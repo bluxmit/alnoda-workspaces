@@ -1,12 +1,12 @@
 ---
 # mandatory
 name: SpaceVim workspace
-doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/spacevim-workspace/README.md
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/spacevim-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
-repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/spacevim-workspace
+version: 5.0
 description: |
-  Workspace with browser-based SpaceVim IDE 
+  Portable cotainerized isolated workspace with browser-based SpaceVim code editor and IDE 
 
 tags: web-ide, vim, spacevim
 
@@ -33,25 +33,6 @@ styles:
   common_colors:
     header: "#FFFFFF"
     nav: "#F97D18"
-
-pages:
-  home:
-    - name: IDE
-      port: 8021 
-      path: /
-      title: IDE
-      description: "Browser-based full-featured SpaceVim IDE"
-      image: spacevim.jpg
-    - name: M.Commander
-      port: 8025 
-      title: M.Commander
-      description: Feature rich visual file manager with internal text viewer and editor
-      image: mc.jpg
-
-start:
-  - name: SpaceVim
-    folder: /home/
-    cmd: ttyd -p 8021 -P 15 /bin/zsh -c 'nvim' 
 
 
 cheatsheet:

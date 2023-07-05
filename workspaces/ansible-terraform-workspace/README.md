@@ -1,15 +1,7 @@
-<p align="center">
-  <img src="./img/terraform-circle.svg" alt="Terraform logo" width="150">
-</p>  
-
 # Ansible-Terraform Workspace
 
-Containerized development, execution and admin environment for Ansible and Terraform. 
+Alnoda workspace with Ansible and Terraform toolchain. 
 Create, provision, visualize and manage infrastructures, schedule maintenance tasks.
-
-<p align="center">
-  <img src="img/ansible-terraform-wid-collage.png" alt="Collage" width="750">
-</p>
 
 ## Why this images
 
@@ -19,71 +11,183 @@ Create, provision, visualize and manage infrastructures, schedule maintenance ta
 ## Start
 
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 -p 9000:9000 alnoda/ansible-terraform-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/ansible-terraform-workspace
 ```
 
-and open [localhost:8020](http://localhost:8020) in browser.  
+Open [localhost:8020](http://localhost:8020)  
 
-## Features
+## Terraform 
 
-**Ansible tools:**
+[Terraform](https://www.terraform.io/) is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files.  
 
-- [**Ansible Ara**](https://github.com/ansible-community/ara)
-- [**Ansible-cmdb**](https://github.com/fboender/ansible-cmdb)
-- [**Ansible inventory grapher**](https://github.com/willthames/ansible-inventory-grapher)
-- [**Ansible Playbook Grapher**](https://github.com/haidaraM/ansible-playbook-grapher)
-- [**Ansible Lint**](https://ansible-lint.readthedocs.io/en/latest/installing.html)
-- [**Ansible Doctor**](https://ansible-doctor.geekdocs.de/)
+Ansible-Terraform workspace contains a small example Terraform project that creates a server on the Scaleway cloud 
 
-**Terraform tools:**
+```
+cd /home/examples/terraform-scaleway/ && terraform init
+``` 
 
-- [**Pre-commit-terraform**](https://github.com/antonbabenko/pre-commit-terraform)
-- [**Rover**](https://github.com/im2nguyen/rover)
-- [**Blast-Radius**](https://github.com/28mm/blast-radius)
-- [**Terraform Visual**](https://github.com/hieven/terraform-visual)
-- [**Terraform Graph**](https://www.terraform.io/docs/cli/commands/graph.html)
-- [**Inframap**](https://github.com/cycloidio/inframap)**Terraform tools:**
+If you want to try, set your Scaleway credentials as environment variable in your workspace. 
+Add the following lines to /home/abc/.zshrc:
 
-**Tools:**
+```
+export SCW_DEFAULT_PROJECT_ID=<YOUR_PROJECT_ID>
+export SCW_ACCESS_KEY=<YOUR_ACCESS_KEY>
+export SCW_SECRET_KEY=<YOUR_SECRET_KEY>
+```
 
-- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.  
-- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
-- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
-- [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
-- [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
-- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
-- [**MkDocs**](https://squidfunk.github.io/mkdocs-material/)  - create awesome documentation for your project with only markdown. 
-- [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
-- [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
-- Quicklaunch UI with getting started tutorial
-- **Ubuntu 20.4** with the following CLI apps
-    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-    - Python 3, Pip 
-    - Node/nodeenv
-    - curl, wget, telnet, jq
-    - **Git:** git, git-flow 
-    - **File browsers:** mc
-    - **Text editors:** nano, vim, mcedit
-    - **System monitors:** ncdu, htop, glances, vizex
-    - **Process Control:** supervisord
-    - **Job scheduler:** cron
-    - **Terminal multiplexer:** tmux 
+Restart terminal, and execute 
 
-## Docs
+```
+cd /home/examples/terraform-scaleway/ && terraform plan
+``` 
 
-See our guides
+Create Scaleway infrastructure with 
 
-- [**project docs**](https://docs.alnoda.org/)
-- [**getting started - Ansible**](https://docs.alnoda.org/ansible-terraform-workspace/ansible-tools/)
-- [**getting started - Terraform**](https://docs.alnoda.org/ansible-terraform-workspace/terraform-tools/)
+```
+cd /home/examples/terraform-scaleway/ && terraform apply
+``` 
 
-## Demo 
+### Terraform Rover
 
-<div align="center" style="font-style: italic;">
-    Demo: Ansible-Terraform workspace
-</div>
+[Rover](https://github.com/im2nguyen/rover) - is a Terraform visualizer with browser-based UI. Rover helps to better understand 
+Terraform state and planned changes. To see how Rover works, you can use a basic Terraform example in folder */home/examples/terraform-scaleway/*. 
+Initialize Terraform project first  
 
-<p align="center">
-  <img src="img/ansible-terraform-wid.gif" alt="Htop" width="900">
-</p>
+```
+cd /home/examples/terraform-scaleway/ && terraform init
+```  
+
+and start Rover to visualize terraform state 
+
+```
+rover --workingDir /home/examples/terraform-scaleway/
+```  
+
+If you have followed hands-on the tutorial from the previous section (terraform report from the terraform-aws-free-tier repo), you 
+can visualize it with Rover:
+
+```
+rover --workingDir /home/project/aws-example/src/free-tier
+```
+
+Open Rover from the workspace UI
+
+
+### Blast Radius
+
+[Blast Radius](https://github.com/28mm/blast-radius) is a tool for reasoning about Terraform dependency graphs with interactive visualizations. 
+You can try Blast Radius - launch workspace and visualize an example Terraform project.  
+
+```
+cd /home/examples/terraform-scaleway && terraform init
+blast
+```
+
+Go to workspace UI and open Blast Radius
+
+
+### Terraform Inframap
+
+[Terraform Inframap](https://github.com/cycloidio/inframap) can visualize terraform state
+
+```
+inframap generate terraform.tfstate | dot -Tpng > graph.png
+```
+
+## Ansible 
+
+This tutorial is a little demonstration of the included ansible toolset. 
+Workspace has an example ansible play which installs several installs packages. 
+We will use this playbook for some of the examples. For other examples, create your own ansible project.  
+
+To run an example ansible play, open terminal and execute
+
+```
+cd /home/examples/ansible-local 
+ansible-playbook install-packages.yml
+```
+
+### Ansible Ara
+
+[Ansible ARA](https://github.com/ansible-community/ara) Records Ansible and makes it easier to understand and troubleshoot. Ansible Ara is 
+fully configured in the Ansible-Terraform workspace - it captures any execution (manual or scheduled) 
+of any ansible playbook.  
+
+
+### Ansible Lint
+[Ansible Lint](https://ansible-lint.readthedocs.io/en/latest/installing.html) is a command-line tool for linting playbooks, roles and collections aimed towards any Ansible users. Cd to the folder with 
+your Ansible project and execute
+
+```
+cd /home/examples/ansible-local
+ansible-lint --nocolor > /home/project/ansible-lint.txt
+```
+
+You can view the resulted txt file with static file server or filebrowser. 
+
+### Ansible-cmdb
+
+[Ansible-cmdb](https://github.com/fboender/ansible-cmdb) takes the output of Ansible's fact gathering and converts 
+it into a static HTML overview page (and other things) containing system configuration information.  
+
+Cd to the folder with your Ansible project and execute
+
+```
+cd /home/examples/ansible-local
+ansible -m setup --tree out/ all
+ansible-cmdb out/ > /home/project/overview.html
+```
+
+You can view the resulted txt file with Serve (static file server)
+
+### Ansible inventory grapher
+
+[Ansible inventory grapher](https://github.com/willthames/ansible-inventory-grapher) creates a dot file suitable for use by graphviz. Cd to the folder with 
+your Ansible project and execute
+
+```
+ansible-inventory-grapher all | dot -Tpng > /home/project/my.png
+```
+
+### Ansible Playbook Grapher
+
+[Ansible Playbook Grapher](https://github.com/haidaraM/ansible-playbook-grapher) - is a command line tool 
+that creates a graph representing your Ansible playbook plays, tasks and roles. 
+The aim of this project is to have an overview of your playbook. Cd to the folder with 
+your Ansible project and execute
+
+```
+ansible-playbook-grapher --include-role-tasks example.yml -o /home/static-server/example
+```
+
+### Ansible Doctor
+
+[Ansible Doctor](https://ansible-doctor.geekdocs.de/) is a simple annotation like documentation generator based on Jinja2 templates. 
+while ansible-doctor comes with a default template called readme, it is also possible to write your own templates.  
+
+The first step is to identify if the given folder is an Ansible role. This check is very simple, 
+if the folder contains a sub-directory called tasks is MUST be an Ansible role! :)   
+
+After the successful check, ansible-doctor will try to read some static files into a dictionary:
+- defaults/main.yml
+- meta/main.yml
+
+Cd to the folder with your Ansible project and execute
+
+```
+ansible-doctor -o /home/static-server/ roles/example_production
+```
+
+### Schedule Ansible playbook executions
+
+Ansible-Terraform workspace has 2 tools (Cronicle and ARA) that make it simple and convenient to use Ansible for periodic tasks and jobs. For example, 
+maintenance jobs for your cloud infrastructure. This is especially handy if you run this workspace on a remote server.  
+
+- **Cronicle** - allows to schedule tasks and jobs, and lets you observe executions using a nice UI 
+- **Ansible Ara** - tracks all executions of ansible playbooks (manual or scheduled), and has nice UI that provides informationn about every step 
+ of every playbook execution
+
+You can try scheduling an example ansible playbook with Cronicle
+
+**NOTE:** Scheduling Ansible playbooks is especially useful if you [launch Workspace on a remote server](#run-on-remote-server) rather than 
+on your local laptop.

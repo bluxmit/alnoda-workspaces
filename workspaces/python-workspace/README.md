@@ -1,20 +1,11 @@
-<p align="center">
-  <img src="./img/python-circle.svg" alt="Python logo" width="150">
-</p>  
-
 # Python workspace 
 
-Containerized isolated development environment for Python programming language.  
-
-## Why this images
-
-1. If you need self-hosted remote development environment.
-2. If you want to be one command away from coding in Python.
+Portable isolated containerized development environment for Python projects.  
 
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/python-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/python-workspace
 ```  
 
 open [localhost:8020](http://localhost:8020) in browser.  
@@ -22,37 +13,83 @@ open [localhost:8020](http://localhost:8020) in browser.
 ## Features
 
 - [IPython](https://ipython.readthedocs.io/en/stable/)
-- [Pre-commit](https://pre-commit.com/)
-- [Flake8](https://flake8.pycqa.org/en/latest/)
 - [Poetry](https://python-poetry.org/)
-- [Black](https://github.com/psf/black)
-- [Pipx](https://github.com/pypa/pipx)
 
-**Dev tools:**
+## Pyenv
 
-- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.
-- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
-- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
-- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
-- **Ubuntu 20.4** with the following CLI apps
-    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-    - Python 3, Pip 
-    - Node/nodeenv
-    - curl, wget, telnet, jq
-    - **Git:** git, git-flow, lazygit 
-    - **File browsers:** mc
-    - **Text editors:** nano, vim, mcedit
-    - **System monitors:** ncdu, htop, glances, vizex
-    - **Process Control:** supervisord
-    - **Job scheduler:** cron
-    - **Terminal multiplexer:** tmux 
+[pyenv](https://github.com/pyenv/pyenv) is used to isolate Python versions. For example, you may want to test your code against 
+Python 2.7, 3.6, 3.7 and 3.8, so you'll need a way to switch between them. 
 
-## Docs
+List python versions
 
-See our guides on 
+```
+pyenv install --list
+```
 
-- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
-- [**workspace tutorial**](https://docs.alnoda.org/postgres-workspace/tutorial/) 
-- [**project docs**](https://docs.alnoda.org/)
+Install additional python versions
 
+```
+pyenv install 3.10.4
+pyenv install  3.6.0
+pyenv install 3.10.7
+```
+
+Check installed python versions
+
+```
+pyenv versions
+```
+
+Change global python version 
+
+```
+pyenv global 3.10.4
+```
+
+Check python version
+
+```
+python --version
+```
+
+Create folder with local python environment, check Python version
+
+```
+mkdir test-pyenv
+cd test-pyenv
+pyenv local 3.6.0
+python --version
+```
+
+If you want to schedule script (with Cronicle) that uses pyenv, add `eval "$(pyenv init -)"` before the script. 
+For example `eval "$(pyenv init -)"; python /home/project/scripts/script.py`
+
+## Poetry
+
+Create our project
+
+```
+poetry new poetry-demo
+cd poetry-demo
+```
+
+Specify dependencies in pyproject.toml.   
+
+By default, poetry creates a virtual environment. There are several ways to run commands within this virtual environment. 
+To run your script simply use poetry run
+
+```
+poetry run python your_script.py
+```
+
+The easiest way to activate the virtual environment is to create a new shell with poetry shell 
+
+```
+poetry shell 
+```
+
+If you want to use another python version (installed with pyenv):
+
+```
+poetry env use python3.10.4
+```

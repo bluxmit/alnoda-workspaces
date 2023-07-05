@@ -1,27 +1,38 @@
 ---
 # mandatory
 name: Code-server workspace
-doc_url: https://docs.alnoda.org/workspaces/codeserver-workspace/
+doc_url: https://docs.alnoda.org/
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
 version: 5.0
-repository: https://github.com/bluxmit/alnoda-workspaces
 description: |
-  # Code-server workspace
   Browser-based portable and containerized general-purpose development environment.  
   Includes code editor (code-server), terminal, file browser and git manager. 
 tags: web-ide, codeserver
 
 # UI icons
-logo: codeserver-circle-white.svg
+logo: codeserver-circle-green.svg
 favicon: codeserver-circle.svg
 
-# Change styles
 styles:
+  font: Roboto Mono
   colors:
     light:
-      code_text: "#EAB676"
-      code_background: "#252525"
+      primary: "#100D23"
+      accent: "#AA4444"
+      background: "#F5F7F7"
+      text: "#100D23"
+      title: "#4162FD"
+      code_text: "#00FF6A"
+      code_background: "#AA4444"
     dark:
-      code_text: "#EAB676"
-      code_background: "#3C3C3C"
-
+      primary: "#372963"
+      accent: "#00FF6A"
+      background: "#100D23"
+      title: "#83698E"
+      text: "#B84242"
+      code_text: "#00FF6A"
+      code_background: "#AA4444"
+  common_colors:
+    header: "#00FF6A"
+    nav: "#4162FD"

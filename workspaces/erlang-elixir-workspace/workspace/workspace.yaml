@@ -1,11 +1,11 @@
 ---
 # mandatory
 name: Erlang-elixir workspace
-doc_url: https://docs.alnoda.org/workspaces/erlang-elixir-workspace/
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/erlang-elixir-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Erlang & Elixir workspace
   Browser-based portable and containerized development environment for Erlang and Elixir projects.
 
 tags: erlang, elixir, kerl, kiex

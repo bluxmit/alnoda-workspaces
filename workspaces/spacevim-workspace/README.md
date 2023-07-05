@@ -1,27 +1,16 @@
-- Install [neovim](https://github.com/neovim/neovim)
+# Spacevim workspace 
 
+Portable cotainerized isolated workspace with browser-based SpaceVim code editor and IDE 
+
+## Start
+ 
 ```
-sudo apt-get install -y neovim
-```
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/spacevim-workspace
+```  
 
-- Install Spacevim 
+open [localhost:8020](http://localhost:8020) in browser.  
 
-```
-curl -sLf https://spacevim.org/install.sh | bash
-```
+## Features
 
-Enable +python3 and +python support 
-
-```
-pip install --user pynvim
-```
-
-COPY  init.toml /home/abc/.SpaceVim.d/init.toml 
-
-
-
-
-## Font 
-
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip
-unzip DroidSansMono.zip -d ~/.fonts
+- [**Spacevim**](https://spacevim.org/) - IDE based o Vim. SpaceVim is a community-driven distribution of Vim and Neovim. 
+- [**Alnoda workspace features**](https://docs.alnoda.org/)

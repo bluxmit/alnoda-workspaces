@@ -1,13 +1,12 @@
 ---
 # mandatory
 name: Elasticsearch workspace
-doc_url: https://docs.alnoda.org/workspaces/elasticsearch-workspace/
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/elasticsearch-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Code-server workspace
-  Browser-based containerized environment to interact, 
-  manage and administer Opensearch and Elasticsearch clusters.
+  Browser-based containerized environment for Opensearch and Elasticsearch admin.
 
 tags: elasticsearch, opensearch, data-loading, data-backup, nodejs
 
@@ -29,3 +28,5 @@ styles:
       background: "#343741"
       title: "#9CDCFE"
       text: "#9CDCFE"
+  common_colors:
+    header: "#ffffff"

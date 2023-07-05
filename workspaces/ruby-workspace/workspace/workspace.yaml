@@ -1,0 +1,39 @@
+---
+# mandatory
+name: Ruby workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/ruby-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
+author: bluxmit
+version: 5.0
+description: |
+  Containerized portable isolated development environment for Ruby projects.
+
+tags: ruby, rbenv
+
+# UI icons
+logo: ruby-circle-white.svg
+favicon: ruby-circle.svg
+
+# Homepage UI appearance
+styles:
+  font: Noto Sans
+  colors:
+    light:
+      primary: "#9B1C16"
+      accent: "#9B1C16"
+      title: "#9B1C16"
+      text: "212121"
+      background: "#F5F7F7"
+      code_text: "#FFFFFF"
+      code_background: "#9B1C16"
+    dark:
+      primary: "#CC342D"
+      accent: "#CC342D"
+      background: "#0D1016"
+      title: "#F0F0EC"
+      text: "#F0F0EC"
+      code_text: "#CC342D"
+      code_background: "#F0F0EC"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#eab676"

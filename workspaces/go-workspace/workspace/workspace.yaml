@@ -1,11 +1,11 @@
 ---
 # mandatory
 name: Go workspace
-doc_url: https://docs.alnoda.org/workspaces/go-workspace/
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/go-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Go (golang) workspace
   Browser-based portable containerized and completely isolated development environment for Go programming language projects.
 
 tags: go
@@ -30,4 +30,5 @@ styles:
       title: "#79D4FD"
       text: "#FFFFFF"
   common_colors:
+    header: "#ffffff"
     nav: "#eab676"

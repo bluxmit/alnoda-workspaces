@@ -1,0 +1,37 @@
+---
+# mandatory
+name: Openvscode workspace
+doc_url: https://docs.alnoda.org/
+repository: https://github.com/bluxmit/alnoda-workspaces
+author: bluxmit
+version: 1.0
+date: 15-03-2023
+description: |
+  Browser-based portable and containerized general-purpose development environment with VSCode IDE.
+
+tags: open-vscode-server, vscode-ide
+
+# UI icons
+logo: vscode-circle-white.svg
+favicon: vscode-circle.svg
+
+# optional:
+# (Quickstart UI appearance)
+styles:
+  font: JetBrains Mono
+  colors:
+    light:
+      primary: "#23232E"
+      accent: "#A1648F"
+      background: "#F5F7F7"
+      title: "#83698E"
+      text: "#15151c"
+    dark:
+      primary: "#15151c"
+      accent: "#A1648F"
+      background: "#2B2B36"
+      title: "#83698E"
+      text: "#FFFFFF"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#9F8367"

@@ -2,12 +2,12 @@
 # mandatory
 name: Alnoda workspace
 doc_url: https://docs.alnoda.org/
+repository: https://github.com/bluxmit/alnoda-workspaces
 author: bluxmit
 version: 1.1
 date: 15-03-2023
-repository: https://github.com/bluxmit/alnoda-workspaces
 description: |
-  Hyperflexible isolated containerized development environment that is actually easy to use
+  Hyperflexible isolated containerized development environment which is actually easy to use
 
 tags: workspace-ui, filebrowser
 
@@ -33,24 +33,32 @@ styles:
 # optional:
 # (tools to add to the Quickstart UI)
 pages:
+  home:
+    - name: File browser
+      port: 8023 
+      title: File browser
+      description: "Browse, upload and download files and folders to and from the workspace"
+      image: filebrowser.png
   admin:
     - name: Termianl
-      port: 8022 
+      port: 8021 
       path: /
       title: Terminal
       description: "Full-fledged WEB-based Command Line Interface"
       image: terminal.png
     - name: Workspace admin
-      port: 8024 
+      port: 8022 
       title: Workspace admin
       description: "Configure workspace. Start new applicatios and services. Share workspace."
-      image: alnoda-admin.png
+      image: admin.png
     
+
+
 
 # optional:
 # (applications and services to launch every time workspace starts)
 start:
-  - name: MkDocs
+  - name: Workspace UI
     folder: $HOME/.wrk/ui
     cmd: mkdocs serve -a 0.0.0.0:8020
   - name: File Browser
@@ -59,5 +67,5 @@ start:
     env_vars: 
       - name: TERM
         value: xterm
-    cmd: ttyd -p 8024 -P 15 /bin/zsh -c 'alnoda-wrk admin' 
+    cmd: ttyd -p 8022 -P 15 /bin/zsh -c 'alnoda-wrk admin' 
     

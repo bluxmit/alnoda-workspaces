@@ -1,11 +1,6 @@
-<p align="center">
-  <img src="./img/elixir-circle.svg" alt="Elixir logo" width="150">
-</p>   
-
 # Erlang-elixir workspace 
 
 Containerized isolated development environment for Erlang and Elixir programming languages. 
-
 
 ## Why this images
 
@@ -26,33 +21,92 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [Elixir](http://elixir-lang.org/)
 - [Kerl](https://github.com/kerl/kerl) - easy building and installing of Erlang/OTP instances.
 - [Kiex](https://github.com/taylor/kiex) - allows you to easily build and switch between different Elixir versions.
-
-**Dev tools:**
-
-- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.
-- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
-- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
-- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
-- **Ubuntu 20.4** with the following CLI apps
-    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-    - Python 3, Pip 
-    - Node/nodeenv
-    - curl, wget, telnet, jq
-    - **Git:** git, git-flow, lazygit 
-    - **File browsers:** mc
-    - **Text editors:** nano, vim, mcedit
-    - **System monitors:** ncdu, htop, glances, vizex
-    - **Process Control:** supervisord
-    - **Job scheduler:** cron
-    - **Terminal multiplexer:** tmux 
-
-## Docs
-
-See our guides on 
-
-- [**getting started**](https://docs.alnoda.org/get-started/common-features/)
-- [**workspace tutorial**](https://docs.alnoda.org/erlang-elixir-workspace/tutorial/) 
-- [**project docs**](https://docs.alnoda.org/)
+- [**Java workspace features**](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/java-workspace)
 
 
+## Erlang 
+
+### Erlang shell 
+
+Erlang shell is used for testing of expressions. Start the Erlang shell from a command prompt with the command `erl`   
+
+having started shell, evaluate the following expressions 
+
+```
+2 + 5.
+(42 + 77) * 66 / 3.
+
+Str = "abcd".
+L = length(Str).
+```
+
+### Hello world
+
+Go to the Quickstart page, open VS-Code and create file `hello.erl` with the following code 
+
+```
+-module(hello).
+-export([hello_world/0]).
+
+hello_world() ->
+  io:format("Hello, World!~n", []).
+```
+
+Now open Terminal, start Erlang shell with `erl` and execute 
+
+```
+c(hello).
+```
+
+## Elixir
+
+### Elixir shell 
+
+`iex` is a command which stands for Interactive Elixir. 
+
+Openn terminal, start interactive Elixir shell with `iex` and evaluate
+
+```
+40 + 8
+"hello" <> " world"
+```
+
+### Scripts 
+
+Open IDE and create file `hello.exs` with the following code 
+
+```
+IO.puts("Hello world from Elixir")
+```
+
+In terminal execute 
+
+```
+elixir hello.exs
+```
+
+### Manage Elixir versions with Kiex 
+
+List installed versions
+
+```
+kiex list
+```
+
+List known releases
+
+```
+kiex list releases
+```
+
+Install a known release
+
+```
+kiex install 1.13.0
+```
+
+Use specific elixir version
+
+```
+kiex use 1.13.0
+```

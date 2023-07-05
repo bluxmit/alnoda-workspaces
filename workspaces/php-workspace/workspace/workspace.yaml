@@ -1,0 +1,35 @@
+---
+# mandatory
+name: Node.js workspace
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/php-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
+author: bluxmit
+version: 5.0
+description: |
+  Browser-based portable and containerized development environment for PHP projects.
+
+tags: php, phpbrew, composer
+
+# UI icons
+logo: php-circle-white.svg
+favicon: php-circle.svg
+
+# Homepage UI appearance
+styles:
+  font: Fira Sans # chose any from https://fonts.google.com/
+  colors:
+    light:
+      primary: "#4F5B93"
+      accent: "#793862"
+      background: "#E6E6EA"
+      title: "#4F5B93"
+    dark:
+      primary: "#8892BF"
+      accent: "#793862"
+      background: "#292d40"
+      title: "#E9EBFC"
+      text: "#E9EBFC"
+  common_colors:
+    header: "#FFFFFF"
+    nav: "#eab676"
+

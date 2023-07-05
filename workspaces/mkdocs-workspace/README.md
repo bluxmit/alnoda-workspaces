@@ -1,33 +1,14 @@
-<p align="center">
-  <img src="./img/alnoda-dark.svg" alt="Alnoda logo" width="150">
-</p>  
-
 # MkDocs workspace
 
-Containerized environment which helps to develop complex and awesome-looking documentation websites.  
+Workspace for MkDocs projects. Build good-looking documentation websites with extended Markdown.  
 Create docs from all your GitHub, GitLab and Bitbucket repositories, automate periodic builds.    
 
-## Why 
-
-- If want a ready tool to develop beautiful doccumentation websites.
-- You need a tool to automate and schedule builds of docs from many repositories.
-
-## Why documentation websites with MkDocs
-
-*Why create separate documentation websites? And if so, why MkDocs?*
-
-- MkDocs website with beautiful themes looks much better than any readme file. The resulting documentation website looks professional and awesome.
-- MkDocs adds text search to your documentation website.
-- In the case of closed-source software, sharing readme files from the git repository with external users is not an option.
-- Github does not render beautiful extended markdown features like admonitions, tabs, etc. Neither renders diagrams, formulas, swagger docs, or notebooks.
-- Using MkDocs-MagicSpace you create documentation from the same markdown readme files you have in your repo together with the code. And you 
-can create a unified documentation website from multiple repositories in Github, GitLab, Bitbucket.
-- You can add such features as Google Analytics, multi-language localization.
+Check out [**extended Markdown tutorials**](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/)!
 
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/mkdocs-magicspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/mkdocs-magicspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -50,47 +31,4 @@ building project documentation.
 - [Mkdocs-table-reader-plugin](https://pypi.org/project/mkdocs-table-reader-plugin/) - directly insert CSV files as tables in your website.
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video) - Include viedeos in the documentation.
 - many other plugins
-
-**Tools:**
-
-- [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE. Theia is trully open-source, has 
-VS-Code extensions and works in browser. This means it can run inside a docker container on local machine or in cloud. A lot of beautiful color themes and many common plugins are already installed to save time.  
-- [**Terminal**](https://github.com/tsl0922/ttyd) - secure browser-based terminal.
-- [**FileBrowser**](https://github.com/filebrowser/filebrowser)  - manage files and folders inside the workspace, and exchange data between local environment and the workspace
-- [**Cronicle**](https://github.com/jhuckaby/Cronicle)  - task scheduler and runner, with a web based front-end UI. It handles both scheduled, repeating and on-demand jobs, targeting any number of worker servers, with real-time stats and live log viewer.
-- [**Static File Server**](https://github.com/vercel/serve) - view any static html sites as easy as if you do it on your local machine. Serve static websites easily.
-- [**Ungit**](https://github.com/FredrikNoren/ungit) - rings user friendliness to git without sacrificing the versatility of it.
-- [**MkDocs**](https://squidfunk.github.io/mkdocs-material/)  - create awesome documentation for your project with only markdown. 
-- [**Midnight Commander**](https://midnight-commander.org/)  - Feature rich visual file manager with internal text viewer and editor. 
-- [**Process Monitor**](https://htop.dev/)  - Monitor running process and resource utilization. 
-- Quicklaunch UI with getting started tutorial
-- **Ubuntu 20.4** with the following CLI apps
-    - [Zsh](https://www.zsh.org/), [Oh my Zsh](https://ohmyz.sh/)
-    - Python 3, Pip 
-    - Node/nodeenv
-    - curl, wget, telnet, jq
-    - **Git:** git, git-flow 
-    - **File browsers:** mc
-    - **Text editors:** nano, vim, mcedit
-    - **System monitors:** ncdu, htop, glances, vizex
-    - **Process Control:** supervisord
-    - **Job scheduler:** cron
-    - **Terminal multiplexer:** tmux 
-
-## Docs
-
-See our guides on 
-
-- [**getting started**](https://mkdocs-magicspace.alnoda.org/tutorials/get-started/)
-- [**extended Markdown tutorials**](https://mkdocs-magicspace.alnoda.org/tutorials/markdown/intro/) 
-- [**project docs**](https://docs.alnoda.org/)
-
-## Demo
-
-<div align="center" style="font-style: italic;">
-    Demo: MkDocs MagicSpace
-</div>
-
-<p align="center">
-  <img src="img/mkdocs-magicspace-demo.gif" alt="WID demo" width="900">
-</p>
+- [**Alnoda workspace features**](https://docs.alnoda.org/)

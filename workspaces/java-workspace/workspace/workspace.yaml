@@ -1,11 +1,11 @@
 ---
 # mandatory
 name: Java workspace
-doc_url: https://docs.alnoda.org/workspaces/java-workspace/
+doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/java-workspace
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
+version: 5.0
 description: |
-  # Java workspace
   Containerized isolated development environment for Java programming language.
 
 tags: java, jre, jdk, maven, gradle
@@ -29,4 +29,5 @@ styles:
       title: "#BAAD69"
       text: "#BAAD69"
   common_colors:
+    header: "#ffffff"
     nav: "#eab676"

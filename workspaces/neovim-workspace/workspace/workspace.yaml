@@ -1,12 +1,12 @@
 ---
 # mandatory
 name: Neovim workspace
-doc_url: https://github.com/bluxmit/alnoda-workspaces/blob/main/workspaces/neovim-workspace/README.md
+doc_url: https://docs.alnoda.org/
+repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
-version: 4.0
-repository: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/neovim-workspace
+version: 1.0
 description: |
-  Workspace with hyperextensible Vim-based text editor
+  Alnoda workspace with hyperextensible Vim-based text and code editor
 
 tags: web-ide, vim, neovim
 
@@ -34,26 +34,6 @@ styles:
   common_colors:
     header: "#FFFFFF"
     nav: "#eab676"
-
-pages:
-  home:
-    - name: IDE
-      port: 8021 
-      path: /
-      title: IDE
-      description: "Browser-based Neovim IDE"
-      image: neovim.jpg
-    - name: M.Commander
-      port: 8025 
-      title: M.Commander
-      description: Feature rich visual file manager with internal text viewer and editor
-      image: mc.jpg
-
-start:
-  - name: Neovim
-    folder: /home/
-    cmd: ttyd -p 8021 -P 15 /bin/zsh -c 'cd /home/abc/apps/nvim-nodeenv && . env/bin/activate && cd /home && nvim' 
-
 
 cheatsheet:
   Neoim: 
