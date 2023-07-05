@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="img/Alnoda-red.svg" alt="Alnoda logo" width="100">
+  <img src="img/alnoda-red.svg" alt="Alnoda logo" width="100">
 </p> 
 
 Open-source portable containerized browser-based development environments in Docker containers.
 
-![img/wrk-demo.gif]
+![demo](img/wrk-demo.gif)
 
 How to make this: 
 
