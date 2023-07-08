@@ -1,4 +1,4 @@
-# Spacevim workspace 
+# SpaceVim workspace 
 
 Portable cotainerized isolated workspace with browser-based SpaceVim code editor and IDE 
 
@@ -14,3 +14,8 @@ open [localhost:8020](http://localhost:8020) in browser.
 
 - [**Spacevim**](https://spacevim.org/) - IDE based o Vim. SpaceVim is a community-driven distribution of Vim and Neovim. 
 - [**Alnoda workspace features**](https://docs.alnoda.org/)
+
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  

@@ -1,11 +1,11 @@
-# Code-server workspace
+# Emacs workspace
 
 General-purpose containerized isolated portable workspace with Emacs code editor. 
 
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/codeserver-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/emacs-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  

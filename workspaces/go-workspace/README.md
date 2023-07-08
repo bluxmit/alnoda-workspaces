@@ -16,6 +16,11 @@ open [localhost:8020](http://localhost:8020) in browser.
 - [**Code-server**](https://github.com/cdr/code-server) - open source version of popular Visual Studio Code IDE. Codeserver has VS-Code extensions and works in browser. 
 - [**Alnoda workspace features**](https://docs.alnoda.org/)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
+
 ## Example: hello world
 
 Check Go version 

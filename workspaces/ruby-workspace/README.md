@@ -17,6 +17,11 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [Bundler](https://bundler.io/)
 - [**Openvscode workspace features**](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/openvscode-workspace)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
+
 ## Ruby
 
 Open terminal, and check Ruby version 

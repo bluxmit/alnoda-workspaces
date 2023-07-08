@@ -19,6 +19,11 @@ open [localhost:8020](http://localhost:8020) in browser.
 - [Nodeenv](https://pypi.org/project/nodeenv/)
 - [*Codeserver workspace features*](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/codeserver-workspace)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
+
 ## Node.js
 
 Open workspace terminal and check Node.js or npm versions 

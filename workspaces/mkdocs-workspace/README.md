@@ -32,3 +32,9 @@ building project documentation.
 - [Mkdocs-video](https://github.com/soulless-viewer/mkdocs-video) - Include viedeos in the documentation.
 - many other plugins
 - [**Alnoda workspace features**](https://docs.alnoda.org/)
+
+## Links
+
+[__Workspace docs__](https://mkdocs-magicspace.alnoda.org/)
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  

@@ -17,6 +17,10 @@ open [localhost:8020](http://localhost:8020) in browser.
 - Java
 - Maven
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
 
 ## Scala
 

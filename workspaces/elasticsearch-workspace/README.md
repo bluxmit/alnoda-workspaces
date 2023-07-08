@@ -24,6 +24,11 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [vulcanizer](https://github.com/github/vulcanizer) - cli for interacting with an Elasticsearch cluster.
 - [*Codeserver workspace features*](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/codeserver-workspace)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
+
 ## vulcanizer
 
 Check cluster nodes and shards
@@ -32,10 +37,6 @@ Check cluster nodes and shards
 vulcanizer --host es01 nodes
 vulcanizer --host es01 shards
 ```
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/vulcanizer-demo.png" alt="vulcanizer" width="750">
-</p>
 
 ## elasticdump
 
@@ -49,7 +50,4 @@ elasticdump \
   --output "s3://${bucket_name}/kibana_sample_data_ecommerce.json"
 ```
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bluxmit/alnoda-workspaces/main/workspaces/elasticsearch-workspace/img/elasticdump-demo.png" alt="elasticdump" width="750">
-</p>
 

@@ -15,6 +15,11 @@ open [localhost:8020](http://localhost:8020) in browser.
 - [IPython](https://ipython.readthedocs.io/en/stable/)
 - [Poetry](https://python-poetry.org/)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
+
 ## Pyenv
 
 [pyenv](https://github.com/pyenv/pyenv) is used to isolate Python versions. For example, you may want to test your code against 

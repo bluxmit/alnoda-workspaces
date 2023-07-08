@@ -25,6 +25,10 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [Jupytext](https://github.com/mwouts/jupytext) - Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts.
 - [**Alnoda workspace features**](https://docs.alnoda.org/)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
 
 ## NBClient
 

@@ -17,6 +17,11 @@ open [localhost:8020](http://localhost:8020) in browser.
 - [**Rustup**](https://rustup.rs/) - installer for the systems programming language Rust
 - [**Openvscode workspace features**](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/openvscode-workspace)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
+
 ## Hello world
 
 Check Rust version 

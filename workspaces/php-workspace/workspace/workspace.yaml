@@ -1,6 +1,6 @@
 ---
 # mandatory
-name: Node.js workspace
+name: PHP workspace
 doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/php-workspace
 repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit

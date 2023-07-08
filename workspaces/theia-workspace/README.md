@@ -20,3 +20,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [**Eclipse Theia**](https://theia-ide.org/docs/) - open source version of popular Visual Studio Code IDE
 - [**Alnoda workspace**](https://docs.alnoda.org/)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  

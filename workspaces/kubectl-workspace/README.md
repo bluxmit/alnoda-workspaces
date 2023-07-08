@@ -28,3 +28,8 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [**Velero CLI**](https://github.com/vmware-tanzu/velero) - Back up and restore your Kubernetes cluster resources and persistent volumes. 
 - [**argocd-cli**](https://github.com/argoproj/argo-cd) - CLI for ArgoCD - a tool for declarative, GitOps continuous delivery for Kubernetes. 
 - [*Codeserver workspace features*](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/codeserver-workspace)
+
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  

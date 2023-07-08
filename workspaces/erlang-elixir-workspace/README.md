@@ -10,7 +10,7 @@ Containerized isolated development environment for Erlang and Elixir programming
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 alnoda/erlang-elixir-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/erlang-elixir-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -23,6 +23,10 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [Kiex](https://github.com/taylor/kiex) - allows you to easily build and switch between different Elixir versions.
 - [**Java workspace features**](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/java-workspace)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
 
 ## Erlang 
 

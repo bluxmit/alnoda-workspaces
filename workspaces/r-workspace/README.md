@@ -18,6 +18,11 @@ open [localhost:8020](http://localhost:8020) in browser.
 - [**radian**](https://github.com/randy3k/radian) - A 21 century R console. Like iPython for R
 - [**Openvscode workspace features**](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/openvscode-workspace)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
+
 ## R
 
 Open terminal, and check R version 

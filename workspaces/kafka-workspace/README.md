@@ -22,6 +22,10 @@ open [localhost:8020](http://localhost:8020) in browser.
 - [kcli](https://github.com/cswank/kcli) - Kafka read only command line browser.
 - [*Codeserver workspace features*](https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/codeserver-workspace)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
 
 ### Kafka tools
 

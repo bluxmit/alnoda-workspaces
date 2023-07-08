@@ -10,7 +10,7 @@ General-purpose containerized isolated development environment with Theia IDE.
 ## Start
  
 ```
-docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/theia-workspace
+docker run --name space-1 -d -p 8020-8040:8020-8040 --restart=always alnoda/openvscode-workspace
 ```  
 
 and open [localhost:8020](http://localhost:8020) in browser.  
@@ -20,3 +20,7 @@ and open [localhost:8020](http://localhost:8020) in browser.
 - [**OpenVSCode Server**](https://github.com/gitpod-io/openvscode-server) - Visual Studio Code IDE that runs in browser
 - [**Alnoda workspace features**](https://docs.alnoda.org/)
 
+## Links
+
+[__Alnoda docs__](https://docs.alnoda.org/)    
+[__Alnoda Hub__](https://alnoda.org)  
