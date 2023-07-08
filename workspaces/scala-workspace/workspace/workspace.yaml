@@ -1,6 +1,6 @@
 ---
 # mandatory
-name: R workspace
+name: Scala workspace
 doc_url: https://github.com/bluxmit/alnoda-workspaces/tree/main/workspaces/scala-workspace
 repository: https://github.com/bluxmit/alnoda-workspaces/
 author: bluxmit
