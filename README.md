@@ -2,7 +2,8 @@
   <img src="img/alnoda-red.svg" alt="Alnoda logo" width="100">
 </p> 
 
-Open-source portable containerized browser-based development environments in Docker containers.
+Open-source portable containerized browser-based development environments in Docker containers. You can create your own 
+custom workspace or customize any of the workspaces with your preferred stack of applications without knowing much of the Docker.
 
 ![demo](img/wrk-demo.gif)
 
