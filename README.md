@@ -26,7 +26,7 @@ RUN wrk install vvvebjs
 
 __*Create your own workspace choosing from hundreeds of applications in [Alnoda Hub](https://alnoda.org/)*__ 
 
-# Alternatively 
+## Alternatively 
 
 Start workspace: 
 
@@ -58,6 +58,11 @@ wrk kill
 ```
 
 Ready to begin? Have a look at the [__*Getting Started Guide*__](https://docs.alnoda.org/get-started/launch-workspace/).
+
+## Sharing 
+
+Do you want to share any application of your workspace with your colleague? Code editor, IDE, termial, notebook - you can grant access to any of the workspace 
+application over the Internet. Your colleague only needs browser to work with you in your workspace runnig on your laptop! 
 
 ## Docs
 
