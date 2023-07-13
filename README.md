@@ -64,6 +64,13 @@ Ready to begin? Have a look at the [__*Getting Started Guide*__](https://docs.al
 Do you want to share any application of your workspace with your colleague? Code editor, IDE, termial, notebook - you can grant access to any of the workspace 
 applications over the Internet. Your colleague only needs browser to work with you in your workspace running on your laptop! 
 
+## Selh-hosting 
+
+Wnat to run it in cloud and work from anywhere and any device? Read [__here__](https://docs.alnoda.org/user-guide/cloud-deployment/server/)
+
+- [Docker compose with https and authentication](https://github.com/bluxmit/wrk-compose)   
+- [Kubernetes Helm chart](https://github.com/bluxmit/alnoda-charts)
+
 ## Docs
 
 Please visit our [**documentation website**](https://docs.alnoda.org)
