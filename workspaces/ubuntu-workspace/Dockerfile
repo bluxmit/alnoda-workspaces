@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 COPY unified-supervisord.conf supervisord.conf /etc/supervisord/
 COPY mc.ini /home/abc/.config/mc/ini
@@ -125,7 +125,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && mv ttyd.x86_64 /usr/bin/ttyd \
     && chmod +x /usr/bin/ttyd \
     && echo "------------------------------------------------------ User" \
-    && chown abc /etc/timezone \
     && chown abc /home/project \
     && mkdir -p /home/abc/bin \ 
     && chown abc /home/abc/bin \
@@ -159,7 +158,7 @@ RUN git config --global credential.helper cache \
     && sh /tmp/nix.sh --no-daemon  \
     && rm /tmp/nix.sh \
     && echo "------------------------------------------------------ Pipx" \
-    && sudo apt-get -y install python3.8-venv \
+    && sudo apt-get -y install python3.10-venv \
     && python3 -m pip install --user pipx \
     && python3 -m pipx ensurepath 
 

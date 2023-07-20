@@ -1,4 +1,4 @@
-FROM alnoda/ubuntu-workspace:5.10-20.04
+FROM alnoda/ubuntu-workspace:0.1-22.04
 
 # Make image Alnoda-compatible - add dir for logs
 USER root
