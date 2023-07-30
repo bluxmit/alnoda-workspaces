@@ -90,8 +90,11 @@ __❗ INFO:__ GPT is based on the Vicuna 7B model and only allowed for personal 
 
 ## Sharing 
 
-Do you want to share any application of your workspace with your colleague? Code editor, IDE, termial, notebook - you can grant access to any of the workspace 
-applications over the Internet. Your colleague only needs browser to work with you in your workspace running on your laptop! 
+Do you want to share any application of your workspace with your colleague? 
+
+✅ Code editor, IDE, termial, notebook - you can grant access to any of the workspace applications over the Internet.  
+
+One click, and your colleague will work together with you __*directly in your workspace running on your laptop!*__ 
 
 ## Self-hosting 
 
@@ -109,7 +112,3 @@ Please visit our [**documentation website**](https://docs.alnoda.org)
 This repository houses a variety of workspaces with different selection of installed applications. These workspaces can serve as customized environments 
 for specific projects or serve as examples for reference.
 
-
-<p align="center">
-  <img src="img/stand_with_ukraine.png" alt="Ukraine" width="250">
-</p> 
