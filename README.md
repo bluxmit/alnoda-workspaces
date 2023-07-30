@@ -2,12 +2,21 @@
   <img src="img/alnoda-red.svg" alt="Alnoda logo" width="100">
 </p> 
 
-Open-source portable containerized browser-based development environments in Docker containers. You can create your own 
-custom workspace or customize any of the workspaces with your preferred stack of applications without knowing much of the Docker.
+Open-source portable containerized workspaces. Isolate your work, make backups, copy, move between computers and cloud seamlessly.  
+
+🚀 __NOW WITH FREE CHAT GPT!__ 🚀   
+
+- 🔥 Have a full chat GPT in the workspace. 
+- 🔥 Free without registration required
+- 🔥 __Works even offline!__   
+
+## Flexible
+
+You can select preconfigured workspace [here](https://alnoda.org/registry/workspaces/) or make your own special workspace.  
 
 ![demo](img/wrk-demo.gif)
 
-How to make this: 
+How to make this (Dockerfile): 
 
 ```
 FROM alnoda/alnoda-workspace:latest
@@ -58,6 +67,26 @@ wrk kill
 ```
 
 Ready to begin? Have a look at the [__*Getting Started Guide*__](https://docs.alnoda.org/get-started/launch-workspace/).
+
+## Chat GPT 
+
+__*Need full chat GPT experience?*__ 
+
+Open workspace termial and innstall GPT: 
+
+```
+wrk install gpt
+```
+
+After installation has finished, reload terminal window, and open chat by executing `gpt` command in the terminal 
+
+```
+gpt
+```
+
+__💡 NOTE:__ GPT is experimental feature! Currently it is supported only in alnoda workspace v.2   
+
+__❗ INFO:__ GPT is based on the Vicuna 7B model and only allowed for personal use. 
 
 ## Sharing 
 

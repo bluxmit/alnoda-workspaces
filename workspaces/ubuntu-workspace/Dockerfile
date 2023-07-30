@@ -14,6 +14,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y gdebi-core \
     && apt-get install -y acl \
     && apt-get install -y psmisc \
+    && echo "------------------------------------------------------ tzdata" \
+    && sudo ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
+    && sudo apt-get install --reinstall tzdata \
     && echo "------------------------------------------------------ User" \
     && useradd -u 8877 -p $(openssl passwd -1 abc) abc \
     && chown -R abc /home \
